@@ -11,13 +11,12 @@
 * {
 	margin: 0px;
 	padding: 0px;
-	display: ;
 }
 
 body {
-
 	background-image: url("images/bg.jpg");
 	background-repeat: repeat;
+	font-family: arialroundedmtbold;
 }
 
 .wrapper {
@@ -27,7 +26,6 @@ body {
 	width: 80%;
 	height: 800px;
 	background-color: white;
-
 }
 
 header {
@@ -36,7 +34,6 @@ header {
 	height: 50px;
 	padding-top: 10px;
 	padding-left: 20px;
-	font-family: arialroundedmtbold;
 	background-color: white;
 	background: rgba(255, 255, 255, .7);
 }
@@ -49,7 +46,7 @@ header div {
 header .logo {
 	font-size: 35px;
 	color: #696969;
-	font-family: arialroundedmtbold;
+	text-decoration: none;
 }
 
 nav {
@@ -79,7 +76,6 @@ nav > ul > li > a {
 	line-height: 35px;
 	text-shadow: 0 1px 1px rgba(0,0,0,.1);
 	transition: all .1s ease;
-	font-family: arialroundedmtbold;
 	text-decoration: none;
 }
 nav > ul > li > a:hover {
@@ -127,6 +123,7 @@ nav .arrow {
 	color: white;
 	border-radius: 10px;
 	text-decoration: none;
+	transition: all .3s ease;
 }
 
 .button span {

@@ -51,6 +51,7 @@
 	text-decoration: none;
 	color: white;
 	margin-right: 10px;
+	transition: all .3s ease;
 }
 
 .box .button span {
