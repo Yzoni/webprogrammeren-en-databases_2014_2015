@@ -1,0 +1,60 @@
+.box {
+	margin: 20px;
+	float: right;
+	height: 200px;
+	width: 320px;
+	border: 2px solid;
+    border-radius: 10px;
+    border-color: #b5b5b5;
+    background-color: white;
+}
+
+.box .title {
+	margin-left: 15px;
+	font-size: 15px;
+}
+
+.box .title span {
+	color: #006666;
+}
+
+.box .image {
+	width: 100%;
+	height: 55%;
+	background-image: url("images/box-bg.png");
+}
+
+.box .stock {
+	margin-left: 15px;
+	margin-top: 12px;
+	float: left;
+}
+.box .stock span {
+	font-family: iconfont;
+	color: green;
+}
+
+.box .button {
+	float: right;
+	background-color: #006666;
+	border-radius: 10px;
+	height: 30px;
+	width: 110px;
+	display: inline-block;
+	line-height: 30px;
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+.box .button span {
+	font-family: iconfont;
+	font-size: 13px;
+}
+
+.box .button:hover {
+ 	background-color:#008b8b;
+}
