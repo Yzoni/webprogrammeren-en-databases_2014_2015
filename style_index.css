@@ -1,4 +1,5 @@
 .box {
+	font-family: arialroundedmtbold;
 	margin: 20px;
 	float: right;
 	height: 200px;
@@ -13,7 +14,7 @@
 	margin-left: 15px;
 	margin-top: 5px;
 	margin-bottom: 10px;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .box .title span {
