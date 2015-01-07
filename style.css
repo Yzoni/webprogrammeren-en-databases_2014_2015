@@ -1,0 +1,68 @@
+@font-face {
+    font-family: iconfont;
+    src: url(fonts/fontawesome-webfont.woff);
+}
+
+@font-face {
+    font-family: arialroundedmtbold;
+    src: url(fonts/arialroundedmtbold.woff);
+}
+
+html {
+}
+
+body {
+	margin: 0px;
+	background-image: url("images/bg.jpg");
+	background-repeat: repeat;
+}
+
+header {
+	width: 100%;
+	height: 50px;
+	padding-top: 10px;
+	padding-left: 20px;
+	font-family: arialroundedmtbold;
+	background-color: white;
+	background: rgba(255, 255, 255, .7);
+}
+
+nav {
+
+}
+
+.button {
+	background-color: #006666;
+	display: inline-block;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	border-radius: 10px;
+	text-decoration: none;
+}
+
+.button span {
+	font-family: iconfont;
+	font-size: 13px;
+}
+
+.button:hover {
+ 	background-color:#008b8b;
+}
+
+#login {
+	width: 130px;
+	height: 35px;
+	margin-right: 20px;
+	line-height: 32px;
+	float: right;
+}
+
+#register {
+	width: 150px;
+	height: 35px;
+	margin-right: 40px;
+	line-height: 32px;
+	float:right;
+}
+
