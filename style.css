@@ -39,8 +39,8 @@ header {
 
 nav {
 	float: left;
-	width: 200px;
-	margin-left: -20px;
+	width: 30%;
+	margin: 20px;
 	box-shadow: 0 0 10px rgba(0,0,0,.15);
 	overflow: hidden;
 	border-radius: 4px;
