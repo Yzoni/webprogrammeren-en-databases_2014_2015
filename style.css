@@ -166,3 +166,78 @@ footer p {
 	font-family: arialroundedmtbold;
 	margin: 15px;
 }
+
+.description {
+    width:660px;
+}
+
+.category/prod {
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+}
+
+.category {
+	color: #006666;
+}
+
+
+.descrText {
+    float:left;
+}
+.descrImg {
+    float:right;
+}
+
+.voegToe {
+    font-family: iconfont;
+	background-color: #006666;
+	border-radius: 10px;
+	height: 30px;
+	width: 110px;
+	display: inline-block;
+	line-height: 30px;
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+	margin-right: 10px;
+	margin-top: 5px;
+    font-size: 14px;
+}
+
+.icon-ok {
+	color: green;
+}
+
+.inputForm {
+    float:right;
+}
+
+.inputBox{
+    width: 20px;
+}
+
+.prodInfo {
+    float:left;
+    font-family: iconfont;
+}
+
+.backProd {
+    float:left;
+    font-family: iconfont;
+	background-color: #006666;
+	border-radius: 10px;
+	height: 30px;
+	width: 250px;
+	display: inline-block;
+	line-height: 30px;
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+.description {
+	float:left;
+}
