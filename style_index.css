@@ -44,7 +44,7 @@
 	transition: all .3s ease;
 }
 
-.box a:hover {
+.box .productpagelink:hover {
 	padding-left: 4px;
 }
 
