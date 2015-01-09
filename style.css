@@ -171,10 +171,6 @@ footer p {
     width:660px;
 }
 
-.category/prod {
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-}
-
 .category {
 	color: #006666;
 }
@@ -206,6 +202,10 @@ footer p {
 
 .icon-ok {
 	color: green;
+    font-family: iconfont;
+}
+.icon {
+    font-family: iconfont;
 }
 
 .inputForm {
@@ -216,9 +216,8 @@ footer p {
     width: 20px;
 }
 
-.prodInfo {
+.prodInfoTxt {
     float:left;
-    font-family: iconfont;
 }
 
 .backProd {
@@ -240,4 +239,8 @@ footer p {
 
 .description {
 	float:left;
+}
+
+.infoList {
+	list-style-type:none;
 }
