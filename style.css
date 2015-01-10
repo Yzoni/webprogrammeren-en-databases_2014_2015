@@ -27,6 +27,7 @@ body {
 	position: relative;
 	margin: auto;
 	margin-top: 110px;
+	margin-bottom: 25px;
 	width: 80%;
 	height: 800px;
 	background-color: white;
@@ -81,7 +82,7 @@ header .logo {
 nav {
 	float: left;
 	width: 25%;
-	margin: 20px;
+	margin: 25px;
 	box-shadow:   0px 0px 26px -2px rgba(0,0,0,0.75);
 	overflow: hidden;
 	border-radius: 4px;
@@ -185,7 +186,7 @@ nav .arrow {
 footer {
 	width: 100%;
 	height: 50px;
-	color: white;
+	color: #3D9191;
 	background-color: #006666;
 	position: absolute; bottom:0;
 	box-shadow: 0 -4px 0 rgba(0,0,0,.25);
@@ -193,7 +194,8 @@ footer {
 
 footer p {
 	font-family: arialroundedmtbold;
-	margin: 15px;
+	margin-top: 15px;
+	margin-left: 25px;
 }
 
 .description {
