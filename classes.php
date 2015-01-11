@@ -74,14 +74,16 @@ class Product {
     public $description;
     public $image;
     public $stock;
+    public $price;
 
     function __construct($id = null) {
         if ($id) {
             global $db;
-            $query = $db->prepare("SELECT * FROM ProductTypes WHERE id = :id");
+            $query = $db->prepare("SELECT * FROM Products WHERE id = :id");
             $query->bindParam(':id', $id, PDO::PARAM_STR);
+            $query->setFetchMode(PDO::FETCH_INTO, $this);
             $query->execute();
-            $query->fetch(PDO::FETCH_INTO, $this);
+            $query->fetch();
         }
         $this->type = new ProductType($this->typeid);
     }
