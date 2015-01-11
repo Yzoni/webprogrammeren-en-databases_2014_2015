@@ -41,10 +41,17 @@ require_once 'classes.php';
                         </div>
                     </li>
                     <li>
-                        <a href="#">Bestellingten</a>
+                        <a href="#">Bestellingen</a>
                     </li>
                 </ul>
             </nav>
+                <?php
+                $customers = Customer::getAllCustomers();
+                foreach ($customers as $customer) {
+                    $customer->displayBox();
+                }
+                ?>
+            
             <?php
                 $products = Product::getAllProducts();
                 foreach ($products as $product) {

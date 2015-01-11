@@ -12,3 +12,4 @@ try {
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
+$passwordsalt = "swagyoloenietsleuks";
