@@ -26,10 +26,11 @@ body {
 .wrapper {
     position: relative;
     margin: auto;
+    padding-bottom: 100px;
     margin-top: 110px;
     margin-bottom: 25px;
     width: 80%;
-    height: 800px;
+    height: auto;
     background-color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
