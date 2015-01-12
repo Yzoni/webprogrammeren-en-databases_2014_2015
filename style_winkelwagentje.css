@@ -1,19 +1,14 @@
 .line {
     background-color: black;
     height: 1px;
-    width: 60%;
-    margin-left: 28.8%;
+    width: 80%;
     margin-bottom: 1%;
 
 }
 
-.prodInfoTxt {
+.Winkelwagen {
+    margin-left: 30%;
     font-family: iconfont;
-    margin-right: 10px;
-}
-
-ul > li {
-    
 }
 
 #pay {
@@ -25,7 +20,9 @@ ul > li {
     font-weight: bold;
     color: white;	
     line-height: 220%;	
-    margin-right: 20%;
+    margin-right: 30%;
 
 }
+
+
 
