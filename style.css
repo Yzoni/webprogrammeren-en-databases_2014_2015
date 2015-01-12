@@ -214,6 +214,7 @@ footer a:hover {
 
 .description {
     width:660px;
+    margin-left: 30%;
 }
 
 .category {
@@ -280,10 +281,6 @@ footer a:hover {
     color: white;
     margin-right: 10px;
     margin-top: 5px;
-}
-
-.description {
-    float:left;
 }
 
 .infoList {
