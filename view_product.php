@@ -11,7 +11,7 @@ $product = new Product($_GET["id"]);
 
                 <div>
                     <br>
-                    <a href="#"class="category"><?php echo $product->type->name; ?></a> / <?php echo $product->name; ?>
+                    <a href="view_producttype.php?id=<?php echo $product->type->id ?>"class="category"><?php echo $product->type->name; ?></a> / <?php echo $product->name; ?>
                 </div>
 
                 <br>
