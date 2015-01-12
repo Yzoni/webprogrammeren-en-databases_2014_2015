@@ -10,8 +10,8 @@
         <header>
             <div>
                 <a href="index.php" class="logo">fruyt .nl</a>
-                <a href="register.php" class="button" id="register"><span>&#xf055;</span> | registreren</a>			
-                <a href="login.php" class="button" id="login"><span>&#xf084;</span> | inloggen</a>
+                <a href="customer_register.php" class="button" id="register"><span>&#xf055;</span> | registreren</a>			
+                <a href="customer_login.php" class="button" id="login"><span>&#xf084;</span> | inloggen</a>
             </div>
         </header>
         <div class="wrapper">
