@@ -74,7 +74,7 @@ $product = new Product($_GET["id"]);
 
                 <p>
                     <br>
-                    <a href="#" class="backProd"> &#xf053; | terug naar: <?php echo $product->type->name; ?> </a>
+                    <a href="view_producttype.php?id=<?php echo $product->type->id ?>" class="backProd"> &#xf053; | terug naar: <?php echo $product->type->name; ?> </a>
                 </p>
             </div>
 
