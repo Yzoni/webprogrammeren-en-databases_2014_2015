@@ -295,3 +295,61 @@ footer a:hover {
 .infoList {
     list-style-type:none;
 }
+
+//LOGIN
+.loginbox {
+    margin-top: 25px;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    border: 1px solid #454545;
+    border-radius: 5px;
+    background-color: white;
+
+}
+
+input[type=text] {
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 48px;
+    background: url('images/username_bg.jpg') no-repeat;
+}
+
+input[type=password] {
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    padding-left: 48px;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    background: url('images/password_bg.jpg') no-repeat;
+}
+
+::-webkit-input-placeholder {
+    color: #b6b6b6;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #b6b6b6;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #b6b6b6;  
+}
+
+:-ms-input-placeholder {  
+    color: #b6b6b6;  
+}
+
+input[type=submit] {
+    width: 90px;
+    background-color: #006666;
+    border-radius: 5px;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    height: 32px;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}

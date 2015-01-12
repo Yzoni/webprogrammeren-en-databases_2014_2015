@@ -9,6 +9,7 @@ require_once 'config.php';
 
 
 function is_admin_logged_in(){
+    session_start();
     if($_SESSION['admin_logged_in'] && $_SESSION['admin_logged_in'] == 1){
         //we zijn ingelogd
         return true;
@@ -177,7 +178,7 @@ class Admin {
         global $db;
         global $passwordsalt;
         
-        $password = crypt($password, '$5$rounds=5$'.$passwordsalt.'$');
+        $password = hash("sha256", $password.$passwordsalt);
         
         try {
             $query = $db->prepare("INSERT INTO Admins (username, password) VALUES (:username, :password)");
@@ -195,7 +196,7 @@ class Admin {
         global $db;
         global $passwordsalt;
         
-        $password = crypt($password, '$5$rounds=5$'.$passwordsalt.'$');
+        $password = hash("sha256", $password.$passwordsalt);
         
         $query = $db->prepare("SELECT * FROM Admins WHERE username = :username AND password = :password");
         $query->bindParam(':username', $username, PDO::PARAM_STR);
@@ -205,11 +206,11 @@ class Admin {
         if ($result == FALSE) {
             header('Location: http://www.2woorden9letters.nl');
             exit();
-            //return "Credentials false";
         } else {
             session_start();
             $_SESSION['admin_logged_in'] = 1;
-            return true;
+            header('Location: /admin.php');
+            exit();
         }
     }
     
