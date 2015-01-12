@@ -2,6 +2,7 @@
     <ul>
         <li>
             <a href="index.php">Home</a>
+            <a href="products.php">Producten</a>
             <div>
                 <ul>
                     <?php
