@@ -8,7 +8,7 @@
                     <?php
                     $producttypes = ProductType::getAllProductTypes();
                     foreach ($producttypes as $producttype) {
-                        echo "<li><a href=\"#\">$producttype->name <span class=\"arrow\">&#xf101;</span></a></li>";
+                        echo "<li><a href=\"view_producttype.php?id=$producttype->id\">$producttype->name <span class=\"arrow\">&#xf101;</span></a></li>";
                     }
                     ?>
                 </ul>
