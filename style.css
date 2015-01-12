@@ -60,6 +60,15 @@ body {
     font-size: 25px;
 }
 
+.wrapperheadcontent span a {
+    text-decoration: none;
+    color: white;
+}
+
+.wrapperheadcontent span a:hover {
+    text-decoration: underline;
+}
+
 header {
     color: white;
     width: 100%;

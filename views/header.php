@@ -17,6 +17,6 @@
         <div class="wrapper">
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
-                    <span class="iconfont">&#xf07a;</span><span class="winkelwagen"> &euro;0,00 | afrekenen</span>
+                    <span class="iconfont">&#xf07a;</span><span class="winkelwagen"> &euro;0,00 | <a href="#"> afrekenen</a></span>
                 </div>
             </div>
