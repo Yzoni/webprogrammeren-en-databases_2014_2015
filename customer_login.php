@@ -8,17 +8,6 @@ if (isset($_POST['username']) && $_POST['password']) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Loginpagina</title>
-        <link rel="stylesheet" type="text/css" href="style_login.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-
-    <body>
-
         <div class="loginbox">
             <form action="customer_login.php" method="post">
                 <input type="text" name="username" placeholder="voornaam"><br>
@@ -26,10 +15,6 @@ include 'views/navigation.php';
                 <input type="submit" value="inloggen">
             </form>
         </div>
-
-    </body>
-
-</html>
 
 <?php
 include 'views/footer.php';
