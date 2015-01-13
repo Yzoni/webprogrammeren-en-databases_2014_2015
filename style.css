@@ -475,3 +475,26 @@ input[type=submit]{
     height: 40px;
 }
 
+#add_category {
+    border: 1px solid;
+    border-color: #006666;
+    margin-top: 5%; 
+    height: 10%;    
+    width: 18%;
+    border: 1px solid;
+    border-color: #006666;
+    height: 32px;
+}
+
+#submit{
+    background-color: #006666;
+    height: 10%;    
+    width: 18%;
+    text-align: center;
+    font-weight: bold;
+    color: white;   
+    line-height: 220%;  
+    margin-left: 3%;
+    margin-top: 2%; 
+}
+
