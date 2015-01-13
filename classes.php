@@ -145,7 +145,7 @@ class Product {
         return $result;
     }
 
-    static function create($typid, $name, $description, $image, $stock, $price) {
+    static function create($typid, $name, $description, $image = null, $stock, $price) {
         global $db;
         $query = $db->prepare("INSERT INTO Products (typid, name, description, image, stock, price) VALUES (:typid, :name, :description, :image, :stock, :price)");
         $query->bindParam(':typeid', $typeid, PDO::PARAM_STR);

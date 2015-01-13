@@ -4,14 +4,16 @@ require_once 'classes.php';
 include 'views/header.php;'
 include 'views/navigation.php';
 
+// assign the posted values to variables
 $name = $_POST['name'];
 $category = $_POST['category'];
 $description = $_POST['description'];
 $price = $_POST['price'];
 $quantity = $_POST['quantity'];
 $stock = $_POST['stock'];
-$image = $_POST['image']n
+$image = $_FILES['image'];
 
+// creates the product product
 Product::create($name, $description, $image, $stock, $price, $price);
 ?>
 
@@ -54,7 +56,7 @@ Product::create($name, $description, $image, $stock, $price, $price);
 																																       <br>
 																																         <a href="fruyt.nl/managerpanel" > <font color="#006666"> Managerpanel</font></a> / product toevoegen    
 																																	    				 </p>
-																																					   <form action="add_product.php">     
+																																					   <form action="add_product.php" enctype="multipart/form-data">     
 																																					   	 			        <div class="links_fruit">        
 																																										     				  <input type="text" name="name" placeholder="naam" id="name" > <br>
 																																														  	 	     		 <input type="text" name="category" placeholder="categorie" id="category" >
@@ -66,7 +68,7 @@ Product::create($name, $description, $image, $stock, $price, $price);
 																																																																			       <div class="rechts_fruit">
 																																																																			       	      <input type="text" name="price" placeholder="prijs per stuk" id="price"> <br>
 																																																																								      	     		 		 <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
-																																																																													 		    		 <input type="file" name="photo" placeholder="foto uploaden" id="photo">
+																																																																													 		    		 <input type="file" name="image" placeholder="foto uploaden" id="photo">
 																																																																																	 		    		 </div>		   	        
 																																																																																					 				  <input type="submit" value="opslaan" id="submit">  
 																																																																																									  	 	       </form>	       		      
