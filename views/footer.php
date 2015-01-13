@@ -1,4 +1,6 @@
-<footer> <p>Copyright Fruyt.nl &#169;</p></footer>
+<footer> <p>Copyright Fruyt.nl &#169;</p>
+    <a href="admin_login.php">admin login</a>
+</footer>
 </div>
 
 </body>

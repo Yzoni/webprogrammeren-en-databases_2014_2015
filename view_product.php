@@ -11,7 +11,7 @@ $product = new Product($_GET["id"]);
 
                 <div>
                     <br>
-                    <a href="#"class="category"><?php echo $product->type->name; ?></a> / <?php echo $product->name; ?>
+                    <a href="view_producttype.php?id=<?php echo $product->type->id ?>"class="category"><?php echo $product->type->name; ?></a> / <?php echo $product->name; ?>
                 </div>
 
                 <br>
@@ -74,7 +74,7 @@ $product = new Product($_GET["id"]);
 
                 <p>
                     <br>
-                    <a href="#" class="backProd"> &#xf053; | terug naar: <?php echo $product->type->name; ?> </a>
+                    <a href="view_producttype.php?id=<?php echo $product->type->id ?>" class="backProd"> &#xf053; | terug naar: <?php echo $product->type->name; ?> </a>
                 </p>
             </div>
 

@@ -1,0 +1,74 @@
+.line {
+    background-color: #454545;
+    height: 1px;
+    width: 60%;
+    margin-left: 28.8%;
+    margin-bottom: 1%;
+
+}
+
+.rek_ov_con {
+        margin-left: 28.8%;
+	width: 600px;
+	height: 300px;
+}
+
+.rek_ov_icon {
+	width: 25px;
+	display: inline-block;
+	height: 32px;
+}
+
+.rek_ov_day {
+	width: 70px;
+	display: inline-block;
+	height: 100px;
+}
+
+.rek_ov_date {
+	width: 110px;
+	display: inline-block;
+	height: 32px;
+}
+
+.rek_ov_price {
+	width: 16%;
+	display: inline-block;
+	height: 32px;
+}
+
+.rek_ov_button {
+    font-family: iconfont;
+    background-color: #454545;
+    border-radius: 5px;
+    height: 30px;
+    width: 20%;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    line-height: 32px;
+    display: inline-block;
+}
+
+.prodInfoTxt {
+    font-family: iconfont;
+    margin-right: 10px;
+}
+
+ul > li {
+    
+}
+
+#pay {
+    background-color: #006666;
+    float: right;	
+    height: 10%;	
+    width: 18%;
+    text-align: center;
+    font-weight: bold;
+    color: white;	
+    line-height: 220%;	
+    margin-right: 20%;
+
+}
+

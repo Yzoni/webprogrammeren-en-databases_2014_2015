@@ -7,6 +7,10 @@ require_once 'classes.php';
  */
 is_admin_logged_in();
 
-// TO DO FORM
+
+require_once 'classes.php';
+include 'views/header.php';
+include 'views/navigation.php';
+
 
 ?>
