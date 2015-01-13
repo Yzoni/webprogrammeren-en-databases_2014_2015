@@ -1,7 +1,7 @@
 <?php
 require_once 'classes.php';
 // is_admin_logged_in();
-if (isset($_GET['add_category'])) {
+if (isset($_GET['add_category']) && $_GET['add_category'] !='') {
     $category = $_GET['add_category'];
     ProductType::create($category);
 }
