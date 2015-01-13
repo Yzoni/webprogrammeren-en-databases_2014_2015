@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>Fruyt.nl</title>
         <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="style_products.css">
     </head>
     <body>
         <header>

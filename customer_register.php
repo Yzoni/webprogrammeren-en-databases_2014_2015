@@ -5,8 +5,9 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
-<div class="registreerbox">
-    <form action="#">
+<div class="formwrapper">
+    <h2>Registreer als nieuwe klant: </h2>
+    <form action="customer_register.php">
         <input type="text" name="username" placeholder="username"><br>
         <input type="password" name="wachtwoord" placeholder="wachtwoord" id="pass1" onkeyup="checkPass();
                 return false;">
@@ -20,7 +21,7 @@ include 'views/navigation.php';
         <input type="text" name="woonplaats" placeholder="woonplaats" id="info"><br>
         <input type="text" name="straatnaam" placeholder="straatnaam" id="info"><br>
         <input type="text" name="huisnummer" placeholder="huisnummer" id="info"><br>
-        <input type="submit" value="registreren">
+        <input class="button" type="submit" value="registreren">
     </form>
 </div>
 <script type="text/javascript" src="js/checkpassword.js"></script>
