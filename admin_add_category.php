@@ -1,6 +1,6 @@
 <?php
 require_once 'classes.php';
-is_admin_logged_in();
+// is_admin_logged_in();
 if (isset($_POST['add_category'])) {
     $category = $_POST['add_category'];
     ProductType::create($category);
