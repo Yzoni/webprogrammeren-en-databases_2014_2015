@@ -366,6 +366,10 @@ class Admin {
         session_destroy();
     }
 
+    function addProduct() {
+        
+    }
+
 }
 
 class Order {
