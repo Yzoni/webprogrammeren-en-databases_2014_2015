@@ -318,6 +318,8 @@ class Admin {
             $query->execute();
             return true;
         } catch (PDOException $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+
             return false;
         }
     }
@@ -335,6 +337,7 @@ class Admin {
             $query->execute();
             return true;
         } catch (PDOException $e) {
+            print _
             return false;
         }
     }
