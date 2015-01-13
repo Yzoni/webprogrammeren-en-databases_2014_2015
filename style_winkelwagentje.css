@@ -62,22 +62,23 @@
 }
 
 .levertijd {
-	margin-left: 28.8%;
+	margin-right: 71,2%;
 }
 
 .totaalprijs {
-    margin-left: 28,8%;
+    margin-right: 71,2%;
 }
 
 #pay {
     background-color: #006666;
-    float: right;	
-    height: 10%;	
+    height: 10%;    
     width: 18%;
     text-align: center;
     font-weight: bold;
-    color: white;	
-    line-height: 220%;	
+    color: white;   
+    line-height: 220%;
+
+    float: right;	    	
     margin-right: 20%;
     margin-left: 20%;
 }
