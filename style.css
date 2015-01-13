@@ -475,7 +475,7 @@ input[type=submit]{
     height: 40px;
 }
 
-#add_category {
+#add_new_category {
     border: 1px solid;
     border-color: #006666;
     margin-top: 5%; 
@@ -486,7 +486,7 @@ input[type=submit]{
     height: 32px;
 }
 
-#submit{
+#submit_button{
     background-color: #006666;
     height: 10%;    
     width: 18%;
