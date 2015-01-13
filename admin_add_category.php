@@ -1,6 +1,6 @@
 <?php
 require_once 'classes.php';
-if (isset($_POST['category']) {
+if (isset($_POST['category'])) {
     $category = $_POST['add_category'];
     ProductTypes::create($category);
 
