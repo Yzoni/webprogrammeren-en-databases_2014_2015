@@ -2,7 +2,7 @@
 
 require_once 'classes.php';
 include 'views/header.php;'
-include 'views/navigation.php';
+
 
 // assign the posted values to variables
 $name = $_POST['name'];
