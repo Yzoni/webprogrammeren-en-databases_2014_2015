@@ -1,17 +1,72 @@
 .line {
-    background-color: black;
+    background-color: #454545;
     height: 1px;
-    width: 80%;
+    width: 60%;
+    margin-left: 28.8%;
     margin-bottom: 1%;
 
 }
 
-.Winkelwagen {
-    margin-left: 30%;
-    font-family: iconfont;
+.ww_con {
+	font-size: 12px;
+	font-color: #454545;
+        margin-left: 28.8%;
+	width: 600px;
+	min-height: 170px;
 }
 
-#pay {
+.ww_icon {
+	width: 15px;
+	display: inline-block;
+}
+
+.icon_edit, .icon_edit:link {
+	color: green;
+}
+
+.ww_article {
+	width: 350px;
+	display: inline-block;
+	height: 32px;
+}
+
+.ww_quantity {
+	width: 65px;
+	display: inline-block;
+	height: 32px;
+}
+
+.ww_price {
+	width: 100px;
+	display: inline-block;
+	height: 32px;
+}
+
+.rek_ov_button3 {
+    font-family: iconfont;
+    float: left;
+    margin-left: 28.8%;
+    background-color: #006666;
+    border-radius: 5px;
+    height: 32px;
+    width: 80px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    line-height: 32px;
+    display: inline-block;
+}
+
+.prodInfoTxt {
+    font-family: iconfont;
+    margin-right: 10px;
+}
+
+.paybox {
+	margin-left: 28.8%;
+}
+
+pay {
     background-color: #006666;
     float: right;	
     height: 10%;	
@@ -20,9 +75,6 @@
     font-weight: bold;
     color: white;	
     line-height: 220%;	
-    margin-right: 30%;
-
+    margin-right: 20%;
 }
-
-
 
