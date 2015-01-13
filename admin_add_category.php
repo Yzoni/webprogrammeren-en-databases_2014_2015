@@ -3,7 +3,7 @@ require_once 'classes.php';
 
     $category = $_POST['add_category'];
     ProductType::create($category);
-echo "$_POST['add_category']";
+echo $_POST['add_category'];
 
 include 'views/header.php';
 include 'views/navigation.php';
@@ -16,7 +16,7 @@ include 'views/navigation.php';
 		<input type="text" name="add_category" placeholder="nieuwe categorie" id="add_new_category"> 
 		<input type="submit" value="opslaan" id="submit_button">		
 	</form>	
-	
+
 
 <?php
 include 'views/footer.php';
