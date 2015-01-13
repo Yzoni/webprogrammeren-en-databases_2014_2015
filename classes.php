@@ -335,7 +335,6 @@ class Admin {
             $query->execute();
             return true;
         } catch (PDOException $e) {
-            print _
             return false;
         }
     }
