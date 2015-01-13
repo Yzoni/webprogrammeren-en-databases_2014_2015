@@ -169,7 +169,7 @@ nav .arrow {
 
 .button span {
     font-family: iconfont;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .button:hover {
@@ -259,8 +259,14 @@ footer a:hover {
     color: green;
     font-family: iconfont;
 }
+
 .icon {
     font-family: iconfont;
+}
+
+.icon:link, .icon:visited {
+    color: #006666;
+    text-decoration: none;
 }
 
 .inputForm {

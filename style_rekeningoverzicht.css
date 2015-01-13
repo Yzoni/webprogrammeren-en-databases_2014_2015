@@ -8,46 +8,83 @@
 }
 
 .rek_ov_con {
+	font-size: 12px;
+	font-color: #454545;
         margin-left: 28.8%;
 	width: 600px;
-	height: 300px;
+	min-height: 170px;
 }
 
 .rek_ov_icon {
-	width: 25px;
+	width: 30px;
 	display: inline-block;
 	height: 32px;
 }
 
 .rek_ov_day {
-	width: 70px;
+	width: 80px;
 	display: inline-block;
-	height: 100px;
+	height: 32px;
 }
 
 .rek_ov_date {
-	width: 110px;
+	width: 95px;
 	display: inline-block;
 	height: 32px;
 }
 
 .rek_ov_price {
-	width: 16%;
+	width: 100px;
 	display: inline-block;
 	height: 32px;
 }
 
-.rek_ov_button {
+.rek_ov_button1 {
     font-family: iconfont;
-    background-color: #454545;
+    background-color: #006666;
     border-radius: 5px;
-    height: 30px;
-    width: 20%;
+    height: 32px;
+    width: 100px;
     text-align: center;
     text-decoration: none;
     color: white;
     line-height: 32px;
     display: inline-block;
+}
+
+.rek_ov_button2 {
+    font-family: iconfont;
+    float: right;
+    background-color: #006666;
+    border-radius: 5px;
+    height: 32px;
+    width: 160px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    line-height: 32px;
+    display: inline-block;
+}
+
+.rek_ov_button3 {
+    font-family: iconfont;
+    float: left;
+    margin-left: 28.8%;
+    background-color: #006666;
+    border-radius: 5px;
+    height: 32px;
+    width: 80px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    line-height: 32px;
+    display: inline-block;
+}
+
+.rek_nav {
+	margin-top: 10px;
+	margin-bottom: 20px;
+
 }
 
 .prodInfoTxt {
