@@ -1,8 +1,8 @@
 <?php
 require_once 'classes.php';
 // is_admin_logged_in();
-if (isset($_POST['add_category'])) {
-    $category = $_POST['add_category'];
+if (isset($_GET['add_category'])) {
+    $category = $_GET['add_category'];
     ProductType::create($category);
 }
 include 'views/header.php';
