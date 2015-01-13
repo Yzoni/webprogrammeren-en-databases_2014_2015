@@ -56,7 +56,7 @@ Product::create($name, $description, $image, $stock, $price, $price);
 																																       <br>
 																																         <a href="fruyt.nl/managerpanel" > <font color="#006666"> Managerpanel</font></a> / product toevoegen    
 																																	    				 </p>
-																																					   <form action="add_product.php" enctype="multipart/form-data">     
+																																					   <form action="admin_add_product.php" enctype="multipart/form-data">     
 																																					   	 			        <div class="links_fruit">        
 																																										     				  <input type="text" name="name" placeholder="naam" id="name" > <br>
 																																														  	 	     		 <input type="text" name="category" placeholder="categorie" id="category" >
