@@ -15,10 +15,10 @@ include 'views/navigation.php';
 
                 <p><br>managerpanel</p>			
 			<div class="manager_panel">
-			<a href="categorie_wijzigen.html" class="manager_button"><span>&#xF040;</span> | categorie wijzigen</a>
-			<a href="categorie_toevoegen.html" class="manager_button"><span>&#xF067;</span> | categorie toevoegen</a>
-			<a href="product_wijzigen.html" class="manager_button"><span>&#xF040;</span> | product wijzigen</a>
-			<a href="product_toevoegen.html" class="manager_button"><span>&#xf067;</span> | product toevoegen</a>
+			<a href="admin_edit_category.php" class="manager_button"><span>&#xF040;</span> | categorie wijzigen</a>
+			<a href="admin_add_category.php" class="manager_button"><span>&#xF067;</span> | categorie toevoegen</a>
+			<a href="admin_edit_product.php" class="manager_button"><span>&#xF040;</span> | product wijzigen</a>
+			<a href="admin_add_product.php" class="manager_button"><span>&#xf067;</span> | product toevoegen</a>
 			</div>
 
 <?php
