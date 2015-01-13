@@ -1,7 +1,10 @@
 <?php
 require_once 'classes.php';
+if (isset($_POST['add_category'])){
     $category = $_POST['add_category'];
     ProductType::create($category);
+}
+    
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
