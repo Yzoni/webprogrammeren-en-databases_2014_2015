@@ -1,29 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Loginpagina</title>
-        <link rel="stylesheet" type="text/css" href="style_register.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
+<?php
+require_once 'classes.php';
 
-    <body>
+include 'views/header.php';
+include 'views/navigation.php';
+?>
 
-        <div class="registreerbox">
-            <form action="#">
-                <input type="text" name="username" placeholder="username"><br>
-                <input type="password" name="wachtwoord" placeholder="wachtwoord"><br>
-                <input type="password" name="wachtwoord2" placeholder="wachtwoord (nogmaals)"><br>
-                <input type="text" name="voornaam" placeholder="voornaam" id="person"><br>
-                <input type="text" name="achternaam" placeholder="achternaam" id="person"><br>
-                <input type="text" name="emailadres" placeholder="emailadres" id="person"><br>
-                <input type="text" name="woonplaats" placeholder="woonplaats" id="info"><br>
-                <input type="text" name="straatnaam" placeholder="straatnaam" id="info"><br>
-                <input type="text" name="huisnummer" placeholder="huisnummer" id="info"><br>
-                <input type="submit" value="registreren">
-            </form>
-        </div>
+<div class="registreerbox">
+    <form action="#">
+        <input type="text" name="username" placeholder="username"><br>
+        <input type="password" name="wachtwoord" placeholder="wachtwoord" id="pass1" onkeyup="checkPass();
+                return false;">
+        <span id="confirmMessage"></span><br>
+        <input type="password" name="wachtwoord2" placeholder="wachtwoord (nogmaals)" id="pass2" onkeyup="checkPass();
+                return false;">
+        <span id="confirmMessage"></span><br>
+        <input type="text" name="voornaam" placeholder="voornaam" id="person"><br>
+        <input type="text" name="achternaam" placeholder="achternaam" id="person"><br>
+        <input type="text" name="emailadres" placeholder="emailadres" id="person"><br>
+        <input type="text" name="woonplaats" placeholder="woonplaats" id="info"><br>
+        <input type="text" name="straatnaam" placeholder="straatnaam" id="info"><br>
+        <input type="text" name="huisnummer" placeholder="huisnummer" id="info"><br>
+        <input type="submit" value="registreren">
+    </form>
+</div>
+<script type="text/javascript" src="js/checkpassword.js"></script>
 
-    </body>
-
-</html>
+<?php
+include 'views/footer.php';
+?>

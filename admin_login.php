@@ -10,16 +10,6 @@ include 'views/navigation.php';
 
 
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Loginpagina</title>
-        <link rel="stylesheet" type="text/css" href="style_login.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-
-    <body>
 
         <div class="loginbox">
             <form action="admin_login.php" method="post">
@@ -28,11 +18,6 @@ include 'views/navigation.php';
                 <input type="submit" value="inloggen">
             </form>
         </div>
-
-    </body>
-
-</html>
-
 <?php
 include 'views/footer.php';
 
