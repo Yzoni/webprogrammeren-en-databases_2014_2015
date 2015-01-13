@@ -16,6 +16,7 @@ include 'views/navigation.php';
 		<input type="text" name="add_category" placeholder="nieuwe categorie" id="add_new_category"> 
 		<input type="submit" value="opslaan" id="submit_button">		
 	</form>	
+	echo "$_POST['add_category']";
 
 <?php
 include 'views/footer.php';
