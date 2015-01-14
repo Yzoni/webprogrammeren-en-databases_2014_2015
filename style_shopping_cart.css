@@ -1,13 +1,12 @@
 .line {
     background-color: #454545;
     height: 1px;
-    width: 60%;
-    margin-left: 28.8%;
+    width: 60%;    
     margin-bottom: 1%;
 }
 
 .shopping_cart {
-    margin-left: 20%;
+    margin-left: 28.8%;
 }
 
 #pay {
@@ -18,7 +17,6 @@
     font-weight: bold;
     color: white;   
     line-height: 220%;
-
     float: right;	    	
     margin-right: 20%;
     margin-left: 20%;
@@ -28,8 +26,7 @@
 .shopping_cart_row {
     font-size: 12px;
     font-color: #454545;
-    margin-left: 28.8%;
-    width: 600px;
+    width: 80%;
     min-height: 170px;
 }
 
