@@ -6,12 +6,8 @@
     margin-bottom: 1%;
 }
 
-.shopping_cart_delivery_time {
-	margin-right: 71,2%;
-}
-
-.shopping_cart_price_total {
-    margin-right: 71,2%;
+.shopping_cart {
+    margin-left: 20%;
 }
 
 #pay {
