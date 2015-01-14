@@ -1,6 +1,6 @@
 <?php
 require_once 'classes.php';
-//is_admin_logged_in();
+security_check_admin();
 if (isset($_POST['add_producttype']) && $_POST['add_producttype'] != '') {
     $name = $_POST['add_producttype'];
     ProductType::create($name);

@@ -20,7 +20,7 @@ include 'views/navigation.php';
 <div class="formwrapper">
     <h2>Registreer als nieuwe klant: </h2>
     <form action="customer_register.php" method="POST">
-        <input type="text" name="email" placeholder="emailadres"><br>
+        <input type="text" name="email" placeholder="emailadres" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br>
         <input type="password" name="password" placeholder="wachtwoord" id="pass1" onkeyup="checkPass();
                 return false;">
         <span id="confirmMessage"></span><br>
@@ -33,7 +33,7 @@ include 'views/navigation.php';
         </select>
         <input type="text" name="firstname" placeholder="voornaam" id="person"><br>
         <input type="text" name="lastname" placeholder="achternaam" id="person"><br>
-        <input type="text" name="zip" placeholder="woonplaats(ZIP eigenlijk ofzo)" id="info"><br>
+        <input type="text" name="zip" placeholder="postcode" pattern="[0-9]{4}[a-zA-Z]{2}$" id="info"><br>
         <input type="text" name="streetaddress" placeholder="straatnaam" id="info"><br>
         <input type="text" name="streetnumber" placeholder="huisnummer" id="info"><br>
         <input class="button" type="submit" value="registreren">

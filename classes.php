@@ -20,6 +20,20 @@ function is_admin_logged_in() {
     }
 }
 
+function security_check_admin() {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] == 1) {
+        //we zijn ingelogd
+        return true;
+    } else {
+        header("location: index.php");
+        exit();
+        // niet ingelogd
+    }
+}
+
 function is_customer_logged_in() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -29,6 +43,20 @@ function is_customer_logged_in() {
         return true;
     } else {
         return false;
+        // niet ingelogd
+    }
+}
+
+function security_check_customer(){
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['customer_logged_in']) && $_SESSION['customer_logged_in'] == 1) {
+        //we zijn ingelogd
+        return true;
+    } else {
+        header("location: index.php");
+        exit();
         // niet ingelogd
     }
 }
@@ -167,13 +195,13 @@ class Product {
 
     function edit() {
         global $db;
-        $query = $db->prepare("UPDATE Products SET typeid =: typeid, name = :name, description = :description, image = :image, stock = :stock, price = :price WHERE id = :id");
-        $query->bindParam(':typeid', $typeid, PDO::PARAM_INT);
-        $query->bindParam(':name', $name, PDO::PARAM_STR);
-        $query->bindParam(':description', $description, PDO::PARAM_STR);
-        $query->bindParam(':image', $image, PDO::PARAM_STR);
-        $query->bindParam(':stock', $stock, PDO::PARAM_STR); 
-        $query->bindParam(':price', $price, PDO::PARAM_STR);
+        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, image = :image, stock = :stock, price = :price WHERE id = :id");
+        $query->bindParam(':typeid', $this->typeid, PDO::PARAM_INT);
+        $query->bindParam(':name', $this->name, PDO::PARAM_STR);
+        $query->bindParam(':description', $this->description, PDO::PARAM_STR);
+        $query->bindParam(':image', $this->image, PDO::PARAM_STR);
+        $query->bindParam(':stock', $this->stock, PDO::PARAM_STR); 
+        $query->bindParam(':price', $this->price, PDO::PARAM_STR);
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         $query->execute();
     }
@@ -209,6 +237,7 @@ class Customer {
             global $db;
             $query = $db->prepare("SELECT * FROM Customers WHERE id = :id");
             $query->bindParam(':id', $id, PDO::PARAM_INT);
+            $query->setFetchMode(PDO::FETCH_INTO, $this);
             $query->execute();
             $query->fetch();
         }
@@ -216,6 +245,11 @@ class Customer {
     
     function displayBox() {
         $output = include 'views/Customer_displayBox.php';
+        return $output;
+    }
+    
+    function displayEditForm() {
+        $output = include 'views/Customer_editForm.php';
         return $output;
     }
 
@@ -236,6 +270,9 @@ class Customer {
         } else {
             session_start();
             $_SESSION['customer_logged_in'] = 1;
+            $_SESSION['customer_id'] = $result->id;
+            echo $result->id;
+            exit();
             header('Location: /index.php');
             exit();
         }

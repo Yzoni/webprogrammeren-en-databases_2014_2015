@@ -5,7 +5,7 @@
             <?php
             $producttypes_form = ProductType::getAllProductTypes();
             foreach ($producttypes_form as $producttype_form) {
-                echo "<option value=\"$producttype_form->id\">$producttype_form->name</option>";
+                echo "<option value=\"$producttype_form->id\" ".($this->typeid==$producttype_form->id ? "selected" : "").">$producttype_form->name</option>";
             }
             ?>
         </select>
