@@ -80,10 +80,10 @@ class ProductType {
         return $result;
     }
 
-    static function create($id) {
+    static function create($name) {
         global $db;
-        $query = $db->prepare("INSERT INTO ProductTypes (id) VALUES (:id)");
-        $query->bindParam(':id', $id, PDO::PARAM_STR);
+        $query = $db->prepare("INSERT INTO ProductTypes (id, name) VALUES (NULL, :name)");
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->execute();
     }
 
