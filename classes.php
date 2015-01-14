@@ -8,20 +8,23 @@
 require_once 'config.php';
 
 function is_admin_logged_in() {
-    session_start();
-    if ($_SESSION['admin_logged_in'] && $_SESSION['admin_logged_in'] == 1) {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] == 1) {
         //we zijn ingelogd
         return true;
     } else {
-        header('Location: http://www.2woorden9letters.nl');
-        exit();
+        return false;
         // niet ingelogd
     }
 }
 
 function is_customer_logged_in() {
-    session_start();
-    if ($_SESSION['customer_logged_in'] && $_SESSION['customer_logged_in'] == 1) {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['customer_logged_in']) && $_SESSION['customer_logged_in'] == 1) {
         //we zijn ingelogd
         return true;
     } else {
@@ -32,7 +35,7 @@ function is_customer_logged_in() {
 
 /*
  * Class ProductType
- *
+ * 
  * what the class does
  *
  */
@@ -79,23 +82,28 @@ class ProductType {
 
     static function create($name) {
         global $db;
-        $query = $db->prepare("INSERT INTO ProductTypes (id, name) VALUES (NULL, :name)");
+        $query = $db->prepare("INSERT INTO ProductTypes (name) VALUES (:name)");
         $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->execute();
     }
+    
+    function displayEditForm() { 
+        $output = include 'views/ProductType_editForm.php';
+        return $output;
+    }
 
-    static function edit($id, $newname) {
+    function edit() {
         global $db;
-        $query = $db->prepare("UPDATE ProductTypes SET name = :newname WHERE name = :oldname");
-        $query->bindParam(':oldname', $oldname, PDO::PARAM_STR);
-        $query->bindParam(':newname', $newname, PDO::PARAM_STR);
+        $query = $db->prepare("UPDATE ProductTypes SET name = :name WHERE id = :id"); // dit is echt zo pro he
+        $query->bindParam(':name', $this->name, PDO::PARAM_STR);
+        $query->bindParam(':id', $this->id, PDO::PARAM_STR);
         $query->execute();
     }
 
-    static function delete($id) {
+    function delete() {
         global $db;
         $query = $db->prepare("DELETE FROM ProductTypes WHERE id = :id");
-        $query->bindParam(':id', $id, PDO::PARAM_STR);
+        $query->bindParam(':id', $this->id, PDO::PARAM_STR);
         $query->execute();
     }
 
@@ -136,11 +144,11 @@ class Product {
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid");
             $query->bindParam(':typeid', $type, PDO::PARAM_STR);
             $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product"); // PDO magic
         } else {
             $query = $db->prepare("SELECT * FROM Products");
             $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product"); // voel de magic
         }
         return $result;
     }
@@ -238,16 +246,22 @@ class Customer {
         }
     }
 
-    static function edit($oldvar, $newvar) {
+    function edit() { // edit is natuurlijk niet statisch omdat het slaat op 1 instance van een customer, niet meerdere
         global $db;
-        $query = $db->prepare("UPDATE Customers SET :newvar WHERE :oldvar");
-        $query->bindParam(':oldvar', $oldvar, PDO::PARAM_STR);
-        $query->bindParam(':newvar', $newvar, PDO::PARAM_STR);
+        $query = $db->prepare("UPDATE Customers SET email = :email, zip = :zip, gender = :gender, streetaddress = :streetaddress, streetnumber = :streetnumber, firstname = :firstname, lastname = :lastname  WHERE id = :id");
+        $query->bindParam(':email', $this->email, PDO::PARAM_STR);
+        $query->bindParam(':streetaddress', $this->streetaddress, PDO::PARAM_STR);
+        $query->bindParam(':streetnumber', $this->streetnumber, PDO::PARAM_STR);
+        $query->bindParam(':zip', $this->zip, PDO::PARAM_STR);
+        $query->bindParam(':firstname', $this->firstname, PDO::PARAM_STR);
+        $query->bindParam(':lastname', $this->lastname, PDO::PARAM_STR);
+        $query->bindParam(':gender', $this->gender, PDO::PARAM_STR);
+        $query->bindParam(':id', $this->id, PDO::PARAM_STR);
         $query->execute();
         return true;
     }
-
-    function changePassword($email, $oldpassword, $newpassword) {
+    
+    function changePassword($oldpassword, $newpassword) {
         global $db;
         global $passwordsalt;
 
@@ -255,10 +269,10 @@ class Customer {
         $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
         try {
-            $query = $db->prepare("UPDATE Customer SET password=:newpassword WHERE email=:email oldpassword=:oldpassword");
+            $query = $db->prepare("UPDATE Customers SET password=:newpassword WHERE id = :id AND password = :oldpassword");
             $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-            $query->bindParam(':email', $email, PDO::PARAM_STR);
             $query->bindParam(':oldpassword', $oldpassword, PDO::PARAM_STR);
+            $query->bindParam(':id', $this->id, PDO::PARAM_STR);
             $query->execute();
             return true;
         } catch (PDOException $e) {
@@ -303,7 +317,7 @@ class Admin {
         return $output;
     }
 
-    function changePassword($username, $oldpassword, $newpassword) {
+    function changePassword($oldpassword, $newpassword) {
         global $db;
         global $passwordsalt;
 
@@ -311,10 +325,10 @@ class Admin {
         $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
         try {
-            $query = $db->prepare("UPDATE Admin SET password=:newpassword WHERE username=:username oldpassword=:oldpassword");
+            $query = $db->prepare("UPDATE Admins SET password=:newpassword WHERE id = :id AND password=:oldpassword"); // dit is ook onzin
             $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-            $query->bindParam(':username', $newpassword, PDO::PARAM_STR);
-            $query->bindParam(':oldpassword', $newpassword, PDO::PARAM_STR);
+            $query->bindParam(':id', $this->id, PDO::PARAM_STR);
+            $query->bindParam(':oldpassword', $oldpassword, PDO::PARAM_STR);
             $query->execute();
             return true;
         } catch (PDOException $e) {
@@ -362,6 +376,9 @@ class Admin {
     }
 
     static function logout() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['admin_logged_in'] = 0;
         session_destroy();
     }
