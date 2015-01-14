@@ -5,6 +5,11 @@ if(isset($_POST['username']) && $_POST['password']){
 	$password = $_POST['password'];
 	Admin::login($username, $password);
 }
+
+if (isset($_GET['fn']) && $_GET['fn'] == "logout") {
+    Admin::logout();
+}
+
 include 'views/header.php';
 include 'views/navigation.php';
 

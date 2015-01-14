@@ -9,8 +9,15 @@
         <header>
             <div>
                 <a href="index.php" class="logo">fruyt .nl</a>
-                <a href="customer_register.php" class="button" id="register"><span>&#xf055;</span> | registreren</a>			
-                <a href="customer_login.php" class="button" id="login"><span>&#xf084;</span> | inloggen</a>
+                <?php
+                if (is_customer_logged_in() == TRUE) {
+                    echo "<a href=\"customer_login.php?fn=logout\" class=\"button\" id=\"logout\"><span>&#xf055;</span> | Uitloggen</a>";	
+                } else {
+                    echo "<a href=\"customer_register.php\" class=\"button\" id=\"register\"><span>&#xf055;</span> | registreren</a>";		
+                    echo "<a href=\"customer_login.php\" class=\"button\" id=\"login\"><span>&#xf084;</span> | inloggen</a>";
+                }
+                ?>
+
             </div>
         </header>
         <div class="wrapper">

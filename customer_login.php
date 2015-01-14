@@ -1,10 +1,16 @@
 <?php
+
 require_once 'classes.php';
 if (isset($_POST['username']) && $_POST['password']) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     Customer::Login($username, $password);
 }
+
+if ($_GET['fn'] == "logout") {
+    Customer::Logout();
+}
+
 include 'views/header.php';
 include 'views/navigation.php';
 ?>

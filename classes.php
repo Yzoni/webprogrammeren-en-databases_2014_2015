@@ -8,20 +8,23 @@
 require_once 'config.php';
 
 function is_admin_logged_in() {
-    session_start();
-    if ($_SESSION['admin_logged_in'] && $_SESSION['admin_logged_in'] == 1) {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] == 1) {
         //we zijn ingelogd
         return true;
     } else {
-        header('Location: http://www.2woorden9letters.nl');
-        exit();
+        return false;
         // niet ingelogd
     }
 }
 
 function is_customer_logged_in() {
-    session_start();
-    if ($_SESSION['customer_logged_in'] && $_SESSION['customer_logged_in'] == 1) {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['customer_logged_in']) && $_SESSION['customer_logged_in'] == 1) {
         //we zijn ingelogd
         return true;
     } else {
@@ -362,6 +365,9 @@ class Admin {
     }
 
     static function logout() {
+            if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
         $_SESSION['admin_logged_in'] = 0;
         session_destroy();
     }

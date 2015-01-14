@@ -15,7 +15,13 @@
             </div>
         </li>
         <li>
-            <a href="#">Bestellingen</a>
-        </li>
+            <?php
+            if (is_customer_logged_in() == TRUE) {
+                echo "<a href=\"customer.php\">Mijn gegevens</a><div><ul></ul><li><a href =\"customer_edit_info.php\"\></a></li></div>";
+            }
+            ?>
     </ul>
+</div>
+</li>
+</ul>
 </nav>
