@@ -142,7 +142,7 @@ class Product {
         global $db;
         if ($type) {
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid");
-            $query->bindParam(':typeid', $type, PDO::PARAM_STR);
+            $query->bindParam(':typeid', $type, PDO::PARAM_INT);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_CLASS, "Product"); // PDO magic
         } else {
@@ -153,14 +153,14 @@ class Product {
         return $result;
     }
 
-    static function create($typid, $name, $description, $image = null, $stock, $price) {
+    static function create($typeid, $name, $description, $image = null, $stock, $price) {
         global $db;
-        $query = $db->prepare("INSERT INTO Products (typid, name, description, image, stock, price) VALUES (:typid, :name, :description, :image, :stock, :price)");
-        $query->bindParam(':typeid', $typeid, PDO::PARAM_STR);
+        $query = $db->prepare("INSERT INTO Products (typeid, name, description, image, stock, price) VALUES (:typeid, :name, :description, :image, :stock, :price)");
+        $query->bindParam(':typeid', $typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->bindParam(':description', $description, PDO::PARAM_STR);
         $query->bindParam(':image', $image, PDO::PARAM_STR);
-        $query->bindParam(':stock', $stock, PDO::PARAM_STR);
+        $query->bindParam(':stock', $stock, PDO::PARAM_STR); 
         $query->bindParam(':price', $price, PDO::PARAM_STR);
         $query->execute();
     }
@@ -190,7 +190,7 @@ class Customer {
         if ($id) {
             global $db;
             $query = $db->prepare("SELECT * FROM Customers WHERE id = :id");
-            $query->bindParam(':id', $id, PDO::PARAM_STR);
+            $query->bindParam(':id', $id, PDO::PARAM_INT);
             $query->execute();
             $query->fetch();
         }
@@ -238,7 +238,7 @@ class Customer {
             $query->bindParam(':zip', $zip, PDO::PARAM_STR);
             $query->bindParam(':firstname', $firstname, PDO::PARAM_STR);
             $query->bindParam(':lastname', $lastname, PDO::PARAM_STR);
-            $query->bindParam(':gender', $gender, PDO::PARAM_STR);
+            $query->bindParam(':gender', $gender, PDO::PARAM_BOOL);
             $query->execute();
             return true;
         } catch (PDOException $e) {
@@ -255,8 +255,8 @@ class Customer {
         $query->bindParam(':zip', $this->zip, PDO::PARAM_STR);
         $query->bindParam(':firstname', $this->firstname, PDO::PARAM_STR);
         $query->bindParam(':lastname', $this->lastname, PDO::PARAM_STR);
-        $query->bindParam(':gender', $this->gender, PDO::PARAM_STR);
-        $query->bindParam(':id', $this->id, PDO::PARAM_STR);
+        $query->bindParam(':gender', $this->gender, PDO::PARAM_BOOL);
+        $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         $query->execute();
         return true;
     }
@@ -272,7 +272,7 @@ class Customer {
             $query = $db->prepare("UPDATE Customers SET password=:newpassword WHERE id = :id AND password = :oldpassword");
             $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
             $query->bindParam(':oldpassword', $oldpassword, PDO::PARAM_STR);
-            $query->bindParam(':id', $this->id, PDO::PARAM_STR);
+            $query->bindParam(':id', $this->id, PDO::PARAM_INT);
             $query->execute();
             return true;
         } catch (PDOException $e) {
@@ -306,7 +306,7 @@ class Admin {
         if ($id) {
             global $db;
             $query = $db->prepare("SELECT * FROM Admins WHERE id = :id");
-            $query->bindParam(':id', $id, PDO::PARAM_STR);
+            $query->bindParam(':id', $id, PDO::PARAM_INT);
             $query->execute();
             $query->fetch();
         }
@@ -327,7 +327,7 @@ class Admin {
         try {
             $query = $db->prepare("UPDATE Admins SET password=:newpassword WHERE id = :id AND password=:oldpassword"); // dit is ook onzin
             $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-            $query->bindParam(':id', $this->id, PDO::PARAM_STR);
+            $query->bindParam(':id', $this->id, PDO::PARAM_INT);
             $query->bindParam(':oldpassword', $oldpassword, PDO::PARAM_STR);
             $query->execute();
             return true;

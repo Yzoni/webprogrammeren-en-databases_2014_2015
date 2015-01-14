@@ -1,27 +1,31 @@
 <?php
-
 require_once 'classes.php';
-
+is_admin_logged_in(); // niet de security vergeten
 // creates the product product
-if (isset($_POST['name']) && $_POST['category']) {
+if (isset($_POST['name'])) {
     $name = $_POST['name'];
-    $category = $_POST['category'];
+    $typeid = $_POST['producttype'];
     $description = $_POST['description'];
     $price = $_POST['price'];
-    $quantity = $_POST['quantity'];
     $stock = $_POST['stock'];
-    $image = $_FILES['image'];
-    Product::create($name, $description, $image, $stock, $price, $price);
+    $image = null;
+    Product::create($typeid, $name, $description, $image, $stock, $price);
 }
-
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
-<form action="admin_add_product.php" enctype="multipart/form-data">     
+<form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
     <div class="links_fruit">        
-        <input type="text" name="name" placeholder="naam" id="name" > <br>
-        <input type="text" name="category" placeholder="categorie" id="category" >
+        <input type="text" name="name" placeholder="naam" id="name"> <br>
+        <select name="producttype">
+            <?php
+            $producttypes_form = ProductType::getAllProductTypes();
+            foreach ($producttypes_form as $producttype_form) {
+                echo "<option value=\"$producttype_form->id\">$producttype_form->name</option>";
+            }
+            ?>
+        </select>
         <br>		    
         <div class="beschrijving_product">
             <textarea name="description" id="description_fruit" placeholder=" beschrijving" cols="50" rows="10"></textarea>    
@@ -35,6 +39,6 @@ include 'views/navigation.php';
     <input type="submit" value="opslaan" id="submit">  
 </form>	       		      
 
-    <?php
+<?php
 include 'views/footer.php';
 ?>

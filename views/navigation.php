@@ -14,6 +14,10 @@
                         }
                         echo "<a href=\"products.php?id=$producttype_nav->id\">$producttype_nav->name <span class=\"arrow\">&#xf101;</span></a></li>";
                     }
+                    if(is_admin_logged_in()){
+                        echo "<li>";
+                        echo "<a href=\"admin_add_product.php\">Product toevoegen <span class=\"arrow\">&#xf055;</span></a></li>";
+                    }
                     ?>
                 </ul>
             </div>

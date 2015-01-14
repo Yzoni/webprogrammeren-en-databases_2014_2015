@@ -6,17 +6,17 @@ if (!isset($_GET['id']) || $_GET['id'] <= 0) {
     exit();
 }
 $producttype = new ProductType($_GET["id"]);
+if (isset($_POST['name'])) {
+    $producttype->name = $_POST['name'];
+    $producttype->edit();
+}
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
 <p>
-    <br>
     <a href="admin.php" > <font color="#006666"> Managerpanel</font></a> / categorie wijzigen 			
 </p>
-<form action="admin_edit_producttype.php" method="post">
-    <?php echo $producttype->displayEditForm(); ?>
-</form>
-
+<?php $producttype->displayEditForm(); ?>
 <?php
 include 'views/footer.php';
 ?>
