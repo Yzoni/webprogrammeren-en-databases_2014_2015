@@ -153,9 +153,9 @@ class Product {
         return $result;
     }
 
-    static function create($typeid, $name, $description, $image, $stock, $price) {
+    static function create($typeid, $name, $description, $image = null, $stock, $price) {
         global $db;
-        $query = $db->prepare("INSERT INTO Products (id, typeid, name, description, image, stock, price) VALUES (NULL, :typid, :name, :description, :image, :stock, :price)");
+        $query = $db->prepare("INSERT INTO Products (typeid, name, description, image, stock, price) VALUES (:typeid, :name, :description, :image, :stock, :price)");
         $query->bindParam(':typeid', $typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->bindParam(':description', $description, PDO::PARAM_STR);
