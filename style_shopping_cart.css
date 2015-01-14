@@ -31,7 +31,7 @@
 }
 
 .shopping_cart_article {
-    width: 20%;
+    width: 40%;
     display: inline-block;
     height: 32px;
 }
@@ -49,7 +49,7 @@
 }
 
 .shopping_cart_price {
-    width: 100px;
+    width: 65px;
     display: inline-block;
     height: 32px;
 }
