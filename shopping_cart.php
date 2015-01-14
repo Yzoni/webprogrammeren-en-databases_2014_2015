@@ -15,13 +15,16 @@ include 'views/navigation.php';
 
     <div class="line"> </div>
 	<div class="shopping_cart_row">
-		<p class="shopping_cart_article">sinaasappels / perssinaasappels</p>
-		<a href="#" class="ww_icon"><span class="icon">&#xf129;</span></p>
-		<p class="ww_quantity">1 kilo</p>
-		<p class="ww_icon"><span class="icon">&#xf153;</span></p>
-		<p class="ww_price">EUR 2.20,-</p>
-		<a href="#" class="icon">&#xf040;</a>
-		<a href="#" class="icon">&#xf00d;</a>
+		<p class="shopping_cart_article">
+			<a href="#" > <font color="#006666"> Sinaasappels</font></a> / perssinaasappels
+		</p>
+
+		<a href="#" class="shopping_cart_icon"><span class="icon">&#xf129;</span></p>
+		<p class="shopping_cart_quantity">1 kilo</p>
+		<p class="shopping_cart_icon"><span class="icon">&#xf153;</span></p>
+		<p class="shopping_cart_price">EUR 2.20,-</p>
+		<a href="#" class="shopping_cart_edit">&#xf040;</a>
+		<a href="#" class="shopping_cart_delete">&#xf00d;</a>
 	</div>
     <div class="line"> </div>
 

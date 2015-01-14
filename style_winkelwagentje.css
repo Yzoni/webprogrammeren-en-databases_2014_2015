@@ -37,45 +37,33 @@
     min-height: 170px;
 }
 
-.ww_icon {
-    width: 15px;
-    display: inline-block;
-}
-
-.icon_edit, .icon_edit:link {
-    color: green;
-}
-
-.ww_article {
+.shopping_cart_article {
     width: 350px;
     display: inline-block;
     height: 32px;
 }
 
-.ww_quantity {
+.shopping_cart_icon {
+    width: 15px;
+    display: inline-block;
+}
+
+.shopping_cart_quantity {
     width: 65px;
     display: inline-block;
     height: 32px;
 }
 
-.ww_price {
+.shopping_cart_price {
     width: 100px;
     display: inline-block;
     height: 32px;
 }
 
-.rek_ov_button3 {
-    font-family: iconfont;
-    float: left;
-    margin-left: 28.8%;
-    background-color: #006666;
-    border-radius: 5px;
-    height: 32px;
-    width: 80px;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    line-height: 32px;
-    display: inline-block;
+
+.shopping_cart_edit, .shopping_cart_delete:link {
+    color: green;
 }
+
+
 
