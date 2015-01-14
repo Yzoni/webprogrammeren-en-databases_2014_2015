@@ -19,7 +19,7 @@ include 'views/navigation.php';
 			<a href="#" > <font color="#006666"> Sinaasappels</font></a> / perssinaasappels
 		</p>
 
-		<a href="#" class="shopping_cart_icon"><span class="icon">&#xf129;</span></p>
+		<a href="#" class="shopping_cart_icon"> <span class="icon">&#xf129;</span></a>
 		<p class="shopping_cart_quantity">1 kilo</p>
 		<p class="shopping_cart_icon"><span class="icon">&#xf153;</span></p>
 		<p class="shopping_cart_price">EUR 2.20,-</p>

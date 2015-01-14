@@ -1,6 +1,6 @@
 <?php
 require_once 'classes.php';
-is_admin_logged_in(); // niet de security vergeten
+is_admin_logged_in();
 // creates the product product
 if (isset($_POST['name'])) {
     $name = $_POST['name'];
@@ -34,11 +34,12 @@ include 'views/navigation.php';
     <div class="rechts_fruit">
         <input type="text" name="price" placeholder="prijs per stuk" id="price"> <br>
         <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
-        <input type="file" name="image" placeholder="foto uploaden" id="photo">
-    </div>		   	        
+        <input type="file" name="image" placeholder="plaatje" id="uploadImg">
+    </div>
     <input type="submit" value="opslaan" id="submit">  
 </form>	       		      
 
 <?php
 include 'views/footer.php';
 ?>
+
