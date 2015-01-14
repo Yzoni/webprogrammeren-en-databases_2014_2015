@@ -183,6 +183,9 @@ class Customer {
     public $id;
     public $firstname;
     public $lastname;
+    public $streetaddress;
+    public $streetnumber;
+    public $zip;
     public $email;
     public $gender;
 
@@ -195,7 +198,7 @@ class Customer {
             $query->fetch();
         }
     }
-
+    
     function displayBox() {
         $output = include 'views/Customer_displayBox.php';
         return $output;
@@ -240,13 +243,17 @@ class Customer {
             $query->bindParam(':lastname', $lastname, PDO::PARAM_STR);
             $query->bindParam(':gender', $gender, PDO::PARAM_BOOL);
             $query->execute();
+            $query->debugDumpParams();
+            exit();
             return true;
-        } catch (PDOException $e) {
+        } catch (PDOException $e) { 
+            echo $e->getMessage();
+            exit();
             return false;
         }
     }
 
-    function edit() { // edit is natuurlijk niet statisch omdat het slaat op 1 instance van een customer, niet meerdere
+    function edit() {
         global $db;
         $query = $db->prepare("UPDATE Customers SET email = :email, zip = :zip, gender = :gender, streetaddress = :streetaddress, streetnumber = :streetnumber, firstname = :firstname, lastname = :lastname  WHERE id = :id");
         $query->bindParam(':email', $this->email, PDO::PARAM_STR);
@@ -289,6 +296,9 @@ class Customer {
     }
 
     static function logout() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['customer_logged_in'] = 0;
         session_destroy();
     }
