@@ -136,18 +136,21 @@ nav > ul > li > div > ul {
     list-style-type: none;
 }
 
-nav > ul > li > div > ul > li > a {
+nav > ul > li > div > ul > li {
     background-color: #EDEDED;
     border-bottom: 1px solid rgba(0,0,0,.05);
-    color: #333331;
     display: block;
     padding: 10px 20px;
-    text-decoration: none;
     font-family: arialroundedmtbold;
     transition: all 0.15s linear;
 }
 
-nav > ul > li > div > ul > li:hover > a {
+nav > ul > li > div > ul > li > a {
+    color: #333331;
+    text-decoration: none;
+}
+
+nav > ul > li > div > ul > li:hover {
     background-color: #008b8b;
     color: rgb(255,255,255);
     padding: 10px 0 10px 30px;
