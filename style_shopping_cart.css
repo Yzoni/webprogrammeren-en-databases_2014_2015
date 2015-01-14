@@ -58,7 +58,11 @@
 .shopping_cart_edit, .shopping_cart_delete:link {
     color: green;
     font-family: iconfont;
-    padding-right: 20px;
+    
+}
+
+.shopping_cart_delivery_time, .shopping_cart_price_total {
+    padding-right: 30px;
 }
 
 
