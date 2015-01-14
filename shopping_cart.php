@@ -9,7 +9,7 @@ include 'views/navigation.php';
 <div class="shopping_cart">
     <p>
     	<br>
-    	winkelwagentje 			
+    	Winkelwagentje 			
     </p>
     <br>
 
