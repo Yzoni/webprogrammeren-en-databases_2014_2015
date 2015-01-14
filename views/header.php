@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>Fruyt.nl</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <!--REMOVE THIS WHEN CSS PROBLEMS ARE SOLVED -->
+        <link rel="stylesheet" type="text/css" href="style_shopping_cart.css"
     </head>
     <body>
         <header>
