@@ -1,4 +1,10 @@
-
+.line {
+    background-color: #454545;
+    height: 1px;
+    width: 60%;
+    margin-left: 28.8%;
+    margin-bottom: 1%;
+}
 
 .prodInfoTxt {
     font-family: iconfont;
