@@ -1,6 +1,6 @@
 <?php
 
-require once 'classes.php';
+require_once 'classes.php';
 
 include 'views/header.php';
 include 'views/navigation.php';
@@ -14,8 +14,8 @@ include 'views/navigation.php';
     <br>
 
     <div class="line"> </div>
-	<div class="ww_con">
-		<p class="ww_article">sinaasappels / perssinaasappels</p>
+	<div class="shopping_cart_row">
+		<p class="shopping_cart_article">sinaasappels / perssinaasappels</p>
 		<a href="#" class="ww_icon"><span class="icon">&#xf129;</span></p>
 		<p class="ww_quantity">1 kilo</p>
 		<p class="ww_icon"><span class="icon">&#xf153;</span></p>
