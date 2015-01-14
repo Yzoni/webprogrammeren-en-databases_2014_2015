@@ -31,7 +31,7 @@
 }
 
 .shopping_cart_article {
-    width: 350px;
+    width: 20%;
     display: inline-block;
     height: 32px;
 }
@@ -58,6 +58,7 @@
 .shopping_cart_edit, .shopping_cart_delete:link {
     color: green;
     font-family: iconfont;
+    padding-right: 20px;
 }
 
 
