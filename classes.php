@@ -94,9 +94,9 @@ class ProductType {
 
     function edit() {
         global $db;
-        $query = $db->prepare("UPDATE ProductTypes SET name = :name WHERE id = :id"); // dit is echt zo pro he
+        $query = $db->prepare("UPDATE ProductTypes SET name = :name WHERE id = :id");
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
-        $query->bindParam(':id', $this->id, PDO::PARAM_STR);
+        $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         $query->execute();
     }
 
@@ -165,14 +165,29 @@ class Product {
         $query->execute();
     }
 
-    static function edit() {
-        //TO DO EDIT PRODUCT
+    function edit() {
+        global $db;
+        $query = $db->prepare("UPDATE Products SET typeid =: typeid, name = :name, description = :description, image = :image, stock = :stock, price = :price WHERE id = :id");
+        $query->bindParam(':typeid', $typeid, PDO::PARAM_INT);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);
+        $query->bindParam(':image', $image, PDO::PARAM_STR);
+        $query->bindParam(':stock', $stock, PDO::PARAM_STR); 
+        $query->bindParam(':price', $price, PDO::PARAM_STR);
+        $query->bindParam(':id', $this->id, PDO::PARAM_INT);
+        $query->execute();
+    }
+    
+    function displayEditForm() { 
+        $output = include 'views/Product_editForm.php';
+        return $output;
     }
 
-    static function delete($id) {
+    function delete() {
         global $db;
         $query = $db->prepare("DELETE FROM Products WHERE id = :id");
         $query->bindParam(':id', $id, PDO::PARAM_STR);
+        $query->bindParam(':id', $this->id, PDO::PARAM_STR);
         $query->execute();
     }
 
@@ -375,12 +390,12 @@ class Admin {
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Admin");
         if ($result == FALSE) {
-            header('Location: http://www.2woorden9letters.nl');
+            header('Location: /admin_login.php?fn=credentialsfalse');
             exit();
         } else {
             session_start();
             $_SESSION['admin_logged_in'] = 1;
-            header('Location: /admin.php');
+            header('Location: /index.php');
             exit();
         }
     }

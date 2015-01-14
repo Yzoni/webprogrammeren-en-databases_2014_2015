@@ -12,11 +12,15 @@
             <div>
                 <a href="index.php" class="logo">fruyt .nl</a>
                 <?php
-                if (is_customer_logged_in() == TRUE) {
-                    echo "<a href=\"customer_login.php?fn=logout\" class=\"button\" id=\"logout\"><span>&#xf055;</span> | Uitloggen</a>";	
+                if (is_admin_logged_in()) {
+                    echo "<span class=\"adminloggedin\">INGELOGD ALS BEHEERDER</span>";
                 } else {
-                    echo "<a href=\"customer_register.php\" class=\"button\" id=\"register\"><span>&#xf055;</span> | registreren</a>";		
-                    echo "<a href=\"customer_login.php\" class=\"button\" id=\"login\"><span>&#xf084;</span> | inloggen</a>";
+                    if (is_customer_logged_in()) {
+                        echo "<a href=\"customer_login.php?fn=logout\" class=\"button\" id=\"login\"><span>&#xf055;</span> | Uitloggen</a>";
+                    } else {
+                        echo "<a href=\"customer_register.php\" class=\"button\" id=\"register\"><span>&#xf055;</span> | registreren</a>";
+                        echo "<a href=\"customer_login.php\" class=\"button\" id=\"login\"><span>&#xf084;</span> | inloggen</a>";
+                    }
                 }
                 ?>
 

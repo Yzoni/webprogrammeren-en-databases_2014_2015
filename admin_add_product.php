@@ -14,7 +14,7 @@ if (isset($_POST['name'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-
+<h2 class="contenttitle">Product toevoegen: </h2>
 <form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
     <div class="links_fruit">        
         <input type="text" name="name" placeholder="naam" id="name"> <br>

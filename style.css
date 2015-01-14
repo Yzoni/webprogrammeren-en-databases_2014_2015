@@ -23,8 +23,12 @@ body {
     font-family: iconfont;
 }
 
+.contenttitle {
+    margin-top: 20px;
+}
+
 .wrapper {
-    min-height: 300px;
+    min-height: 500px;
     position: relative;
     margin: auto;
     padding-bottom: 100px;
@@ -92,6 +96,10 @@ header .logo {
     font-size: 35px;
     color: #696969;
     text-decoration: none;
+}
+
+header .adminloggedin {
+    color: #CC0000;
 }
 
 nav {
@@ -431,10 +439,6 @@ footer a:hover {
     width: 80%;
 }
 
-.formwrapper h2 {
-    margin-bottom: 20px;
-}
-
 #person {
     background: url('images/username_bg.jpg') no-repeat;
 }
@@ -496,7 +500,7 @@ input[type=submit]{
     height: 32px;
 }
 
-#submit_button{
+#submit_button {
     background-color: #006666;
     height: 10%;    
     width: 18%;
@@ -505,7 +509,8 @@ input[type=submit]{
     color: white;   
     line-height: 220%;  
     margin-left: 3%;
-    margin-top: 2%; 
+    margin-top: 2%;
+}
 
 /* ADD ADMIN PRODUCT */
 .links_fruit{	
@@ -558,12 +563,12 @@ input[type=submit]{
 	background: url("images/kwantiteit_bg.jpg") no-repeat;
 }
 
-#stock{
+#stock {
 	padding-left: 48px;
 	background: url("images/voorraad_bg.jpg") no-repeat;
 }
 
-#submit{
+#submit {
 	background-color: #006666;
 	float: left;	
 	height: 10%;	
@@ -575,8 +580,3 @@ input[type=submit]{
 	margin-left: 3%;
 	margin-top: 2%;	
 }
-
-/*SHOPPING CART*/
-
-
-
