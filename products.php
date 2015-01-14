@@ -6,7 +6,12 @@ include 'views/navigation.php';
 
 <div class="wrappercontent">
 <?php
-$products = Product::getAllProducts();
+if (isset($_GET["id"]) && $_GET["id"] > 0){
+    $producttype = new ProductType($_GET["id"]);
+    $products = Product::getAllProducts($producttype->id);
+}else{
+    $products = Product::getAllProducts();
+}
 foreach ($products as $product) {
     $product->displayBox();
 }

@@ -7,7 +7,7 @@ if (isset($_POST['username']) && $_POST['password']) {
     Customer::Login($username, $password);
 }
 
-if ($_GET['fn'] == "logout") {
+if (isset($_GET['fn']) && $_GET['fn'] == "logout") { //ben je er?
     Customer::Logout();
 }
 

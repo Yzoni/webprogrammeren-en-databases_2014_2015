@@ -6,9 +6,13 @@
             <div>
                 <ul>
                     <?php
-                    $producttypes = ProductType::getAllProductTypes();
-                    foreach ($producttypes as $producttype) {
-                        echo "<li><a href=\"view_producttype.php?id=$producttype->id\">$producttype->name <span class=\"arrow\">&#xf101;</span></a></li>";
+                    $producttypes_nav = ProductType::getAllProductTypes();
+                    foreach ($producttypes_nav as $producttype_nav) {
+                        echo "<li>";
+                        if(is_admin_logged_in()){
+                            echo "<a href=\"admin_edit_producttype.php?id=$producttype_nav->id\"><span class=\"icon\">&#xF040; </span></a>";
+                        }
+                        echo "<a href=\"products.php?id=$producttype_nav->id\">$producttype_nav->name <span class=\"arrow\">&#xf101;</span></a></li>";
                     }
                     ?>
                 </ul>
@@ -21,7 +25,6 @@
             }
             ?>
     </ul>
-</div>
 </li>
 </ul>
 </nav>
