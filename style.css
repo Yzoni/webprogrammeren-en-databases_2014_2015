@@ -276,7 +276,7 @@ footer a:hover {
 .box .image {
     width: 100%;
     height: 55%;
-    background-image: url("images/box-bg.png");
+    background-image: url("images/no-image.png");
     margin-bottom: 10px;
 }
 
