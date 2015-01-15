@@ -459,10 +459,11 @@ class Order {
     public $products;
     public $date;
 
-    function addProduct($id, $quantity) {
+    function addToCart($id, $quantity) {
         if (is_customer_logged_in() == true){
         //start session
         session_start(); 
+        echo 'Product added';
         } else {
             echo "Please log in first";
         }   
