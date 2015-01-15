@@ -285,6 +285,13 @@ footer a:hover {
     margin-top: 5px;
     float: left;
 }
+
+.box .price {
+    margin-top: 5px;
+    margin-right: 10px;
+    float: right;
+}
+
 .box .stock span {
     font-family: iconfont;
     color: green;

@@ -12,7 +12,7 @@
     <p class="stock"><span><?php echo ($this->stock > 0 ? "&#xf00c;" : "&#xf00d")?></span><?php echo $this->stock; ?> op voorraad</p>
     <?php
     if (is_admin_logged_in() == false) {
-        echo $this->price."/Kg";
+        echo "<p class=\"price\">".$this->price."/Kg</p>";
     }
     ?>
 </div>
