@@ -408,11 +408,20 @@ class Order {
     public $date;
 
     function addProduct($id, $quantity) {
-        
+        if (is_customer_logged_in() == true){
+        //start session
+        session_start(); 
+        } else {
+            echo "Please log in first";
+        }   
     }
 
     function deleteProduct($id, $quantity) {
-        
+            
+    }
+
+    function editProduct($id, $quantity) {
+
     }
 
     static function getAllOrders($customerid = null) {

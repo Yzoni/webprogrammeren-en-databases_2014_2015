@@ -11,5 +11,11 @@
     </p>
     <a href="view_product.php?id=<?php echo $this->id; ?>"><img class="image" src="data:image/png;base64,<?php echo base64_encode($this->image); ?>"/></a>
     <p class="stock"><span>&#xf00c;</span><?php echo $this->stock; ?> op voorraad</p>
-    <a href="#" class="button"><span>&#xf055;</span> | voeg toe</a>
+
+    <form action="Product_displayBox" method="post">
+        <input type="submit" value="<span>&#xf055;</span> | voeg toe</a>" class="button">        
+    </form>
+
+
+    
 </div>
