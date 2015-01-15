@@ -319,7 +319,7 @@ class Customer {
     function changePassword($oldpassword, $newpassword, $newpassword2) {
         global $db;
         global $passwordsalt;
-        if ($newpassword == $newpassword2) {
+        if ($newpassword!="" && $newpassword == $newpassword2) {
             $oldpassword = hash("sha256", $oldpassword . $passwordsalt);
             $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
@@ -402,7 +402,7 @@ class Admin {
         $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
         try {
-            $query = $db->prepare("UPDATE Admins SET password=:newpassword WHERE id = :id AND password=:oldpassword"); // dit is ook onzin
+            $query = $db->prepare("UPDATE Admins SET password=:newpassword WHERE id = :id AND password=:oldpassword");
             $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
             $query->bindParam(':id', $this->id, PDO::PARAM_INT);
             $query->bindParam(':oldpassword', $oldpassword, PDO::PARAM_STR);
