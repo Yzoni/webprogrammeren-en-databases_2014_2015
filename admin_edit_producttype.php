@@ -1,6 +1,6 @@
 <?php
 require_once 'classes.php';
-is_admin_logged_in();
+security_check_admin();
 if (!isset($_GET['id']) || $_GET['id'] <= 0) {
     echo "No ID given";
     exit();
@@ -13,10 +13,8 @@ if (isset($_POST['name'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<p>
-    <a href="admin.php" > <font color="#006666"> Managerpanel</font></a> / categorie wijzigen 			
-</p>
-<?php $producttype->displayEditForm(); ?>
+<h2 class="contenttitle">Categorie wijzigen: </h2>
 <?php
+$producttype->displayEditForm();
 include 'views/footer.php';
 ?>

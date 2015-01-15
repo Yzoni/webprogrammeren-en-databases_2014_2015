@@ -1,6 +1,6 @@
 <?php
 require_once 'classes.php';
-is_admin_logged_in();
+security_check_admin();
 // creates the product product
 if (isset($_POST['name'])) {
     $name = $_POST['name'];
@@ -14,7 +14,7 @@ if (isset($_POST['name'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-
+<h2 class="contenttitle">Product toevoegen: </h2>
 <form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
     <div class="links_fruit">        
         <input type="text" name="name" placeholder="naam" id="name"> <br>
