@@ -102,6 +102,11 @@ header .adminloggedin {
     color: #CC0000;
 }
 
+header .welcome-header {
+    color: #000;
+    float: right;
+}
+
 nav {
     float: left;
     width: 25%;
@@ -579,4 +584,7 @@ input[type=submit]{
 	line-height: 220%;	
 	margin-left: 3%;
 	margin-top: 2%;	
+}
+.pay {
+    padding: 10px;
 }

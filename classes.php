@@ -47,7 +47,7 @@ function is_customer_logged_in() {
     }
 }
 
-function security_check_customer(){
+function security_check_customer() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -114,8 +114,8 @@ class ProductType {
         $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->execute();
     }
-    
-    function displayEditForm() { 
+
+    function displayEditForm() {
         $output = include 'views/ProductType_editForm.php';
         return $output;
     }
@@ -187,8 +187,8 @@ class Product {
         $query->bindParam(':typeid', $typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->bindParam(':description', $description, PDO::PARAM_STR);
-        $query->bindParam(':image', $image, PDO::PARAM_STR);
-        $query->bindParam(':stock', $stock, PDO::PARAM_STR); 
+        $query->bindParam(':image', $image, PDO::PARAM_LOB);
+        $query->bindParam(':stock', $stock, PDO::PARAM_STR);
         $query->bindParam(':price', $price, PDO::PARAM_STR);
         $query->execute();
     }
@@ -199,14 +199,14 @@ class Product {
         $query->bindParam(':typeid', $this->typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
         $query->bindParam(':description', $this->description, PDO::PARAM_STR);
-        $query->bindParam(':image', $this->image, PDO::PARAM_STR);
-        $query->bindParam(':stock', $this->stock, PDO::PARAM_STR); 
+        $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
+        $query->bindParam(':stock', $this->stock, PDO::PARAM_STR);
         $query->bindParam(':price', $this->price, PDO::PARAM_STR);
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         $query->execute();
     }
-    
-    function displayEditForm() { 
+
+    function displayEditForm() {
         $output = include 'views/Product_editForm.php';
         return $output;
     }
@@ -242,12 +242,12 @@ class Customer {
             $query->fetch();
         }
     }
-    
+
     function displayBox() {
         $output = include 'views/Customer_displayBox.php';
         return $output;
     }
-    
+
     function displayEditForm() {
         $output = include 'views/Customer_editForm.php';
         return $output;
@@ -265,15 +265,13 @@ class Customer {
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Customer");
         if ($result == FALSE) {
-            header('Location: http://www.2woorden9letters.nl');
+            header('Location: customer_login.php?fn=credentialsfalse');
             exit();
         } else {
             session_start();
             $_SESSION['customer_logged_in'] = 1;
-            $_SESSION['customer_id'] = $result->id;
-            echo $result->id;
-            exit();
-            header('Location: /index.php');
+            $_SESSION['customer_id'] = $result[0]->id;
+            header('Location: index.php');
             exit();
         }
     }
@@ -295,10 +293,8 @@ class Customer {
             $query->bindParam(':lastname', $lastname, PDO::PARAM_STR);
             $query->bindParam(':gender', $gender, PDO::PARAM_BOOL);
             $query->execute();
-            $query->debugDumpParams();
-            exit();
             return true;
-        } catch (PDOException $e) { 
+        } catch (PDOException $e) {
             echo $e->getMessage();
             exit();
             return false;
@@ -319,23 +315,42 @@ class Customer {
         $query->execute();
         return true;
     }
-    
-    function changePassword($oldpassword, $newpassword) {
+
+    function changePassword($oldpassword, $newpassword, $newpassword2) {
         global $db;
         global $passwordsalt;
+        if ($newpassword == $newpassword2) {
+            $oldpassword = hash("sha256", $oldpassword . $passwordsalt);
+            $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
-        $oldpassword = hash("sha256", $oldpassword . $passwordsalt);
-        $newpassword = hash("sha256", $newpassword . $passwordsalt);
+            try {
+                $query = $db->prepare("UPDATE Customers SET password=:newpassword WHERE id = :id AND password = :oldpassword");
+                $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
+                $query->bindParam(':oldpassword', $oldpassword, PDO::PARAM_STR);
+                $query->bindParam(':id', $this->id, PDO::PARAM_INT);
+                $query->execute();
+                return true;
+            } catch (PDOException $e) {
+                return false;
+            }
+        }
+    }
+    
+    function changePasswordAdmin($newpassword, $newpassword2) {
+        global $db;
+        global $passwordsalt;
+        if ($newpassword!="" && $newpassword == $newpassword2) {
+            $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
-        try {
-            $query = $db->prepare("UPDATE Customers SET password=:newpassword WHERE id = :id AND password = :oldpassword");
-            $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-            $query->bindParam(':oldpassword', $oldpassword, PDO::PARAM_STR);
-            $query->bindParam(':id', $this->id, PDO::PARAM_INT);
-            $query->execute();
-            return true;
-        } catch (PDOException $e) {
-            return false;
+            try {
+                $query = $db->prepare("UPDATE Customers SET password=:newpassword WHERE id = :id");
+                $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
+                $query->bindParam(':id', $this->id, PDO::PARAM_INT);
+                $query->execute();
+                return true;
+            } catch (PDOException $e) {
+                return false;
+            }
         }
     }
 
@@ -427,12 +442,12 @@ class Admin {
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Admin");
         if ($result == FALSE) {
-            header('Location: /admin_login.php?fn=credentialsfalse');
+            header('Location: admin_login.php?fn=credentialsfalse');
             exit();
         } else {
             session_start();
             $_SESSION['admin_logged_in'] = 1;
-            header('Location: /index.php');
+            header('Location: index.php');
             exit();
         }
     }
@@ -445,30 +460,154 @@ class Admin {
         session_destroy();
     }
 
-    function addProduct() {
-        
-    }
-
 }
 
 class Order {
 
     public $id;
+    public $formatid;
     public $customerid;
     public $customer;
-    public $products;
+    public $productids;
+    //public $products;
     public $date;
+    public $formatdate;
+    public $paid;
 
-    function addProduct($id, $quantity) {
-        
+    function __construct($id = null) {
+        global $db;
+        if ($id) {
+            $query = $db->prepare("SELECT * FROM Orders WHERE id = :id");
+            $query->bindParam(':id', $id, PDO::PARAM_INT);
+            $query->setFetchMode(PDO::FETCH_INTO, $this);
+            $query->execute();
+            $query->fetch();
+        }
+        $this->productids = array();
+        $query = $db->prepare("SELECT * FROM Orders_Products WHERE orderid = :orderid");
+        $query->bindParam(':orderid', $this->id, PDO::PARAM_INT);
+        $query->execute();
+        $this->productids = $query->fetchAll(PDO::FETCH_CLASS, "stdClass");
+        $this->formatid = "OR" . sprintf('%04d', $this->id);
+        $this->formatdate = DateTime::createFromFormat('Y-m-d H:i:s', $this->date);
     }
 
-    function deleteProduct($id, $quantity) {
-        
+    function addProduct($id, $quantity) {
+        global $db;
+        if ($quantity > 0) {
+            $query = $db->prepare("SELECT * FROM Orders_Products WHERE orderid = :orderid AND productid = :productid");
+            $query->bindParam(':orderid', $this->id, PDO::PARAM_INT);
+            $query->bindParam(':productid', $id, PDO::PARAM_INT);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+            if ($result == FALSE) {
+                //nieuw product aan order toevoegen
+                $query = $db->prepare("INSERT INTO Orders_Products (orderid, productid, quantity) VALUES (:orderid, :productid, :quantity)");
+                $query->bindParam(':orderid', $this->id, PDO::PARAM_INT);
+                $query->bindParam(':productid', $id, PDO::PARAM_INT);
+                $query->bindParam(':quantity', $quantity, PDO::PARAM_STR);
+                $query->execute();
+            } else {
+                //update product in order
+                $newquantity = floatval($result[0]->quantity) + floatval($quantity);
+                $this->updateProduct($id, $newquantity);
+            }
+        }
+    }
+
+    function updateProduct($id, $quantity) {
+        global $db;
+        if (floatval($quantity) > 0) {
+            $query = $db->prepare("UPDATE Orders_Products SET quantity = :quantity WHERE productid = :productid AND orderid = :orderid");
+            $query->bindParam(':orderid', $this->id, PDO::PARAM_INT);
+            $query->bindParam(':productid', $id, PDO::PARAM_INT);
+            $query->bindParam(':quantity', $quantity, PDO::PARAM_STR);
+            $query->execute();
+        } else {
+            $this->deleteProduct($id);
+        }
+    }
+
+    function displayRow() {
+        $output = include 'views/Order_displayRow.php';
+        return $output;
+    }
+
+    function deleteProduct($id) {
+        global $db;
+        $query = $db->prepare("DELETE FROM Orders_Products WHERE productid = :productid AND orderid = :orderid");
+        $query->bindParam(':orderid', $this->id, PDO::PARAM_INT);
+        $query->bindParam(':productid', $id, PDO::PARAM_INT);
+        $query->execute();
+    }
+
+    function getTotalPrice() {
+        $totalprice = 0;
+        foreach ($this->productids as $productholder) {
+            $product = new Product($productholder->productid);
+            $thisprice = floatval($productholder->quantity) * floatval($product->price);
+            $totalprice = $totalprice + $thisprice;
+        }
+        return number_format($totalprice, 2, ",", ".");
+    }
+    
+    function pay(){
+        global $db;
+        $query = $db->prepare("UPDATE Orders SET paid=1 WHERE id = :orderid");
+        $query->bindParam(':orderid', $this->id, PDO::PARAM_INT);
+        $query->execute();
+    }
+
+    function security_check() {
+        if ($this->customerid == $_SESSION['customer_id']) {
+            // dit is onze order
+            return true;
+        } else {
+            header("location: index.php");
+            exit();
+            // dit is niet onze order
+        }
     }
 
     static function getAllOrders($customerid = null) {
-        
+        global $db;
+        if ($customerid) {
+            $query = $db->prepare("SELECT * FROM Orders WHERE customerid = :customerid");
+            $query->bindParam(':customerid', $customerid, PDO::PARAM_INT);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_CLASS, "Order"); // PDO magic
+        } else {
+            $query = $db->prepare("SELECT * FROM Orders");
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_CLASS, "Order"); // voel de magic
+        }
+        return $result;
+    }
+
+    static function getLatestOrder($customerid) {
+        global $db;
+        $query = $db->prepare("SELECT * FROM Orders WHERE customerid = :customerid AND paid = 0 ORDER BY date DESC");
+        $query->bindParam(':customerid', $customerid, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_CLASS, "Order"); // PDO magic
+        if ($result == FALSE) {
+            return false;
+        }
+        return $result[0];
+    }
+
+    static function create($customer_id) {
+        global $db;
+        try {
+            $query = $db->prepare("INSERT INTO Orders (customerid) VALUES (:customerid)");
+            $query->bindParam(':customerid', $customer_id, PDO::PARAM_INT);
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit();
+            return false;
+        }
     }
 
 }

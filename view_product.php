@@ -1,10 +1,20 @@
 <?php
 require_once 'classes.php';
+$product = new Product($_GET["id"]);
+
+if(isset($_POST['aantal']) && floatval($_POST['aantal'] > 0) && is_customer_logged_in()){
+    $quantity = floatval($_POST['aantal']);
+    $order = Order::getLatestOrder($_SESSION['customer_id']);
+    if($order == false){
+        $order = Order::create($_SESSION['customer_id']);
+        $order = Order::getLatestOrder($_SESSION['customer_id']);
+    }
+    $order->addProduct($_GET['id'], $quantity);
+}
 include 'views/header.php';
 include 'views/navigation.php';
 
 
-$product = new Product($_GET["id"]);
 ?>
 <div class="description">
 
@@ -47,11 +57,11 @@ $product = new Product($_GET["id"]);
                 <span class="icon-ok">&#xf00c;</span>
                 <?php echo $product->stock; ?> op voorraad
             </span>
-            <form class="inputForm" action="#">
+            <form class="inputForm" action="" method="POST">
                 
                 <?php
                 if (is_admin_logged_in() == false) {
-                    echo "Aantal: <input type=\"text\" class=\"inputBox\" name=\"aantal \">";
+                    echo "Aantal: <input type=\"text\" class=\"inputBox\" name=\"aantal\">";
                     echo "<input class=\"voegToe\" type =\"submit\" value= \"&#xf055; | voeg toe\">";
                 }
                 ?>

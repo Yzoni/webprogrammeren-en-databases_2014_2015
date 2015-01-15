@@ -8,7 +8,7 @@ if (isset($_POST['name'])) {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
-    $image = null;
+    $image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : "");
     Product::create($typeid, $name, $description, $image, $stock, $price);
 }
 include 'views/header.php';
