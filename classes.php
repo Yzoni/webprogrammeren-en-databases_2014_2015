@@ -7,79 +7,98 @@
  */
 require_once 'config.php';
 
+/**
+ * Function is_admin_logged_in
+ *
+ * Checks if an admin is logged in
+ *
+ * @return bool
+ */
 function is_admin_logged_in() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
     if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] == 1) {
-        //we zijn ingelogd
+        // Logged in
         return true;
     } else {
+        // Not logged in       
         return false;
-        // niet ingelogd
     }
 }
 
+/**
+ * Function security_check_admin
+ *
+ * Checks if an admin is logged in and if not head to index
+ *
+ * @return bool|exit
+ */
 function security_check_admin() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
     if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] == 1) {
-        //we zijn ingelogd
+        // Logged in
         return true;
     } else {
+        // Not logged in        
         header("location: index.php");
         exit();
-        // niet ingelogd
     }
 }
 
+/**
+ * Function is_customer_logged_in
+ *
+ * Checks if an customer is logged in
+ *
+ * @return bool
+ */
 function is_customer_logged_in() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
     if (isset($_SESSION['customer_logged_in']) && $_SESSION['customer_logged_in'] == 1) {
-        //we zijn ingelogd
+        // Logged in
         return true;
     } else {
+        // Not logged in         
         return false;
-        // niet ingelogd
     }
 }
 
+/**
+ * Function security_check_customer
+ *
+ * Checks if an customer is logged in and if not head to index
+ *
+ * @return bool
+ */
 function security_check_customer() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
     if (isset($_SESSION['customer_logged_in']) && $_SESSION['customer_logged_in'] == 1) {
-        //we zijn ingelogd
+        // Logged in
         return true;
     } else {
+        // Not logged in  
         header("location: index.php");
         exit();
-        // niet ingelogd
     }
 }
 
-/*
+/**
  * Class ProductType
- * 
- * what the class does
+ *
+ * Handles the product categories
  *
  */
-
 class ProductType {
 
     public $id;
     public $name;
-
-    /*
-     * Function getAllProductTypes
-     *
-     * gets all productTypes from the database and fetches it all into 1 big object with subobject of the class "productType"
-     *
-     * @return (object) object with subobjects as ProductType
-     */
 
     function __construct($id = null) {
         if ($id) {
@@ -92,14 +111,14 @@ class ProductType {
         }
     }
 
-    /*
+    /**
      * Function getAllProductTypes
      *
-     * gets all productTypes from the database and fetches it all into 1 big object with subobject of the class "productType"
+     * Gets all productTypes from the database and fetches it all into 1 big 
+     * object with subobject of the class "productType"
      *
-     * @return (object) object with subobjects as ProductType
+     * @return object with subobjects as ProductType
      */
-
     static function getAllProductTypes() {
         global $db;
         $query = $db->prepare("SELECT * FROM ProductTypes");
@@ -108,6 +127,13 @@ class ProductType {
         return $result;
     }
 
+    /**
+     * Function create
+     *
+     * Inserts a new producttype in the database
+     * 
+     * @param string $name Name of the new productype
+     */
     static function create($name) {
         global $db;
         $query = $db->prepare("INSERT INTO ProductTypes (name) VALUES (:name)");
@@ -115,11 +141,23 @@ class ProductType {
         $query->execute();
     }
 
+    /**
+     * Function create
+     *
+     * Outputs the the productype edit form to the user
+     * 
+     * @return file Contents of the edit form view
+     */
     function displayEditForm() {
         $output = include 'views/ProductType_editForm.php';
         return $output;
     }
 
+    /**
+     * Function edit
+     *
+     * Updates the productype name in the database
+     */
     function edit() {
         global $db;
         $query = $db->prepare("UPDATE ProductTypes SET name = :name WHERE id = :id");
@@ -128,6 +166,11 @@ class ProductType {
         $query->execute();
     }
 
+    /**
+     * Function delete
+     *
+     * Deletes a producttype from the database
+     */
     function delete() {
         global $db;
         $query = $db->prepare("DELETE FROM ProductTypes WHERE id = :id");
@@ -137,6 +180,11 @@ class ProductType {
 
 }
 
+/**
+ * Class Product
+ *
+ * Handles the seperate products
+ */
 class Product {
 
     public $id;
@@ -161,22 +209,37 @@ class Product {
         $this->type = new ProductType($this->typeid);
     }
 
+    /**
+     * Function getAllProductTypes
+     *
+     * Displays one productbox to the user
+     *
+     * @return file 
+     */
     function displayBox() {
         $output = include 'views/Product_displayBox.php';
         return $output;
     }
 
+    /**
+     * Function getAllProducts
+     *
+     * Gets all products from the database and fetches it all into 1 big 
+     * object with subobject of the class "products"
+     *
+     * @return object with subobjects as products
+     */
     static function getAllProducts($type = null) {
         global $db;
         if ($type) {
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid");
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
             $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product"); // PDO magic
+            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         } else {
             $query = $db->prepare("SELECT * FROM Products");
             $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product"); // voel de magic
+            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         }
         return $result;
     }
@@ -221,6 +284,11 @@ class Product {
 
 }
 
+/**
+ * Class Customer
+ *
+ * Handles the customer actions
+ */
 class Customer {
 
     public $id;
@@ -253,6 +321,17 @@ class Customer {
         return $output;
     }
 
+    /**
+     * Function login
+     *
+     * Checks if the username and hashed password can be be found in the database
+     * If it can be found set session customer logged in and set a session 
+     * customer id. If it can not be found point head to function credentialsfalse
+     *
+     * @param string $email Email of the user
+     * @param string $password Plain password of the user
+     * 
+     */
     static function login($email, $password) {
         global $db;
         global $passwordsalt;
@@ -264,14 +343,14 @@ class Customer {
         $query->bindParam(':password', $password, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Customer");
-        if ($result == FALSE) {
-            header('Location: customer_login.php?fn=credentialsfalse');
-            exit();
-        } else {
+        if ($result) {
             session_start();
             $_SESSION['customer_logged_in'] = 1;
             $_SESSION['customer_id'] = $result[0]->id;
             header('Location: index.php');
+            exit();
+        } else {
+            header('Location: customer_login.php?fn=credentialsfalse');
             exit();
         }
     }
@@ -319,7 +398,7 @@ class Customer {
     function changePassword($oldpassword, $newpassword, $newpassword2) {
         global $db;
         global $passwordsalt;
-        if ($newpassword!="" && $newpassword == $newpassword2) {
+        if ($newpassword != "" && $newpassword == $newpassword2) {
             $oldpassword = hash("sha256", $oldpassword . $passwordsalt);
             $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
@@ -335,11 +414,11 @@ class Customer {
             }
         }
     }
-    
+
     function changePasswordAdmin($newpassword, $newpassword2) {
         global $db;
         global $passwordsalt;
-        if ($newpassword!="" && $newpassword == $newpassword2) {
+        if ($newpassword != "" && $newpassword == $newpassword2) {
             $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
             try {
@@ -361,7 +440,12 @@ class Customer {
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Customer");
         return $result;
     }
-
+    
+    /**
+     * Function logout
+     *
+     * Sets session to false and destroy
+     */
     static function logout() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -372,6 +456,11 @@ class Customer {
 
 }
 
+/**
+ * Class Admin
+ *
+ * Handles the admin actions
+ */
 class Admin {
 
     public $id;
@@ -462,6 +551,11 @@ class Admin {
 
 }
 
+/**
+ * Class Order
+ *
+ * Handles the orders and billing
+ */
 class Order {
 
     public $id;
@@ -471,26 +565,25 @@ class Order {
     public $date;
 
     function addToCart($id, $quantity) {
-        if (is_customer_logged_in() == true){
-        //start session
-        session_start(); 
-        echo 'Product added';
+        if (is_customer_logged_in() == true) {
+            //start session
+            session_start();
+            echo 'Product added';
         } else {
             echo "Please log in first";
-        }   
+        }
     }
 
     function deleteProduct($id, $quantity) {
-            
+        
     }
 
     function editProduct($id, $quantity) {
-
+        
     }
 
     static function getAllOrders($customerid = null) {
         
     }
-
 
 }
