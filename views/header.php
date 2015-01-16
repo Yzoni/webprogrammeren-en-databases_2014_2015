@@ -28,18 +28,6 @@
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
                     <span class="iconfont">&#xf07a;</span><span class="winkelwagen"> &euro;
-                        <?php
-                        $pay_link = "";
-                        if (is_customer_logged_in()) {
-                            $order_nav = Order::getLatestOrder($_SESSION['customer_id']);
-                            if ($order_nav) {
-                                echo $order_nav->getTotalPrice();
-                                $pay_link = "customer_view_order.php?id=".$order_nav->id;
-                            } else {
-                                echo "0,00";
-                            }
-                            echo " | <a href=\"$pay_link\"> afrekenen</a>";
-                        }
-                        ?></span>
+                        </span>
                 </div>
             </div>
