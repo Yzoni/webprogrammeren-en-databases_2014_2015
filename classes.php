@@ -464,4 +464,33 @@ class Admin {
 
 class Order {
 
+    public $id;
+    public $customerid;
+    public $customer;
+    public $products;
+    public $date;
+
+    function addToCart($id, $quantity) {
+        if (is_customer_logged_in() == true){
+        //start session
+        session_start(); 
+        echo 'Product added';
+        } else {
+            echo "Please log in first";
+        }   
+    }
+
+    function deleteProduct($id, $quantity) {
+            
+    }
+
+    function editProduct($id, $quantity) {
+
+    }
+
+    static function getAllOrders($customerid = null) {
+        
+    }
+
+
 }
