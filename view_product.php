@@ -30,22 +30,13 @@ include 'views/navigation.php';
 
     <br>
     <hr>
-
-    <table>
-        <br>
-        <tr>
-            <td>
-                <span class="descrText"> <?php echo $product->description; ?>
-                </span>
-            </td>
-            <td>
-                <img class="descrImg" src="data:image/png;base64,<?php echo base64_encode($product->image); ?>"/>
-            </td>
-        </tr>
-    </table>
-
+    
+    <br>
+    <span class="descrText"> <?php echo $product->description; ?></span>
+    <img class="descrImg" src="data:image/png;base64,<?php echo base64_encode($product->image); ?>"/>
     <br>
     <hr>
+    
     <br>
 
     <p>

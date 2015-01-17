@@ -344,10 +344,11 @@ footer a:hover {
 
 
 .descrText {
-    float:left;
+    text-align: center;
+    display: inline-block;
 }
 .descrImg {
-    float:right;
+    display: inline-block;
 }
 
 .voegToe {
