@@ -29,6 +29,7 @@ select {
 
 .contenttitle {
     margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .wrapper {
@@ -208,6 +209,7 @@ nav .arrow {
     cursor: pointer;
 }
 
+/* HEAD LOGIN AND REGISTER BUTTONS */
 #login {
     width: 130px;
     height: 35px;
@@ -222,7 +224,6 @@ nav .arrow {
     margin-right: 40px;
     line-height: 32px;
     float:right;
-
 }
 
 footer {
@@ -452,7 +453,7 @@ footer a:hover {
     list-style-type:none;
 }
 
-/* Login and Register forms*/
+/* CUSTOMER LOGIN AND REGISTER FORMS*/
 .formwrapper {
     margin-top: 25px;
     margin-left: 32%;
@@ -468,6 +469,10 @@ footer a:hover {
     background: url('images/info_bg.jpg') no-repeat;
 }
 
+.formwrapper input {
+    width: 250px;
+}
+
 .formwrapper input[type=text] {
     margin-bottom: 15px;
     height: 32px;
@@ -477,7 +482,6 @@ footer a:hover {
     padding-left: 48px;
     background: url('images/username_bg.jpg') no-repeat;
     border-radius: 5px;
-    width: 250px;
 }
 
 .formwrapper input[type=password] {
@@ -489,12 +493,9 @@ footer a:hover {
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
     padding-left: 48px;
     background: url('images/password_bg.jpg') no-repeat;
-    width: 250px;
 }
 
 .formwrapper select {
-    -webkit-appearance: none; 
-    -moz-appearance: none;
     border-radius: 5px;
     margin-bottom: 15px;
     height: 32px;
@@ -503,21 +504,10 @@ footer a:hover {
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
     padding-left: 48px;
     background: url('images/username_bg.jpg') no-repeat;
-    width: 140px;
-}
-
-select {
-    -webkit-appearance: none; 
-    -moz-appearance: none;
-    border-radius: 5px;
-    margin-top: 15px;
-    height: 32px;
-    border: 1px solid;
-    border-color: #006666;
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 48px;
-    background: url('images/info_bg.jpg') no-repeat;
-    width: 240px;
+    width: 100px;
+    float: left;
+    margin-right: 10px;
+    margin-top: 18px;
 }
 
 input[type=submit]{
@@ -538,6 +528,12 @@ input[type=submit]{
     height: 40px;
 }
 
+.formwrapper input[name="firstname"] {
+    width: 140px;
+}
+
+
+/* ADMIN CONFIG CATEGORY */
 #add_new_category {
     border: 1px solid;
     border-color: #006666;

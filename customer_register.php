@@ -18,7 +18,7 @@ include 'views/navigation.php';
 ?>
 
 <div class="formwrapper">
-    <h2>Registreer als nieuwe klant: </h2>
+    <h2 class="contenttitle">Registreer als nieuwe klant: </h2>
     <form action="customer_register.php" method="POST">
         <input type="text" name="email" placeholder="emailadres" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br>
         <input type="password" name="password" placeholder="wachtwoord" id="pass1" onkeyup="checkPass();
