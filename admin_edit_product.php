@@ -20,9 +20,10 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 <h2 class="contenttitle">Product wijzigen: </h2>
-	      
+<div id="formwrapper">	      
 <?php
 $product->displayEditForm();
+</div>
 include 'views/footer.php';
 ?>
 
