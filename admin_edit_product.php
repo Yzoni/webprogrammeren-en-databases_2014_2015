@@ -19,11 +19,9 @@ if (isset($_POST['name'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<h2 class="contenttitle">Product wijzigen: </h2>
-<div id="formwrapper">	      
+<h2 class="contenttitle">Product wijzigen: </h2>      
 <?php
 $product->displayEditForm();
-</div>
 include 'views/footer.php';
 ?>
 
