@@ -31,7 +31,12 @@
                 <div class="wrapperheadcontent">
                     <a href="shopping_cart.php" id="cartLink">
                     <span class="iconfont">&#xf07a;</span><span class="winkelwagen"> &euro;
-                    <?php echo $_SESSION['total'];  ?> 
+                    <?php if(isset($_SESSION['total'])) {
+                        echo $_SESSION['total'];
+                    } else {
+                        echo 0;
+                    }
+                     ?> 
                     </span>
                     </a>
                 </div>
