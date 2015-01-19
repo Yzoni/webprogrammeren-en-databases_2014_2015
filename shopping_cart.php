@@ -5,8 +5,6 @@ require_once 'classes.php';
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-
-
     <p>
     	<br>
     	Winkelwagentje 			
@@ -14,9 +12,8 @@ include 'views/navigation.php';
     <br>
 
     <div class="line"> </div>
+
 <?php
-
-
 
 if(isset($_SESSION["products"])){   
     $total = 0;
@@ -28,14 +25,13 @@ if(isset($_SESSION["products"])){
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $resultArray = $result->fetch();
         $productName = $resultArray["name"];
-        $productPrice = $resultArray["price"];
-        
+        $productPrice = $resultArray["price"];       
 
     	$subtotal = ($productPrice * $quantity);
         $total += $subtotal;
         
 
-        echo '<div class="customer_Cart">';
+        echo '<div class="shopping_cart">';
 
         echo '<div class="name">' . $productName. '</div>';
         echo '<div class="quantity">Hoeveelheid : '.$quantity.'</div>';
@@ -43,18 +39,7 @@ if(isset($_SESSION["products"])){
 
         echo '</div>';
             
-        // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';
-                 
-                   
-           
-        
-
-           // echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->product_name.'" />';
-           // echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
-           // echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->product_desc.'" />';
-           // echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
-       
-            
+        // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
         	
         echo '<div class="shopping_cart_price_total">' .  "Total :" . $total . "euro" . '</div>';
@@ -63,6 +48,6 @@ if(isset($_SESSION["products"])){
     echo 'Your Cart is empty'; 
 }
 
-echo '<div class="line"> </div>';
 include 'views/footer.php';
 ?>
+<div class="line"> </div>';
