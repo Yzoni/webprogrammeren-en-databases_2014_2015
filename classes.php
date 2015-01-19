@@ -158,7 +158,12 @@ class ProductType {
         $query = $db->prepare("UPDATE ProductTypes SET name = :name WHERE id = :id");
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
-        $query->execute();
+        $status = $query->execute();
+        if ($status) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
