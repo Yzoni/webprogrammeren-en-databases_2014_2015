@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if(!isset($GLOBALS['printAddedProd'])) {
+    global $printAddedProd;
+    $GLOBALS['printAddedProd'] = 0;
+}
 require_once 'classes.php';
 
 $product = new Product($_GET["id"]);
@@ -15,6 +18,7 @@ if (!isset($_SESSION['products']) && !isset($_SESSION['quantities'])) {
 // statement will add the product and given quantity to the arrays "products"
 // and "quantities". Both arrays are stored in the $_SESSION array.
 if(isset($_POST['quantity']) && floatval($_POST['quantity'] > 0)){
+    $GLOBALS['printAddedProd'] = 1;
     $quantity = floatval($_POST['quantity']);
     $productId = $product->id;
     
@@ -25,11 +29,14 @@ if(isset($_POST['quantity']) && floatval($_POST['quantity'] > 0)){
     $indexId = array_search($productId, $_SESSION['products']);
     if(!is_numeric($indexId)) {
         array_push($_SESSION['products'], $productId);
-        array_push($_SESSION['quantities'], $quantity);        
+        array_push($_SESSION['quantities'], $quantity);
+
     } else {
         $_SESSION['quantities'][$indexId] += $quantity;
     }
-
+    $_SESSION['total'] += $product->price;
+} else {
+        $GLOBALS['printAddedProd'] = 0;
 }
 
 include 'views/header.php';
@@ -106,8 +113,22 @@ $product = new Product($_GET["id"]);
             </span>
         </li>
         </p>
+        <br>
+        <br>
     </ul>
 
+    <div id="addedProduct">
+                <?php
+                // if a product has been added to the shopping cart this 
+                // if statement will be executed to notify which product, and 
+                // quantity has been added.
+                if($GLOBALS['printAddedProd']) {
+                    echo "U heeft toegevoegd aan uw Winkelwagen: " . 
+                        $product->name . " " .
+                        $_POST['quantity'] . " kg" . "<br>";
+                }
+                ?>
+    </div>
     <br>
     <br>
 

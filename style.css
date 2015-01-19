@@ -628,3 +628,11 @@ input[type=submit]{
 .pay {
     padding: 10px;
 }
+
+#addedProduct {
+    color: red;
+}
+
+#cartLink {
+    color:black;
+}
