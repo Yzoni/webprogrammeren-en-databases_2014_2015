@@ -26,7 +26,7 @@ include 'views/navigation.php';
             <form action="admin_login.php" method="post">
                 <input type="text" name="username" placeholder="voornaam"><br>
                 <input type="password" name="password" placeholder="wachtwoord"><br>
-                <input type="submit" value="inloggen">
+                <input class="button" type="submit" value="inloggen">
             </form>
             <?php
             if ($credentialsfalse == 1) {
