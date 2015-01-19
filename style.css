@@ -492,6 +492,18 @@ footer a:hover {
     width: 250px;
 }
 
+.formwrapper input[type=select] {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 48px;
+    background: url('images/password_bg.jpg') no-repeat;
+    width: 250px;
+}
+
 input[type=submit]{
     width: 100px;
     background-color: #006666;
