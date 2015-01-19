@@ -510,8 +510,7 @@ select {
     -webkit-appearance: none; 
     -moz-appearance: none;
     border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
     height: 32px;
     border: 1px solid;
     border-color: #006666;
