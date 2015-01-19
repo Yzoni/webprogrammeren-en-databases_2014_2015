@@ -537,18 +537,14 @@ input[type=submit]{
 
 #submit_button {
     background-color: #006666;
-    border-radius: 5px;
-    height: 30px;
-    width: 110px;
-    display: inline-block;
-    line-height: 30px;
+    height: 10%;    
+    width: 18%;
     text-align: center;
     font-weight: bold;
-    text-decoration: none;
-    color: white;
-    margin-right: 10px;
-    transition: all .3s ease;
-}
+    color: white;   
+    line-height: 220%;  
+    margin-left: 3%;
+    margin-top: 2%;
 }
 
 /* ADD ADMIN PRODUCT */
