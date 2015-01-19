@@ -19,6 +19,10 @@ body {
     font-family: arialroundedmtbold;
 }
 
+select {
+    height: 32px;
+}
+
 .iconfont {
     font-family: iconfont;
 }
