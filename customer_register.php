@@ -30,7 +30,7 @@ include 'views/navigation.php';
         <select name="gender">
             <option value="true">Dhr.</option>
             <option value="false">Mevr.</option>
-        </select>
+        </select><br>
         <input type="text" name="firstname" placeholder="voornaam" id="person"><br>
         <input type="text" name="lastname" placeholder="achternaam" id="person"><br>
         <input type="text" name="zip" placeholder="postcode" pattern="[0-9]{4}[a-zA-Z]{2}$" id="info"><br>
