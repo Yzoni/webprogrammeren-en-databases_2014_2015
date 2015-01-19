@@ -492,7 +492,9 @@ footer a:hover {
     width: 250px;
 }
 
-.formwrapper input[type=select] {
+.formwrapper select {
+    -webkit-appearance: none; 
+    -moz-appearance: none;
     border-radius: 5px;
     margin-bottom: 15px;
     height: 32px;
