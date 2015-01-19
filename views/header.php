@@ -29,7 +29,10 @@
         <div class="wrapper">
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
+                    <a href="shopping_cart.php" id="cartLink">
                     <span class="iconfont">&#xf07a;</span><span class="winkelwagen"> &euro;
-                        </span>
+                    <?php echo $_SESSION['total'];  ?> 
+                    </span>
+                    </a>
                 </div>
             </div>
