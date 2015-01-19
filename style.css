@@ -256,8 +256,8 @@ footer a:hover {
     margin-left: 20px;
     height: 200px;
     width: 320px;
-    border: 2px solid;
-    border-radius: 10px;
+    border: 1px solid;
+    border-radius: 5px;
     border-color: #b5b5b5;
     background-color: white;
 }
@@ -266,7 +266,7 @@ footer a:hover {
     margin-left: 15px;
     margin-top: 5px;
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .box .title span {
@@ -310,7 +310,7 @@ footer a:hover {
 .box .button {
     float: right;
     background-color: #006666;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 30px;
     width: 110px;
     display: inline-block;
@@ -325,7 +325,7 @@ footer a:hover {
 
 .box .button span {
     font-family: iconfont;
-    font-size: 13px;
+    font-size: 11px;
 }
 
 .box .button:hover {
@@ -354,7 +354,7 @@ footer a:hover {
 .voegToe {
     font-family: iconfont;
     background-color: #006666;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 30px;
     width: 110px;
     display: inline-block;
@@ -365,7 +365,7 @@ footer a:hover {
     color: white;
     margin-right: 10px;
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 11px;
 }
 
 .icon-ok {
@@ -373,6 +373,10 @@ footer a:hover {
     font-family: iconfont;
 }
 .icon {
+    font-family: iconfont;
+}
+.icon-not-ok {
+    color: green;
     font-family: iconfont;
 }
 
@@ -427,7 +431,7 @@ footer a:hover {
     float:left;
     font-family: iconfont;
     background-color: #006666;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 30px;
     width: 250px;
     display: inline-block;
@@ -468,12 +472,12 @@ footer a:hover {
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
     padding-left: 48px;
     background: url('images/username_bg.jpg') no-repeat;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 250px;
 }
 
 .formwrapper input[type=password] {
-    border-radius: 10px;
+    border-radius: 5px;
     margin-bottom: 15px;
     height: 32px;
     border: 1px solid;
