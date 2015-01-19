@@ -492,7 +492,7 @@ footer a:hover {
     width: 250px;
 }
 
-.formwrapper select, select {
+.formwrapper select {
     -webkit-appearance: none; 
     -moz-appearance: none;
     border-radius: 5px;
@@ -510,13 +510,14 @@ select {
     -webkit-appearance: none; 
     -moz-appearance: none;
     border-radius: 5px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     height: 32px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
     padding-left: 48px;
-    background: url('images/username_bg.jpg') no-repeat;
+    background: url('imagesinfo_bg.jpg') no-repeat;
     width: 240px;
 }
 
