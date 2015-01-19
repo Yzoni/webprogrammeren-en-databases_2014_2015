@@ -626,6 +626,25 @@ class Admin {
 
 }
 
+class showMessage{
+    public $messages = array();
+    public function addMessage($type, $message){
+        $this->messages[] = array($type, $message);
+    }
+    public function showMessages(){
+        foreach($this->messages as $message){
+            if($message[0] == "error"){
+                echo "<p>ERROR".$message[1]."</p>";
+            }else{
+                echo "<p>BERICHT:".$message[1]."</p>";
+            }
+        }
+        return true;
+    }
+}
+
+$display = new showMessage(); 
+
 /**
  * Class Order
  *
