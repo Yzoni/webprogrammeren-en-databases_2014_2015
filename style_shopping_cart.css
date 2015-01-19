@@ -3,11 +3,27 @@
     height: 1px;
     width: 80%;    
     margin-bottom: 1%;
+    margin-left: 28,8%;
 }
 
 .shopping_cart {
     margin-left: 28.8%;
 }
+
+.name .quantity .subtotal {
+    font-size: 12px;
+    font-color: #454545;
+    width: 80%;
+    min-height: 170px;
+    width: 40%;
+    display: inline-block;
+}
+
+.shopping_cart_delivery_time .shopping_cart_price_total {
+    padding-right: 30px;
+}
+
+
 
 #pay {
     background-color: #006666;
@@ -22,14 +38,7 @@
     margin-left: 20%;
 }
 
-.name .quantity .subtotal {
-    font-size: 12px;
-    font-color: #454545;
-    width: 80%;
-    min-height: 170px;
-    width: 40%;
-    display: inline-block;
-}
+
 
 .shopping_cart_icon {
     width: 15px;
@@ -43,9 +52,7 @@
     
 }
 
-.shopping_cart_delivery_time .shopping_cart_price_total {
-    padding-right: 30px;
-}
+
 
 
 
