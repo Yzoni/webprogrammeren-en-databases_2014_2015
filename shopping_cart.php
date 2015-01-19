@@ -24,7 +24,6 @@ if(isset($_SESSION["products"])){
 <?php
 
     for ($i = 0; i < size($_SESSION["products"]); $i++) {
-    	$_SESSION
     	$id = $_SESSION["products"][$i];
     	$quantity = $_SESSION["quantity"][$i]
     	$result = $db->query("SELECT name, price FROM Products WHERE id='$id' LIMIT 1");
