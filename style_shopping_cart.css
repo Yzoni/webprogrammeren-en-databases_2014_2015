@@ -22,8 +22,7 @@
     margin-left: 20%;
 }
 
-
-.name, .quantity, .subtotal {
+.name .quantity .subtotal {
     font-size: 12px;
     font-color: #454545;
     width: 80%;
@@ -38,13 +37,13 @@
     font-family: iconfont;
 }
 
-.shopping_cart_edit, .shopping_cart_delete:link {
+.shopping_cart_edit .shopping_cart_delete:link {
     color: green;
     font-family: iconfont;
     
 }
 
-.shopping_cart_delivery_time, .shopping_cart_price_total {
+.shopping_cart_delivery_time .shopping_cart_price_total {
     padding-right: 30px;
 }
 
