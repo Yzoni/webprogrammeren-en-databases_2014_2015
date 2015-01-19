@@ -36,7 +36,6 @@ if(isset($_SESSION["products"])){
         
 
         echo '<div class="customer_Cart">';
-        echo '<div class="shopping_cart"> Winkelwagentje </div>';
 
         echo '<div class="name">' . $productName. '</div>';
         echo '<div class="quantity">Hoeveelheid : '.$quantity.'</div>';
