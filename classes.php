@@ -561,7 +561,7 @@ class Order {
 
     function addToCart($id, $quantity) {
 
-       
+    }
 
     function deleteProduct($id, $quantity) {
         
@@ -571,8 +571,7 @@ class Order {
         
     }
 
-    static function getAllOrders($customerid == null) {
+    static function getAllOrders($customerid = null) {
         
     }
-
 }
