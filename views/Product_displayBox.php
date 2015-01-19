@@ -6,10 +6,10 @@
         }
         ?>
         <span><?php echo $this->type->name;
-        ?>/</span> 
+        ?></span> 
         <a class="productpagelink" href="view_product.php?id=<?php echo $this->id; ?>"><?php echo $this->name; ?></a>
     </p>
     <a href="view_product.php?id=<?php echo $this->id; ?>"><img class="image" src="data:image/png;base64,<?php echo base64_encode($this->image); ?>"/></a>
     <p class="stock"><span>&#xf00c;</span><?php echo $this->stock; ?> op voorraad</p>
-    <input type="button" class="button" value= " | voeg toe " onclick=addToCart() />
+    <input type="button" class="button" value= " | voeg toe " onclick=addToCart(product->id, 1) />
 </div>

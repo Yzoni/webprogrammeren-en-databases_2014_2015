@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 require_once 'config.php';
 
 function is_admin_logged_in() {
@@ -461,7 +456,6 @@ class Order {
 
     function addToCart($id, $quantity) {
         if (is_customer_logged_in() == true){
-        //start session
         session_start(); 
         echo 'Product added';
         } else {
