@@ -116,7 +116,7 @@ class ProductType {
      */
     static function getAllProductTypes() {
         global $db;
-        $query = $db->prepare("SELECT * FROM ProductTypes");
+        $query = $db->prepare("SELECT * FROM ProductTypes ORDER BY name");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "ProductType");
         return $result;
@@ -227,12 +227,12 @@ class Product {
     static function getAllProducts($type = null) {
         global $db;
         if ($type) {
-            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid");
+            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY name");
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         } else {
-            $query = $db->prepare("SELECT * FROM Products");
+            $query = $db->prepare("SELECT * FROM Products ORDER BY name");
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         }
