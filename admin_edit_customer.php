@@ -1,10 +1,10 @@
 <?php
 require_once 'classes.php';
-security_check_customer();
+security_check_admin();
 if (isset($_POST['email'])) {  
-    $customer = new Customer($_SESSION['customer_id']);
+    $customer = new Customer($_GET['id']);
     $customer->email = ($_POST['email']!="") ? $_POST['email'] : $customer->email;
-    $customer->changePassword($_POST['oldpassword'], $_POST['password'], $_POST['password2']);
+    $customer->changePasswordAdmin($_POST['password'], $_POST['password2']);
     $customer->zip = ($_POST['zip']!="") ? $_POST['zip'] : $customer->zip;
     $customer->streetnumber = ($_POST['streetnumber']!="") ? $_POST['streetnumber'] : $customer->streetnumber;
     $customer->streetaddress = ($_POST['streetaddress']!="") ? $_POST['streetaddress'] : $customer->streetnumber;
@@ -16,7 +16,7 @@ if (isset($_POST['email'])) {
 
 include 'views/header.php';
 include 'views/navigation.php';
-$customer = new Customer($_SESSION['customer_id']);
+$customer = new Customer($_GET['id']);
 ?>
 <div class="formwrapper">
     <h2>Wijzig gegevens: </h2>

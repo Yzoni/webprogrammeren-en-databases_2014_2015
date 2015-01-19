@@ -3,9 +3,3 @@ RewriteEngine On
  
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
- 
-RewriteRule ^producten ./products.php
-RewriteRule ^producten/(\d+)*$ ./view_product.php?id=$1
-RewriteRule ^soorten/(\d+)*$ ./view_producttype.php?id=$1
- 
-RewriteRule ^search/(.*)$ ./search.php?query=$1

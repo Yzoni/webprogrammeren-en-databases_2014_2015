@@ -13,7 +13,7 @@ if (isset($_POST['name'])) {
     $product->description = $_POST['description'];
     $product->price = $_POST['price'];
     $product->stock = $_POST['stock'];
-    $product->image = null;
+    $product->image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
     $product->edit();
 }
 include 'views/header.php';

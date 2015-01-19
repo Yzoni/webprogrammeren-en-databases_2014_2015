@@ -9,7 +9,11 @@
         ?></span> 
         <a class="productpagelink" href="view_product.php?id=<?php echo $this->id; ?>"><?php echo $this->name; ?></a>
     </p>
-    <a href="view_product.php?id=<?php echo $this->id; ?>"><img class="image" src="data:image/png;base64,<?php echo base64_encode($this->image); ?>"/></a>
-    <p class="stock"><span>&#xf00c;</span><?php echo $this->stock; ?> op voorraad</p>
-    <input type="button" class="button" value= " | voeg toe " onclick=addToCart(product->id, 1) />
+
+    <a href="view_product.php?id=<?php echo$this->id; ?>"><img class="image" src="data:image/png;base64,<?php echo base64_encode($this->image); ?>"/></a>
+    <p class="stock"><span><?php echo ($this->stock > 0 ? "&#xf00c;" : "&#xf00d")?></span><?php echo $this->stock; ?> op voorraad</p>
+    <?php
+        echo "<p class=\"price\">&#8364;".$this->price."/Kg</p>";
+    ?>
+
 </div>

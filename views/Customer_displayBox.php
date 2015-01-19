@@ -1,5 +1,2 @@
-<div class="box">
-    <p class="title"><span><?php echo $this->firstname." ".$this->lastname; ?>/</span> 
-        <a class="productpagelink" href="product.html"><?php echo $this->email; ?></a>
-    </p>
-</div>
+<p class="title"><span><?php echo $this->firstname." ".$this->lastname; ?> / </span>
+<?php if(is_admin_logged_in()){ ?><a href="admin_edit_customer.php?id=<?php echo $this->id; ?>"> edit</a><?php } ?></p>

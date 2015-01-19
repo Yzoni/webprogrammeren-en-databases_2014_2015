@@ -5,7 +5,7 @@ if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $zip = $_POST['zip'];
-    $gender = $_POST['gender']=="true" ? 1 : 0;
+    $gender = $_POST['gender']=="true" ? true : false;
     $streetnumber = $_POST['streetnumber'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
