@@ -560,20 +560,8 @@ class Order {
     public $date;
 
     function addToCart($id, $quantity) {
-<<<<<<< HEAD
-        if (is_customer_logged_in() == true){
-        session_start(); 
-        echo 'Product added';
-=======
-        if (is_customer_logged_in() == true) {
-            //start session
-            session_start();
-            echo 'Product added';
->>>>>>> 4627e48ce242508050a963bf95c55a71b606b85c
-        } else {
-            echo "Please log in first";
-        }
-    }
+
+       
 
     function deleteProduct($id, $quantity) {
         
