@@ -19,7 +19,7 @@ include 'views/navigation.php';
 $customer = new Customer($_SESSION['customer_id']);
 ?>
 <div class="formwrapper">
-    <h2>Wijzig gegevens: </h2>
+    <h2 class="contenttitle">Wijzig gegevens: </h2>
     <?php $customer->displayEditForm();?>
 </div>
 <script type="text/javascript" src="js/checkpassword.js"></script>

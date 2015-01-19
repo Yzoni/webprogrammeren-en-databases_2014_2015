@@ -298,7 +298,13 @@ class Customer {
     function __construct($id = null) {
         if ($id) {
             global $db;
-            $query = $db->prepare("SELECT * FROM Customers WHERE id = :id");
+            if (is_int($id)) {
+                // Get customer by id
+                $query = $db->prepare("SELECT * FROM Customers WHERE id = :id");
+            } else {
+                // Get customer by email
+                $query = $db->prepare("SELECT * FROM Customers WHERE email = :id");
+            }
             $query->bindParam(':id', $id, PDO::PARAM_INT);
             $query->setFetchMode(PDO::FETCH_INTO, $this);
             $query->execute();
@@ -435,7 +441,7 @@ class Customer {
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Customer");
         return $result;
     }
-    
+
     /**
      * Function logout
      *
@@ -449,6 +455,60 @@ class Customer {
         session_destroy();
     }
 
+    static function passwordRecovery($email) {
+        global $db;
+        $headers = array();
+        $headers[] = "MIME-Version: 1.0";
+        $headers[] = "Content-type: text/plain; charset=iso-8859-1";
+        $headers[] = "From: Sender Name <noreply@fruyt.nl>";
+        $headers[] = "Reply-To: Recipient Name {$email}";
+        $headers[] = "Subject: Wachtwoordherstel fruyt.nl";
+        $headers[] = "X-Mailer: PHP/" . phpversion();
+
+        $customer = new Customer($email);
+        $newpassword = hash("sha256", time());
+        $customer->changePasswordAdmin($newpassword, $newpassword);
+        $deliverd = mail($customer->email, "Wachtwoordherstel fruyt.nl", "Nieuwe wachtwoord is: " . $newpassword, implode("\r\n", $headers));
+        if ($deliverd) {
+            echo "true";
+        } else {
+            echo "not deliverd";
+        }
+    }
+
+    /*
+      http://stackoverflow.com/questions/712392/send-email-using-the-gmail-smtp-server-from-a-php-page
+      static function sendMail() {
+      require_once "Mail.php";
+
+      $from = '';
+      $to = '';
+      $subject = 'Hi!';
+      $body = "Hi,\n\nHow are you?";
+
+      $headers = array(
+      'From' => $from,
+      'To' => $to,
+      'Subject' => $subject
+      );
+
+      $smtp = Mail::factory('smtp', array(
+      'host' => 'ssl://smtp.gmail.com',
+      'port' => '465',
+      'auth' => true,
+      'username' => '',
+      'password' => ''
+      ));
+
+      $mail = $smtp->send($to, $headers, $body);
+
+      if (PEAR::isError($mail)) {
+      echo('<p>' . $mail->getMessage() . '</p>');
+      } else {
+      echo('<p>Message successfully sent!</p>');
+      }
+      }
+     */
 }
 
 /**
@@ -558,6 +618,5 @@ class Order {
     public $customer;
     public $products;
     public $date;
-
 
 }
