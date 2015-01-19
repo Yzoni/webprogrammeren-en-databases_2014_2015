@@ -571,7 +571,7 @@ class Order {
         
     }
 
-    static function getAllOrders($customerid = null) {
+    static function getAllOrders($customerid == null) {
         
     }
 
