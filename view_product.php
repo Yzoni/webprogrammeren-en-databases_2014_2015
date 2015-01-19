@@ -11,10 +11,6 @@ if (!isset($_SESSION['products']) && !isset($_SESSION['quantities'])) {
     $_SESSION['quantities'] = array();
 }
 
-
-if(isset($_POST['aantal']) && floatval($_POST['aantal'] > 0) {
-    $order->addProduct($_GET['id'], $quantity);    
-
 // If the user has entered a quantity which is greater than zero, this if
 // statement will add the product and given quantity to the arrays "products"
 // and "quantities". Both arrays are stored in the $_SESSION array.
@@ -28,12 +24,9 @@ if(isset($_POST['quantity']) && floatval($_POST['quantity'] > 0)){
     // then the old quantity is updated.
     $indexId = array_search($productId, $_SESSION['products']);
     if(!is_numeric($indexId)) {
-        echo "if";
-        echo "made new prod and quant <br>";
         array_push($_SESSION['products'], $productId);
         array_push($_SESSION['quantities'], $quantity);        
     } else {
-        echo "else";
         $_SESSION['quantities'][$indexId] += $quantity;
     }
 
