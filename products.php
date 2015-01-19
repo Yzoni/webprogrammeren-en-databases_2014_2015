@@ -15,6 +15,8 @@ if (isset($_GET["id"]) && $_GET["id"] > 0){
 foreach ($products as $product) {
     $product->displayBox();
 }
+
+
 ?>
 </div>
 <?php

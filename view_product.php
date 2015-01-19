@@ -1,16 +1,14 @@
 <?php
+session_start();
+
 require_once 'classes.php';
+
 $product = new Product($_GET["id"]);
 
-if(isset($_POST['aantal']) && floatval($_POST['aantal'] > 0) && is_customer_logged_in()){
-    $quantity = floatval($_POST['aantal']);
-    $order = Order::getLatestOrder($_SESSION['customer_id']);
-    if($order == false){
-        $order = Order::create($_SESSION['customer_id']);
-        $order = Order::getLatestOrder($_SESSION['customer_id']);
-    }
-    $order->addProduct($_GET['id'], $quantity);
+if(isset($_POST['aantal']) && floatval($_POST['aantal'] > 0) {
+    $order->addProduct($_GET['id'], $quantity);    
 }
+
 include 'views/header.php';
 include 'views/navigation.php';
 

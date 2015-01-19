@@ -559,18 +559,7 @@ class Order {
     public $products;
     public $date;
 
-    function addToCart($id, $quantity) {
-
-       
-
-    function deleteProduct($id, $quantity) {
-        
-    }
-
-    function editProduct($id, $quantity) {
-        
-    }
-
+    
     static function getAllOrders($customerid == null) {
         
     }
