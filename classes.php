@@ -559,9 +559,5 @@ class Order {
     public $products;
     public $date;
 
-    
-    static function getAllOrders($customerid == null) {
-        
-    }
 
 }

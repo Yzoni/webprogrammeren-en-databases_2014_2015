@@ -4,9 +4,39 @@ session_start();
 require_once 'classes.php';
 
 $product = new Product($_GET["id"]);
+// If the arrays which will store the products and quantities are not set, then
+// create those arrays. A for loop can be used to loop through both arrays.
+if (!isset($_SESSION['products']) && !isset($_SESSION['quantities'])) {
+    $_SESSION['products'] = array();
+    $_SESSION['quantities'] = array();
+}
+
 
 if(isset($_POST['aantal']) && floatval($_POST['aantal'] > 0) {
     $order->addProduct($_GET['id'], $quantity);    
+
+// If the user has entered a quantity which is greater than zero, this if
+// statement will add the product and given quantity to the arrays "products"
+// and "quantities". Both arrays are stored in the $_SESSION array.
+if(isset($_POST['quantity']) && floatval($_POST['quantity'] > 0)){
+    $quantity = floatval($_POST['quantity']);
+    $productId = $product->id;
+    
+    // array_search and the if statement below will check if there has
+    // already been added a quantity of the same type of product in the shopping
+    // cart. If there has not, then a new array item will be added, if there has
+    // then the old quantity is updated.
+    $indexId = array_search($productId, $_SESSION['products']);
+    if(!is_numeric($indexId)) {
+        echo "if";
+        echo "made new prod and quant <br>";
+        array_push($_SESSION['products'], $productId);
+        array_push($_SESSION['quantities'], $quantity);        
+    } else {
+        echo "else";
+        $_SESSION['quantities'][$indexId] += $quantity;
+    }
+
 }
 
 include 'views/header.php';
@@ -19,10 +49,13 @@ $product = new Product($_GET["id"]);
 
     <div>
         <br>
-        <a href="products.php?id=<?php echo $product->type->id ?>"class="category"><?php echo $product->type->name; ?></a> / <?php echo $product->name; ?>
+        <a href="products.php?id=<?php echo $product->type->id ?>
+        "class="category"><?php echo $product->type->name; ?></a> / 
+            <?php echo $product->name; ?>
         <?php
         if (is_admin_logged_in()) {
-            echo "<a href=\"admin_edit_product.php?id=$product->id\"><span class=\"icon\">&#xF040; </span></a>";
+            echo "<a href=\"admin_edit_product.php?id=$product->id\">"
+                . "<span class=\"icon\">&#xF040; </span></a>";
         }
         ?>
     </div>
@@ -32,7 +65,8 @@ $product = new Product($_GET["id"]);
     
     <br>
     <span class="descrText"> <?php echo $product->description; ?></span>
-    <img class="descrImg" src="data:image/png;base64,<?php echo base64_encode($product->image); ?>"/>
+    <img class="descrImg" src="data:image/png;base64,
+        <?php echo base64_encode($product->image); ?>"/>
     <br>
     <hr>
     
@@ -51,8 +85,11 @@ $product = new Product($_GET["id"]);
                 
                 <?php
                 if (is_admin_logged_in() == false) {
-                    echo "Aantal: <input type=\"text\" class=\"inputBox\" name=\"aantal\">";
-                    echo "<input class=\"voegToe\" type =\"submit\" value= \"&#xf055; | voeg toe\">";
+                    echo 'Aantal: <input type="text" class="inputBox" '
+                    . 'name="quantity">';
+                    echo '<input class="voegToe" type ="submit" '
+                    . 'value= "&#xf055;'
+                    . ' | voeg toe">';
                 }
                 ?>
             </form>
@@ -83,11 +120,12 @@ $product = new Product($_GET["id"]);
 
     <p>
         <br>
-        <a href="view_producttype.php?id=<?php echo $product->type->id ?>" class="backProd"> &#xf053; | terug naar: <?php echo $product->type->name; ?> </a>
+        <a href="view_producttype.php?id=<?php echo $product->type->id ?>" 
+           class="backProd"> &#xf053; | terug naar: 
+               <?php echo $product->type->name; ?> </a>
     </p>
 </div>
 
 <?php
 include 'views/footer.php';
 ?>
-            
