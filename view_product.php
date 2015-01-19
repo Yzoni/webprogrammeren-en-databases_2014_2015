@@ -1,7 +1,8 @@
 <?php
 session_start();
 if(!isset($GLOBALS['printAddedProd'])) {
-    $GLOBALS['printAddedProd'];
+    global $printAddedProd;
+    $GLOBALS['printAddedProd'] = 0;
 }
 require_once 'classes.php';
 
