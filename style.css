@@ -189,7 +189,7 @@ nav .arrow {
     text-align: center;
     font-weight: bold;
     color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     text-decoration: none;
     transition: all .3s ease;
 }
