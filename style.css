@@ -500,21 +500,6 @@ footer a:hover {
     cursor: pointer;
 }
 
-.backProd {
-    background-color: #006666;
-    display: inline-block;
-    text-align: center;
-    color: white;
-    height: 32px;
-    font-size: 12px;
-    line-height: 32px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all .3s ease;
-}
-
 .infoList {
     list-style-type:none;
 }
@@ -550,6 +535,17 @@ footer a:hover {
     border-radius: 5px;
 }
 
+#add_new_category {
+    margin-bottom: 15px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 48px;
+    background: url('images/naam_bg.jpg') no-repeat;
+    border-radius: 5px;
+}
+
 .formwrapper input[type=password] {
     border-radius: 5px;
     margin-bottom: 15px;
@@ -576,7 +572,7 @@ footer a:hover {
     margin-top: 18px;
 }
 
-input[type=submit], #add_new_category, #submit_button {
+input[type=submit], #submit_button, #submit {
     background-color: #006666;
     display: inline-block;
     text-align: center;
@@ -651,18 +647,6 @@ input[type=submit], #add_new_category, #submit_button {
     background: url("images/voorraad_bg.jpg") no-repeat;
 }
 
-#submit {
-    background-color: #006666;
-    float: left;	
-    height: 10%;	
-    width: 18%;
-    text-align: center;
-    font-weight: bold;
-    color: white;	
-    line-height: 220%;	
-    margin-left: 3%;
-    margin-top: 2%;	
-}
 .pay {
     padding: 10px;
 }
