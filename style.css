@@ -235,6 +235,9 @@ nav .arrow {
     font-weight: bold;
     color: white;
     height: 32px;
+    line-height: 12px;
+    padding-left: 6px;
+    padding-right: 6px;
     border-radius: 5px;
     text-decoration: none;
     transition: all .3s ease;
