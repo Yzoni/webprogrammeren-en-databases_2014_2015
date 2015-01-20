@@ -49,10 +49,7 @@ if (isset($_POST['quantity']) && floatval($_POST['quantity'] > 0)) {
     if (!is_numeric($indexId)) {
         array_push($_SESSION['products'], $productId);
         array_push($_SESSION['quantities'], $quantity);
-<<<<<<< HEAD
         array_push($_SESSION['subtotal'], ($product->price * $quantity));
-=======
->>>>>>> 6af5a5ebc26448989b6a43ab8f6a621f55a35fe9
     } else {
         $_SESSION['quantities'][$indexId] += $quantity;
         array_push($_SESSION['subtotal'], ($product->price * $quantity));
