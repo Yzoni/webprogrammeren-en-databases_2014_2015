@@ -500,20 +500,18 @@ footer a:hover {
 }
 
 .backProd {
-    float:left;
-    font-family: iconfont;
     background-color: #006666;
-    border-radius: 5px;
-    height: 30px;
-    width: 250px;
     display: inline-block;
-    line-height: 30px;
     text-align: center;
-    font-weight: bold;
-    text-decoration: none;
     color: white;
-    margin-right: 10px;
-    margin-top: 5px;
+    height: 32px;
+    font-size: 12px;
+    line-height: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all .3s ease;
 }
 
 .infoList {
