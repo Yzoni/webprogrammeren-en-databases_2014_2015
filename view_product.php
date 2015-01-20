@@ -126,6 +126,7 @@ $product = new Product($_GET["id"]);
                     echo "U heeft toegevoegd aan uw Winkelwagen: " . 
                         $product->name . " " .
                         $_POST['quantity'] . " kg" . "<br>";
+                    echo '<script><meta http-equiv="refresh" content="5"></script>';
                 }
                 ?>
     </div>
