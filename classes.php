@@ -261,6 +261,27 @@ class Product {
         return $result;
     }
 
+    static function getSortedProducts($sort) {
+        switch ($sort){
+            case alphabetic :
+                $order = ASC;
+                $type = name;
+                break;
+            case price-desc :
+                $order = DESC;
+                $type = price;
+                break;
+            case price-asc :
+                $order = ASC;
+                $type = price; 
+                break;            
+        }
+
+        $query = $db->prepare("SELECT * FROM Products ORDER BY $type $order");
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+    }
+
     static function create($typeid, $name, $description, $stock, $price, $image = null) {
         global $db;
         $query = $db->prepare("INSERT INTO Products (typeid, name, description, stock, price, image) VALUES (:typeid, :name, :description, :stock, :price, :image)");
