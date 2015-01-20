@@ -47,7 +47,7 @@ if(isset($_SESSION["products"])){
 
         echo '</div>';
 
-        <br>
+        echo '<br>';
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
