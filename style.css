@@ -228,7 +228,7 @@ nav .arrow {
     margin-right: 20px;
 }
 
-.button, input[type="submit"] {
+.button, input[type="submit"], .button_delete{
     background-color: #006666;
     display: inline-block;
     text-align: center;
@@ -243,6 +243,10 @@ nav .arrow {
     text-decoration: none;
     transition: all .3s ease;
     margin-right: 12px;
+}
+
+.button_delete{
+    background-color: #d40000;
 }
 
 .button span {
