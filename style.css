@@ -232,13 +232,12 @@ nav .arrow {
     background-color: #006666;
     display: inline-block;
     text-align: center;
-    font-weight: bold;
     color: white;
     height: 32px;
     font-size: 12px;
     line-height: 32px;
-    padding-left: 6px;
-    padding-right: 6px;
+    padding-left: 15px;
+    padding-right: 15px;
     border-radius: 5px;
     text-decoration: none;
     transition: all .3s ease;
