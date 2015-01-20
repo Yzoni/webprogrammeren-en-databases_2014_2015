@@ -5,7 +5,7 @@
         <title>Fruyt.nl</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="style_shopping_cart.css">
-              <link rel="icon" type="image/png" href="images/fruyt_icon.png">
+        <link rel="icon" type="image/png" href="images/fruyt_icon.png">
     </head>
     <body>
         <header>

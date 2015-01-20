@@ -639,16 +639,14 @@ class showMessage {
     public function showMessages() {
         foreach ($this->messages as $message) {
             if ($message[0] == "error") {
-                echo "<span class=\"message\">ERROR: " . $message[1] . "</span>";
-            } else {
-                echo "<span class=\"message\">SUCCESS: " . $message[1] . "</span>";
+                echo "<span class=\"message\"><span id=\"error\">ERROR: </span> " . $message[1] . "</span>";
+            } elseif ($message[0] == "success") {
+                echo "<span class=\"message\"><span id=\"success\">SUCCESS: </span> " . $message[1] . "</span>";
             }
         }
         return true;
     }
-
 }
-
 // Initialize messages
 $display = new showMessage();
 
