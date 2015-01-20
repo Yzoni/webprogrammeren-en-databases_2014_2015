@@ -582,17 +582,18 @@ footer a:hover {
 }
 
 input[type=submit]{
-    width: 100px;
     background-color: #006666;
-    border-radius: 5px;
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    height: 32px;
-    border: none;
     display: inline-block;
     text-align: center;
-    font-weight: bold;
-    text-decoration: none;
     color: white;
+    height: 32px;
+    font-size: 12px;
+    line-height: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all .3s ease;
 }
 
 .formwrapper form .button {
