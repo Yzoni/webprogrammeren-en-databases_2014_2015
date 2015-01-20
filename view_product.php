@@ -144,7 +144,6 @@ include 'views/navigation.php';
             $product->name . " " .
             $_POST['quantity'] . " kg" . "<br>";
             unset($_POST['quantity']);
-            echo '<meta http-equiv="refresh" content="5">';
             $GLOBALS['printAddedProd'] = 0;
         }
         ?>
