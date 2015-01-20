@@ -22,12 +22,12 @@
             </div>
             <?php
             if (is_customer_logged_in() == TRUE) {
-                echo "<a href=\"customer_edit_info.php\">Mijn gegevens</a>";
-                echo "<a href=\"customer_orders.php\">Mijn bestellingen</a>";
+                echo "<a href=\"customer_edit_info.php\">mijn gegevens</a>";
+                echo "<a href=\"customer_orders.php\">mijn bestellingen</a>";
             }
             if (is_admin_logged_in() == TRUE) {
-                echo "<a href=\"admin_list_customers.php\">Mijn klanten</a>";
-                echo "<a href=\"admin_orders.php\">Alle bestellingen</a>";
+                echo "<a href=\"admin_list_customers.php\">mijn klanten</a>";
+                echo "<a href=\"admin_orders.php\">alle bestellingen</a>";
             }
             ?>
         </li>
