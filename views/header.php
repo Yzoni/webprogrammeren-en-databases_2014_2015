@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="style_shopping_cart.css">
         <link rel="icon" type="image/png" href="images/fruyt_icon.png">
+        <script type="text/javascript" src="js/search.js"></script>
     </head>
     <body>
         <header>
@@ -34,6 +35,7 @@
         <div class="wrapper">
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
+                    <input placeholder="Zoek product" type="text" name="search" id="search" onkeyup="showResult(this.value)">
                     <a href="shopping_cart.php" id="cartLink">
                         <span class="iconfont">&#xf07a;</span><span class="winkelwagen"> &euro;
                             <?php

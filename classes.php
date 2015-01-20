@@ -299,6 +299,17 @@ class Product {
         $query->execute();
     }
 
+    static function search($key) {
+        global $db;
+        $array = array();
+        $query = $db->prepare("SELECT * from Products WHERE :name LIKE :key");
+        $query->bindParam(':key', $key, PDO::PARAM_STR);
+        $query->execute();
+        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $array[] = $row['title'];
+        }
+        return json_encode($array);
+    }
 }
 
 /**
@@ -646,7 +657,9 @@ class showMessage {
         }
         return true;
     }
+
 }
+
 // Initialize messages
 $display = new showMessage();
 

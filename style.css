@@ -633,3 +633,12 @@ input[type=submit],
     color:white;
     text-decoration: none;
 }
+
+.deleteItemLink {
+    color:black;
+}
+
+#deleteItem {
+    font-family: iconfont;
+    color:red;
+}
