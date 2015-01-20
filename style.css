@@ -74,10 +74,10 @@ select {
 }
 
 .wrapperheadcontent {
-    float: right;
+    float: left;
     color: white;
     padding-top: 9px;
-    margin-right: 20px;
+    margin-left: 12px;
 }
 
 .wrapperheadcontent .iconfont {
