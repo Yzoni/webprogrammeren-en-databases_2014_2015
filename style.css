@@ -262,6 +262,7 @@ nav .arrow {
 }
 
 #register {
+    margin-top: 3px;
     margin-right: 20px;
     line-height: 32px;
     float:right;
