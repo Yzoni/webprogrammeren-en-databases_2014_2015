@@ -64,8 +64,8 @@ $totalpages = ceil($totalamount / $endamount);
 
         ?>
 
-        
-        <form action="products.php" method="GET">
+
+        <form action="products.php" method="GET" id="select_order">
         <select>
             <option type="submit" value="A - Z"> A - Z </option>
             <option type="submit" value="Prijs hoog - laag"> Prijs hoog - laag </option>
