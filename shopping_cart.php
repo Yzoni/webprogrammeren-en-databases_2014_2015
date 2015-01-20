@@ -43,7 +43,7 @@ if(isset($_SESSION["products"])){
         echo '<div class="quantity">Hoeveelheid : '.$quantity.'</div>';
         echo '<div class="subtotal">' .$subtotal. 'euro </div>';
         echo '<div class="shopping_cart_remove">' . "Verwijder" . 
-        	'<span class="icon">&#xf00d; </span></div>'
+        	'<span class="icon">&#xf00d; </span></div>';
         echo '<br>';
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
