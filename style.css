@@ -255,8 +255,6 @@ nav .arrow {
 
 /* HEAD LOGIN AND REGISTER BUTTONS */
 #login {
-    width: 130px;
-    height: 35px;
     margin-right: 20px;
     line-height: 32px;
     float: right;
@@ -264,8 +262,6 @@ nav .arrow {
 }
 
 #register {
-    width: 150px;
-    height: 35px;
     margin-right: 40px;
     line-height: 32px;
     float:right;
