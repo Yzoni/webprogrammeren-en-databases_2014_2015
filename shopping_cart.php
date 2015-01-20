@@ -42,11 +42,14 @@ if(isset($_SESSION["products"])){
         echo '<div class="name">' . $productName. '</div>';
         echo '<div class="quantity">Hoeveelheid : '.$quantity.'</div>';
         echo '<div class="subtotal">' .$subtotal. 'euro </div>';
-
+        echo '<div class="shopping_cart_remove">' . "Verwijder" . 
+        	'<span class="icon">&#xf00d; </span></div>'
         echo '<br>';
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
+        echo '<div class="line"> </div>';
+
         echo '<div class="shopping_cart_price_total">' .  "Totaal :" . 
                 $_SESSION['total'] . " euro" . '</div>';
         echo '<div class="shopping_cart_delivery_time"> '
@@ -54,7 +57,7 @@ if(isset($_SESSION["products"])){
 } else{
     echo 'Your Cart is empty'; 
 }
-echo '<div class="line"> </div>';
+
 echo '</div>';
 
 include 'views/footer.php';
