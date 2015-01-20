@@ -337,7 +337,7 @@ footer a:hover {
 
 .box .title {
     margin-left: 15px;
-    margin-top: 6px;
+    margin-top: 7px;
     margin-bottom: 10px;
     font-size: 14px;
 }
@@ -542,6 +542,7 @@ footer a:hover {
 input[type=submit], 
 #submit_button, 
 #submit,
+.submit,
 .formwrapper input[type=submit], 
 .formwrapper #submit_button,
 .formwrapper #submit {
