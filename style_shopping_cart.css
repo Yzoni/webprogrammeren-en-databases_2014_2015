@@ -1,7 +1,14 @@
+.shopping_cart_table {
+    width:95%;
+}
+
+td {
+    width:10%;
+}
 .line {
     background-color: #454545;
     height: 1px;
-    width: 80%;    
+    width: 95%;    
     margin-bottom: 1%;
     margin-left: 28,8%;
 }
@@ -48,8 +55,4 @@
     font-family: iconfont;
     
 }
-
-
-
-
 

@@ -4,6 +4,13 @@ require_once 'classes.php';
 
 include 'views/header.php';
 include 'views/navigation.php';
+if (isset($_GET['deleteItem']) && sizeof($_SESSION['products']) > 0) {
+    $productIndex = $_GET['deleteItem'];
+    $x = array_search($productIndex, $_SESSION['products']);
+    unset($_SESSION['products'][$x]);
+    unset($_SESSION['quantities'][$x]);
+    unset($_GET['deleteItem']);
+}
 ?>
 
 <div class="shopping_cart">
@@ -19,7 +26,7 @@ include 'views/navigation.php';
 
 // if at least one product is stored in the products array, this if statement
 // will be executed to print all the products which have been added to the array
-if(isset($_SESSION["products"])){   
+if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){   
     $_SESSION['total'] = 0;
 
     // This for loop goes through all the items stored in the products array,
@@ -33,29 +40,44 @@ if(isset($_SESSION["products"])){
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $resultArray = $result->fetch();
         $productName = $resultArray["name"];
-        $productPrice = $resultArray["price"];       
-
+        $productPrice = $resultArray["price"];
     	$subtotal = ($productPrice * $quantity);
         $_SESSION['total'] += $subtotal;
         
-        echo '<div class = product_basket>';
-        echo $productName ;
-        echo 'Hoeveelheid :' . $quantity;
-        echo $subtotal . ' euro ';
-        echo ' Verwijder . <span class="icon">&#xf00d; </span>';
-        echo '</div>';	
-        
+        echo "
+        <table class='shopping_cart_table'>
+        <tr>
+        <td id ='cartImg'>
+        Image
+        </td>
+        <td>
+        $productName
+        </td>
+        <td>
+        Hoeveelheid : $quantity kg
+        </td>
+        <td>
+        <a href='shopping_cart.php?deleteItem=$productId' class='deleteItemLink' >
+        Verwijder <span id='deleteItem'>&#xf00d; </span>
+        </a>
+        </td> 
+        <td>
+        &euro; $subtotal
+        </td>
+        </tr>
+        </table> ";
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
-        echo '<div class="line"> </div>';
+        echo '<div class="line"> </div>' . '<br>';
 
         echo '<div class="shopping_cart_price_total">' .  "Totaal :" . 
+                "<span class='icon'> &euro;</span> " .
                 $_SESSION['total'] . " euro" . '</div>';
-        echo '<div class="shopping_cart_delivery_time"> '
+        echo '<div class="shopping_cart_delivery_time"> ' . '<br>'
         . '<span class="icon">&#xf135;levertijd: 1 dag </span> </div>';
 } else{
-    echo 'Your Cart is empty'; 
+    echo 'Uw winkelwagen is leeg'; 
 }
 
 echo '</div>';
