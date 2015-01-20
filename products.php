@@ -64,7 +64,7 @@ $totalpages = ceil($totalamount / $endamount);
 
         ?>
         
-        <select onchange=getSortedProducts(value)>
+        <select class="select_order" onchange=getSortedProducts(value)>
             <option value="alphabetic"> A - Z </option>
             <option value="price-desc"> Prijs hoog - laag </option>
             <option value="price-asc"> Prijs laag - hoog </option>            

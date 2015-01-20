@@ -72,9 +72,9 @@ include 'views/navigation.php';
            <?php
            if (is_admin_logged_in()) {
                echo "<a href=\"admin_edit_product.php?id=$product->id\">"
-               . "<span class=\"icon\">&#xF040; wijzig product </span></a>";
+               . "<span class=\"icon\">&#xF040;</span>wijzig product</a>";
                echo "<a href=\"view_product.php?id=$product->id&fn=deleteproduct\">"
-               . "<span class=\"icon\">&#xf00d; verwijder product </span></a>";
+               . "<span class=\"icon\">&#xf00d;</span>verwijder product</a>";
            }
            ?>
     </div>
@@ -106,7 +106,7 @@ include 'views/navigation.php';
                 if (is_admin_logged_in() == false) {
                     echo 'aantal: <input type="text" class="inputBox" '
                     . 'name="quantity">';
-                    echo '<button type="submit" class="button"><span>&#xf0fe;</span> | voeg toe</button>';
+                    echo '<button type="submit" class="button"><span>&#xf0fe;</span>voeg toe</button>';
                 }
                 ?>
             </form>
@@ -154,7 +154,7 @@ include 'views/navigation.php';
     <p>
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>" 
-           class="button"><span>&#xf137;</span> | terug naar: 
+           class="button"><span>&#xf137;</span>terug naar: 
             <?php echo $product->type->name; ?> </a>
     </p>
 </div>

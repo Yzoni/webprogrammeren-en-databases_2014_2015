@@ -29,7 +29,7 @@ include 'views/navigation.php';
 <h2 class="contenttitle">Categorie wijzigen / verwijderen: </h2>
 <?php
 $producttype->displayEditForm();
-echo "<a href=\"admin_edit_producttype.php?id=$producttype->id&fn=deleteproducttype\">"
- . "<span class=\"icon\">&#xf00d; verwijder productcategorie </span></a>";
+echo "<a href=\"admin_edit_producttype.php?id=$producttype->id&fn=deleteproducttype\" class=button_delete>"
+ . "<span>&#xf00d;</span> verwijder productcategorie</a>";
 include 'views/footer.php';
 ?>
