@@ -4,6 +4,9 @@ if(!isset($GLOBALS['printAddedProd'])) {
     global $printAddedProd;
     $GLOBALS['printAddedProd'] = 0;
 }
+if(!isset($_SESSION['total'])) {
+    $_SESSION['total'] = 0;
+}
 require_once 'classes.php';
 
 $product = new Product($_GET["id"]);
