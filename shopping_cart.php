@@ -38,23 +38,26 @@ if(isset($_SESSION["products"])){
     	$subtotal = ($productPrice * $quantity);
         $_SESSION['total'] += $subtotal;
         
-
-        echo '<div class="name">' . $productName. '</div>';
-        echo '<div class="quantity">Hoeveelheid : '.$quantity.'</div>';
-        echo '<div class="subtotal">' .$subtotal. 'euro </div>';
-
-        echo '<br>';
+        echo '<div class = product_basket>';
+        echo $productName ;
+        echo 'Hoeveelheid :' . $quantity;
+        echo $subtotal . ' euro ';
+        echo ' Verwijder . <span class="icon">&#xf00d; </span>';
+        echo '</div>';	
+        
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
-        echo '<div class="shopping_cart_price_total">' .  "Total :" . 
+        echo '<div class="line"> </div>';
+
+        echo '<div class="shopping_cart_price_total">' .  "Totaal :" . 
                 $_SESSION['total'] . " euro" . '</div>';
         echo '<div class="shopping_cart_delivery_time"> '
         . '<span class="icon">&#xf135;levertijd: 1 dag </span> </div>';
 } else{
     echo 'Your Cart is empty'; 
 }
-echo '<div class="line"> </div>';
+
 echo '</div>';
 
 include 'views/footer.php';
