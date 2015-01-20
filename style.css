@@ -542,7 +542,7 @@ footer a:hover {
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
     padding-left: 48px;
-    background: url('images/info_bg.jpg') no-repeat;
+    background: url('images/naam_bg.jpg') no-repeat;
     border-radius: 5px;
 }
 
@@ -572,7 +572,7 @@ footer a:hover {
     margin-top: 18px;
 }
 
-input[type=submit], #submit_button {
+input[type=submit], #submit_button, #submit {
     background-color: #006666;
     display: inline-block;
     text-align: center;
@@ -647,18 +647,6 @@ input[type=submit], #submit_button {
     background: url("images/voorraad_bg.jpg") no-repeat;
 }
 
-#submit {
-    background-color: #006666;
-    float: left;	
-    height: 10%;	
-    width: 18%;
-    text-align: center;
-    font-weight: bold;
-    color: white;	
-    line-height: 220%;	
-    margin-left: 3%;
-    margin-top: 2%;	
-}
 .pay {
     padding: 10px;
 }
