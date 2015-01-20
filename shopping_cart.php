@@ -4,13 +4,19 @@ require_once 'classes.php';
 
 include 'views/header.php';
 include 'views/navigation.php';
+
 if (isset($_GET['deleteItem']) && sizeof($_SESSION['products']) > 0) {
     $productIndex = $_GET['deleteItem'];
-    $x = array_search($productIndex, $_SESSION['products']);
-    unset($_SESSION['products'][$x]);
-    unset($_SESSION['quantities'][$x]);
+    $i = array_search($productIndex, $_SESSION['products']);
+    $subtotal = $_SESSION['subtotal'][$i];
+    $_SESSION['total'] -= $subtotal;
+    unset($_SESSION['products'][$i]);
+    unset($_SESSION['quantities'][$i]);
     unset($_GET['deleteItem']);
+    unset($_SESSION['subtotal'][$i]);
+    echo '<meta http-equiv="refresh" content="0.1">;';
 }
+
 ?>
 
 <div class="shopping_cart">
