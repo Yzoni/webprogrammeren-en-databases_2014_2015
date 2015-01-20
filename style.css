@@ -230,7 +230,20 @@ nav .arrow {
 
 .winkelwagen {
     background-color: #ffffff;
-    font-color: #006666;
+    color: #006666;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    height: 32px;
+    font-size: 12px;
+    line-height: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all .3s ease;
+    margin-right: 12px;
+    float: right;
 }
 
 .search {
