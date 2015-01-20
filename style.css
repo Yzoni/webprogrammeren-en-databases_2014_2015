@@ -492,7 +492,7 @@ footer a:hover {
 .formwrapper input[type=text] {
     width: 250px;
     margin-bottom: 15px;
-    height: 32px;
+    height: 30px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
@@ -503,7 +503,7 @@ footer a:hover {
 
 #add_new_category {
     margin-bottom: 15px;
-    height: 32px;
+    height: 30px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
