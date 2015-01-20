@@ -16,6 +16,8 @@ $totalpages = ceil($totalamount / $endamount);
 ?>
 
 <div class="wrappercontent">
+    <div class="pageswitchwrapper">
+        <span>Pagina: </span>
     <?php
     if (isset($_GET["id"]) && $_GET["id"] > 0) {
         for ($i = 1; $i <= $totalpages; $i++) {
@@ -26,7 +28,10 @@ $totalpages = ceil($totalamount / $endamount);
             echo "<a href='products.php?page=" . $i . "'>" . $i . "</a> ";
         }
     }
-    foreach ($products as $product) {
+    ?>
+    </div>
+    <?php
+        foreach ($products as $product) {
         $product->displayBox();
     }
     ?>
