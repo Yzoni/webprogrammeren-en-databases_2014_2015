@@ -91,7 +91,7 @@ $product = new Product($_GET["id"]);
                     echo 'aantal: <input type="text" class="inputBox" '
                     . 'name="quantity">';
                     echo '<input class="voegToe" type ="submit" '
-                    . 'value= "&#xf055;'
+                    . 'value= "&#xf0fe;'
                     . ' | voeg toe">';
                 }
                 ?>
