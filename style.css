@@ -523,7 +523,7 @@ footer a:hover {
     background: url('images/info_bg.jpg') no-repeat;
 }
 
-.formwrapper input[type=text] {
+.formwrapper input[type=text], .wrapperheadcontent input[type=text] {
     width: 250px;
     margin-bottom: 15px;
     height: 30px;
