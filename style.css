@@ -81,7 +81,7 @@ select {
 }
 
 .wrapperheadcontent .iconfont {
-    font-size: 20px;
+    font-size: 12px;
     color: white;
 }
 
@@ -231,6 +231,16 @@ nav .arrow {
 .winkelwagen {
     background-color: #ffffff;
     font-color: #006666;
+}
+
+.search {
+    width: 25%;
+    height: 32px;
+    border: none;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 48px;
+    background: url('images/username_bg.jpg') no-repeat;
+    border-radius: 5px;
 }
 
 .button, input[type="submit"], .button_delete{
