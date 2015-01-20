@@ -68,7 +68,7 @@ $product = new Product($_GET["id"]);
     
     <br>
     <span class="descrText"> <?php echo $product->description; ?></span>
-    <img class="descrImg" src="data:image/png;base64,
+    <img class="descrImg" height="114" width="320" src="data:image/png;base64,
         <?php echo base64_encode($product->image); ?>"/>
     <br>
     <hr>
