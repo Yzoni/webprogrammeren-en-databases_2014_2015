@@ -152,7 +152,7 @@ include 'views/navigation.php';
     <p>
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>" 
-           class="button"><span>&#xf053;</span> | terug naar: 
+           class="button"><span>&#xf137;</span> | terug naar: 
             <?php echo $product->type->name; ?> </a>
     </p>
 </div>
