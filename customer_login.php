@@ -23,7 +23,7 @@ include 'views/navigation.php';
             <form action="customer_login.php" method="post">
                 <input type="text" name="email" placeholder="email"><br>
                 <input type="password" name="password" placeholder="wachtwoord"><br>
-                <input class="button" type="submit" value="inloggen" id="submit">
+                <input type="submit" value="inloggen" id="submit" class="button">
             </form>
 	    <a href="customer_passwordforgot.php" class="button"><span>&#xf059;</span> | wachtwoord vergeten?</a>
         </div>
