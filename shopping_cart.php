@@ -39,13 +39,9 @@ if(isset($_SESSION["products"])){
         $_SESSION['total'] += $subtotal;
         
 
-        echo '<div class="shopping_cart">';
-
         echo '<div class="name">' . $productName. '</div>';
         echo '<div class="quantity">Hoeveelheid : '.$quantity.'</div>';
         echo '<div class="subtotal">' .$subtotal. 'euro </div>';
-
-        echo '</div>';
 
         echo '<br>';
             
@@ -58,8 +54,8 @@ if(isset($_SESSION["products"])){
 } else{
     echo 'Your Cart is empty'; 
 }
+echo '<div class="line"> </div>';
+echo '</div>';'
 
 include 'views/footer.php';
 ?>
-<div class="line"> </div>';
-</div>
