@@ -55,7 +55,7 @@ if(isset($_SESSION["products"])){
     echo 'Your Cart is empty'; 
 }
 echo '<div class="line"> </div>';
-echo '</div>';'
+echo '</div>';
 
 include 'views/footer.php';
 ?>
