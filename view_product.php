@@ -25,9 +25,12 @@ if (isset($_GET['fn']) && $_GET['fn'] == "deleteproduct" && is_admin_logged_in()
 $product = new Product($_GET["id"]);
 // If the arrays which will store the products and quantities are not set, then
 // create those arrays. A for loop can be used to loop through both arrays.
-if (!isset($_SESSION['products']) && !isset($_SESSION['quantities'])) {
+if (!isset($_SESSION['products']) && 
+    !isset($_SESSION['quantities']) &&
+    !isset($_SESSION['subtotal'])) {
     $_SESSION['products'] = array();
     $_SESSION['quantities'] = array();
+    $_SESSION['subtotal'] = array();
 }
 
 // If the user has entered a quantity which is greater than zero, this if
@@ -46,8 +49,10 @@ if (isset($_POST['quantity']) && floatval($_POST['quantity'] > 0)) {
     if (!is_numeric($indexId)) {
         array_push($_SESSION['products'], $productId);
         array_push($_SESSION['quantities'], $quantity);
+        array_push($_SESSION['subtotal'], ($product->price * $quantity));
     } else {
         $_SESSION['quantities'][$indexId] += $quantity;
+        array_push($_SESSION['subtotal'], ($product->price * $quantity));
     }
     $_SESSION['total'] += ($product->price * $quantity);
 } else {
