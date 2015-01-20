@@ -644,6 +644,7 @@ class showMessage{
         return true;
     }
 }
+// Initialize messages
 $display = new showMessage(); 
 
 /**

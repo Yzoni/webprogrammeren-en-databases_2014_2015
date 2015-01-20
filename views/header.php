@@ -5,7 +5,7 @@
         <title>Fruyt.nl</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="style_shopping_cart.css"
-	<link rel="icon" type="image/png" href="images/fruyt_icon.png">
+              <link rel="icon" type="image/png" href="images/fruyt_icon.png">
     </head>
     <body>
         <header>
@@ -27,22 +27,23 @@
             </div>
         </header>
         <div class="messagewrapper">
-                                        <?php
-        $display->showMessages(); 
-        ?>
+            <?php
+            $display->showMessages();
+            ?>
         </div>
         <div class="wrapper">
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
                     <a href="shopping_cart.php" id="cartLink">
-                    <span class="iconfont">&#xf07a;</span><span class="winkelwagen"> &euro;
-                    <?php if(isset($_SESSION['total'])) {
-                        echo $_SESSION['total'];
-                    } else {
-                        echo 0;
-                    }
-                     ?> 
-                    </span>
+                        <span class="iconfont">&#xf07a;</span><span class="winkelwagen"> &euro;
+                            <?php
+                            if (isset($_SESSION['total'])) {
+                                echo $_SESSION['total'];
+                            } else {
+                                echo 0;
+                            }
+                            ?> 
+                        </span>
                     </a>
                 </div>
             </div>

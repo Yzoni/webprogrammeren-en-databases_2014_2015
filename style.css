@@ -281,15 +281,19 @@ footer a:hover {
 
 .pageswitchwrapper a {
     color: #3D9191;
-    margin-left: 3px;
+    margin-left: 4px;
+    margin-right: 4px;
     text-decoration: none;
     margin-top: 30px;
 }
 
 .pageswitchwrapper a:hover {
     text-decoration: underline;
-    transition: all .3s ease;
     margin-top: 20px;
+}
+.pageswitchwrapper a:focus {
+    font-style: oblique;
+    color: red;
 }
 
 /* Product box */
