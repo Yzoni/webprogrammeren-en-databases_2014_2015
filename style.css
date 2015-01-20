@@ -256,17 +256,17 @@ nav .arrow {
 /* HEAD LOGIN AND REGISTER BUTTONS */
 #login {
     margin-top: 3px;
-    margin-right: 20px;
+    margin-right: 12px;
     line-height: 32px;
     float: right;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 #register {
     margin-top: 3px;
     line-height: 32px;
     float:right;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 footer {
@@ -445,7 +445,7 @@ footer a:hover {
     display: inline-block;
     text-align: center;
     font-weight: bold;
-    font-size: 11px;
+    font-size: 12px;
     height: 32px;
     line-height: 32px;
     padding-left: 10px;
@@ -539,9 +539,12 @@ footer a:hover {
     margin-top: 18px;
 }
 
-input[type=submit], #submit_button, #submit,
-.formwrapper input[type=submit], .formwrapper submit_button,
-.formwrapper submit {
+input[type=submit], 
+#submit_button, 
+#submit,
+.formwrapper input[type=submit], 
+.formwrapper #submit_button,
+.formwrapper #submit {
     background-color: #006666;
     display: inline-block;
     text-align: center;
@@ -625,5 +628,16 @@ input[type=submit], #submit_button, #submit,
 }
 
 #cartLink {
+    font-size: 16px;
+    color:white;
+    text-decoration: none;
+}
+
+.deleteItemLink {
     color:black;
+}
+
+#deleteItem {
+    font-family: iconfont;
+    color:red;
 }
