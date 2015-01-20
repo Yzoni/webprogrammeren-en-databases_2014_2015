@@ -60,7 +60,7 @@ select {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .wrapperheadcontent {
@@ -70,7 +70,7 @@ select {
 }
 
 .wrapperheadcontent .iconfont {
-    font-size: 25px;
+    font-size: 14px;
 }
 
 .wrapperheadcontent span a {
@@ -108,7 +108,7 @@ header .adminloggedin {
 
 header .welcome-header {
     color: #8C8C8C;
-    font-size: 16px;
+    font-size: 13px;
     display: inline-block;
     
 }
@@ -538,7 +538,7 @@ footer a:hover {
     background: url('images/password_bg.jpg') no-repeat;
 }
 
-.formwrapper select {
+.formwrapper select, select {
     border-radius: 5px;
     margin-bottom: 15px;
     height: 32px;
