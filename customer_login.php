@@ -25,12 +25,7 @@ include 'views/navigation.php';
                 <input type="password" name="password" placeholder="wachtwoord"><br>
                 <input class="button" type="submit" value="inloggen">
             </form>
-            <a href="customer_passwordforgot.php">Wachtwoord vergeten?</a>
-		<?php
-            if ($credentialsfalse == 1) {
-                echo "email of wachtwoord fout";
-            }
-	?>
+	    <a href="customer_passwordforgot.php" class="button"><span>&#xf059;</span> | wachtwoord vergeten?</a>
         </div>
 
 <?php

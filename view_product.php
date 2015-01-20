@@ -37,7 +37,7 @@ if(isset($_POST['quantity']) && floatval($_POST['quantity'] > 0)){
     } else {
         $_SESSION['quantities'][$indexId] += $quantity;
     }
-    $_SESSION['total'] += $product->price;
+    $_SESSION['total'] += ($product->price * $quantity);
 } else {
         $GLOBALS['printAddedProd'] = 0;
 }
@@ -141,7 +141,7 @@ $product = new Product($_GET["id"]);
     <p>
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>" 
-           class="backProd"> &#xf053; | terug naar: 
+           class="button"><span>&#xf053;</span> | terug naar: 
                <?php echo $product->type->name; ?> </a>
     </p>
 </div>
