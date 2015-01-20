@@ -19,6 +19,6 @@
     <input type="text" name="zip" placeholder="postcode" pattern="[0-9]{4}[a-zA-Z]{2}$" id="info" value="<?php echo $this->zip; ?>"><br>
     <input type="text" name="streetaddress" placeholder="straatnaam" id="info" value="<?php echo $this->streetaddress; ?>"><br>
     <input type="text" name="streetnumber" placeholder="huisnummer" id="info" value="<?php echo $this->streetnumber; ?>"><br>
-    <input class="button" type="submit" value="wijzigen">
+    <button type="submit" class="button"><span>&#xf040;</span> | wijzigen</button>
 
 </form>
