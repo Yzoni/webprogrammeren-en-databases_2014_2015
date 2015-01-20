@@ -19,5 +19,5 @@
         <input type="text" name="stock" placeholder="voorraad" id="stock" value="<?php echo $this->stock ?>"><br>
         <input type="file" name="image" id="uploadImg">
     </div>
-    <button type="submit" id="submit" class=button><span>&#xf00d;</span>opslaan</button>  
+    <button type="submit" id="submit" class="button"><span>&#xf00d;</span>opslaan</button>  
 </form>	     		

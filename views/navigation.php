@@ -15,7 +15,7 @@
                         echo "<a href=\"products.php?id=$producttype_nav->id\">$producttype_nav->name <span class=\"arrow\">&#xf101;</span></a></li>";
                     }
                     if (is_admin_logged_in()) {
-                        echo "<li><a href=\"admin_add_producttype.php\"><span class=\"icon\">&#xf055;</span> Categorie</a></li>";
+                        echo "<li><a href=\"admin_add_producttype.php\"><span class=\"icon\">&#xf055;</span> categorie</a></li>";
                     }
                     ?>
                 </ul>

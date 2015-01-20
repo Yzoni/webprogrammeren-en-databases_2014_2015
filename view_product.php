@@ -71,10 +71,10 @@ include 'views/navigation.php';
            <?php echo $product->name; ?>
            <?php
            if (is_admin_logged_in()) {
-               echo "<a href=\"admin_edit_product.php?id=$product->id\">"
-               . "<span class=\"icon\">&#xF040; wijzig product </span></a>";
-               echo "<a href=\"view_product.php?id=$product->id&fn=deleteproduct\">"
-               . "<span class=\"icon\">&#xf00d; verwijder product </span></a>";
+               echo "<a href=\"admin_edit_product.php?id=$product->id\" class=\"button"\>"
+               . "<span class=\"icon\">&#xF040;</span>wijzig product</a>";
+               echo "<a href=\"view_product.php?id=$product->id&fn=deleteproduct\" class=\"button_delete"\>"
+               . "<span class=\"icon\">&#xf00d;</span> verwijder product</a>";
            }
            ?>
     </div>
