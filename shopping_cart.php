@@ -42,8 +42,7 @@ if(isset($_SESSION["products"])){
         echo $productName ;
         echo 'Hoeveelheid :' . $quantity;
         echo $subtotal . ' euro ';
-        echo '<div class="shopping_cart_remove">' . "Verwijder" . 
-        	'<span class="icon">&#xf00d; </span></div>';
+        echo ' Verwijder . <span class="icon">&#xf00d; </span>';
         echo '</div>';	
         
             
