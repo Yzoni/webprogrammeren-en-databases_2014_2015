@@ -30,7 +30,7 @@ include 'views/navigation.php';
             </form>
             <?php
             if ($credentialsfalse == 1) {
-                echo "email of wachtwoord fout";
+            $display->addMessage("succes", "Categorie veranderd!");
             }
 ?>
         </div>
