@@ -261,6 +261,28 @@ class Product {
         return $result;
     }
 
+    static function getSortedProducts($sort) {
+        switch ($sort){
+            case alphabetic :
+                $order = ASC;
+                $type = name;
+                break;
+            case price-desc :
+                $order = DESC;
+                $type = price;
+                break;
+            case price-asc :
+                $order = ASC;
+                $type = price; 
+                break;            
+        }
+
+        $query = $db->prepare("SELECT * FROM Products ORDER BY $type $order");
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+        return $result;
+    }
+
     static function create($typeid, $name, $description, $stock, $price, $image = null) {
         global $db;
         $query = $db->prepare("INSERT INTO Products (typeid, name, description, stock, price, image) VALUES (:typeid, :name, :description, :stock, :price, :image)");
@@ -299,6 +321,17 @@ class Product {
         $query->execute();
     }
 
+    static function search($key) {
+        global $db;
+        $array = array();
+        $query = $db->prepare("SELECT * from Products WHERE :name LIKE :key");
+        $query->bindParam(':key', $key, PDO::PARAM_STR);
+        $query->execute();
+        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $array[] = $row['title'];
+        }
+        return json_encode($array);
+    }
 }
 
 /**
@@ -646,7 +679,9 @@ class showMessage {
         }
         return true;
     }
+
 }
+
 // Initialize messages
 $display = new showMessage();
 

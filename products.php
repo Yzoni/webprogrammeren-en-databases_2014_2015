@@ -61,7 +61,16 @@ $totalpages = ceil($totalamount / $endamount);
         } else {
             echo "<a href=\"products.php?page=" . $nextpage . "\">volgende > </a>";
         }
+
         ?>
+        
+        <select onchange=getSortedProducts(value)>
+            <option value="alphabetic"> A - Z </option>
+            <option value="price-desc"> Prijs hoog - laag </option>
+            <option value="price-asc"> Prijs laag - hoog </option>            
+        </select>
+
+
     </div>
         <?php
         foreach ($products as $product) {
