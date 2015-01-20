@@ -246,7 +246,7 @@ nav .arrow {
     float: right;
 }
 
-.search {
+input[name="firstname"] {
     width: 25%;
     height: 32px;
     border: none;
