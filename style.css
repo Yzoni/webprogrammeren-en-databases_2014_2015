@@ -254,6 +254,7 @@ nav .arrow {
     padding-left: 48px;
     background: url('images/username_bg.jpg') no-repeat;
     border-radius: 5px;
+    float: left;
 }
 
 .button, input[type="submit"], .button_delete{

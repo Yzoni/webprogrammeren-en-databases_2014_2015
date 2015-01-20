@@ -35,9 +35,9 @@
         <div class="wrapper">
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
-                    <input placeholder="Zoek product" type="text" name="search" id="search" onkeyup="showResult(this.value)">
+                    <input placeholder="Zoek products" type="text" name="search" id="search" onkeyup="showResult(this.value)">
                     <a href="shopping_cart.php" id="winkelwagen" class="button">
-                        <span class="iconfont">&#xf07a;</span>winkelwagentje<span class="winkelwagen"> &euro;
+                        <span>&#xf07a;</span>winkelwagentje<span class="winkelwagen"> &euro;
                             <?php
                             if (isset($_SESSION['total'])) {
                                 echo $_SESSION['total'];
