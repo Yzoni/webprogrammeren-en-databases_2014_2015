@@ -35,7 +35,7 @@
         <div class="wrapper">
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
-                    <input placeholder="Zoek product" type="text" name="search" id="search" onkeyup="showResult(this.value)">
+                    <input type="text" placeholder="Zoek producten" onkeyup="showResult(this.value)">
                     <a href="shopping_cart.php" class="winkelwagen">
                         <span>&#xf07a;</span>winkelwagentje &euro;
                             <?php
