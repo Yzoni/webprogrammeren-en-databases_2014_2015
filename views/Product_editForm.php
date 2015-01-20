@@ -17,7 +17,7 @@
     <div class="rechts_fruit">
         <input type="text" name="price" placeholder="prijs per kg" id="price" value="<?php echo $this->price ?>"> <br>
         <input type="text" name="stock" placeholder="voorraad" id="stock" value="<?php echo $this->stock ?>"><br>
-        <input type="file" name="image" placeholder="plaatje" id="uploadImg">
+        <input type="file" name="image" id="uploadImg">
     </div>
     <input type="submit" value="opslaan" id="submit">  
 </form>	     		

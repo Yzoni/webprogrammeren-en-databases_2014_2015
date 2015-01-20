@@ -13,9 +13,9 @@ if (isset($_POST['name'])) {
     $product->description = $_POST['description'];
     $product->price = $_POST['price'];
     $product->stock = $_POST['stock'];
-    $product->image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
-    $product->edit();
-    if ($product) {
+    $product->image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : printf("NULL"));
+    $status = $product->edit();
+    if ($status) {
         $display->addMessage("success", "Product aangepast");
     } else {
         $display->addMessage("error", "Er ging iets fout bij het aanpassen van dit product");

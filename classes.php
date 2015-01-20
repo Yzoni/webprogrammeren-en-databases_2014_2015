@@ -270,7 +270,7 @@ class Product {
         $query->bindParam(':stock', $stock, PDO::PARAM_STR);
         $query->bindParam(':price', $price, PDO::PARAM_STR);
         $query->bindParam(':image', $image, PDO::PARAM_LOB);
-        $query->execute();
+        return $query->execute();
     }
 
     function edit() {
@@ -283,7 +283,7 @@ class Product {
         $query->bindParam(':price', $this->price, PDO::PARAM_STR);
         $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
-        $query->execute();
+        return $query->execute();
     }
 
     function displayEditForm() {
