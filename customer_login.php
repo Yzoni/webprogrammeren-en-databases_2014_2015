@@ -11,6 +11,10 @@ if (isset($_GET['fn']) && $_GET['fn'] == "logout") {
     Customer::Logout();
 }
 
+if (isset($_GET['fn']) && $_GET['fn'] == "credentialsfalse") {
+    $display->addMessage("error", "Inloggegevens onjuist");
+}
+
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
