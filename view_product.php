@@ -101,9 +101,7 @@ include 'views/navigation.php';
                 if (is_admin_logged_in() == false) {
                     echo 'aantal: <input type="text" class="inputBox" '
                     . 'name="quantity">';
-                    echo '<input class="button" type="submit" '
-                    . 'value= "&#xf0fe;'
-                    . ' | voeg toe">';
+                    echo '<button type="submit" class="button"><span>&#xf0fe;</span> | voeg toe</button>';
                 }
                 ?>
             </form>
