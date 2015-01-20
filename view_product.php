@@ -88,7 +88,7 @@ $product = new Product($_GET["id"]);
                 
                 <?php
                 if (is_admin_logged_in() == false) {
-                    echo 'Aantal: <input type="text" class="inputBox" '
+                    echo 'aantal: <input type="text" class="inputBox" '
                     . 'name="quantity">';
                     echo '<input class="voegToe" type ="submit" '
                     . 'value= &#xf055;'
