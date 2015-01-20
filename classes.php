@@ -628,21 +628,20 @@ class Admin {
 
 class showMessage{
     public $messages = array();
-    public function addMessage($type, $message){
+    public function addMessage($type, $message) {
         $this->messages[] = array($type, $message);
     }
     public function showMessages(){
-        foreach($this->messages as $message){
+        foreach($this->messages as $message) {
             if($message[0] == "error"){
-                echo "<p>ERROR".$message[1]."</p>";
-            }else{
-                echo "<p>BERICHT:".$message[1]."</p>";
+                echo "<span class=\"message\">ERROR: ".$message[1]."</span>";
+            } else {
+                echo "<span class=\"message\">SUCCESS: ".$message[1]."</span>";
             }
         }
         return true;
     }
 }
-
 $display = new showMessage(); 
 
 /**

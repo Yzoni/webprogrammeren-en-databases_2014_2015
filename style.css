@@ -37,7 +37,7 @@ select {
     position: relative;
     margin: auto;
     padding-bottom: 100px;
-    margin-top: 110px;
+    margin-top: 100px;
     margin-bottom: 25px;
     width: 80%;
     height: auto;
@@ -108,8 +108,27 @@ header .adminloggedin {
 }
 
 header .welcome-header {
-    color: #000;
-    float: right;
+    color: #8C8C8C;
+    font-size: 20px;
+    display: inline-block;
+    
+}
+
+.messagewrapper {
+    position: absolute;
+    left: 50%;
+    margin-top: 40px;
+}
+
+.message {
+    background-color: white;
+    background: rgba(255, 255, 255, .7);
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: -20px;
+    position: relative; 
+    left: -50%;
 }
 
 nav {
@@ -400,9 +419,9 @@ footer a:hover {
 /* manager_panel css */
 
 .manager_panel{
-	width: 300px;
-	height: 300px;
-	float:left;
+    width: 300px;
+    height: 300px;
+    float:left;
 }
 
 .manager_button {
@@ -559,71 +578,71 @@ input[type=submit]{
 
 /* ADD ADMIN PRODUCT */
 .links_fruit{	
-	width: 30%;	
-	float: left;    
+    width: 30%;	
+    float: left;    
     margin-left: 3%;
     margin-top: 2%;    
 }
 
 .rechts_fruit {	
-	width: 30%;	
-	float: left;    
+    width: 30%;	
+    float: left;    
     margin-left: 3%;
     margin-top: 2%;	
 }
 
 #description_fruit, #name, #category, #price, #quantity, #stock, #photo{
-	width: 75%;	
-	border: 1px solid;
-	border-color: #006666;
-	margin-top: 5%;	
+    width: 75%;	
+    border: 1px solid;
+    border-color: #006666;
+    margin-top: 5%;	
 }
 
 #description_fruit {
-	font-family: arialroundedmt, sans-serif, "Times New Roman";
-	width: 90%;		
+    font-family: arialroundedmt, sans-serif, "Times New Roman";
+    width: 90%;		
 }
 
 #name, #category, #price, #quantity, #stock{
-	height: 32px;	
+    height: 32px;	
 }
 
 #name{	
-	padding-left: 48px;	
-	background: url("images/naam_bg.jpg") no-repeat;
+    padding-left: 48px;	
+    background: url("images/naam_bg.jpg") no-repeat;
 }
 
 #category{
-	padding-left: 48px;
-	background: url("images/categorie_bg.jpg") no-repeat;
+    padding-left: 48px;
+    background: url("images/categorie_bg.jpg") no-repeat;
 }
 
 #price{
-	padding-left: 48px;
-	background: url("images/prijs_bg.jpg") no-repeat;
+    padding-left: 48px;
+    background: url("images/prijs_bg.jpg") no-repeat;
 }
 
 #quantity{
-	padding-left: 48px;
-	background: url("images/kwantiteit_bg.jpg") no-repeat;
+    padding-left: 48px;
+    background: url("images/kwantiteit_bg.jpg") no-repeat;
 }
 
 #stock {
-	padding-left: 48px;
-	background: url("images/voorraad_bg.jpg") no-repeat;
+    padding-left: 48px;
+    background: url("images/voorraad_bg.jpg") no-repeat;
 }
 
 #submit {
-	background-color: #006666;
-	float: left;	
-	height: 10%;	
-	width: 18%;
-	text-align: center;
-	font-weight: bold;
-	color: white;	
-	line-height: 220%;	
-	margin-left: 3%;
-	margin-top: 2%;	
+    background-color: #006666;
+    float: left;	
+    height: 10%;	
+    width: 18%;
+    text-align: center;
+    font-weight: bold;
+    color: white;	
+    line-height: 220%;	
+    margin-left: 3%;
+    margin-top: 2%;	
 }
 .pay {
     padding: 10px;

@@ -26,7 +26,11 @@
                 ?>
             </div>
         </header>
-        <?php $display->showMessages(); ?>
+        <div class="messagewrapper">
+                                        <?php
+        $display->showMessages(); 
+        ?>
+        </div>
         <div class="wrapper">
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
