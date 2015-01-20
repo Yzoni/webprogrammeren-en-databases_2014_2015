@@ -38,12 +38,11 @@ if(isset($_SESSION["products"])){
     	$subtotal = ($productPrice * $quantity);
         $_SESSION['total'] += $subtotal;
         
-        echo '<div class = product_basket>'
+        echo '<div class = product_basket>';
         echo $productName ;
         echo 'Hoeveelheid :' . $quantity;
         echo $subtotal . ' euro ';
-        echo '<div class="shopping_cart_remove">' . "Verwijder" . 
-        	'<span class="icon">&#xf00d; </span></div>';
+        echo ' Verwijder . <span class="icon">&#xf00d; </span>';
         echo '</div>';	
         
             

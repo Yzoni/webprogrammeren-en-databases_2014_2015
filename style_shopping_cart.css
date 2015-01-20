@@ -10,11 +10,12 @@
     margin-left: 28.8%;
 }
 
-.name .quantity .subtotal {
+.product_basket {
     font-size: 10px;
     font-color: #454545;
     width: 80%;
     width: 20%;
+    margin-left: 2%;
 }
 
 .shopping_cart_delivery_time .shopping_cart_price_total {
