@@ -280,6 +280,7 @@ class Product {
         $query = $db->prepare("SELECT * FROM Products ORDER BY $type $order");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+        return $result;
     }
 
     static function create($typeid, $name, $description, $stock, $price, $image = null) {
