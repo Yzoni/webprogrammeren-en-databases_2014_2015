@@ -233,6 +233,7 @@ nav .arrow {
     display: inline-block;
     text-align: center;
     color: white;
+    border: none;
     height: 32px;
     font-size: 12px;
     line-height: 32px;
