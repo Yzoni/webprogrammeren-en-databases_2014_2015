@@ -261,27 +261,27 @@ class Product {
         return $result;
     }
 
-    static function create($typeid, $name, $description, $image = null, $stock, $price) {
+    static function create($typeid, $name, $description, $stock, $price, $image = null) {
         global $db;
-        $query = $db->prepare("INSERT INTO Products (typeid, name, description, image, stock, price) VALUES (:typeid, :name, :description, :image, :stock, :price)");
+        $query = $db->prepare("INSERT INTO Products (typeid, name, description, stock, price, image) VALUES (:typeid, :name, :description, :stock, :price, :image)");
         $query->bindParam(':typeid', $typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->bindParam(':description', $description, PDO::PARAM_STR);
-        $query->bindParam(':image', $image, PDO::PARAM_LOB);
         $query->bindParam(':stock', $stock, PDO::PARAM_STR);
         $query->bindParam(':price', $price, PDO::PARAM_STR);
+        $query->bindParam(':image', $image, PDO::PARAM_LOB);
         $query->execute();
     }
 
     function edit() {
         global $db;
-        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, image = :image, stock = :stock, price = :price WHERE id = :id");
+        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, image = :image WHERE id = :id");
         $query->bindParam(':typeid', $this->typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
         $query->bindParam(':description', $this->description, PDO::PARAM_STR);
-        $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
         $query->bindParam(':stock', $this->stock, PDO::PARAM_STR);
         $query->bindParam(':price', $this->price, PDO::PARAM_STR);
+        $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         $query->execute();
     }
@@ -628,23 +628,29 @@ class Admin {
 
 }
 
-class showMessage{
+class showMessage {
+
     public $messages = array();
+
     public function addMessage($type, $message) {
         $this->messages[] = array($type, $message);
     }
-    public function showMessages(){
-        foreach($this->messages as $message) {
-            if($message[0] == "error"){
-                echo "<span class=\"message\">ERROR: ".$message[1]."</span>";
+
+    public function showMessages() {
+        foreach ($this->messages as $message) {
+            if ($message[0] == "error") {
+                echo "<span class=\"message\">ERROR: " . $message[1] . "</span>";
             } else {
-                echo "<span class=\"message\">SUCCESS: ".$message[1]."</span>";
+                echo "<span class=\"message\">SUCCESS: " . $message[1] . "</span>";
             }
         }
         return true;
     }
+
 }
-$display = new showMessage(); 
+
+// Initialize messages
+$display = new showMessage();
 
 /**
  * Class Order

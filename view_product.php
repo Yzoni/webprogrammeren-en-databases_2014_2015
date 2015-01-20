@@ -4,6 +4,9 @@ if(!isset($GLOBALS['printAddedProd'])) {
     global $printAddedProd;
     $GLOBALS['printAddedProd'] = 0;
 }
+if(!isset($_SESSION['total'])) {
+    $_SESSION['total'] = 0;
+}
 require_once 'classes.php';
 
 $product = new Product($_GET["id"]);
@@ -85,10 +88,10 @@ $product = new Product($_GET["id"]);
                 
                 <?php
                 if (is_admin_logged_in() == false) {
-                    echo 'Aantal: <input type="text" class="inputBox" '
+                    echo 'aantal: <input type="text" class="inputBox" '
                     . 'name="quantity">';
                     echo '<input class="voegToe" type ="submit" '
-                    . 'value= "&#xf055;'
+                    . 'value= "&#xf0fe;'
                     . ' | voeg toe">';
                 }
                 ?>
@@ -126,6 +129,9 @@ $product = new Product($_GET["id"]);
                     echo "U heeft toegevoegd aan uw Winkelwagen: " . 
                         $product->name . " " .
                         $_POST['quantity'] . " kg" . "<br>";
+                    unset($_POST['quantity']);
+                    echo '<meta http-equiv="refresh" content="5">';
+                    $GLOBALS['printAddedProd'] = 0;
                 }
                 ?>
     </div>
@@ -134,7 +140,7 @@ $product = new Product($_GET["id"]);
 
     <p>
         <br>
-        <a href="view_producttype.php?id=<?php echo $product->type->id ?>" 
+        <a href="products.php?id=<?php echo $product->type->id ?>" 
            class="backProd"> &#xf053; | terug naar: 
                <?php echo $product->type->name; ?> </a>
     </p>

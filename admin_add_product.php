@@ -9,7 +9,7 @@ if (isset($_POST['name'])) {
     $price = $_POST['price'];
     $stock = $_POST['stock'];
     $image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : "");
-    Product::create($typeid, $name, $description, $image, $stock, $price);
+    Product::create($typeid, $name, $description, $stock, $price, $image);
 }
 include 'views/header.php';
 include 'views/navigation.php';
