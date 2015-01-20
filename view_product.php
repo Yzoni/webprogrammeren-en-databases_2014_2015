@@ -90,7 +90,7 @@ $product = new Product($_GET["id"]);
                 if (is_admin_logged_in() == false) {
                     echo 'aantal: <input type="text" class="inputBox" '
                     . 'name="quantity">';
-                    echo '<input class="button" type ="submit" '
+                    echo '<input class="button" type="submit" '
                     . 'value= "&#xf0fe;'
                     . ' | voeg toe">';
                 }
