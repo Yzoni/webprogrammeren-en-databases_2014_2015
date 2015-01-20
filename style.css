@@ -380,22 +380,6 @@ footer a:hover {
     padding-left: 4px;
 }
 
-.box .button {
-    float: right;
-    background-color: #006666;
-    border-radius: 5px;
-    height: 30px;
-    width: 110px;
-    display: inline-block;
-    line-height: 30px;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    margin-right: 10px;
-    transition: all .3s ease;
-}
-
 .box .button span {
     font-family: iconfont;
     font-size: 12px;
