@@ -232,8 +232,12 @@ nav .arrow {
     background-color: #006666;
     display: inline-block;
     text-align: center;
-    font-weight: bold;
     color: white;
+    height: 32px;
+    font-size: 12px;
+    line-height: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
     border-radius: 5px;
     text-decoration: none;
     transition: all .3s ease;
@@ -241,7 +245,7 @@ nav .arrow {
 
 .button span {
     font-family: iconfont;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .button:hover {
@@ -251,21 +255,18 @@ nav .arrow {
 
 /* HEAD LOGIN AND REGISTER BUTTONS */
 #login {
-    width: 130px;
-    height: 35px;
-    margin-right: 20px;
+    margin-top: 3px;
+    margin-right: 12px;
     line-height: 32px;
     float: right;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 #register {
-    width: 150px;
-    height: 35px;
-    margin-right: 40px;
+    margin-top: 3px;
     line-height: 32px;
     float:right;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 footer {
@@ -336,7 +337,7 @@ footer a:hover {
 
 .box .title {
     margin-left: 15px;
-    margin-top: 5px;
+    margin-top: 6px;
     margin-bottom: 10px;
     font-size: 14px;
 }
@@ -379,25 +380,9 @@ footer a:hover {
     padding-left: 4px;
 }
 
-.box .button {
-    float: right;
-    background-color: #006666;
-    border-radius: 5px;
-    height: 30px;
-    width: 110px;
-    display: inline-block;
-    line-height: 30px;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    margin-right: 10px;
-    transition: all .3s ease;
-}
-
 .box .button span {
     font-family: iconfont;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .box .button:hover {
@@ -421,23 +406,6 @@ footer a:hover {
 }
 .descrImg {
     display: inline-block;
-}
-
-.voegToe {
-    font-family: iconfont;
-    background-color: #006666;
-    border-radius: 5px;
-    height: 30px;
-    width: 110px;
-    display: inline-block;
-    line-height: 30px;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    margin-right: 10px;
-    margin-top: 5px;
-    font-size: 11px;
 }
 
 .icon-ok {
@@ -477,7 +445,7 @@ footer a:hover {
     display: inline-block;
     text-align: center;
     font-weight: bold;
-    font-size: 11px;
+    font-size: 12px;
     height: 32px;
     line-height: 32px;
     padding-left: 10px;
@@ -491,29 +459,12 @@ footer a:hover {
 
 .manager_button span {
     font-family: iconfont;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .manager_button:hover {
     background-color:#008b8b;
     cursor: pointer;
-}
-
-.backProd {
-    float:left;
-    font-family: iconfont;
-    background-color: #006666;
-    border-radius: 5px;
-    height: 30px;
-    width: 250px;
-    display: inline-block;
-    line-height: 30px;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    margin-right: 10px;
-    margin-top: 5px;
 }
 
 .infoList {
@@ -551,6 +502,17 @@ footer a:hover {
     border-radius: 5px;
 }
 
+#add_new_category {
+    margin-bottom: 15px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 48px;
+    background: url('images/naam_bg.jpg') no-repeat;
+    border-radius: 5px;
+}
+
 .formwrapper input[type=password] {
     border-radius: 5px;
     margin-bottom: 15px;
@@ -577,51 +539,28 @@ footer a:hover {
     margin-top: 18px;
 }
 
-input[type=submit]{
-    width: 100px;
+input[type=submit], 
+#submit_button, 
+#submit,
+.formwrapper input[type=submit], 
+.formwrapper #submit_button,
+.formwrapper #submit {
     background-color: #006666;
-    border-radius: 5px;
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    height: 32px;
-    border: none;
     display: inline-block;
     text-align: center;
-    font-weight: bold;
-    text-decoration: none;
     color: white;
-}
-
-.formwrapper form .button {
-    height: 40px;
+    height: 32px;
+    font-size: 12px;
+    line-height: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all .3s ease;
 }
 
 .formwrapper input[name="firstname"] {
     width: 140px;
-}
-
-
-/* ADMIN CONFIG CATEGORY */
-#add_new_category {
-    border: 1px solid;
-    border-color: #006666;
-    margin-top: 5%; 
-    height: 10%;    
-    width: 18%;
-    border: 1px solid;
-    border-color: #006666;
-    height: 32px;
-}
-
-#submit_button {
-    background-color: #006666;
-    height: 10%;    
-    width: 18%;
-    text-align: center;
-    font-weight: bold;
-    color: white;   
-    line-height: 220%;  
-    margin-left: 3%;
-    margin-top: 2%;
 }
 
 /* ADD ADMIN PRODUCT */
@@ -680,18 +619,6 @@ input[type=submit]{
     background: url("images/voorraad_bg.jpg") no-repeat;
 }
 
-#submit {
-    background-color: #006666;
-    float: left;	
-    height: 10%;	
-    width: 18%;
-    text-align: center;
-    font-weight: bold;
-    color: white;	
-    line-height: 220%;	
-    margin-left: 3%;
-    margin-top: 2%;	
-}
 .pay {
     padding: 10px;
 }
@@ -701,7 +628,9 @@ input[type=submit]{
 }
 
 #cartLink {
-    color:black;
+    font-size: 16px;
+    color:white;
+    text-decoration: none;
 }
 
 .deleteItemLink {

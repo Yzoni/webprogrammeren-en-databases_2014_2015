@@ -26,7 +26,7 @@
                 echo "<a href=\"customer_orders.php\">Mijn bestellingen</a>";
             }
             if (is_admin_logged_in() == TRUE) {
-                echo "<a href=\"admin_customers.php\">Mijn klanten</a>";
+                echo "<a href=\"admin_list_customers.php\">Mijn klanten</a>";
                 echo "<a href=\"admin_orders.php\">Alle bestellingen</a>";
             }
             ?>

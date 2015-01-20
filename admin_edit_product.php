@@ -6,16 +6,16 @@ if (!isset($_GET['id']) || $_GET['id'] <= 0) {
     echo "No ID given";
     exit();
 }
-$product = new Product($_GET["id"]);
+$product = new Product($_GET['id']);
 if (isset($_POST['name'])) {
     $product->name = $_POST['name'];
     $product->typeid = $_POST['producttype'];
     $product->description = $_POST['description'];
     $product->price = $_POST['price'];
     $product->stock = $_POST['stock'];
-    $product->image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
-    $product->edit();
-    if ($product) {
+    $product->image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : printf("NULL"));
+    $status = $product->edit();
+    if ($status) {
         $display->addMessage("success", "Product aangepast");
     } else {
         $display->addMessage("error", "Er ging iets fout bij het aanpassen van dit product");

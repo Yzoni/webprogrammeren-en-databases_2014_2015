@@ -68,7 +68,7 @@ $product = new Product($_GET["id"]);
     
     <br>
     <span class="descrText"> <?php echo $product->description; ?></span>
-    <img class="descrImg" src="data:image/png;base64,
+    <img class="descrImg" height="114" width="320" src="data:image/png;base64,
         <?php echo base64_encode($product->image); ?>"/>
     <br>
     <hr>
@@ -90,7 +90,7 @@ $product = new Product($_GET["id"]);
                 if (is_admin_logged_in() == false) {
                     echo 'aantal: <input type="text" class="inputBox" '
                     . 'name="quantity">';
-                    echo '<input class="voegToe" type ="submit" '
+                    echo '<input class="button" type ="submit" '
                     . 'value= "&#xf0fe;'
                     . ' | voeg toe">';
                 }
@@ -141,7 +141,7 @@ $product = new Product($_GET["id"]);
     <p>
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>" 
-           class="backProd"> &#xf053; | terug naar: 
+           class="button"><span>&#xf053;</span> | terug naar: 
                <?php echo $product->type->name; ?> </a>
     </p>
 </div>

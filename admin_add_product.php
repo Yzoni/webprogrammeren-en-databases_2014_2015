@@ -39,9 +39,9 @@ include 'views/navigation.php';
     <div class="rechts_fruit">
         <input type="text" name="price" placeholder="prijs per stuk" id="price"> <br>
         <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
-        <input type="file" name="image" placeholder="plaatje" id="uploadImg">
+        <input type="file" name="image" id="uploadImg">
     </div>
-    <input type="submit" value="opslaan" id="submit">  
+    <input type="submit" value="opslaan" class="button">  
 </form>	       		      
 
 <?php
