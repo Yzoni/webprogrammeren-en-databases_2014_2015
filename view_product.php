@@ -141,7 +141,7 @@ $product = new Product($_GET["id"]);
     <p>
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>" 
-           class="backProd"> &#xf053; | terug naar: 
+           class="button"> &#xf053; | terug naar: 
                <?php echo $product->type->name; ?> </a>
     </p>
 </div>
