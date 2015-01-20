@@ -247,6 +247,7 @@ nav .arrow {
 
 .button_delete{
     background-color: #d40000;
+    float: right;
 }
 
 .button span {
