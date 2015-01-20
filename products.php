@@ -28,9 +28,9 @@ $totalpages = ceil($totalamount / $endamount);
         
         // Set previous button
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $previouspage . "\">< vorige</a>";
+            echo "<a class=\"button"\ href=\"products.php?id=" . $_GET["id"] . "&page=" . $previouspage . "\">< vorige</a>";
         } else {
-            echo "<a href=\"products.php?page=" . $previouspage . "\">< vorige</a>";
+            echo "<a class=\"button"\ href=\"products.php?page=" . $previouspage . "\">< vorige</a>";
         }
 
         echo " | ";
