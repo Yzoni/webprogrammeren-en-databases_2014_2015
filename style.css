@@ -255,14 +255,14 @@ nav .arrow {
 
 /* HEAD LOGIN AND REGISTER BUTTONS */
 #login {
-    margin-right: 20px;
+    margin-top: 3px;
     line-height: 32px;
     float: right;
     font-size: 14px;
 }
 
 #register {
-    margin-right: 40px;
+    margin-right: 20px;
     line-height: 32px;
     float:right;
     font-size: 14px;
