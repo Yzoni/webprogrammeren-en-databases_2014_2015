@@ -81,7 +81,8 @@ select {
 }
 
 .wrapperheadcontent span a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: white;
 }
 
 header {
