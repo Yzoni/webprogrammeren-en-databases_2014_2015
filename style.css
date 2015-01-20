@@ -556,7 +556,9 @@ footer a:hover {
     margin-top: 18px;
 }
 
-input[type=submit], #submit_button, #submit {
+input[type=submit], #submit_button, #submit,
+.formwrapper input[type=submit], .formwrapper submit_button,
+.formwrapper submit {
     background-color: #006666;
     display: inline-block;
     text-align: center;
