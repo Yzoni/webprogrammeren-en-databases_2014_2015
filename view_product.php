@@ -37,7 +37,7 @@ if(isset($_POST['quantity']) && floatval($_POST['quantity'] > 0)){
     } else {
         $_SESSION['quantities'][$indexId] += $quantity;
     }
-    $_SESSION['total'] += $product->price;
+    $_SESSION['total'] += ($product->price * $quantity);
 } else {
         $GLOBALS['printAddedProd'] = 0;
 }
