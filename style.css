@@ -83,6 +83,7 @@ select {
 .wrapperheadcontent .iconfont {
     font-size: 12px;
     color: white;
+    margin-left: 12px;
 }
 
 .wrapperheadcontent span a {
@@ -279,7 +280,7 @@ input[name="firstname"] {
     float: right;
 }
 
-.button span {
+.button span, .winkelwagen span {
     font-family: iconfont;
     font-size: 12px;
     padding-right: 10px;
@@ -451,6 +452,7 @@ footer a:hover {
 }
 .icon {
     font-family: iconfont;
+    margin-left: 
 }
 .icon-not-ok {
     color: green;
