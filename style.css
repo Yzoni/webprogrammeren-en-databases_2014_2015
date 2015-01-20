@@ -248,6 +248,7 @@ nav .arrow {
 .button span {
     font-family: iconfont;
     font-size: 12px;
+    padding-right: 10px;
 }
 
 .button:hover {

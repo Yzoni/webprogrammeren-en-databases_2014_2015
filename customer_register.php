@@ -36,7 +36,7 @@ include 'views/navigation.php';
         <input type="text" name="zip" placeholder="postcode" pattern="[0-9]{4}[a-zA-Z]{2}$" id="info"><br>
         <input type="text" name="streetaddress" placeholder="straatnaam" id="info"><br>
         <input type="text" name="streetnumber" placeholder="huisnummer" id="info"><br>
-        <button class="button" type="submit"><span>&#xf14a;</span> | registreer</button>
+        <button class="button" type="submit"><span>&#xf14a;</span>registreer</button>
     </form>
 </div>
 <script type="text/javascript" src="js/checkpassword.js"></script>
