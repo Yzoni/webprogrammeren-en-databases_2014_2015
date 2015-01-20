@@ -129,7 +129,9 @@ $product = new Product($_GET["id"]);
                     echo "U heeft toegevoegd aan uw Winkelwagen: " . 
                         $product->name . " " .
                         $_POST['quantity'] . " kg" . "<br>";
+                    unset($_POST['quantity']);
                     echo '<meta http-equiv="refresh" content="5">';
+                    $GLOBALS['printAddedProd'] = 0;
                 }
                 ?>
     </div>
