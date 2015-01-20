@@ -592,10 +592,6 @@ input[type=submit], #add_new_category, #submit_button {
     transition: all .3s ease;
 }
 
-.formwrapper form .button {
-    height: 40px;
-}
-
 .formwrapper input[name="firstname"] {
     width: 140px;
 }
