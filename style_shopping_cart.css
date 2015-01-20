@@ -11,19 +11,15 @@
 }
 
 .name .quantity .subtotal {
-    font-size: 12px;
+    font-size: 10px;
     font-color: #454545;
     width: 80%;
-    min-height: 170px;
-    width: 40%;
-    display: inline-block;
+    width: 20%;
 }
 
 .shopping_cart_delivery_time .shopping_cart_price_total {
     padding-right: 30px;
 }
-
-
 
 #pay {
     background-color: #006666;

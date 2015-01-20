@@ -5,6 +5,8 @@ require_once 'classes.php';
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
+
+<div class="shopping_cart">
     <p>
     	<br>
     	Winkelwagentje 			
@@ -37,13 +39,11 @@ if(isset($_SESSION["products"])){
         $_SESSION['total'] += $subtotal;
         
 
-        echo '<div class="shopping_cart">';
-
         echo '<div class="name">' . $productName. '</div>';
         echo '<div class="quantity">Hoeveelheid : '.$quantity.'</div>';
         echo '<div class="subtotal">' .$subtotal. 'euro </div>';
 
-        echo '</div>';
+        echo '<br>';
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
@@ -54,7 +54,8 @@ if(isset($_SESSION["products"])){
 } else{
     echo 'Your Cart is empty'; 
 }
+echo '<div class="line"> </div>';
+echo '</div>';'
 
 include 'views/footer.php';
 ?>
-<div class="line"> </div>';
