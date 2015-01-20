@@ -70,7 +70,7 @@ select {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     color: white;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .wrapperheadcontent {
@@ -81,7 +81,7 @@ select {
 }
 
 .wrapperheadcontent .iconfont {
-    font-size: 16px;
+    font-size: 20px;
     color: white;
 }
 
@@ -99,7 +99,7 @@ header {
     color: white;
     height: 50px;
     padding-top: 10px;
-    padding-left: 20px;
+    padding-left: 0px;
     background-color: white;
     background: rgba(255, 255, 255, .7);
 }
@@ -444,7 +444,6 @@ footer a:hover {
     background-color: #006666;
     display: inline-block;
     text-align: center;
-    font-weight: bold;
     font-size: 12px;
     height: 32px;
     line-height: 32px;
