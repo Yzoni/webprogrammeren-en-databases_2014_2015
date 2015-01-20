@@ -228,6 +228,11 @@ nav .arrow {
     margin-right: 20px;
 }
 
+.winkelwagen {
+    background-color: #ffffff;
+    font-color: #006666;
+}
+
 .button, input[type="submit"], .button_delete{
     background-color: #006666;
     display: inline-block;
@@ -614,12 +619,6 @@ input[type="submit"] {
 
 #addedProduct {
     color: red;
-}
-
-#cartLink {
-    font-size: 20px;
-    color:white;
-    text-decoration: none;
 }
 
 .deleteItemLink {
