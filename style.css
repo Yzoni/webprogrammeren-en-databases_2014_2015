@@ -60,17 +60,19 @@ select {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .wrapperheadcontent {
     float: right;
+    color: white;
     padding-top: 9px;
     margin-right: 20px;
 }
 
 .wrapperheadcontent .iconfont {
-    font-size: 14px;
+    font-size: 16px;
+    color: white;
 }
 
 .wrapperheadcontent span a {
@@ -79,7 +81,8 @@ select {
 }
 
 .wrapperheadcontent span a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: white;
 }
 
 header {
@@ -234,6 +237,7 @@ nav .arrow {
     margin-right: 20px;
     line-height: 32px;
     float: right;
+    font-size: 14px;
 }
 
 #register {
@@ -242,6 +246,7 @@ nav .arrow {
     margin-right: 40px;
     line-height: 32px;
     float:right;
+    font-size: 14px;
 }
 
 footer {
