@@ -642,3 +642,10 @@ input[type="submit"],
     font-family: iconfont;
     color:red;
 }
+
+#select_order {
+    padding-left : 2px;
+    float : right;
+}
+
+
