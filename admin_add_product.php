@@ -41,7 +41,7 @@ include 'views/navigation.php';
         <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
         <input type="file" name="image" id="uploadImg">
     </div>
-    <button type="submit" class="button"><span>&#xf0fe;</span> | toevoegen</button>  
+    <button type="submit" class="button"><span>&#xf0fe;</span>toevoegen</button>  
 </form>	       		      
 
 <?php

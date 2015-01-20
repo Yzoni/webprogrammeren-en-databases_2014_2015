@@ -26,7 +26,7 @@ include 'views/navigation.php';
             <form action="admin_login.php" method="post">
                 <input type="text" name="username" placeholder="voornaam"><br>
                 <input type="password" name="password" placeholder="wachtwoord"><br>
-                <input class="button" type="submit" value="inloggen">
+                <button type="submit" class="button"><span>&#xf084;</span>login</button>
             </form>
         </div>
 <?php

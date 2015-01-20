@@ -101,7 +101,7 @@ include 'views/navigation.php';
                 if (is_admin_logged_in() == false) {
                     echo 'aantal: <input type="text" class="inputBox" '
                     . 'name="quantity">';
-                    echo '<button type="submit" class="button"><span>&#xf0fe;</span> | voeg toe</button>';
+                    echo '<button type="submit" class="button"><span>&#xf0fe;</span>voeg toe</button>';
                 }
                 ?>
             </form>
@@ -150,7 +150,7 @@ include 'views/navigation.php';
     <p>
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>" 
-           class="button"><span>&#xf137;</span> | terug naar: 
+           class="button"><span>&#xf137;</span>terug naar: 
             <?php echo $product->type->name; ?> </a>
     </p>
 </div>
