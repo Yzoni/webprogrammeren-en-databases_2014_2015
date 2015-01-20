@@ -8,10 +8,11 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-$startamount = ($page - 1) * 5;
+$endamount = 5;
+$startamount = ($page - 1) * $endamount;
 $products = Product::getAllProducts((array_key_exists("id", $_GET)?$_GET["id"]:null), $startamount);
 $totalamount = Product::countProducts((array_key_exists("id", $_GET)?$_GET["id"]:null));
-$totalpages = ceil($totalamount / 5);
+$totalpages = ceil($totalamount / $endamount);
 ?>
 
 <div class="wrappercontent">

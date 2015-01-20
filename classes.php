@@ -242,17 +242,19 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getAllProducts($type = null, $start_amount = 0) {
+    static function getAllProducts($type = null, $startamount = 0, $endamount = 5) {
         global $db;
         if ($type) {
-            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY name LIMIT :startamount, 5");
-            $query->bindParam(':startamount', $start_amount, PDO::PARAM_INT);
+            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY name LIMIT :startamount, :endamount");
+            $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
+            $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         } else {
-            $query = $db->prepare("SELECT * FROM Products ORDER BY name LIMIT :startamount, 5");
-            $query->bindParam(':startamount', $start_amount, PDO::PARAM_INT);
+            $query = $db->prepare("SELECT * FROM Products ORDER BY name LIMIT :startamount, :endamount");
+            $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
+            $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         }
