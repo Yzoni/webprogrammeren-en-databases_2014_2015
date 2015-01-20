@@ -487,11 +487,8 @@ footer a:hover {
     background: url('images/info_bg.jpg') no-repeat;
 }
 
-.formwrapper input {
-    width: 250px;
-}
-
 .formwrapper input[type=text] {
+    width: 250px;
     margin-bottom: 15px;
     height: 32px;
     border: 1px solid;
@@ -514,6 +511,7 @@ footer a:hover {
 }
 
 .formwrapper input[type=password] {
+    width: 250px;
     border-radius: 5px;
     margin-bottom: 15px;
     height: 32px;
