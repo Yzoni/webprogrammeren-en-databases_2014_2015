@@ -9,9 +9,9 @@ if(isset($_POST['username']) && $_POST['password']){
 if (isset($_GET['fn']) && $_GET['fn'] == "logout") {
     Admin::logout();
 }
-$credentialsfalse = 0;
+
 if (isset($_GET['fn']) && $_GET['fn'] == "credentialsfalse") {
-    $credentialsfalse = 1;
+    $display->addMessage("error", "Inloggegevens onjuist");
 }
 
 
@@ -28,11 +28,6 @@ include 'views/navigation.php';
                 <input type="password" name="password" placeholder="wachtwoord"><br>
                 <input class="button" type="submit" value="inloggen">
             </form>
-            <?php
-            if ($credentialsfalse == 1) {
-                echo "email of wachtwoord fout";
-            }
-?>
         </div>
 <?php
 include 'views/footer.php';

@@ -15,6 +15,11 @@ if (isset($_POST['name'])) {
     $product->stock = $_POST['stock'];
     $product->image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
     $product->edit();
+    if ($product) {
+        $display->addMessage("success", "Product aangepast");
+    } else {
+        $display->addMessage("error", "Er ging iets fout bij het aanpassen van dit product");
+    }
 }
 include 'views/header.php';
 include 'views/navigation.php';
