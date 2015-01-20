@@ -1,8 +1,8 @@
 <nav>
     <ul>
         <li>
-            <a href="index.php">Home</a>
-            <a href="products.php">Producten <?php echo (is_admin_logged_in()==true) ? "</a><a href=\"admin_add_product.php\" class=\"no-nav\"><span class=\"arrow\">&#xf055;</span>" : "";?></a>
+            <a href="index.php">home</a>
+            <a href="products.php">producten <?php echo (is_admin_logged_in()==true) ? "</a><a href=\"admin_add_product.php\" class=\"no-nav\"><span class=\"arrow\">&#xf055;</span>" : "";?></a>
             <div>
                 <ul>
                     <?php
@@ -15,19 +15,19 @@
                         echo "<a href=\"products.php?id=$producttype_nav->id\">$producttype_nav->name <span class=\"arrow\">&#xf101;</span></a></li>";
                     }
                     if(is_admin_logged_in()){
-                        echo "<li><a href=\"admin_add_producttype.php\"><span class=\"icon\">&#xf055;</span> Categorie</a></li>";
+                        echo "<li><a href=\"admin_add_producttype.php\"><span class=\"icon\">&#xf055;</span> categorie</a></li>";
                     }
                     ?>
                 </ul>
             </div>
             <?php
             if (is_customer_logged_in() == TRUE) {
-                echo "<a href=\"customer_edit_info.php\">Mijn gegevens</a>";
-                echo "<a href=\"customer_orders.php\">Mijn bestellingen</a>";
+                echo "<a href=\"customer_edit_info.php\">mijn gegevens</a>";
+                echo "<a href=\"customer_orders.php\">mijn bestellingen</a>";
             }
             if (is_admin_logged_in() == TRUE) {
-                echo "<a href=\"admin_list_customers.php\">Mijn klanten</a>";
-                echo "<a href=\"admin_orders.php\">Alle bestellingen</a>";
+                echo "<a href=\"admin_list_customers.php\">mijn klanten</a>";
+                echo "<a href=\"admin_orders.php\">alle bestellingen</a>";
             }
             ?>
         </li>
