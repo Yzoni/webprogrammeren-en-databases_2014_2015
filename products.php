@@ -57,9 +57,9 @@ $totalpages = ceil($totalamount / $endamount);
         }
         // Set next button
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            echo "<a class="button" href=\"products.php?id=" . $_GET["id"] . "&page=" . $nextpage . "\"> volgende ></a>";
+            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $nextpage . "\"> volgende ></a>";
         } else {
-            echo "<a class="button" href=\"products.php?page=" . $nextpage . "\">volgende > </a>";
+            echo "<a href=\"products.php?page=" . $nextpage . "\">volgende > </a>";
         }
         ?>
     </div>
