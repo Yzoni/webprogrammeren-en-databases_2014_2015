@@ -1,14 +1,15 @@
 <script>
 
 function validQuantity() {
-        var quantity = document.forms["addToCart"]["quantity"].value;
-        var stock = 10;
-        if (isNaN(quantity)){
-             alert("nah");
-             return false;
-        }
+    var quantity = document.forms["addToCart"]["quantity"].value;
+    var stock = "<?php echo json_encode($product->stock); ?>";
+    if (isNaN(quantity)){
+        alert("U dient cijfers in te vullen");
+        return false;
+    }
     if (quantity > stock || quantity <= 0) {    
-        alert("nooooooooooooooooooooooooooo");
+        alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\n\
+                meer hebben wij op dit moment niet op voorraad.");
         return false;
     }
 }
@@ -112,7 +113,6 @@ include 'views/navigation.php';
 
     <br>
 
-    <p>
     <ul class="infoList">
 
     <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
@@ -124,9 +124,11 @@ include 'views/navigation.php';
     <li>
         <p class="ProdInfoTxt">
             <span class="icon">
-            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?>
+            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")
+            ?>
             </span>
-            <?php echo ($product->stock > 0 ? "niet;" : "") ?> 
+            <?php echo $product->stock;
+            ?> 
             op voorraad
         </p>
         <br>
@@ -140,17 +142,17 @@ include 'views/navigation.php';
         <br>
     </li>
     <li>
-        <span class="prodInfoTxt">
-        <span class="icon">&#xf153; </span>
-            prijs per kg:  <?php echo $product->price; ?>
+        <span class="prodInfoTxt">        
+        <span class="icon">&#xf153; </span> 
+            prijs per kg: 
+                <?php echo $product->price; ?> euro
         </span>
         <br>
 
     </li>
 
     </ul>
-    </p>
-
+    
     <div id="addedProduct">
         <?php
 // if a product has been added to the shopping cart this 

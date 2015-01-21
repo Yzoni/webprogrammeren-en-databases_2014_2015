@@ -531,7 +531,7 @@ footer a:hover {
     margin-top: 25px;
     margin-left: 30%;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    width: 80%;
+    width: 50%;
 }
 
 #person {
@@ -579,6 +579,8 @@ footer a:hover {
 }
 
 .formwrapper select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     border-radius: 5px;
     margin-bottom: 15px;
     height: 32px;
@@ -599,6 +601,10 @@ input[type="submit"] {
 
 .formwrapper input[name="firstname"] {
     width: 140px;
+}
+
+.formwrapper input[name="lastname"] {
+    clear: both;
 }
 
 
