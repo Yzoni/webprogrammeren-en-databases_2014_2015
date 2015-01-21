@@ -289,15 +289,15 @@ input[name="firstname"] {
     margin-right: 12px;
 }
 
-.button_right{
-    float: right;
-    margin-right: 12px;
-}
-
 .button_delete{
     background-color: #d40000;
     float: right;
     margin-right: 0px;
+}
+
+.button_right{
+    float: right;
+    margin-right: 12px;
 }
 
 .button span, .winkelwagen span {
@@ -443,7 +443,7 @@ footer a:hover {
 
 /* Product page */
 .description {
-    width:65%;
+    width:70%;
     margin-left: 30%;
 }
 
