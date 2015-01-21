@@ -76,7 +76,7 @@ select {
 .wrapperheadcontent {
     color: white;
     padding-top: 9px;
-    margin-left: 9px;
+    margin-left: 0px;
 }
 
 .wrapperheadcontent .iconfont {
@@ -96,7 +96,8 @@ select {
 }
 
 .wrapperheadcontent input[type=text] {
-    width: 25%;
+    width: 20%;
+    margin-left: 25px;
     margin-bottom: 15px;
     height: 30px;
     border: 1px solid;
