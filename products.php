@@ -32,12 +32,13 @@ $totalpages = ceil($totalamount / $endamount);
             echo "<a href=\"products.php?page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
         }
 
-        echo " | ";
+
         
         // Print numbers in case of producttypeid
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
             for ($i = 1; $i <= $totalpages; $i++) {
                 echo "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ";
+		echo " | ";
             }
             // Print numbers no productypetid
         } else {
@@ -46,7 +47,6 @@ $totalpages = ceil($totalamount / $endamount);
             }
         }
         
-        echo " | ";
         
         // Get next page
         if ($page < $totalpages) {
