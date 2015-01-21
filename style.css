@@ -350,8 +350,8 @@ footer a:hover {
 
 /* Page switcher */
 .pageswitchwrapper {
-    margin-left: 30px;
-    margin-top: 30px;
+    margin-left: 0px;
+    margin-top: 0px;
     margin-bottom: -10px;
 
 }
@@ -596,6 +596,10 @@ input[type="submit"] {
 
 .formwrapper input[name="firstname"] {
     width: 140px;
+}
+
+.formwrapper input[name="lastname"] {
+    clear: both;
 }
 
 /* ADD ADMIN PRODUCT */
