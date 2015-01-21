@@ -538,6 +538,10 @@ footer a:hover {
     border-radius: 5px;
 }
 
+.wrapperheadcontent input[type=text] {
+    float: left;
+}
+
 #add_new_category {
     margin-bottom: 15px;
     height: 30px;
