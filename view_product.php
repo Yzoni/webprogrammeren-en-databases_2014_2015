@@ -158,9 +158,9 @@ include 'views/navigation.php';
 // if statement will be executed to notify which product, and 
 // quantity has been added.
         if ($GLOBALS['printAddedProd']) {
-            echo "U heeft toegevoegd aan uw Winkelwagen: " .
-            $product->name . " " .
-            $_POST['quantity'] . " kg" . "<br>";
+            $display->addMessage("Winkelwagentje: ", "U heeft" 
+            . $product->name . " " .
+            $_POST['quantity'] . " kg toegevoegd aan uw winkelwagentje<br>");
             unset($_POST['quantity']);
             $GLOBALS['printAddedProd'] = 0;
         }
