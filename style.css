@@ -374,15 +374,6 @@ footer a:hover {
     margin-top: 20px;
 }
 
-/* Select Order */
-
-#select_order {
-    margin-top: 200px;
-    padding-left : 2px;
-    float: right;
-}
-
-
 /* Product box */
 .box {
     display: inline-block;
@@ -683,5 +674,13 @@ input[type="submit"] {
 #deleteItem {
     font-family: iconfont;
     color:red;
+}
+
+/* Select Order */
+
+.select_order {
+    margin-top: 200px;
+    padding-left : 2px;
+    float: right;
 }
 
