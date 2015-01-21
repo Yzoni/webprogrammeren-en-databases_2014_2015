@@ -679,7 +679,6 @@ input[type="submit"] {
 /* Select Order */
 
 .select_order {
-    margin-top: 200px;
     padding-left : 2px;
     float: right;
 }
