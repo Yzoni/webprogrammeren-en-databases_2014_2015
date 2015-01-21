@@ -606,27 +606,23 @@ input[type="submit"] {
 .links_fruit {	
     width: 30%;	
     float: left;    
-    margin-left: 3%;
-    margin-top: 2%;    
 }
 
 .rechts_fruit {	
     width: 30%;	
     float: left;    
-    margin-left: 3%;
-    margin-top: 2%;	
 }
 
 #description_fruit, #name, #category, #price, #quantity, #stock, #photo{
     width: 75%;	
     border: 1px solid;
     border-color: #006666;
-    margin-top: 5%;	
+    margin-top: 12px;	
 }
 
 #description_fruit {
     font-family: arialroundedmt, sans-serif, "Times New Roman";
-    width: 90%;		
+    width: 75%;		
 }
 
 #name, #category, #price, #quantity, #stock{
