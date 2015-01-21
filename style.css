@@ -350,12 +350,14 @@ footer a:hover {
 
 /* Page switcher */
 .pageswitchwrapper {
-    margin: 25px;
+    margin-right: 25px;
+    margin-top: 28px;
     height: 32px;
     margin-bottom: -10px;
     border: 1px solid;
     border-radius: 5px;
     border-color: #006666;
+    line-height: 32px;
 
 }
 
@@ -680,7 +682,6 @@ input[type="submit"] {
 
 #select_order {
     padding-left : 2px;
-    float : right;
 }
 
 
