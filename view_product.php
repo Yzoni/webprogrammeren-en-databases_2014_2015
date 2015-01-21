@@ -2,13 +2,14 @@
 
 function validQuantity() {
     var quantity = document.forms["addToCart"]["quantity"].value;
-    var stock = "<?php $product->stock; ?>";
+    var stock = "<?php echo $product->stock; ?>";
     if (isNaN(quantity)){
         alert("U dient cijfers in te vullen");
         return false;
     }
     if (quantity > stock || quantity <= 0) {    
-        alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b.");
+        alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\n\
+                meer hebben wij op dit moment niet op voorraad.");
         return false;
     }
 }
