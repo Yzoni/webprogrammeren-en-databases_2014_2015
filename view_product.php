@@ -33,13 +33,16 @@ if (!isset($_SESSION['products']) &&
     $_SESSION['subtotal'] = array();
 }
 
-// If the user has entered a quantity which is greater than zero, this if
-// statement will add the product and given quantity to the arrays "products"
+// If the user has entered a quantity which is greater than zero and less than the stocklevel, 
+// this if statement will add the product and given quantity to the arrays "products"
 // and "quantities". Both arrays are stored in the $_SESSION array.
-if (isset($_POST['quantity']) && floatval($_POST['quantity'] > 0)) {
+if (isset($_POST['quantity']) && floatval($_POST['quantity'] > 0) && $_POST['quantity'] <= $product->stock) {
     $GLOBALS['printAddedProd'] = 1;
     $quantity = floatval($_POST['quantity']);
     $productId = $product->id;
+
+
+// BUG ADDING TOO MUCH STOCK TO CART IF DONE IN MULTIPLE TIMES !!!
 
     // array_search and the if statement below will check if there has
     // already been added a quantity of the same type of product in the shopping
@@ -145,6 +148,13 @@ include 'views/navigation.php';
             $_POST['quantity'] . " kg" . "<br>";
             unset($_POST['quantity']);
             $GLOBALS['printAddedProd'] = 0;
+        } else if ($_POST['quantity'] >= $product->stock) {
+            echo "Wij hebben deze hoeveelheid niet op voorraad. <br>"; 
+            echo "Maximale hoeveelheid op dit moment is: ";
+            echo $_POST['quantity'] . "kg";
+            unset($_POST['quantity']);
+        } else {
+            echo "Vul alstublieft een getal in wat hoger is dan 0 kg. "
         }
         ?>
     </div>
