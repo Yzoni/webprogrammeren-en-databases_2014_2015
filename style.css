@@ -261,6 +261,11 @@ nav .arrow {
     margin-right: 20px;
 }
 
+nav .arrow .productoevoegen {
+    font-family: arialroundedmtbold;
+    margin-left: 5px;
+}
+
 input[name="firstname"] {
     width: 25%;
     height: 32px;
@@ -704,7 +709,7 @@ td {
 
 .product_basket {
     font-size: 10px;
-    color: #454545;
+    font-color: #454545;
     width: 80%;
     width: 20%;
     margin-left: 2%;
