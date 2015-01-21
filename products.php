@@ -17,7 +17,6 @@ $totalpages = ceil($totalamount / $endamount);
 
 <div class="wrappercontent">
     <div class="pageswitchwrapper">
-        <span>Pagina: </span>
         <?php
         // Get previous page
         if ($page <= 1) {
