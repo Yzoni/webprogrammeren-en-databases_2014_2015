@@ -1,4 +1,4 @@
-<form action="admin_edit_product.php?id=<?php echo $this->id; ?>" method="post">  
+<form action="admin_edit_product.php?id=<?php echo $this->id; ?>" method="post" enctype="multipart/form-data">  
      <div class="links_fruit">        
         <input type="text" name="name" placeholder="naam" id="name" value="<?php echo $this->name ?>"> <br>
         <select name="producttype">
