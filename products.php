@@ -27,9 +27,9 @@ $totalpages = ceil($totalamount / $endamount);
         
         // Set previous button
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $previouspage . "\" class=\"button\">< vorige</a>";
+            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
         } else {
-            echo "<a href=\"products.php?page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>inloggen</a>";
+            echo "<a href=\"products.php?page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
         }
 
         echo " | ";
@@ -56,9 +56,9 @@ $totalpages = ceil($totalamount / $endamount);
         }
         // Set next button
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $nextpage . "\" class=\"button\"> volgende ></a>";
+            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         } else {
-            echo "<a href=\"products.php?page=" . $nextpage . "\" class=\"button\">volgende <span>&#xf138;</span></a>";
+            echo "<a href=\"products.php?page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         }
 
         ?>
