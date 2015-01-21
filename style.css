@@ -600,11 +600,6 @@ input[type="submit"] {
     width: 140px;
 }
 
-.formwrapper input[name="lastname"] {
-    clear: both;
-    float: left;
-}
-
 /* ADD ADMIN PRODUCT */
 .links_fruit {	
     width: 30%;	
