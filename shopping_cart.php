@@ -20,7 +20,7 @@ if (isset($_GET['deleteItem']) && sizeof($_SESSION['products']) > 0) {
 ?>
 
 <div class="shopping_cart">
-    <h2 class="contenttitle">Inloggen klant: </h2>
+    <h2 class="contenttitle">Winkelwagentje </h2>
     <div class="line"> </div>
 
 <?php
