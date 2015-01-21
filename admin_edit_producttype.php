@@ -30,6 +30,6 @@ include 'views/navigation.php';
 <?php
 $producttype->displayEditForm();
 echo "<a href=\"admin_edit_producttype.php?id=$producttype->id&fn=deleteproducttype\" class=button_delete>"
- . "<span>&#xf00d;</span> verwijder productcategorie</a>";
+ . "<span class="icon">&#xf00d;</span> verwijder productcategorie</a>";
 include 'views/footer.php';
 ?>
