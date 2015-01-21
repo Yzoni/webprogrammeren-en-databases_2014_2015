@@ -19,12 +19,16 @@ include 'views/navigation.php';
 ?>
 
 <div class="wrappercontent">
-    <h2 class="contenttitle">Mijn klanten</h2>
+    <h2 class="contenttitle">Gegevens van <?php echo ($customer->gender == 1 ? "dhr. " : "mevr. ") . $customer->lastname . ":"?></h2>
     <?php $customer->displayCustomerDetails(); ?>
     <a href="admin_list_customers.php" class="button"><span>&#xf137;</span> terug naar alle klanten</a>
-    <?php echo "<a href=\"admin_view_customer.php?id=$customer->id&fn="
-            . "deletecustomer\" class=button_delete><span class=\"icon\">"
-            . "&#xf00d;</span> verwijder klant</a>"; ?>
+    <?php
+    echo "<a href=\"admin_view_customer.php?id=$customer->id&fn="
+    . "deletecustomer\" class=button_delete><span class=\"icon\">"
+    . "&#xf00d;</span> verwijder klant</a>";
+    ?>
+    <h2 class="contenttitle">Bestellingen door deze klant:</h2>
+    <p>>view van lijst met bestellingen<</p>
 </div>
 
 <?php
