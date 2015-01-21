@@ -96,6 +96,38 @@ select {
     color: white;
 }
 
+.wrapperheadcontent input[type=text] {
+    width: 250px;
+    margin-bottom: 15px;
+    height: 30px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 48px;
+    background: url('images/username_bg.jpg') no-repeat;
+    background-color: white;
+    border-radius: 5px;
+    float: left;
+}
+
+.winkelwagen {
+    background-color: #ffffff;
+    color: #006666;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    height: 32px;
+    font-size: 12px;
+    line-height: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all .3s ease;
+    margin-right: 12px;
+    float: right;
+}
+
 header {
     color: white;
     height: 50px;
@@ -227,24 +259,6 @@ nav .arrow {
     font-family: iconfont;
     float: right;
     margin-right: 20px;
-}
-
-.winkelwagen {
-    background-color: #ffffff;
-    color: #006666;
-    display: inline-block;
-    text-align: center;
-    border: none;
-    height: 32px;
-    font-size: 12px;
-    line-height: 32px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all .3s ease;
-    margin-right: 12px;
-    float: right;
 }
 
 input[name="firstname"] {
@@ -525,7 +539,7 @@ footer a:hover {
     background: url('images/info_bg.jpg') no-repeat;
 }
 
-.formwrapper input[type=text], .wrapperheadcontent input[type=text] {
+.formwrapper input[type=text] {
     width: 250px;
     margin-bottom: 15px;
     height: 30px;
@@ -536,11 +550,6 @@ footer a:hover {
     background: url('images/username_bg.jpg') no-repeat;
     background-color: white;
     border-radius: 5px;
-}
-
-.wrapperheadcontent input[type=text] {
-    float: left;
-    border: none;
 }
 
 #add_new_category {
