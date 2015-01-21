@@ -3,12 +3,11 @@
 function validQuantity() {
     var quantity = document.forms["addToCart"]["quantity"].value;
     var stock = $product->stock;
-    if (isNaN(quantity)){
-            
+    if (isNaN(quantity)){            
         return false;
+        alert (no);
         }
-    if (quantity > stock || quantity <= 0) {    
-        
+    if (quantity > stock || quantity <= 0) {         
         return false;
     }
 }
@@ -157,7 +156,7 @@ include 'views/navigation.php';
             $display->addMessage("Winkelwagentje: ", "U heeft" 
             . $product->name . " " .
             $_POST['quantity'] . " kg toegevoegd aan uw winkelwagentje<br>");
-            echo 'beepboop';
+            echo 'yes'
             unset($_POST['quantity']);
             $GLOBALS['printAddedProd'] = 0;
         }
