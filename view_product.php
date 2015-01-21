@@ -4,15 +4,11 @@ function validQuantity() {
     var quantity = document.forms["addToCart"]["quantity"].value;
     var stock = $product->stock;
     if (isNaN(quantity)){
-            // <?php 
-            //$display->addMessage("error", "U dient cijfers in te vullen");
-            //?>
+            
              return false;
         }
     if (quantity > stock || quantity <= 0) {    
-        //<?php 
-        // $display->addMessage("error", "Vul een hoeveelheid in tussen 0 kg en " . stock . " a.u.b.");
-        //?>
+        
         return false;
     }
 }
