@@ -540,6 +540,7 @@ footer a:hover {
 
 .wrapperheadcontent input[type=text] {
     float: left;
+    border: none;
 }
 
 #add_new_category {
