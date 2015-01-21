@@ -5,7 +5,7 @@ function validQuantity() {
     var stock = $product->stock;
     if (isNaN(quantity)){
             
-             return false;
+        return false;
         }
     if (quantity > stock || quantity <= 0) {    
         
@@ -140,7 +140,7 @@ include 'views/navigation.php';
     </li>
     <li>
         <span class="prodInfoTxt">        
-        prijs per kg: <span class="icon">&#xf153; </span>  <?php echo $product->price; ?>
+        <span class="icon">&#xf153; </span> prijs per kg: <?php echo $product->price; ?> euro
         </span>
         <br>
 
@@ -154,9 +154,9 @@ include 'views/navigation.php';
 // if statement will be executed to notify which product, and 
 // quantity has been added.
         if ($GLOBALS['printAddedProd']) {
-            //$display->addMessage("Winkelwagentje: ", "U heeft" 
-            //. $product->name . " " .
-            //$_POST['quantity'] . " kg toegevoegd aan uw winkelwagentje<br>");
+            $display->addMessage("Winkelwagentje: ", "U heeft" 
+            . $product->name . " " .
+            $_POST['quantity'] . " kg toegevoegd aan uw winkelwagentje<br>");
             echo 'beepboop';
             unset($_POST['quantity']);
             $GLOBALS['printAddedProd'] = 0;
