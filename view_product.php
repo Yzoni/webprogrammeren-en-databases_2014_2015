@@ -11,7 +11,7 @@ function validQuantity() {
         }
     if (quantity > stock || quantity <= 0) {    
         <?php 
-        $display->addMessage("error", "Vul een hoeveelheid in tussen 0 kg en " . stock . " a.u.b.");
+        // $display->addMessage("error", "Vul een hoeveelheid in tussen 0 kg en " . stock . " a.u.b.");
         ?>
         return false;
     }
@@ -158,9 +158,10 @@ include 'views/navigation.php';
 // if statement will be executed to notify which product, and 
 // quantity has been added.
         if ($GLOBALS['printAddedProd']) {
-            $display->addMessage("Winkelwagentje: ", "U heeft" 
-            . $product->name . " " .
-            $_POST['quantity'] . " kg toegevoegd aan uw winkelwagentje<br>");
+            //$display->addMessage("Winkelwagentje: ", "U heeft" 
+            //. $product->name . " " .
+            //$_POST['quantity'] . " kg toegevoegd aan uw winkelwagentje<br>");
+            echo 'beepboop';
             unset($_POST['quantity']);
             $GLOBALS['printAddedProd'] = 0;
         }
