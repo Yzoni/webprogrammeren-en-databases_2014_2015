@@ -129,27 +129,28 @@ include 'views/navigation.php';
             
             </form>
         </li>
-        <br>
-        <br>
-
+        
+        <li>
+        <p class="ProdInfoTxt"><span>
+            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?></span><?php echo $product->stock; ?> op voorraad
+        </p>
+        </li>
+    
         <li>
             <span class="prodInfoTxt"> 
                 <span class="icon">&#xf135; </span>
                 levertijd: 1 dag
             </span>
         </li>
-        <br>
-        <br>
-
         <li>
             <span class="prodInfoTxt">
                 <span class="icon">&#xf153; </span>
                 prijs per kg:  <?php echo $product->price; ?>
             </span>
         </li>
+
         </p>
-        <br>
-        <br>
+        
     </ul>
 
     <div id="addedProduct">
@@ -166,13 +167,6 @@ include 'views/navigation.php';
         }
         ?>
 
-        <p id="error_quantity"> </p>
-
-        <script src="functions.js">
-        if (function validQuantity() == false){
-            document.getElementById("error_quantity")="NEE";
-        }
-        </script>
     </div>
     <br>
     <br>
