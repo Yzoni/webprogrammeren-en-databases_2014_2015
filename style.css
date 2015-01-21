@@ -66,11 +66,10 @@ select {
     background: -webkit-linear-gradient(top, #007575, #006666);
     width: 100%;
     height: 50px;
-    box-shadow: 0px 13px 60px -12px rgba(0,0,0,0.75);
+    box-shadow: 0px 13px 60px -12px rgba(0,0,0,0.50);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     color: white;
-    font-size: 20px;
 }
 
 .wrapperheadcontent {
@@ -521,7 +520,7 @@ footer a:hover {
 /* CUSTOMER LOGIN AND REGISTER FORMS*/
 .formwrapper {
     margin-top: 25px;
-    margin-left: 32%;
+    margin-left: 30%;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
     width: 80%;
 }
@@ -595,6 +594,7 @@ input[type="submit"] {
 
 .formwrapper input[name="lastname"] {
     clear: both;
+    float: left;
 }
 
 /* ADD ADMIN PRODUCT */
