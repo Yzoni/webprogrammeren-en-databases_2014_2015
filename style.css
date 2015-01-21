@@ -292,7 +292,7 @@ input[name="firstname"] {
 .button_delete{
     background-color: #d40000;
     float: right;
-    margin-right: 0px;
+    margin-right: 12px;
 }
 
 .button_right{
@@ -300,7 +300,7 @@ input[name="firstname"] {
     margin-right: 12px;
 }
 
-.button span, .button_left span, .button_delete span, .winkelwagen span {
+.button span, .button_right span, .button_delete span, .winkelwagen span {
     font-family: iconfont;
     font-size: 12px;
     padding-right: 10px;
@@ -603,7 +603,7 @@ input[type="submit"] {
 }
 
 /* ADD ADMIN PRODUCT */
-.links_fruit{	
+.links_fruit {	
     width: 30%;	
     float: left;    
     margin-left: 3%;
