@@ -15,7 +15,6 @@ if (isset($_GET['deleteItem'])) {
         array_shift($_SESSION['quantities']);
         array_shift($_SESSION['subtotal']);
         unset($_GET['deleteItem']);
-        echo '<meta http-equiv="refresh" content="0.1">;';
     } else if ($i > 0) {
         $subtotal = $_SESSION['subtotal'][$i];
         $_SESSION['total'] -= $subtotal;
@@ -23,11 +22,9 @@ if (isset($_GET['deleteItem'])) {
         unset($_SESSION['quantities'][$i]);
         unset($_SESSION['subtotal'][$i]);
         unset($_GET['deleteItem']);
-        echo '<meta http-equiv="refresh" content="0.1">;';
     } else if (!isset($i)) {
         $_SESSION['total'] = 0;
         unset($_GET['deleteItem']);    
-        echo '<meta http-equiv="refresh" content="0.1">;';
     }
 
 }
