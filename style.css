@@ -605,18 +605,21 @@ input[type="submit"] {
 /* ADD ADMIN PRODUCT */
 .links_fruit {	
     width: 30%;	
-    float: left;    
+    float: left;  
+    font-family: arialroundedmt, sans-serif, "Times New Roman";  
 }
 
 .rechts_fruit {	
     width: 30%;	
     float: left;    
+    font-family: arialroundedmt, sans-serif, "Times New Roman";
 }
 
 #description_fruit, #name, #category, #price, #quantity, #stock, #photo{
     width: 75%;	
     border: 1px solid;
     border-color: #006666;
+    border-radius: 5px;
     margin-top: 12px;	
 }
 
