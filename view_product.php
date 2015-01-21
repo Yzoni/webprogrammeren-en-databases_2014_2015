@@ -116,11 +116,7 @@ include 'views/navigation.php';
     <ul class="infoList">
 
 
-        <li>
-            <span class="prodInfoTxt">
-                <span class="icon-ok">&#xf00c;</span>
-                <?php echo $product->stock; ?> op voorraad
-            </span>
+        
             <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
 
             <input type="text" class="inputBox" name="quantity" placeholder="aantal">            
@@ -128,7 +124,7 @@ include 'views/navigation.php';
             </button>
             
             </form>
-        </li>
+        
         
         <li>
         <p class="ProdInfoTxt"><span>
