@@ -36,11 +36,12 @@ if (!isset($_SESSION['products']) &&
 // If the user has entered a quantity which is greater than zero and less than the stocklevel, 
 // this if statement will add the product and given quantity to the arrays "products"
 // and "quantities". Both arrays are stored in the $_SESSION array.
-if (isset($_POST['quantity']) && floatval($_POST['quantity'] > 0) && $_POST['quantity'] <= $product->stock) {
+if (isset($_POST['quantity'])) {
     $GLOBALS['printAddedProd'] = 1;
     $quantity = floatval($_POST['quantity']);
     $productId = $product->id;
 
+ 
 
 // BUG ADDING TOO MUCH STOCK TO CART IF DONE IN MULTIPLE TIMES !!!
 
@@ -105,13 +106,9 @@ include 'views/navigation.php';
             </span>
             <form class="inputForm" action="" method="POST">
 
-                <?php
-                if (is_admin_logged_in() == false) {
-                    echo 'aantal: <input type="text" class="inputBox" '
-                    . 'name="quantity">';
-                    echo '<button type="submit" class="button"><span>&#xf0fe;</span>voeg toe</button>';
-                }
-                ?>
+            echo 'aantal: <input type="text" class="inputBox" ' . 'name="quantity">';
+            echo '<button type="submit" onsubmit="return validQuantity();" class="button"><span>&#xf0fe;</span>voeg toe</button>';
+            
             </form>
         </li>
         <br>
@@ -148,15 +145,16 @@ include 'views/navigation.php';
             $_POST['quantity'] . " kg" . "<br>";
             unset($_POST['quantity']);
             $GLOBALS['printAddedProd'] = 0;
-        } else if ($_POST['quantity'] >= $product->stock) {
-            echo "Wij hebben deze hoeveelheid niet op voorraad. <br>"; 
-            echo "Maximale hoeveelheid op dit moment is: ";
-            echo $_POST['quantity'] . "kg";
-            unset($_POST['quantity']);
-        } else {
-            echo "Vul alstublieft een getal in wat hoger is dan 0 kg. ";
         }
         ?>
+
+        <p id="error_quantity"> </p>
+
+        <script src="functions.js">
+        if (function validQuantity() == false){
+            document.getElementById("error_quantity")="NEE";
+        }
+        </script>
     </div>
     <br>
     <br>
