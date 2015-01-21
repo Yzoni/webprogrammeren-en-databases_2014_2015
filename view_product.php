@@ -112,7 +112,6 @@ include 'views/navigation.php';
 
     <br>
 
-    <p>
     <ul class="infoList">
 
     <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
@@ -148,8 +147,11 @@ include 'views/navigation.php';
     </li>
 
     </ul>
-    </p>
-
+    <?php 
+    if (validQuantity == false) {
+        $display->addMessage("error", "Vul een hoeveelheid in tussen 0 kg en " . $product->stock . " a.u.b.");
+    }
+    ?>
     <div id="addedProduct">
         <?php
 // if a product has been added to the shopping cart this 
