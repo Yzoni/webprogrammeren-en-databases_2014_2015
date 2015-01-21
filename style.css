@@ -378,6 +378,14 @@ footer a:hover {
     color: red;
 }
 
+/* Select Order */
+
+#select_order {
+    padding-left : 2px;
+    float: right;
+}
+
+
 /* Product box */
 .box {
     display: inline-block;
@@ -679,9 +687,4 @@ input[type="submit"] {
     font-family: iconfont;
     color:red;
 }
-
-#select_order {
-    padding-left : 2px;
-}
-
 
