@@ -399,7 +399,6 @@ class Customer {
         $query->bindParam(':password', $password, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Customer");
-        echo $result;
         if ($result) {
             session_start();
             $_SESSION['customer_logged_in'] = 1;
