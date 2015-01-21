@@ -38,7 +38,6 @@ $totalpages = ceil($totalamount / $endamount);
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
             for ($i = 1; $i <= $totalpages; $i++) {
                 echo "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ";
-		echo " | ";
             }
             // Print numbers no productypetid
         } else {
