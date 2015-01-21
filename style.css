@@ -353,6 +353,9 @@ footer a:hover {
     margin-left: 0px;
     margin-top: 0px;
     margin-bottom: -10px;
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: #006666;
 
 }
 
