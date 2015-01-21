@@ -32,8 +32,6 @@ $totalpages = ceil($totalamount / $endamount);
         } else {
             echo "<a href=\"products.php?page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>inloggen</a>";
         }
-
-        echo " | ";
         
         // Print numbers in case of producttypeid
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
