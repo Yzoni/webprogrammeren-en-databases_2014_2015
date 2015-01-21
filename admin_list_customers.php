@@ -6,6 +6,7 @@ include 'views/navigation.php';
 ?>
 
 <div class="wrappercontent">
+    <h2 class="contenttitle">Mijn klanten</h2>
     <?php
     $customers = Customer::getAllCustomers();
     foreach ($customers as $customer) {
