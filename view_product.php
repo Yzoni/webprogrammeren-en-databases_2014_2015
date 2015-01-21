@@ -123,7 +123,7 @@ include 'views/navigation.php';
         
     <li>
         <p class="ProdInfoTxt"><span class="icon">
-            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?></span><?php echo $product->stock > 0 ? "niet" ?> op voorraad
+            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?></span><?php echo ($product->stock > 0 ? "niet") ?> op voorraad
         </p>
         <br>
     </li>
