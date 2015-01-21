@@ -26,7 +26,7 @@ select {
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 48px;
+    padding-left: 32px;
     width: 100px;
     float: left;
     margin-right: 10px;
@@ -102,7 +102,7 @@ select {
     border: 1px solid;
     border-color: white;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 48px;
+    padding-left: 32px;
     background: url('images/search_bg.jpg') no-repeat;
     background-color: white;
     border-radius: 5px;
@@ -266,7 +266,7 @@ input[name="firstname"] {
     height: 32px;
     border: none;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 48px;
+    padding-left: 32px;
     background: url('images/username_bg.jpg') no-repeat;
     border-radius: 5px;
     float: left;
@@ -528,7 +528,7 @@ footer a:hover {
     margin-top: 25px;
     margin-left: 32%;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    width: 80%;
+    width: 60%;
 }
 
 #person {
@@ -546,7 +546,7 @@ footer a:hover {
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 48px;
+    padding-left: 32px;
     background: url('images/username_bg.jpg') no-repeat;
     background-color: white;
     border-radius: 5px;
@@ -558,7 +558,7 @@ footer a:hover {
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 48px;
+    padding-left: 32px;
     background: url('images/naam_bg.jpg') no-repeat;
     border-radius: 5px;
 }
@@ -571,7 +571,7 @@ footer a:hover {
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 48px;
+    padding-left: 32px;
     background: url('images/password_bg.jpg') no-repeat;
 }
 
@@ -582,7 +582,7 @@ footer a:hover {
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 48px;
+    padding-left: 32px;
     background: url('images/username_bg.jpg') no-repeat;
     width: 100px;
     float: left;
@@ -630,27 +630,27 @@ input[type="submit"] {
 }
 
 #name{	
-    padding-left: 48px;	
+    padding-left: 32px;	
     background: url("images/naam_bg.jpg") no-repeat;
 }
 
 #category{
-    padding-left: 48px;
+    padding-left: 32px;
     background: url("images/categorie_bg.jpg") no-repeat;
 }
 
 #price{
-    padding-left: 48px;
+    padding-left: 32px;
     background: url("images/prijs_bg.jpg") no-repeat;
 }
 
 #quantity{
-    padding-left: 48px;
+    padding-left: 32px;
     background: url("images/kwantiteit_bg.jpg") no-repeat;
 }
 
 #stock {
-    padding-left: 48px;
+    padding-left: 32px;
     background: url("images/voorraad_bg.jpg") no-repeat;
 }
 
