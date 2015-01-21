@@ -2,7 +2,7 @@
 
 function validQuantity() {
     var quantity = document.forms["addToCart"]["quantity"].value;
-    var stock = 10;
+    var stock = "<?php $product->stock; ?>";
     if (isNaN(quantity)){
         alert("U dient cijfers in te vullen");
         return false;
