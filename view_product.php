@@ -106,8 +106,10 @@ include 'views/navigation.php';
             </span>
             <form class="inputForm" action="" method="POST">
 
-            echo 'aantal: <input type="text" class="inputBox" ' . 'name="quantity">';
-            echo '<button type="submit" onsubmit="return validQuantity();" class="button"><span>&#xf0fe;</span>voeg toe</button>';
+            <input type="text" class="inputBox" name="quantity" id="quantity" placeholder="aantal">;
+            <button type="submit" onsubmit="return validQuantity(document.getElementById("quantity").value, <?php $product->stock?>)" 
+                    class="button"><span>&#xf0fe;</span>voeg toe
+            </button>'
             
             </form>
         </li>
