@@ -154,7 +154,7 @@ include 'views/navigation.php';
             echo $_POST['quantity'] . "kg";
             unset($_POST['quantity']);
         } else {
-            echo "Vul alstublieft een getal in wat hoger is dan 0 kg. "
+            echo "Vul alstublieft een getal in wat hoger is dan 0 kg. ";
         }
         ?>
     </div>
