@@ -6,7 +6,8 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="style_shopping_cart.css">
         <link rel="icon" type="image/png" href="images/fruyt_icon.png">
-        <script type="text/javascript" src="js/search.js"></script>
+        <script src="js/search.js" type="text/javascript"> </script>
+        <script src="functions.js" type="text/javascript"> </script> 
     </head>
     <body>
         <header>

@@ -1,3 +1,20 @@
+<script>
+
+function validQuantity() {
+        var quantity = document.forms["addToCart"]["quantity"].value;
+        var stock = 10;
+        if (isNaN(quantity)){
+             alert("nah");
+             return false;
+        }
+    if (quantity > stock || quantity <= 0) {    
+        alert("nooooooooooooooooooooooooooo");
+        return false;
+    }
+}
+</script>
+
+
 <?php
 require_once 'classes.php';
 
@@ -36,11 +53,12 @@ if (!isset($_SESSION['products']) &&
 // If the user has entered a quantity which is greater than zero and less than the stocklevel, 
 // this if statement will add the product and given quantity to the arrays "products"
 // and "quantities". Both arrays are stored in the $_SESSION array.
-if (isset($_POST['quantity']) && floatval($_POST['quantity'] > 0) && $_POST['quantity'] <= $product->stock) {
+if (isset($_POST['quantity'])) {
     $GLOBALS['printAddedProd'] = 1;
     $quantity = floatval($_POST['quantity']);
     $productId = $product->id;
 
+ 
 
 // BUG ADDING TOO MUCH STOCK TO CART IF DONE IN MULTIPLE TIMES !!!
 
@@ -74,10 +92,10 @@ include 'views/navigation.php';
            <?php echo $product->name; ?>
            <?php
            if (is_admin_logged_in()) {
-               echo "<a href=\"admin_edit_product.php?id=$product->id\">"
-               . "<span class=\"icon\">&#xF040;</span>wijzig product</a>";
-               echo "<a href=\"view_product.php?id=$product->id&fn=deleteproduct\">"
+               echo "<a href=\"view_product.php?id=$product->id&fn=deleteproduct\" class=\"button_delete\">"
                . "<span class=\"icon\">&#xf00d;</span>verwijder product</a>";
+               echo "<a href=\"admin_edit_product.php?id=$product->id\" class=\"button_right\">"
+               . "<span class=\"icon\">&#xF040;</span>wijzig product</a>";
            }
            ?>
     </div>
@@ -97,45 +115,37 @@ include 'views/navigation.php';
     <p>
     <ul class="infoList">
 
-
-        <li>
-            <span class="prodInfoTxt">
-                <span class="icon-ok">&#xf00c;</span>
-                <?php echo $product->stock; ?> op voorraad
-            </span>
-            <form class="inputForm" action="" method="POST">
-
-                <?php
-                if (is_admin_logged_in() == false) {
-                    echo 'aantal: <input type="text" class="inputBox" '
-                    . 'name="quantity">';
-                    echo '<button type="submit" class="button"><span>&#xf0fe;</span>voeg toe</button>';
-                }
-                ?>
-            </form>
-        </li>
-        <br>
-        <br>
-
-        <li>
-            <span class="prodInfoTxt"> 
-                <span class="icon">&#xf135; </span>
-                levertijd: 1 dag
-            </span>
-        </li>
-        <br>
-        <br>
-
-        <li>
-            <span class="prodInfoTxt">
-                <span class="icon">&#xf153; </span>
-                prijs per kg:  <?php echo $product->price; ?>
-            </span>
-        </li>
+    <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
+        <input type="text" class="inputBox" name="quantity" placeholder="aantal">            
+        <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
+        </button>
+    </form>
+        
+    <li>
+        <p class="ProdInfoTxt"><span class="icon">
+            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?></span><?php echo ($product->stock > 0 ? "niet") ?> op voorraad
         </p>
         <br>
+    </li>
+    
+    <li>
+        <span class="prodInfoTxt"> 
+        <span class="icon">&#xf135; </span>
+            levertijd: 1 dag
+        </span>
         <br>
+    </li>
+    <li>
+        <span class="prodInfoTxt">
+        <span class="icon">&#xf153; </span>
+            prijs per kg:  <?php echo $product->price; ?>
+        </span>
+        <br>
+
+    </li>
+
     </ul>
+    </p>
 
     <div id="addedProduct">
         <?php
@@ -148,15 +158,9 @@ include 'views/navigation.php';
             $_POST['quantity'] . " kg" . "<br>";
             unset($_POST['quantity']);
             $GLOBALS['printAddedProd'] = 0;
-        } else if ($_POST['quantity'] >= $product->stock) {
-            echo "Wij hebben deze hoeveelheid niet op voorraad. <br>"; 
-            echo "Maximale hoeveelheid op dit moment is: ";
-            echo $_POST['quantity'] . "kg";
-            unset($_POST['quantity']);
-        } else {
-            echo "Vul alstublieft een getal in wat hoger is dan 0 kg. ";
         }
         ?>
+
     </div>
     <br>
     <br>

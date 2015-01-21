@@ -17,7 +17,6 @@ $totalpages = ceil($totalamount / $endamount);
 
 <div class="wrappercontent">
     <div class="pageswitchwrapper">
-        <span>Pagina: </span>
         <?php
         // Get previous page
         if ($page <= 1) {
@@ -28,14 +27,14 @@ $totalpages = ceil($totalamount / $endamount);
         
         // Set previous button
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $previouspage . "\">< vorige</a>";
+            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
         } else {
-            echo "<a href=\"products.php?page=" . $previouspage . "\">< vorige</a>";
+            echo "<a href=\"products.php?page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
         }
 
-        echo " | ";
+
         
-        // Print numbers in case of productypetid
+        // Print numbers in case of producttypeid
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
             for ($i = 1; $i <= $totalpages; $i++) {
                 echo "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ";
@@ -47,7 +46,6 @@ $totalpages = ceil($totalamount / $endamount);
             }
         }
         
-        echo " | ";
         
         // Get next page
         if ($page < $totalpages) {
@@ -57,13 +55,14 @@ $totalpages = ceil($totalamount / $endamount);
         }
         // Set next button
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $nextpage . "\"> volgende ></a>";
+            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         } else {
-            echo "<a href=\"products.php?page=" . $nextpage . "\">volgende > </a>";
+            echo "<a href=\"products.php?page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         }
 
         ?>
         
+        // NOG FIXEN !!!!!
         <select class="select_order" onchange=getSortedProducts(value)>
             <option value="alphabetic"> A - Z </option>
             <option value="price-desc"> Prijs hoog - laag </option>

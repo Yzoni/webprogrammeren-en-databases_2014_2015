@@ -35,12 +35,7 @@ if (isset($_GET['deleteItem'])) {
 ?>
 
 <div class="shopping_cart">
-    <p>
-    	<br>
-    	Winkelwagentje 			
-    </p>
-    <br>
-
+    <h2 class="contenttitle">Winkelwagentje </h2>
     <div class="line"> </div>
 
 <?php
