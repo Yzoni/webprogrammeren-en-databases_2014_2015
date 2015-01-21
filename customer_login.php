@@ -4,7 +4,7 @@ require_once 'classes.php';
 if (isset($_POST['email']) && $_POST['password']) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    Customer::Login($username, $password);
+    Customer::Login($email, $password);
 }
 
 if (isset($_GET['fn']) && $_GET['fn'] == "logout") {
