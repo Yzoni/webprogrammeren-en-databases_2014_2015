@@ -126,7 +126,7 @@ include 'views/navigation.php';
             <span class="icon">
             <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?>
             </span>
-            <?php echo ($product->stock > 0 ? "niet;" : "") ?> 
+            <?php echo ($product->stock > 0 ? "niet" : "") ?> 
             op voorraad
         </p>
         <br>
@@ -140,9 +140,8 @@ include 'views/navigation.php';
         <br>
     </li>
     <li>
-        <span class="prodInfoTxt">
-        <span class="icon">&#xf153; </span>
-            prijs per kg:  <?php echo $product->price; ?>
+        <span class="prodInfoTxt">        
+        prijs per kg: <span class="icon">&#xf153; </span>  <?php echo $product->price; ?>
         </span>
         <br>
 
