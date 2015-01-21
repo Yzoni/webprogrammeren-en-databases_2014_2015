@@ -185,6 +185,7 @@ header .welcome-header {
 
 
 nav {
+    clear: both;
     float: left;
     width: 25%;
     margin: 25px;
