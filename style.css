@@ -300,7 +300,7 @@ input[name="firstname"] {
     margin-right: 12px;
 }
 
-.button span, .winkelwagen span {
+.button span, .button_left span, .button_delete span, .winkelwagen span {
     font-family: iconfont;
     font-size: 12px;
     padding-right: 10px;
