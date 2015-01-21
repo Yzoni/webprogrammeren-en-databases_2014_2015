@@ -156,7 +156,7 @@ include 'views/navigation.php';
             $display->addMessage("Winkelwagentje: ", "U heeft" 
             . $product->name . " " .
             $_POST['quantity'] . " kg toegevoegd aan uw winkelwagentje<br>");
-            echo 'yes'
+            echo 'yes';
             unset($_POST['quantity']);
             $GLOBALS['printAddedProd'] = 0;
         }
