@@ -272,7 +272,7 @@ input[name="firstname"] {
     float: left;
 }
 
-.button, input[type="submit"], .button_delete{
+.button, input[type="submit"], .button_delete, .button_right{
     background-color: #006666;
     display: inline-block;
     text-align: center;
@@ -289,9 +289,15 @@ input[name="firstname"] {
     margin-right: 12px;
 }
 
+.button_right{
+    float: right;
+    margin-right: 12px;
+}
+
 .button_delete{
     background-color: #d40000;
     float: right;
+    margin-right: 0px;
 }
 
 .button span, .winkelwagen span {
