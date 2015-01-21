@@ -466,9 +466,9 @@ footer a:hover {
     color: green;
     font-family: iconfont;
 }
+
 .icon {
     font-family: iconfont;
-    margin-left: 
 }
 
 .icon-not-ok {
@@ -743,3 +743,32 @@ td {
     float: right;
 }
 
+table {
+  border-collapse: collapse;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  
+}
+
+th {
+    text-align: left;
+    background-color: #696969;;
+    color: white;
+    
+}
+
+table, td, th {
+    border: 1px solid #696969;;
+}
+
+td, th {
+    padding-right: 20px;
+    padding-left: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.detailslink {
+    color: #006666;
+    text-decoration: none;
+}
