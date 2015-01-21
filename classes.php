@@ -652,13 +652,13 @@ class Admin {
         $query->bindParam(':password', $password, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Admin");
-        if ($result == FALSE) {
-            header('Location: admin_login.php?fn=credentialsfalse');
-            exit();
-        } else {
+        if ($result) {
             session_start();
             $_SESSION['admin_logged_in'] = 1;
             header('Location: index.php');
+            exit();
+        } else {
+            header('Location: admin_login.php?fn=credentialsfalse');
             exit();
         }
     }
