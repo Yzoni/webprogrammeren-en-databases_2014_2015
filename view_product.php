@@ -123,8 +123,9 @@ include 'views/navigation.php';
         
     <li>
         <p class="ProdInfoTxt"><span class="icon">
-            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?></span><?php echo $product->stock; ?> op voorraad
+            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?></span><?php echo $product->stock > 0 ? "niet" ; ?> op voorraad
         </p>
+        <br>
     </li>
     
     <li>
@@ -132,12 +133,15 @@ include 'views/navigation.php';
         <span class="icon">&#xf135; </span>
             levertijd: 1 dag
         </span>
+        <br>
     </li>
     <li>
         <span class="prodInfoTxt">
         <span class="icon">&#xf153; </span>
             prijs per kg:  <?php echo $product->price; ?>
         </span>
+        <br>
+
     </li>
 
     </ul>
