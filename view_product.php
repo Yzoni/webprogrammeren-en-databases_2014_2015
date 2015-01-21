@@ -2,12 +2,13 @@
 
 function validQuantity() {
     var quantity = document.forms["addToCart"]["quantity"].value;
-    var stock = $product->stock;
-    if (isNaN(quantity)){            
+    var stock = <?php $product->stock ?>;
+    if (isNaN(quantity)){
+        alert("U dient cijfers in te vullen");
         return false;
-        alert (no);
-        }
-    if (quantity > stock || quantity <= 0) {         
+    }
+    if (quantity > stock || quantity <= 0) {    
+        alert("Vul alstublieft een getal in tussen de 0 en " + stock + "a.u.b.");
         return false;
     }
 }
@@ -124,7 +125,7 @@ include 'views/navigation.php';
             <span class="icon">
             <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?>
             </span>
-            <?php echo ($product->stock > 0 ? "niet" : "") ?> 
+            <?php $product->stock ?> 
             op voorraad
         </p>
         <br>
@@ -153,10 +154,9 @@ include 'views/navigation.php';
 // if statement will be executed to notify which product, and 
 // quantity has been added.
         if ($GLOBALS['printAddedProd']) {
-            $display->addMessage("Winkelwagentje: ", "U heeft" 
-            . $product->name . " " .
-            $_POST['quantity'] . " kg toegevoegd aan uw winkelwagentje<br>");
-            echo 'yes';
+            echo "U heeft toegevoegd aan uw Winkelwagen: " .
+            $product->name . " " .
+            $_POST['quantity'] . " kg" . "<br>";
             unset($_POST['quantity']);
             $GLOBALS['printAddedProd'] = 0;
         }
