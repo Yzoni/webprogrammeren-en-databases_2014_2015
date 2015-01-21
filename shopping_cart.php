@@ -5,16 +5,31 @@ require_once 'classes.php';
 include 'views/header.php';
 include 'views/navigation.php';
 
-if (isset($_GET['deleteItem']) && sizeof($_SESSION['products']) > 0) {
-    $productIndex = $_GET['deleteItem'];
-    $i = array_search($productIndex, $_SESSION['products']);
-    $subtotal = $_SESSION['subtotal'][$i];
-    $_SESSION['total'] -= $subtotal;
-    unset($_SESSION['products'][$i]);
-    unset($_SESSION['quantities'][$i]);
-    unset($_GET['deleteItem']);
-    unset($_SESSION['subtotal'][$i]);
-    echo '<meta http-equiv="refresh" content="0.1">;';
+if (isset($_GET['deleteItem'])) {
+    $productId = $_GET['deleteItem'];
+    $i = array_search($productId, $_SESSION['products']);
+    if($i === 0) {
+        $subtotal = $_SESSION['subtotal'][$i];
+        $_SESSION['total'] -= $subtotal;        
+        array_shift($_SESSION['products']);
+        array_shift($_SESSION['quantities']);
+        array_shift($_SESSION['subtotal']);
+        unset($_GET['deleteItem']);
+        echo '<meta http-equiv="refresh" content="0.1">;';
+    } else if ($i > 0) {
+        $subtotal = $_SESSION['subtotal'][$i];
+        $_SESSION['total'] -= $subtotal;
+        unset($_SESSION['products'][$i]);
+        unset($_SESSION['quantities'][$i]);
+        unset($_SESSION['subtotal'][$i]);
+        unset($_GET['deleteItem']);
+        echo '<meta http-equiv="refresh" content="0.1">;';
+    } else if (!isset($i)) {
+        $_SESSION['total'] = 0;
+        unset($_GET['deleteItem']);    
+        echo '<meta http-equiv="refresh" content="0.1">;';
+    }
+
 }
 
 ?>
@@ -38,7 +53,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
     // This for loop goes through all the items stored in the products array,
     // their associated quantities, names, and prices; calculates the total
     // and subtotal, and prints everything to the screen.
-    for ($i = 0; $i < sizeof($_SESSION["products"]); $i++) {
+    for ($i = 0; $i < sizeof($_SESSION["products"]); ++$i) {
     	$productId = $_SESSION["products"][$i];
     	$quantity = $_SESSION["quantities"][$i];
         $sqlQuery = "SELECT name, price FROM Products WHERE id=$productId";
