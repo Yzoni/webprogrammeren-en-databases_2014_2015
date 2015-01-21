@@ -7,7 +7,7 @@ function validQuantity() {
         alert("U dient cijfers in te vullen");
         return false;
     }
-    if (quantity > stock || quantity <= 0) {    
+    if ( quantity <= 0) {    
         alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b.");
         return false;
     }
