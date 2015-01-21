@@ -1,4 +1,4 @@
-function validQuantity(quantity, stock, cartQuantity) {
+function validQuantity(quantity, stock) {
 	if (quantity + cartQuantity > stock || quantity <= 0) {	
 		writeln("nooooooooooooooooooooooooooo")	;
 		return false;
@@ -6,5 +6,7 @@ function validQuantity(quantity, stock, cartQuantity) {
 		return true;
 	}
 }
+
+//cartQuantity has to be checked for bugssz
 
 
