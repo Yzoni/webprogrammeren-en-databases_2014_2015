@@ -1,3 +1,20 @@
+<script>
+
+function validQuantity() {
+        var quantity = document.forms["addToCart"]["quantity"].value;
+        var stock = 10;
+        if (isNaN(quantity)){
+             alert("nah");
+             return false;
+        }
+    if (quantity > stock || quantity <= 0) {    
+        alert("nooooooooooooooooooooooooooo");
+        return false;
+    }
+}
+</script>
+
+
 <?php
 require_once 'classes.php';
 
@@ -104,12 +121,11 @@ include 'views/navigation.php';
                 <span class="icon-ok">&#xf00c;</span>
                 <?php echo $product->stock; ?> op voorraad
             </span>
-            <form class="inputForm" action="" method="POST">
+            <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
 
-            <input type="text" class="inputBox" name="quantity" id="quantity" placeholder="aantal">;
-            <button type="submit" onsubmit="return validQuantity(document.getElementById("quantity").value, <?php $product->stock?>)" 
-                    class="button"><span>&#xf0fe;</span>voeg toe
-            </button>'
+            <input type="text" class="inputBox" name="quantity" placeholder="aantal">            
+            <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
+            </button>
             
             </form>
         </li>
