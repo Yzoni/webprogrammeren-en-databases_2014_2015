@@ -115,39 +115,33 @@ include 'views/navigation.php';
     <p>
     <ul class="infoList">
 
-
+    <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
+        <input type="text" class="inputBox" name="quantity" placeholder="aantal">            
+        <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
+        </button>
+    </form>
         
-            <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
-
-            <input type="text" class="inputBox" name="quantity" placeholder="aantal">            
-            <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
-            </button>
-            
-            </form>
-        
-        
-        <li>
-        <p class="ProdInfoTxt"><span>
+    <li>
+        <p class="ProdInfoTxt"><span class="icon">
             <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")?></span><?php echo $product->stock; ?> op voorraad
         </p>
-        </li>
+    </li>
     
-        <li>
-            <span class="prodInfoTxt"> 
-                <span class="icon">&#xf135; </span>
-                levertijd: 1 dag
-            </span>
-        </li>
-        <li>
-            <span class="prodInfoTxt">
-                <span class="icon">&#xf153; </span>
-                prijs per kg:  <?php echo $product->price; ?>
-            </span>
-        </li>
+    <li>
+        <span class="prodInfoTxt"> 
+        <span class="icon">&#xf135; </span>
+            levertijd: 1 dag
+        </span>
+    </li>
+    <li>
+        <span class="prodInfoTxt">
+        <span class="icon">&#xf153; </span>
+            prijs per kg:  <?php echo $product->price; ?>
+        </span>
+    </li>
 
-        </p>
-        
     </ul>
+    </p>
 
     <div id="addedProduct">
         <?php
