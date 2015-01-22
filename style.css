@@ -39,7 +39,6 @@ select {
 
 .contenttitle {
     line-height: 24px;
-    margin-top: 20px;
     margin-bottom: 15px;
 }
 
@@ -63,7 +62,7 @@ select {
     border-color: black;
     border-radius: 5px;
     border: 1px solid;
-    margin-top: 25px;
+    margin-top: 28px;
     margin-right: 25px;
 }
 
@@ -367,8 +366,6 @@ footer a:hover {
 
 /* Page switcher */
 .pageswitchwrapper {
-    margin-right: 25px;
-    margin-top: 30px;
     height: 32px;
     line-height: 32px;
 }
@@ -456,7 +453,6 @@ footer a:hover {
 
 .category {
     line-height: 24px;
-    margin-top: 25px;
     margin-bottom: 15px;
     color: #006666;
 }
@@ -628,7 +624,7 @@ input[type="submit"] {
 
 /* ADD ADMIN PRODUCT */
 .links_fruit {	
-    width: 30%;	
+    width: 30%;	categor
     float: left;  
     font-family: arialroundedmt, sans-serif, "Times New Roman";  
 }
