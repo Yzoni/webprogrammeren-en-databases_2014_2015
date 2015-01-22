@@ -8,7 +8,7 @@ if (isset($_POST['name'])) {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
-    $image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : "");
+    $image = ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
     $status = Product::create($typeid, $name, $description, $stock, $price, $image);
     if ($status) {
         $display->addMessage("success", "Product toegevoegd");

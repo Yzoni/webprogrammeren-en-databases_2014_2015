@@ -13,10 +13,10 @@ if (isset($_POST['name'])) {
     $product->description = $_POST['description'];
     $product->price = $_POST['price'];
     $product->stock = $_POST['stock'];
-    if (isset($_FILES['image'])) {
+    if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
         $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
     } else {
-        NULL;
+        $product->image = null;
     }
     $status = $product->edit();
     if ($status) {
