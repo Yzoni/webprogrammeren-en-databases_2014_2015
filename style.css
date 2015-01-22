@@ -607,11 +607,11 @@ input[type="submit"] {
     border: none;
 }
 
-.formwrapper input[name="firstname"] {
+input[name="firstname"] {
     width: 140px;
 }
 
-.formwrapper input[name="lastname"] {
+input[name="lastname"] {
     clear: both;
 }
 
