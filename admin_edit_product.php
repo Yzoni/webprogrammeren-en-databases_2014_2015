@@ -13,7 +13,11 @@ if (isset($_POST['name'])) {
     $product->description = $_POST['description'];
     $product->price = $_POST['price'];
     $product->stock = $_POST['stock'];
-    $product->image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : printf("NULL"));
+    if (isset($_FILES['image'])) {
+        $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
+    } else {
+        NULL;
+    }
     $status = $product->edit();
     if ($status) {
         $display->addMessage("success", "Product aangepast");
@@ -24,9 +28,10 @@ if (isset($_POST['name'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<h2 class="contenttitle">Product wijzigen: </h2>      
+<h2 class="contenttitle">Product wijzigen: </h2>         
 <?php
 $product->displayEditForm();
+
 include 'views/footer.php';
 ?>
 
