@@ -604,7 +604,7 @@ input[name="lastname"] {
 /* ADD ADMIN PRODUCT */
 
 #description_fruit, #name, #category, #price, #quantity, #stock, #photo{
-    width: 75%;	
+    width: 25%;	
     border: 1px solid;
     border-color: #006666;
     border-radius: 5px;
@@ -613,7 +613,7 @@ input[name="lastname"] {
 
 #description_fruit {
     font-family: arialroundedmt, sans-serif, "Times New Roman";
-    width: 75%;		
+    width: 25%;		
 }
 
 #name, #category, #price, #quantity, #stock{
