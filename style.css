@@ -448,12 +448,12 @@ footer a:hover {
 
 /* Product page */
 .description {
-    width:70%;
+    width:68%;
     margin-left: 30%;
 }
 
 .category {
-    margin-top: 20px;
+    margin-top: 25px;
     margin-bottom: 15px;
     color: #006666;
 }
@@ -486,11 +486,13 @@ footer a:hover {
 }
 
 .inputBox{
+    -webkit-appearance: none;
+    -moz-appearance: none;
     width: 20px;
 }
 
 .prodInfoTxt {
-    float:left;
+    float:right;
 }
 
 /* manager_panel css */
@@ -694,11 +696,12 @@ input[type="submit"] {
 td {
     width:10%;
 }
+
 .line {
     background-color: #454545;
     height: 1px;
-    width: 95%;    
-    margin-bottom: 12px;
+    width: 68%;    
+    margin-bottom: 15px;
     margin-left: 30%;
 }
 
