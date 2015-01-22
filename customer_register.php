@@ -17,7 +17,7 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
-<div class="formwrapper">
+<div class="wrappercontent">
     <h2 class="contenttitle">Registreer als nieuwe klant: </h2>
     <form action="customer_register.php" method="POST">
         <input type="text" name="email" placeholder="emailadres" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br>

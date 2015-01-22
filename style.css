@@ -574,7 +574,7 @@ input[type=text] {
     border-radius: 5px;
 }
 
-.formwrapper input[type=password] {
+input[type=password] {
     width: 250px;
     border-radius: 5px;
     margin-bottom: 15px;
@@ -586,7 +586,7 @@ input[type=text] {
     background: url('images/password_bg.jpg') no-repeat;
 }
 
-.formwrapper select {
+select {
     -webkit-appearance: none;
     -moz-appearance: none;
     border-radius: 5px;
