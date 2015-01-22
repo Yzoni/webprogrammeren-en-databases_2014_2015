@@ -13,6 +13,8 @@ if (isset($_POST['name'])) {
     $product->description = $_POST['description'];
     $product->price = $_POST['price'];
     $product->stock = $_POST['stock'];
+    (isset($_POST['special']) ? $special = 1 : $special = 0);
+    $product->special = $special;
     if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
         $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
     } else {

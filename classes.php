@@ -242,22 +242,22 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getAllProducts($type = null, $startamount = 0, $endamount = 5) {
+    static function getAllProducts($type = null, $startamount = 0, $endamount = 5, $special = 0) {
         global $db;
         if ($type) {
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY name LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
-            $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+        } elseif ($special == 1) {
+            $query = $db->prepare("SELECT * FROM Products WHERE special = 1 ORDER BY name");
         } else {
             $query = $db->prepare("SELECT * FROM Products ORDER BY name LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
-            $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         }
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         return $result;
     }
 
@@ -283,26 +283,28 @@ class Product {
         return $result;
     }
 
-    static function create($typeid, $name, $description, $stock, $price, $image = null) {
+    static function create($typeid, $name, $description, $stock, $price, $special, $image = null) {
         global $db;
-        $query = $db->prepare("INSERT INTO Products (typeid, name, description, stock, price, image) VALUES (:typeid, :name, :description, :stock, :price, :image)");
+        $query = $db->prepare("INSERT INTO Products (typeid, name, description, stock, price, special, image) VALUES (:typeid, :name, :description, :stock, :price, :special, :image)");
         $query->bindParam(':typeid', $typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->bindParam(':description', $description, PDO::PARAM_STR);
         $query->bindParam(':stock', $stock, PDO::PARAM_STR);
         $query->bindParam(':price', $price, PDO::PARAM_STR);
+        $query->bindParam(':special', $special, PDO::PARAM_INT);
         $query->bindParam(':image', $image, PDO::PARAM_LOB);
         return $query->execute();
     }
 
     function edit() {
         global $db;
-        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, image = :image WHERE id = :id");
+        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
         $query->bindParam(':typeid', $this->typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
         $query->bindParam(':description', $this->description, PDO::PARAM_STR);
         $query->bindParam(':stock', $this->stock, PDO::PARAM_STR);
         $query->bindParam(':price', $this->price, PDO::PARAM_STR);
+        $query->bindParam(':special', $this->special, PDO::PARAM_INT);
         $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         return $query->execute();

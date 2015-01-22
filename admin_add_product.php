@@ -8,11 +8,12 @@ if (isset($_POST['name'])) {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
+    (isset($_POST['special']) ? $special = 1 : $special = 0);
     $image = ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
-    $status = Product::create($typeid, $name, $description, $stock, $price, $image);
     if (empty($name) || empty($price)) {
         $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
     } else {
+        $status = Product::create($typeid, $name, $description, $stock, $price, $special, $image);
         if ($status) {
             $display->addMessage("success", "Product toegevoegd");
         } else {
@@ -42,6 +43,7 @@ include 'views/navigation.php';
         </div>
         <input type="text" name="price" placeholder="prijs per stuk" id="price"> <br>
         <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
+        Toon op homepage: <input value="1" type="checkbox" name="special"><br>
         <input type="file" name="image" class="upload_image"><br>
     <button type="submit" class="button"><span>&#xf0fe;</span>toevoegen</button>  
 </form>	       		      
