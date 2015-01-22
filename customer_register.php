@@ -27,7 +27,7 @@ include 'views/navigation.php';
         <input type="password" name="password2" placeholder="wachtwoord (nogmaals)" id="pass2" onkeyup="checkPass();
                 return false;">
         <span id="confirmMessage"></span><br>
-        <select name="gender">
+        <select name="gender" class="select_gender">
             <option value="true">Dhr.</option>
             <option value="false">Mevr.</option>
         </select>

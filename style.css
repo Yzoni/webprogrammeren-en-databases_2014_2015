@@ -586,7 +586,7 @@ input[type=password] {
     background: url('images/password_bg.jpg') no-repeat;
 }
 
-select {
+select_gender {
     -webkit-appearance: none;
     -moz-appearance: none;
     border-radius: 5px;
@@ -753,9 +753,14 @@ td {
 /* Select Order */
 
 .select_order {
-    margin: 0px;
-    padding-left : 2px;
-    float: right;
+    border-radius: 5px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 36px;
+    width: 40px;
+    float: left;
 }
 
 table {
