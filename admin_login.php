@@ -21,7 +21,7 @@ include 'views/navigation.php';
 
 ?>
 
-        <div class="formwrapper">
+        <div class="wrappercontent">
             <h2 class="contenttitle">Inloggen Administrator: </h2>
             <form action="admin_login.php" method="post">
                 <input type="text" name="username" placeholder="voornaam"><br>
