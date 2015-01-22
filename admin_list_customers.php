@@ -24,7 +24,7 @@ $customers = Customer::getAllCustomers();
                 echo "<td>" . $customer->firstname . "</std>";
                 echo "<td>" . $customer->lastname . "</td>";
                 echo "<td>" . $customer->email . "</td>";
-                echo "<td> <a href=\"admin_view_customer.php?id=" . $customer->id . "\" class=\"button\">details ></a></td";
+                echo "<td> <a href=\"admin_view_customer.php?id=" . $customer->id . "\" class=\"button\"><span class=\"icon\">&#xF129;</span>details</a></td";
                 echo "</tr>";
             }
             ?>
