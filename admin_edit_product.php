@@ -18,11 +18,15 @@ if (isset($_POST['name'])) {
     } else {
         $product->image = null;
     }
-    $status = $product->edit();
-    if ($status) {
-        $display->addMessage("success", "Product aangepast");
+    if (empty($product->name) || empty($product->price)) {
+        $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
     } else {
-        $display->addMessage("error", "Er ging iets fout bij het aanpassen van dit product");
+        $status = $product->edit();
+        if ($status) {
+            $display->addMessage("success", "Product aangepast");
+        } else {
+            $display->addMessage("error", "Er ging iets fout bij het aanpassen van dit product");
+        }
     }
 }
 include 'views/header.php';

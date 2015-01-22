@@ -10,10 +10,14 @@ if (isset($_POST['name'])) {
     $stock = $_POST['stock'];
     $image = ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
     $status = Product::create($typeid, $name, $description, $stock, $price, $image);
-    if ($status) {
-        $display->addMessage("success", "Product toegevoegd");
+    if (empty($name) || empty($price)) {
+        $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
     } else {
-        $display->addMessage("error", "Er ging iets fout bij het toevoegen van dit product");
+        if ($status) {
+            $display->addMessage("success", "Product toegevoegd");
+        } else {
+            $display->addMessage("error", "Er ging iets fout bij het toevoegen van dit product");
+        }
     }
 }
 include 'views/header.php';

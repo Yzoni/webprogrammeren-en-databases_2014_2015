@@ -9,8 +9,13 @@ if (isset($_POST['email'])) {
     $streetnumber = $_POST['streetnumber'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
-    $streetaddress = $_POST['streetaddress']; 
-    Customer::create($email, $password, $streetaddress, $streetnumber, $zip, $firstname, $lastname, $gender);
+    $streetaddress = $_POST['streetaddress'];
+    if (empty($email) || empty($password) || empty($zip) || empty($streetnumber) || empty($firstnam) || empty($lastname) || empty($streetaddress)) {
+        $display->addMessage("error", "Niet alle velden ingevuld");
+    } else {
+        Customer::create($email, $password, $streetaddress, $streetnumber, $zip, $firstname, $lastname, $gender);
+        $display->addMessage("success", "Account aangemaakt");
+    }
 }
 
 include 'views/header.php';
