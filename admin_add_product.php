@@ -19,6 +19,7 @@ if (isset($_POST['name'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
+<div class="wrappercontent">
 <h2 class="contenttitle">Product toevoegen: </h2>
 <form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
     <div class="links_fruit">        
@@ -43,7 +44,7 @@ include 'views/navigation.php';
     </div>
     <button type="submit" class="button"><span>&#xf0fe;</span>toevoegen</button>  
 </form>	       		      
-
+</div>
 <?php
 include 'views/footer.php';
 ?>
