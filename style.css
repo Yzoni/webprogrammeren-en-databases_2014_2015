@@ -30,6 +30,7 @@ body {
 
 .wrapper {
     min-height: 500px;
+    min-width: 820px;
     position: relative;
     margin: auto;
     padding-bottom: 100px;
@@ -40,7 +41,7 @@ body {
     background-color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    box-shadow: 0px 0px 32px -5px rgba(0,0,0,0.50);
+    box-shadow: 0px 0px 32px -5px rgba(0,0,0,0.50); 
 }
 
 .wrappercontent {
@@ -66,7 +67,6 @@ body {
 .wrapperheadcontent {
     color: white;
     padding-top: 9px;
-    margin-left: 0px;
 }
 
 .wrapperheadcontent .iconfont {
@@ -119,10 +119,10 @@ body {
 }
 
 header {
+    min-width: 820px;
     color: white;
     height: 50px;
     padding-top: 10px;
-    padding-left: 0px;
     background-color: white;
     background: rgba(255, 255, 255, .7);
 }
