@@ -488,7 +488,15 @@ footer a:hover {
 .inputBox{
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 20px;
+    width: 66px;
+    height: 30px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 36px;
+    background: url('images/username_bg.jpg') no-repeat;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .prodInfoTxt {
