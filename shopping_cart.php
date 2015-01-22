@@ -15,6 +15,7 @@ if (isset($_GET['deleteItem'])) {
         array_shift($_SESSION['quantities']);
         array_shift($_SESSION['subtotal']);
         unset($_GET['deleteItem']);
+        echo '<meta http-equiv="refresh" content="0.1">';
     } else if ($i > 0) {
         $subtotal = $_SESSION['subtotal'][$i];
         $_SESSION['total'] -= $subtotal;
@@ -22,13 +23,12 @@ if (isset($_GET['deleteItem'])) {
         unset($_SESSION['quantities'][$i]);
         unset($_SESSION['subtotal'][$i]);
         unset($_GET['deleteItem']);
-    } else if (!isset($i)) {
+        echo '<meta http-equiv="refresh" content="0.1">';
+    } else if (sizeof($_SESSION['products']) == 0) {
         $_SESSION['total'] = 0;
-        unset($_GET['deleteItem']);    
+        unset($_GET['deleteItem']);
     }
-
 }
-
 ?>
 
 <div class="shopping_cart">
@@ -41,13 +41,14 @@ if (isset($_GET['deleteItem'])) {
 // will be executed to print all the products which have been added to the array
 if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){   
     $_SESSION['total'] = 0;
-
-    // This for loop goes through all the items stored in the products array,
+    // This foreach loop goes through all the items stored in the products array,
     // their associated quantities, names, and prices; calculates the total
     // and subtotal, and prints everything to the screen.
-    for ($i = 0; $i < sizeof($_SESSION["products"]); ++$i) {
-    	$productId = $_SESSION["products"][$i];
-    	$quantity = $_SESSION["quantities"][$i];
+
+    echo "<table class='shopping_cart_table'>";
+    foreach ($_SESSION['products'] as $index => $productId) {
+    	$productId;
+    	$quantity = $_SESSION['quantities'][$index];
         $sqlQuery = "SELECT name, price FROM Products WHERE id=$productId";
     	$result = $db->query($sqlQuery);
         $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -56,9 +57,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         $productPrice = $resultArray["price"];
     	$subtotal = ($productPrice * $quantity);
         $_SESSION['total'] += $subtotal;
-        
         echo "
-        <table class='shopping_cart_table'>
         <tr>
         <td id ='cartImg'>
         Image
@@ -67,7 +66,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         $productName
         </td>
         <td>
-        Hoeveelheid : $quantity kg
+        $quantity kg
         </td>
         <td>
         <a href='shopping_cart.php?deleteItem=$productId' class='deleteItemLink' >
@@ -77,11 +76,11 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         <td>
         &euro; $subtotal
         </td>
-        </tr>
-        </table> ";
+        </tr>";
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
+        echo "<table>";
         echo '<div class="line"> </div>' . '<br>';
 
         echo '<div class="shopping_cart_price_total">' .  "Totaal :" . 
