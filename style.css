@@ -604,44 +604,37 @@ input[name="lastname"] {
 /* ADD ADMIN PRODUCT */
 
 #description_fruit, #name, #category, #price, #quantity, #stock, #photo{
-    width: 25%;	
+    width: 20%;	
     border: 1px solid;
     border-color: #006666;
     border-radius: 5px;
     margin-top: 12px;	
+    padding-left: 36px;	
+    height: 32px;	
 }
 
 #description_fruit {
     font-family: arialroundedmt, sans-serif, "Times New Roman";
-    width: 25%;		
+    height: 80px;	
 }
 
-#name, #category, #price, #quantity, #stock{
-    height: 32px;	
-}
-
-#name{	
-    padding-left: 36px;	
+#name{		
     background: url("images/naam_bg.jpg") no-repeat;
 }
 
 #category{
-    padding-left: 36px;
     background: url("images/categorie_bg.jpg") no-repeat;
 }
 
 #price{
-    padding-left: 36px;
     background: url("images/prijs_bg.jpg") no-repeat;
 }
 
 #quantity{
-    padding-left: 36px;
     background: url("images/kwantiteit_bg.jpg") no-repeat;
 }
 
 #stock {
-    padding-left: 36px;
     background: url("images/voorraad_bg.jpg") no-repeat;
 }
 
