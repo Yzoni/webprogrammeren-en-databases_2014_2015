@@ -436,6 +436,18 @@ class Customer {
         }
     }
 
+    static function checkMailOccurrance($email) {
+        global $db;
+        $query = $db->prepare("SELECT * FROM Customers WHERE email = :email");
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
+        $query->execute();
+        if ($query->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function edit() {
         global $db;
         $query = $db->prepare("UPDATE Customers SET email = :email, zip = :zip, gender = :gender, streetaddress = :streetaddress, streetnumber = :streetnumber, firstname = :firstname, lastname = :lastname  WHERE id = :id");

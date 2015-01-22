@@ -5,16 +5,20 @@ if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $zip = $_POST['zip'];
-    $gender = $_POST['gender']=="true" ? true : false;
+    $gender = $_POST['gender'] == "true" ? true : false;
     $streetnumber = $_POST['streetnumber'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $streetaddress = $_POST['streetaddress'];
-    if (empty($email) || empty($password) || empty($zip) || empty($streetnumber) || empty($firstnam) || empty($lastname) || empty($streetaddress)) {
+    if (empty($email) || empty($password) || empty($zip) || empty($streetnumber) || empty($firstname) || empty($lastname) || empty($streetaddress)) {
         $display->addMessage("error", "Niet alle velden ingevuld");
     } else {
-        Customer::create($email, $password, $streetaddress, $streetnumber, $zip, $firstname, $lastname, $gender);
-        $display->addMessage("success", "Account aangemaakt");
+        if (Customer::checkMailOccurrance($email)) {
+            $display->addMessage("error", "Email al geregistreerd");
+        } else {
+            Customer::create($email, $password, $streetaddress, $streetnumber, $zip, $firstname, $lastname, $gender);
+            $display->addMessage("success", "Account aangemaakt");
+        }
     }
 }
 
