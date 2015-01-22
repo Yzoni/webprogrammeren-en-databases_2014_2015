@@ -84,8 +84,6 @@ if (isset($_POST['quantity'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<div class="description">
-
     <div>
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>
@@ -177,7 +175,6 @@ include 'views/navigation.php';
            class="button"><span>&#xf137;</span>terug naar: 
             <?php echo $product->type->name; ?> </a>
     </p>
-</div>
 
 <?php
 include 'views/footer.php';
