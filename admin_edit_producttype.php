@@ -26,6 +26,7 @@ if (isset($_GET['fn']) && $_GET['fn'] == "deleteproducttype" && is_admin_logged_
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
+
 <h2 class="contenttitle">Categorie wijzigen / verwijderen: </h2>
 <?php
 $producttype->displayEditForm();
