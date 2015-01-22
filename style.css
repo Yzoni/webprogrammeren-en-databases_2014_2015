@@ -541,12 +541,6 @@ footer a:hover {
 }
 
 /* CUSTOMER LOGIN AND REGISTER FORMS*/
-.formwrapper {
-    margin-top: 25px;
-    margin-left: 30%;
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    width: 50%;
-}
 
 #person {
     background: url('images/username_bg.jpg') no-repeat;
@@ -556,7 +550,7 @@ footer a:hover {
     background: url('images/info_bg.jpg') no-repeat;
 }
 
-.formwrapper input[type=text] {
+input[type=text] {
     width: 250px;
     margin-bottom: 15px;
     height: 30px;
