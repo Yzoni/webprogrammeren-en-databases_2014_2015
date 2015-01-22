@@ -24,7 +24,7 @@ include 'views/navigation.php';
 <form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
        
         <input type="text" name="name" placeholder="naam" id="name"> <br>
-        <select name="producttype">
+        <select name="producttype" class="select_category">
             <?php
             $producttypes_form = ProductType::getAllProductTypes();
             foreach ($producttypes_form as $producttype_form) {
@@ -38,7 +38,7 @@ include 'views/navigation.php';
         </div>
         <input type="text" name="price" placeholder="prijs per stuk" id="price"> <br>
         <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
-        <button type="file" name="image" id="uploadImg"><br>
+        <input type="file" name="image" class="upload_image"><br>
     <button type="submit" class="button"><span>&#xf0fe;</span>toevoegen</button>  
 </form>	       		      
 </div>

@@ -84,7 +84,6 @@ function validQuantity() {
 }
 </script>
 
-<div class="description">
 <div class="wrappercontent">
     <div>
         <br>
