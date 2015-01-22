@@ -572,7 +572,7 @@ input[type=password] {
     background: url('images/password_bg.jpg') no-repeat;
 }
 
-.wrappercontent select_gender {
+.select_gender {
     -webkit-appearance: none;
     -moz-appearance: none;
     border-radius: 5px;

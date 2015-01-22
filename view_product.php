@@ -65,7 +65,7 @@ if (isset($_POST['quantity'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<<<<<<< HEAD
+
 
 <script>
 
@@ -85,10 +85,7 @@ function validQuantity() {
 </script>
 
 <div class="description">
-=======
 <div class="wrappercontent">
->>>>>>> 5ae3953912a2e15ac6043d430ec347fd55c0f625
-
     <div>
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>
