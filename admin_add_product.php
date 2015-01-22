@@ -22,7 +22,7 @@ include 'views/navigation.php';
 <div class="wrappercontent">
 <h2 class="contenttitle">Product toevoegen: </h2>
 <form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
-    <div class="links_fruit">        
+       
         <input type="text" name="name" placeholder="naam" id="name"> <br>
         <select name="producttype">
             <?php
@@ -36,12 +36,9 @@ include 'views/navigation.php';
         <div class="beschrijving_product">
             <textarea name="description" id="description_fruit" placeholder=" beschrijving" cols="50" rows="10"></textarea>    
         </div>
-    </div>
-    <div class="rechts_fruit">
         <input type="text" name="price" placeholder="prijs per stuk" id="price"> <br>
         <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
         <input type="file" name="image" id="uploadImg">
-    </div>
     <button type="submit" class="button"><span>&#xf0fe;</span>toevoegen</button>  
 </form>	       		      
 </div>
