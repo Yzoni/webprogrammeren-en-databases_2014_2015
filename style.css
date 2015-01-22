@@ -63,6 +63,8 @@ select {
     border-color: black;
     border-radius: 5px;
     border: 1px solid;
+    margin-top: 25px;
+    margin-right: 25px;
 }
 
 .wrapperhead {
