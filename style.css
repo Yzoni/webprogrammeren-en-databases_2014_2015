@@ -288,7 +288,6 @@ input[name="firstname"] {
 .button_delete{
     background-color: #d40000;
     float: right;
-    margin-right: 12px;
 }
 
 .button_right{
@@ -603,17 +602,6 @@ input[name="lastname"] {
 
 
 /* ADD ADMIN PRODUCT */
-.links_fruit {	
-    width: 30%;	categor
-    float: left;  
-    font-family: arialroundedmt, sans-serif, "Times New Roman";  
-}
-
-.rechts_fruit {	
-    width: 30%;	
-    float: left;    
-    font-family: arialroundedmt, sans-serif, "Times New Roman";
-}
 
 #description_fruit, #name, #category, #price, #quantity, #stock, #photo{
     width: 75%;	
