@@ -60,6 +60,9 @@ select {
 
 .wrappercontent {
     margin-left: 30%;
+    border-color: black;
+    border-radius: 5px;
+    border: 1px solid;
 }
 
 .wrapperhead {
