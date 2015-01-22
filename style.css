@@ -365,6 +365,10 @@ footer a:hover {
     text-decoration: none;
 }
 
+#currentpage {
+    color: #006666;
+}
+
 /* Product box */
 .box {
     display: inline-block;
