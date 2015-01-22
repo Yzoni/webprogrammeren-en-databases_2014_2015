@@ -86,7 +86,7 @@ body {
 }
 
 .wrapperheadcontent input[type=text] {
-    width: 22%;
+    width: 21%;
     margin-left: 25px;
     margin-bottom: 15px;
     height: 30px;
@@ -469,20 +469,6 @@ footer a:hover {
     float:right;
 }
 
-.inputBox{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 90px;
-    height: 32px;
-    border: 1px solid;
-    border-color: #006666;
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 36px;
-    background: url('images/voorraad_bg.jpg') no-repeat;
-    background-color: white;
-    border-radius: 5px;
-}
-
 .prodInfoTxt {
     float:left;
 }
@@ -736,6 +722,20 @@ td {
     
 }
 
+.inputBox{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 90px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 36px;
+    background: url('images/voorraad_bg.jpg') no-repeat;
+    background-color: white;
+    border-radius: 5px;
+}
+
 /* Select Order */
 
 .select_order {
@@ -777,4 +777,14 @@ td, th {
 .detailslink {
     color: #006666;
     text-decoration: none;
+}
+
+/* admin panel customer overview */
+
+table tbody {
+    background-color: #454545;
+}
+
+table thead {
+    border-top: 2px solid black;
 }
