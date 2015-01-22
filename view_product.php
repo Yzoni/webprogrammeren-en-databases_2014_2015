@@ -65,6 +65,7 @@ if (isset($_POST['quantity'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
+<<<<<<< HEAD
 
 <script>
 
@@ -84,6 +85,9 @@ function validQuantity() {
 </script>
 
 <div class="description">
+=======
+<div class="wrappercontent">
+>>>>>>> 5ae3953912a2e15ac6043d430ec347fd55c0f625
 
     <div>
         <br>
@@ -104,9 +108,9 @@ function validQuantity() {
     <hr>
 
     <br>
-    <span class="descrText"> <?php echo $product->description; ?></span>
     <img class="descrImg" height="114" width="320" src="data:image/png;base64,
          <?php echo base64_encode($product->image); ?>"/>
+	<span class="descrText"> <?php echo $product->description; ?></span>
     <br>
     <hr>
 

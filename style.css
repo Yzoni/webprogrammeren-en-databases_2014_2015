@@ -38,6 +38,7 @@ select {
 }
 
 .contenttitle {
+    line-height: 24px;
     margin-top: 20px;
     margin-bottom: 15px;
 }
@@ -59,6 +60,9 @@ select {
 
 .wrappercontent {
     margin-left: 30%;
+    border-color: black;
+    border-radius: 5px;
+    border: 1px solid;
 }
 
 .wrapperhead {
@@ -447,13 +451,10 @@ footer a:hover {
 }
 
 /* Product page */
-.description {
-    width:70%;
-    margin-left: 30%;
-}
 
 .category {
-    margin-top: 20px;
+    line-height: 24px;
+    margin-top: 25px;
     margin-bottom: 15px;
     color: #006666;
 }
@@ -486,7 +487,17 @@ footer a:hover {
 }
 
 .inputBox{
-    width: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 90px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 36px;
+    background: url('images/voorraad_bg.jpg') no-repeat;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .prodInfoTxt {
@@ -694,11 +705,12 @@ input[type="submit"] {
 td {
     width:10%;
 }
+
 .line {
     background-color: #454545;
     height: 1px;
-    width: 95%;    
-    margin-bottom: 12px;
+    width: 68%;    
+    margin-bottom: 15px;
     margin-left: 30%;
 }
 
