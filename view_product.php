@@ -122,8 +122,8 @@ function validQuantity() {
         
     <li>
         <p class="ProdInfoTxt">
-            <span class="icon">
-            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")
+            
+            <?php echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d")
             ?>
             </span>
             <?php echo $product->stock;

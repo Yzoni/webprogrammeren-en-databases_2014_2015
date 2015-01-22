@@ -410,13 +410,13 @@ footer a:hover {
     float: right;
 }
 
-.box .stock .icon1 {
+.stockicongreen {
     font-family: iconfont;
     color: green;
     margin-right: 3px;
 }
 
-.box .stock .icon2 {
+.stockiconred {
     font-family: iconfont;
     color: red;
     margin-right: 3px;
