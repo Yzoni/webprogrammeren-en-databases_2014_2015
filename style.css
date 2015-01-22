@@ -781,10 +781,10 @@ td, th {
 
 /* admin panel customer overview */
 
-table tbody {
+table thead {
     background-color: #454545;
 }
 
-table thead {
+table tbody {
     border-top: 2px solid black;
 }
