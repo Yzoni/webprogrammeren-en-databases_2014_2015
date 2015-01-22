@@ -30,10 +30,12 @@ include 'views/navigation.php';
 ?>
 <div class="wrappercontent">
 <h2 class="contenttitle">Product wijzigen: </h2>         
-</div>
+
 <?php
 $product->displayEditForm();
-
+?>
+</div>
+<?php
 include 'views/footer.php';
 ?>
 
