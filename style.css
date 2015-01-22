@@ -672,28 +672,14 @@ input[name="lastname"] {
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
     padding-left: 36px;
-    background: url('images/category_bg.jpg') no-repeat;
+    background: url('images/categorie_bg.jpg') no-repeat;
     width: 25%;
-    float: left;
     margin-right: 10px;
     margin-top: 0px;
 }
 
 .upload_image {
-    background-color: #006666;
-    display: inline-block;
-    text-align: center;
-    color: white;
-    border: none;
-    height: 32px;
-    font-size: 12px;
-    line-height: 32px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all .3s ease;
-    margin-right: 12px;
+    margin-bottom: 15px;
 }
 
 /* Shopping cart */
