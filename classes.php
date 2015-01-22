@@ -262,19 +262,19 @@ class Product {
     }
 
     static function getSortedProducts($sort) {
-        switch ($sort){
+        switch ($sort) {
             case alphabetic :
                 $order = ASC;
                 $type = name;
                 break;
-            case price-desc :
+            case price - desc :
                 $order = DESC;
                 $type = price;
                 break;
-            case price-asc :
+            case price - asc :
                 $order = ASC;
-                $type = price; 
-                break;            
+                $type = price;
+                break;
         }
 
         $query = $db->prepare("SELECT * FROM Products ORDER BY $type $order");
@@ -327,11 +327,12 @@ class Product {
         $query = $db->prepare("SELECT * from Products WHERE :name LIKE :key");
         $query->bindParam(':key', $key, PDO::PARAM_STR);
         $query->execute();
-        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $array[] = $row['title'];
         }
         return json_encode($array);
     }
+
 }
 
 /**
@@ -353,13 +354,7 @@ class Customer {
     function __construct($id = null) {
         if ($id) {
             global $db;
-            if (is_int($id)) {
-                // Get customer by id
-                $query = $db->prepare("SELECT * FROM Customers WHERE id = :id");
-            } else {
-                // Get customer by email
-                $query = $db->prepare("SELECT * FROM Customers WHERE email = :id");
-            }
+            $query = $db->prepare("SELECT * FROM Customers WHERE id = :id");
             $query->bindParam(':id', $id, PDO::PARAM_INT);
             $query->setFetchMode(PDO::FETCH_INTO, $this);
             $query->execute();
@@ -369,6 +364,11 @@ class Customer {
 
     function displayBox() {
         $output = include 'views/Customer_displayBox.php';
+        return $output;
+    }
+
+    function displayCustomerDetails() {
+        $output = include 'views/Customer_detailsTable.php';
         return $output;
     }
 
@@ -449,6 +449,18 @@ class Customer {
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         $query->execute();
         return true;
+    }
+
+    /**
+     * Function delete
+     *
+     * Deletes a customer from the database
+     */
+    function delete() {
+        global $db;
+        $query = $db->prepare("DELETE FROM Customers WHERE id = :id");
+        $query->bindParam(':id', $this->id, PDO::PARAM_STR);
+        $query->execute();
     }
 
     function changePassword($oldpassword, $newpassword, $newpassword2) {
@@ -640,13 +652,13 @@ class Admin {
         $query->bindParam(':password', $password, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Admin");
-        if ($result == FALSE) {
-            header('Location: admin_login.php?fn=credentialsfalse');
-            exit();
-        } else {
+        if ($result) {
             session_start();
             $_SESSION['admin_logged_in'] = 1;
             header('Location: index.php');
+            exit();
+        } else {
+            header('Location: admin_login.php?fn=credentialsfalse');
             exit();
         }
     }

@@ -261,6 +261,11 @@ nav .arrow {
     margin-right: 20px;
 }
 
+nav .arrow .productoevoegen {
+    font-family: arialroundedmtbold;
+    margin-left: 5px;
+}
+
 input[name="firstname"] {
     width: 25%;
     height: 32px;
@@ -466,9 +471,9 @@ footer a:hover {
     color: green;
     font-family: iconfont;
 }
+
 .icon {
     font-family: iconfont;
-    margin-left: 
 }
 
 .icon-not-ok {
@@ -531,7 +536,7 @@ footer a:hover {
     margin-top: 25px;
     margin-left: 30%;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    width: 80%;
+    width: 50%;
 }
 
 #person {
@@ -579,6 +584,8 @@ footer a:hover {
 }
 
 .formwrapper select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     border-radius: 5px;
     margin-bottom: 15px;
     height: 32px;
@@ -590,6 +597,7 @@ footer a:hover {
     width: 100px;
     float: left;
     margin-right: 10px;
+    margin-top: 0px;
 }
 
 input[type="submit"] {
@@ -602,8 +610,8 @@ input[type="submit"] {
 
 .formwrapper input[name="lastname"] {
     clear: both;
-    float: left;
 }
+
 
 /* ADD ADMIN PRODUCT */
 .links_fruit {	
@@ -696,6 +704,7 @@ td {
 
 .shopping_cart {
     margin-left: 28.8%;
+    margin-top: 25px;
 }
 
 .product_basket {
@@ -745,3 +754,32 @@ td {
     float: right;
 }
 
+table {
+  border-collapse: collapse;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  
+}
+
+th {
+    text-align: left;
+    background-color: #696969;;
+    color: white;
+    
+}
+
+table, td, th {
+    border: 1px solid #696969;;
+}
+
+td, th {
+    padding-right: 20px;
+    padding-left: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.detailslink {
+    color: #006666;
+    text-decoration: none;
+}

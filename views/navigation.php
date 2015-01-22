@@ -2,7 +2,7 @@
     <ul>
         <li>
             <a href="index.php">Home</a>
-            <a href="products.php">Producten <?php echo (is_admin_logged_in() == true) ? "</a><a href=\"admin_add_product.php\" class=\"no-nav\"><span class=\"arrow\">&#xf055;</span>" : ""; ?></a>
+            <a href="products.php">Producten <?php echo (is_admin_logged_in() == true) ? "</a><a href=\"admin_add_product.php\" class=\"no-nav\"><span class=\"arrow\">&#xf055; <span class=\"toevoegtext\"> product</span></span>" : ""; ?></a>
             <div>
                 <ul>
                     <?php
