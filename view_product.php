@@ -115,7 +115,7 @@ function validQuantity() {
     <ul class="infoList">
 
     <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
-        <input type="text" class="inputBox" name="quantity" placeholder="aantal">            
+        <input type="text" class="inputBox" name="quantity" placeholder="Hoeveelheid in kg">            
         <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
         </button>
     </form>
