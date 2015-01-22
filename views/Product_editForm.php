@@ -20,10 +20,4 @@
         <input type="file" name="image" class="upload_image">
     </div>
     <button type="submit" id="submit" class="button"><span>&#xf0c7;</span>opslaan</button> 
-           <?php
-           if (is_admin_logged_in()) {
-               echo "<a href=\"view_product.php?id=$product->id&fn=deleteproduct\" class=\"button_delete\">"
-               . "<span class=\"icon\">&#xf00d;</span>verwijder product</a>";
-           }
-           ?>
 </form>	     		
