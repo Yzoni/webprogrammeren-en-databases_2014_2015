@@ -242,7 +242,7 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getAllProducts($type = null, $startamount = 0, $endamount = 5, $special = 0) {
+    static function getAllProducts($type = null, $startamount = 0, $endamount = 6, $special = 0) {
         global $db;
         if ($type) {
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY name LIMIT :startamount, :endamount");
