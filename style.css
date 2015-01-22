@@ -759,8 +759,8 @@ td {
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
     padding-left: 36px;
-    width: 40px;
-    float: left;
+    width: 80px;
+    float: right;
 }
 
 table {
