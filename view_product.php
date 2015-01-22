@@ -1,25 +1,6 @@
-<script>
-
-function validQuantity() {
-    var quantity = document.forms["addToCart"]["quantity"].value;
-    var stock = "<?php echo json_encode($product->stock); ?>";
-    if (isNaN(quantity)){
-        alert("U dient cijfers in te vullen");
-        return false;
-    }
-    if (quantity > stock || quantity <= 0) {    
-        alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\n\
-                meer hebben wij op dit moment niet op voorraad.");
-        return false;
-    }
-}
-</script>
-
-
 <?php
-require_once 'classes.php';
-
 session_start();
+require_once 'classes.php';
 if (!isset($GLOBALS['printAddedProd'])) {
     global $printAddedProd;
     $GLOBALS['printAddedProd'] = 0;
@@ -84,8 +65,26 @@ if (isset($_POST['quantity'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<div class="description">
 
+
+<script>
+
+function validQuantity() {
+    var quantity = document.forms["addToCart"]["quantity"].value;
+    var stock = "<?php echo json_encode($product->stock); ?>";
+    if (isNaN(quantity)){
+        alert("U dient cijfers in te vullen");
+        return false;
+    }
+    if (quantity > stock || quantity <= 0) {    
+        alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\n\
+                meer hebben wij op dit moment niet op voorraad.");
+        return false;
+    }
+}
+</script>
+
+<div class="wrappercontent">
     <div>
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>
@@ -105,9 +104,9 @@ include 'views/navigation.php';
     <hr>
 
     <br>
-    <span class="descrText"> <?php echo $product->description; ?></span>
     <img class="descrImg" height="114" width="320" src="data:image/png;base64,
          <?php echo base64_encode($product->image); ?>"/>
+	<span class="descrText"> <?php echo $product->description; ?></span>
     <br>
     <hr>
 

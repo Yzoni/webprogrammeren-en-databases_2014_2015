@@ -32,10 +32,14 @@ if (isset($_POST['name'])) {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
+<div class="wrappercontent">
 <h2 class="contenttitle">Product wijzigen: </h2>         
+
 <?php
 $product->displayEditForm();
-
+?>
+</div>
+<?php
 include 'views/footer.php';
 ?>
 

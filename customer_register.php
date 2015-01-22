@@ -22,7 +22,7 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
-<div class="formwrapper">
+<div class="wrappercontent">
     <h2 class="contenttitle">Registreer als nieuwe klant: </h2>
     <form action="customer_register.php" method="POST">
         <input type="text" name="email" placeholder="emailadres" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br>
@@ -32,7 +32,7 @@ include 'views/navigation.php';
         <input type="password" name="password2" placeholder="wachtwoord (nogmaals)" id="pass2" onkeyup="checkPass();
                 return false;">
         <span id="confirmMessage"></span><br>
-        <select name="gender">
+        <select name="gender" class="select_gender">
             <option value="true">Dhr.</option>
             <option value="false">Mevr.</option>
         </select>

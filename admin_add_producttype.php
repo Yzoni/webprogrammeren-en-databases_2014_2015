@@ -8,12 +8,13 @@ if (isset($_POST['add_producttype']) && $_POST['add_producttype'] != '') {
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
+<div class="wrappercontent">
 <h2 class="contenttitle">Categorie toevoegen: </h2>
 <form action="admin_add_producttype.php" method="post">
     <input type="text" name="add_producttype" placeholder="nieuwe categorie" id="add_new_category"> 
     <button type="submit" class="button"><span>&#xf0fe;</span>categorie toevoegen</button>		
 </form>
-
+</div>
 <?php
 include 'views/footer.php';
 ?>
