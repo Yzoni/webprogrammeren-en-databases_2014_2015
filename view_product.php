@@ -136,15 +136,16 @@ function validQuantity() {
     <li>
         <p class="prodInfoTxt"> 
         <span class="icon">&#xf135; </span>
-            levertijd: 1 dag
+        <p> levertijd: 1 dag </p>
         </span>
         <br>
     </li>
     <li>
-        <p class="prodInfoTxt">        
-        <span class="icon">&#xf153; </span> 
-            prijs per kg: 
-                <?php echo $product->price; ?> euro
+        <span class="prodInfoTxt">        
+		<span class="icon">&#xf153; </span> 
+		<p>            
+			prijs per kg: 
+			<?php echo $product->price; ?> euro
         </span>
         <br>
 
