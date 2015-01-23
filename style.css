@@ -468,6 +468,7 @@ footer a:hover {
 }
 .descrImg {
     display: inline-block;
+    margin-right: 12px;
 }
 
 .icon-ok {
@@ -554,7 +555,8 @@ input[type=text] {
 }
 
 .addToCart input[type=text] {
-    width: 100px;
+    width: 105px;
+    background: url('images/kwantiteit_bg.jpg') no-repeat;
 }
 
 #add_new_category {
