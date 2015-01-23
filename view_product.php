@@ -134,14 +134,14 @@ function validQuantity() {
     </li>
     
     <li>
-        <span class="prodInfoTxt"> 
+        <p class="prodInfoTxt"> 
         <span class="icon">&#xf135; </span>
             levertijd: 1 dag
         </span>
         <br>
     </li>
     <li>
-        <span class="prodInfoTxt">        
+        <p class="prodInfoTxt">        
         <span class="icon">&#xf153; </span> 
             prijs per kg: 
                 <?php echo $product->price; ?> euro
@@ -167,11 +167,8 @@ function validQuantity() {
         ?>
 
     </div>
-    <br>
-    <br>
-
     <p>
-        <br>
+
         <a href="products.php?id=<?php echo $product->type->id ?>" 
            class="button"><span>&#xf137;</span>terug naar: 
             <?php echo $product->type->name; ?> </a>

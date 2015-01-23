@@ -19,6 +19,11 @@ body {
     font-family: arialroundedmtbold;
 }
 
+p {
+    font-family: arialroundedmtbold;
+    font-size: 12px;
+}
+
 .iconfont {
     font-family: iconfont;
 }
@@ -733,7 +738,7 @@ td {
     
 }
 
-.inputBox{
+.inputBox {
     -webkit-appearance: none;
     -moz-appearance: none;
     width: 90px;
