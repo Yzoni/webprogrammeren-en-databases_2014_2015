@@ -291,6 +291,7 @@ input[name="firstname"] {
 }
 
 .button_delete{
+    margin-top: 0px;
     background-color: #d40000;
     float: right;
 }
@@ -422,13 +423,18 @@ footer a:hover {
 .stockicongreen {
     font-family: iconfont;
     color: green;
-    margin-right: 3px;
+    margin-right: 12px;
 }
 
 .stockiconred {
     font-family: iconfont;
     color: red;
-    margin-right: 3px;
+    margin-right: 12px;
+}
+
+.stockicon {
+    font-family: iconfont;
+    margin-right: 12px;
 }
 
 .box a {
@@ -452,12 +458,9 @@ footer a:hover {
 
 /* Product page */
 
-.category {
-    line-height: 24px;
-    margin-bottom: 15px;
-    color: #006666;
+.contenthead {
+    border: 1px solid red;ca
 }
-
 
 .descrText {
     text-align: right;
@@ -548,6 +551,10 @@ input[type=text] {
     background: url('images/username_bg.jpg') no-repeat;
     background-color: white;
     border-radius: 5px;
+}
+
+.addToCart input[type=text] {
+    width: 100px;
 }
 
 #add_new_category {
