@@ -555,7 +555,7 @@ input[type=text] {
 }
 
 .addToCart input[type=text] {
-    width: 100px;
+    width: 105px;
     background: url('images/quantity_bg.jpg') no-repeat;
 }
 
