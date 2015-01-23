@@ -296,18 +296,32 @@ class Product {
         return $query->execute();
     }
 
-    function edit() {
+    function edit($imageenabled) {
         global $db;
-        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
+        if ($imageenabled == 1) {
+            $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
+            $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
+        } else {
+            $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special WHERE id = :id");
+        }
         $query->bindParam(':typeid', $this->typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
         $query->bindParam(':description', $this->description, PDO::PARAM_STR);
         $query->bindParam(':stock', $this->stock, PDO::PARAM_STR);
         $query->bindParam(':price', $this->price, PDO::PARAM_STR);
         $query->bindParam(':special', $this->special, PDO::PARAM_INT);
-        $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         return $query->execute();
+    }
+
+    static function checkProperImage($image) {
+        $imgtype = $_FILES["uploadedimage"]["type"];
+        $imgsize = $_FILES["fileToUpload"]["size"];
+        if ($imgtype !== "image/jpeg" || $imgtype !== "image/jpng" || $imgsize < 2000000) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function displayEditForm() {

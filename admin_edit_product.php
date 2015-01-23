@@ -15,15 +15,26 @@ if (isset($_POST['name'])) {
     $product->stock = $_POST['stock'];
     (isset($_POST['special']) ? $special = 1 : $special = 0);
     $product->special = $special;
-    if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
-        $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
+    if ($_FILES["image"]["type"] == "image/jpeg" || $_FILES["image"]["type"] == "image/png" || $_FILES["fileToUpload"]["size"] < 2000000) {
+        if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
+            $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
+        } else {
+            $product->image = null;
+        }
     } else {
-        $product->image = null;
+        $image = "noimage";
     }
+
     if (empty($product->name) || empty($product->price)) {
         $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
+    } elseif ($image = "noimage") {
+        $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     } else {
-        $status = $product->edit();
+        if ($product->image == null) {
+            $status = $product->edit(0);
+        } else {
+            $status = $product->edit(1);
+        }
         if ($status) {
             $display->addMessage("success", "Product aangepast");
         } else {
@@ -35,11 +46,11 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 <div class="wrappercontent">
-<h2 class="contenttitle">Product wijzigen: </h2>         
+    <h2 class="contenttitle">Product wijzigen: </h2>         
 
-<?php
-$product->displayEditForm();
-?>
+    <?php
+    $product->displayEditForm();
+    ?>
 </div>
 <?php
 include 'views/footer.php';

@@ -9,9 +9,15 @@ if (isset($_POST['name'])) {
     $price = $_POST['price'];
     $stock = $_POST['stock'];
     (isset($_POST['special']) ? $special = 1 : $special = 0);
-    $image = ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
+    if ($_FILES["image"]["type"] == "image/jpeg" || $_FILES["image"]["type"] == "image/png") {
+        $image = ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
+    } else {
+        $image = "noimage";
+    }
     if (empty($name) || empty($price)) {
         $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
+    } elseif ($image = "noimage") {
+        $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     } else {
         $status = Product::create($typeid, $name, $description, $stock, $price, $special, $image);
         if ($status) {
@@ -25,9 +31,9 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 <div class="wrappercontent">
-<h2 class="contenttitle">Product toevoegen: </h2>
-<form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
-       
+    <h2 class="contenttitle">Product toevoegen: </h2>
+    <form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
+
         <input type="text" name="name" placeholder="naam" id="name"> <br>
         <select name="producttype" class="select_category">
             <?php
@@ -45,8 +51,8 @@ include 'views/navigation.php';
         <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
         Toon op homepage: <input value="1" type="checkbox" name="special"><br>
         <input type="file" name="image" class="upload_image"><br>
-    <button type="submit" class="button"><span>&#xf0fe;</span>toevoegen</button>  
-</form>	       		      
+        <button type="submit" class="button"><span>&#xf0fe;</span>toevoegen</button>  
+    </form>	       		      
 </div>
 <?php
 include 'views/footer.php';
