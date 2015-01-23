@@ -85,7 +85,7 @@ function validQuantity() {
 </script>
 
 <div class="wrappercontent">
-    <div>
+    <div class="contenthead">
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>
            "class="category"><?php echo $product->type->name; ?></a> / 
