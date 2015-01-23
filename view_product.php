@@ -88,7 +88,7 @@ function validQuantity() {
     <div class="contenthead">
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>
-           "class="category"><?php echo $product->type->name; ?></a> / 
+           "class="category_product"><?php echo $product->type->name; ?></a> / 
            <?php echo $product->name; ?>
            <?php
            if (is_admin_logged_in()) {
@@ -113,7 +113,7 @@ function validQuantity() {
     <ul class="infoList">
     <div class=addToCart>
     <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
-        <input type="text" class="inputBox" name="quantity" placeholder="Hoeveelheid in kg">            
+        <input type="text" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">            
         <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
         </button>
     </form>
