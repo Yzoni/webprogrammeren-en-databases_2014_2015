@@ -132,9 +132,9 @@ function validQuantity() {
     </li>
     
     <li>
-        <span class="ProdInfoTxt"> 
+        <span class="ProdInfoTxt"><p> 
         <span class="icon">&#xf135; </span>
-        <p> levertijd: 1 dag </p>
+         levertijd: 1 dag </p>
         </span>
         <br>
     </li>
