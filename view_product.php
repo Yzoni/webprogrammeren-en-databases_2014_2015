@@ -100,7 +100,6 @@ function validQuantity() {
            ?>
     </div>
 
-    <br>
     <hr>
 
     <br>
