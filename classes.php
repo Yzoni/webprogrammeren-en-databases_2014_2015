@@ -835,6 +835,7 @@ class Order {
     static function show_customer_info($orderID) {
         global $db;
         global $customer;
+        echo "<h3>Klantgegevens:</h3> <br>";
         echo "klantnummer: ". $customer->id . "<br>";
         echo "voornaam: " . $customer->firstname . "<br>";
         echo "achternaam: " . $customer->lastname . "<br>";
