@@ -291,6 +291,7 @@ input[name="firstname"] {
 }
 
 .button_delete{
+    margin-top: 0px;
     background-color: #d40000;
     float: right;
 }
