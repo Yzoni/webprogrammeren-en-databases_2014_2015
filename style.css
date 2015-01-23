@@ -553,6 +553,11 @@ input[type=text] {
     border-radius: 5px;
 }
 
+.addToCart input[type=text] {
+    width: 90px;
+    border: 1px red solid;
+}
+
 #add_new_category {
     margin-bottom: 15px;
     height: 30px;
