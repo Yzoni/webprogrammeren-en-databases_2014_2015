@@ -810,18 +810,24 @@ class Order {
     
     static function show_order($orderID) {
         global $db;
+        $date = Order::show_date($orderID);
+        echo "<table>";
+        echo "<tr>";
+        echo "<td> factuurnummer: $orderID <br> $date</td>";
+        echo "</tr>";
         Order::show_company_Info();
-        echo "factuurnummer: $orderID <br>";
-        Order::show_date($orderID);
         Order::show_customer_info($orderID);
         Order::show_order_table($orderID);
+        echo "</table>";
     }
     
     static function show_company_Info() {
+        echo "<td>";
         echo "<h3>BedrijfsInformatie</h3> <br>";
         echo "Adres: fruytlaan 904 1234AB <br>";
         echo "Tel: 0201235813 <br>";
         echo "KvK: <br>";
+        echo "</td>";
     }
 
     static function show_date($orderID) {
@@ -829,12 +835,13 @@ class Order {
         $query = $db->query("SELECT date FROM Orders WHERE id=$orderID");
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $dateArray = $query->fetch();
-        echo "datum: " . end($dateArray) . "<br>";
+        echo "datum: " . end($dateArray);
     }
 
     static function show_customer_info($orderID) {
         global $db;
         global $customer;
+        echo "<td>";
         echo "<h3>Klantgegevens:</h3> <br>";
         echo "klantnummer: ". $customer->id . "<br>";
         echo "voornaam: " . $customer->firstname . "<br>";
@@ -843,13 +850,14 @@ class Order {
         echo $customer->streetnumber . "<br>";
         echo "postcode: " . $customer->zip . "<br>";
         echo "email: " . $customer->email . "<br>";
+        echo "</td>";
     }
     static function show_order_table($orderID) {
         global $db;
         $query = $db->query("SELECT quantity, product_name, price FROM Orders_Products WHERE OrderID=$orderID");
         $query->setfetchMode(PDO::FETCH_ASSOC);
 
-        echo "<table>";
+        echo "<tr>";
         echo "<th>";
         echo "Hoeveelheid:";
         echo "</th>";
@@ -883,7 +891,11 @@ class Order {
             echo "<tr>";
             $total += $subtotal;
         }
-        echo "</table>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>";
         echo "Totaal: $total";
+        echo "</td>";
+        echo "</tr>";
     }
 }
