@@ -315,9 +315,8 @@ class Product {
     }
     
     static function resizeImage($image) {
-        //Make ratio 16/5
-        $width = imagesx($image);
-        $height = round($width / (16/5));
+        list($width) = getimagesize($image);
+        $height = round($width / (5/16));
         $resizedimage = new Imagick($image);
         $status = $resizedimage->scaleImage($height, $width);
         if ($status) {

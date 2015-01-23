@@ -21,7 +21,7 @@ if (isset($_POST['name'])) {
     } elseif (isset($image) == "noimage") {
         $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     } else {
-        $image = Product::resizeImage($image);
+        $image = Product::resizeImage($_FILES['image']['tmp_name']);
         $status = Product::create($typeid, $name, $description, $stock, $price, $special, $image);
         if ($status) {
             $display->addMessage("success", "Product toegevoegd");

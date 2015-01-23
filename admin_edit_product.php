@@ -34,6 +34,7 @@ if (isset($_POST['name'])) {
         if ($product->image == null) {
             $status = $product->edit(0);
         } else {
+            $product->image = Product::resizeImage($_FILES['image']['tmp_name']);
             $status = $product->edit(1);
         }
         if ($status) {
