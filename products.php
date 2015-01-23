@@ -24,7 +24,7 @@ $totalpages = ceil($totalamount / $endamount);
         } else {
             $previouspage = $page - 1;
         }
-        
+
         // Set previous button
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
             echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
@@ -32,21 +32,39 @@ $totalpages = ceil($totalamount / $endamount);
             echo "<a href=\"products.php?page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
         }
 
-
-        
         // Print numbers in case of producttypeid
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
             for ($i = 1; $i <= $totalpages; $i++) {
-                echo "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ";
+                // Give current page id "currentpage"
+                if (isset($_GET["page"])) {
+                    if ($_GET["page"] == $i) {
+                        echo "<a id=\"currentpage\" href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ";
+                    } else {
+                        echo "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ";
+                    }
+                } else {
+                    // In case of no page in get
+                    echo ($i == 1 ? "<a id=\"currentpage\" href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> " : "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ");
+                }
             }
             // Print numbers no productypetid
         } else {
             for ($i = 1; $i <= $totalpages; $i++) {
-                echo "<a href='products.php?page=" . $i . "'>" . $i . "</a> ";
+                if (isset($_GET["page"])) {
+                    // Give current page id "currentpage"
+                    if ($_GET["page"] == $i) {
+                        echo "<a id=\"currentpage\" href='products.php?page=" . $i . "'>" . $i . "</a> ";
+                    } else {
+                        echo "<a href='products.php?page=" . $i . "'>" . $i . "</a> ";
+                    }
+                } else {
+                    //In case of no page in get
+                    echo ($i == 1 ? "<a id=\"currentpage\" href='products.php?page=" . $i . "'>" . $i . "</a> " : "<a href='products.php?page=" . $i . "'>" . $i . "</a> ");
+                }
             }
         }
-        
-        
+
+
         // Get next page
         if ($page < $totalpages) {
             $nextpage = $page + 1;
@@ -59,10 +77,8 @@ $totalpages = ceil($totalamount / $endamount);
         } else {
             echo "<a href=\"products.php?page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         }
-
         ?>
-        
-        // NOG FIXEN !!!!!
+
         <select class="select_order" onchange=getSortedProducts(value)>
             <option value="alphabetic"> A - Z </option>
             <option value="price-desc"> Prijs hoog - laag </option>
@@ -71,12 +87,12 @@ $totalpages = ceil($totalamount / $endamount);
 
 
     </div>
-        <?php
-        foreach ($products as $product) {
-            $product->displayBox();
-        }
-        ?>
-</div>
     <?php
-    include 'views/footer.php';
+    foreach ($products as $product) {
+        $product->displayBox();
+    }
     ?>
+</div>
+<?php
+include 'views/footer.php';
+?>

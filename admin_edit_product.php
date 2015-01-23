@@ -13,25 +13,48 @@ if (isset($_POST['name'])) {
     $product->description = $_POST['description'];
     $product->price = $_POST['price'];
     $product->stock = $_POST['stock'];
-    if (isset($_FILES['image'])) {
-        $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
+    (isset($_POST['special']) ? $special = 1 : $special = 0);
+    $product->special = $special;
+    $allowedimagetypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
+    $detectedimagetype = exif_imagetype($_FILES['image']['tmp_name']);
+    if (in_array($detectedimagetype, $allowedimagetypes) || $_FILES["fileToUpload"]["size"] < 2000000) {
+        if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
+            $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
+        } else {
+            $product->image = null;
+        }
     } else {
-        NULL;
+        $image = "noimage";
     }
-    $status = $product->edit();
-    if ($status) {
-        $display->addMessage("success", "Product aangepast");
+    if (empty($product->name) || empty($product->price)) {
+        $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
+    } elseif (isset($image) == "noimage") {
+        $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     } else {
-        $display->addMessage("error", "Er ging iets fout bij het aanpassen van dit product");
+        if ($product->image == null) {
+            $status = $product->edit(0);
+        } else {
+            $product->image = Product::resizeImage($_FILES['image']['tmp_name']);
+            $status = $product->edit(1);
+        }
+        if ($status) {
+            $display->addMessage("success", "Product aangepast");
+        } else {
+            $display->addMessage("error", "Er ging iets fout bij het aanpassen van dit product");
+        }
     }
 }
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<h2 class="contenttitle">Product wijzigen: </h2>         
-<?php
-$product->displayEditForm();
+<div class="wrappercontent">
+    <h2 class="contenttitle">Product wijzigen: </h2>         
 
+    <?php
+    $product->displayEditForm();
+    ?>
+</div>
+<?php
 include 'views/footer.php';
 ?>
 

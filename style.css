@@ -19,18 +19,9 @@ body {
     font-family: arialroundedmtbold;
 }
 
-select {
-    border-radius: 5px;
-    margin-bottom: 15px;
-    height: 32px;
-    border: 1px solid;
-    border-color: #006666;
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 36px;
-    width: 100px;
-    float: left;
-    margin-right: 10px;
-    margin-top: 18px;
+p {
+    font-family: arialroundedmtbold;
+    font-size: 12px;
 }
 
 .iconfont {
@@ -39,12 +30,12 @@ select {
 
 .contenttitle {
     line-height: 24px;
-    margin-top: 20px;
     margin-bottom: 15px;
 }
 
 .wrapper {
     min-height: 500px;
+    min-width: 820px;
     position: relative;
     margin: auto;
     padding-bottom: 100px;
@@ -55,7 +46,7 @@ select {
     background-color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    box-shadow: 0px 0px 32px -5px rgba(0,0,0,0.50);
+    box-shadow: 0px 0px 32px -5px rgba(0,0,0,0.50); 
 }
 
 .wrappercontent {
@@ -63,6 +54,8 @@ select {
     border-color: black;
     border-radius: 5px;
     border: 1px solid;
+    margin-top: 28px;
+    margin-right: 25px;
 }
 
 .wrapperhead {
@@ -79,7 +72,6 @@ select {
 .wrapperheadcontent {
     color: white;
     padding-top: 9px;
-    margin-left: 0px;
 }
 
 .wrapperheadcontent .iconfont {
@@ -99,7 +91,7 @@ select {
 }
 
 .wrapperheadcontent input[type=text] {
-    width: 20%;
+    width: 21%;
     margin-left: 25px;
     margin-bottom: 15px;
     height: 30px;
@@ -132,10 +124,10 @@ select {
 }
 
 header {
+    min-width: 820px;
     color: white;
     height: 50px;
     padding-top: 10px;
-    padding-left: 0px;
     background-color: white;
     background: rgba(255, 255, 255, .7);
 }
@@ -299,9 +291,9 @@ input[name="firstname"] {
 }
 
 .button_delete{
+    margin-top: 0px;
     background-color: #d40000;
     float: right;
-    margin-right: 12px;
 }
 
 .button_right{
@@ -365,10 +357,9 @@ footer a:hover {
 
 /* Page switcher */
 .pageswitchwrapper {
-    margin-right: 25px;
-    margin-top: 30px;
     height: 32px;
     line-height: 32px;
+    margin-bottom: 10px;
 }
 .pageswitchwrapper .button {
     color: white;
@@ -381,15 +372,17 @@ footer a:hover {
     text-decoration: none;
 }
 
+#currentpage {
+    color: #006666;
+}
+
 /* Product box */
 .box {
     display: inline-block;
     font-family: arialroundedmtbold;
-    margin-top: 30px;
-    margin-left: 0px;
-    margin-right: 20px;
-    height: 200px;
-    width: 320px;
+    margin: 4px;
+    height: auto;
+    width: 47%;
     border: 1px solid;
     border-radius: 5px;
     border-color: #006666;
@@ -410,25 +403,38 @@ footer a:hover {
 .box .image {
     width: 100%;
     height: 55%;
-    background-image: url("images/no-image.png");
+    background: url("images/no-image.png") no-repeat;
     margin-bottom: 10px;
 }
 
 .box .stock {
     margin-left: 15px;
     margin-top: 5px;
-    float: left;
+
 }
 
 .box .price {
     margin-top: 5px;
-    margin-right: 10px;
-    float: right;
+    margin-left: 15px;
+    margin-bottom: 10px;
+
 }
 
-.box .stock span {
+.stockicongreen {
     font-family: iconfont;
     color: green;
+    margin-right: 12px;
+}
+
+.stockiconred {
+    font-family: iconfont;
+    color: red;
+    margin-right: 12px;
+}
+
+.stockicon {
+    font-family: iconfont;
+    margin-right: 12px;
 }
 
 .box a {
@@ -452,13 +458,9 @@ footer a:hover {
 
 /* Product page */
 
-.category {
-    line-height: 24px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    color: #006666;
+.contenthead {
+    border: 1px solid red;ca
 }
-
 
 .descrText {
     text-align: right;
@@ -466,6 +468,7 @@ footer a:hover {
 }
 .descrImg {
     display: inline-block;
+    margin-right: 12px;
 }
 
 .icon-ok {
@@ -484,20 +487,6 @@ footer a:hover {
 
 .inputForm {
     float:right;
-}
-
-.inputBox{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 90px;
-    height: 32px;
-    border: 1px solid;
-    border-color: #006666;
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 36px;
-    background: url('images/voorraad_bg.jpg') no-repeat;
-    background-color: white;
-    border-radius: 5px;
 }
 
 .prodInfoTxt {
@@ -543,12 +532,6 @@ footer a:hover {
 }
 
 /* CUSTOMER LOGIN AND REGISTER FORMS*/
-.formwrapper {
-    margin-top: 25px;
-    margin-left: 30%;
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    width: 50%;
-}
 
 #person {
     background: url('images/username_bg.jpg') no-repeat;
@@ -558,7 +541,7 @@ footer a:hover {
     background: url('images/info_bg.jpg') no-repeat;
 }
 
-.formwrapper input[type=text] {
+input[type=text] {
     width: 250px;
     margin-bottom: 15px;
     height: 30px;
@@ -569,6 +552,11 @@ footer a:hover {
     background: url('images/username_bg.jpg') no-repeat;
     background-color: white;
     border-radius: 5px;
+}
+
+.addToCart input[type=text] {
+    width: 105px;
+    background: url('images/kwantiteit_bg.jpg') no-repeat;
 }
 
 #add_new_category {
@@ -582,7 +570,7 @@ footer a:hover {
     border-radius: 5px;
 }
 
-.formwrapper input[type=password] {
+input[type=password] {
     width: 250px;
     border-radius: 5px;
     margin-bottom: 15px;
@@ -594,7 +582,7 @@ footer a:hover {
     background: url('images/password_bg.jpg') no-repeat;
 }
 
-.formwrapper select {
+.select_gender {
     -webkit-appearance: none;
     -moz-appearance: none;
     border-radius: 5px;
@@ -615,67 +603,50 @@ input[type="submit"] {
     border: none;
 }
 
-.formwrapper input[name="firstname"] {
+input[name="firstname"] {
     width: 140px;
 }
 
-.formwrapper input[name="lastname"] {
+input[name="lastname"] {
     clear: both;
 }
 
 
 /* ADD ADMIN PRODUCT */
-.links_fruit {	
-    width: 30%;	
-    float: left;  
-    font-family: arialroundedmt, sans-serif, "Times New Roman";  
-}
-
-.rechts_fruit {	
-    width: 30%;	
-    float: left;    
-    font-family: arialroundedmt, sans-serif, "Times New Roman";
-}
 
 #description_fruit, #name, #category, #price, #quantity, #stock, #photo{
-    width: 75%;	
+    width: 250px;	
     border: 1px solid;
     border-color: #006666;
     border-radius: 5px;
     margin-top: 12px;	
+    padding-left: 36px;	
+    height: 32px;	
 }
 
 #description_fruit {
     font-family: arialroundedmt, sans-serif, "Times New Roman";
-    width: 75%;		
+    width: 250px;
+    height: 80px;	
 }
 
-#name, #category, #price, #quantity, #stock{
-    height: 32px;	
-}
-
-#name{	
-    padding-left: 36px;	
+#name{		
     background: url("images/naam_bg.jpg") no-repeat;
 }
 
 #category{
-    padding-left: 36px;
     background: url("images/categorie_bg.jpg") no-repeat;
 }
 
 #price{
-    padding-left: 36px;
     background: url("images/prijs_bg.jpg") no-repeat;
 }
 
 #quantity{
-    padding-left: 36px;
     background: url("images/kwantiteit_bg.jpg") no-repeat;
 }
 
 #stock {
-    padding-left: 36px;
     background: url("images/voorraad_bg.jpg") no-repeat;
 }
 
@@ -694,6 +665,24 @@ input[type="submit"] {
 #deleteItem {
     font-family: iconfont;
     color:red;
+}
+
+.select_category {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 36px;
+    background: url('images/categorie_bg.jpg') no-repeat;
+    width: 286px;
+}
+
+.upload_image {
+    margin-bottom: 15px;
 }
 
 /* Shopping cart */
@@ -758,11 +747,30 @@ td {
     
 }
 
+.inputBox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 90px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 36px;
+    background: url('images/voorraad_bg.jpg') no-repeat;
+    background-color: white;
+    border-radius: 5px;
+}
+
 /* Select Order */
 
 .select_order {
-    margin: 0px;
-    padding-left : 2px;
+    border-radius: 5px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+    padding-left: 36px;
+    width: 80px;
     float: right;
 }
 
@@ -796,6 +804,12 @@ td, th {
     text-decoration: none;
 }
 
-.payment_method {
-    
+/* admin panel customer overview */
+
+table thead {
+    background-color: #454545;
+}
+
+table tbody {
+    border-top: 2px solid black;
 }

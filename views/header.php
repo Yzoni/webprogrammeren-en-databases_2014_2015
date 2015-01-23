@@ -6,8 +6,8 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="style_shopping_cart.css">
         <link rel="icon" type="image/png" href="images/fruyt_icon.png">
-        <script src="js/search.js" type="text/javascript"> </script>
-        <script src="functions.js" type="text/javascript"> </script> 
+        <script src="js/search.js" type="text/javascript"></script>
+        <script src="functions.js" type="text/javascript"></script> 
     </head>
     <body>
         <header>
@@ -37,16 +37,17 @@
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
                     <input type="text" placeholder="Zoek producten" onkeyup="showResult(this.value)">
-                    <a href="shopping_cart.php" class="winkelwagen">
-                        <span>&#xf07a;</span>winkelwagentje &euro;
-                            <?php
-                            if (isset($_SESSION['total'])) {
-                                echo $_SESSION['total'];
-                            } else {
-                                echo 0;
-                            }
-                            ?> 
-                        </span>
-                    </a>
+                    <?php
+                    if (!is_admin_logged_in()) {
+                        echo "<a href=\"shopping_cart.php\" class=\"winkelwagen\">";
+                        echo "<span>&#xf07a;</span>winkelwagentje &euro;";
+                        if (isset($_SESSION['total'])) {
+                            echo $_SESSION['total'];
+                        } else {
+                            echo 0;
+                        }
+                        echo "</span></a>";
+                    }
+                    ?> 
                 </div>
             </div>

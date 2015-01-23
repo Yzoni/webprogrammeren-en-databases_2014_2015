@@ -8,22 +8,37 @@ if (isset($_POST['name'])) {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
-    $image = (isset($_FILES['image']) ? fopen($_FILES['image']['tmp_name'], 'rb') : "");
-    $status = Product::create($typeid, $name, $description, $stock, $price, $image);
-    if ($status) {
-        $display->addMessage("success", "Product toegevoegd");
+    (isset($_POST['special']) ? $special = 1 : $special = 0);
+    $allowedimagetypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
+    $detectedimagetype = exif_imagetype($_FILES['image']['tmp_name']);
+    if (in_array($detectedimagetype, $allowedimagetypes) || $_FILES['image']['size'] < 2000000) {
+        $image = ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
     } else {
-        $display->addMessage("error", "Er ging iets fout bij het toevoegen van dit product");
+        $image = "noimage";
+    }
+    if (empty($name) || empty($price)) {
+        $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
+    } elseif (isset($image) == "noimage") {
+        $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
+    } else {
+        $image = Product::resizeImage($_FILES['image']['tmp_name']);
+        $status = Product::create($typeid, $name, $description, $stock, $price, $special, $image);
+        if ($status) {
+            $display->addMessage("success", "Product toegevoegd");
+        } else {
+            $display->addMessage("error", "Er ging iets fout bij het toevoegen van dit product");
+        }
     }
 }
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<h2 class="contenttitle">Product toevoegen: </h2>
-<form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
-    <div class="links_fruit">        
+<div class="wrappercontent">
+    <h2 class="contenttitle">Product toevoegen: </h2>
+    <form action="admin_add_product.php" method="POST" enctype="multipart/form-data">     
+
         <input type="text" name="name" placeholder="naam" id="name"> <br>
-        <select name="producttype">
+        <select name="producttype" class="select_category">
             <?php
             $producttypes_form = ProductType::getAllProductTypes();
             foreach ($producttypes_form as $producttype_form) {
@@ -35,15 +50,13 @@ include 'views/navigation.php';
         <div class="beschrijving_product">
             <textarea name="description" id="description_fruit" placeholder=" beschrijving" cols="50" rows="10"></textarea>    
         </div>
-    </div>
-    <div class="rechts_fruit">
         <input type="text" name="price" placeholder="prijs per stuk" id="price"> <br>
         <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
-        <input type="file" name="image" id="uploadImg">
-    </div>
-    <button type="submit" class="button"><span>&#xf0fe;</span>toevoegen</button>  
-</form>	       		      
-
+        Toon op homepage: <input value="1" type="checkbox" name="special"><br>
+        <input type="file" name="image" class="upload_image"><br>
+        <button type="submit" class="button"><span>&#xf0fe;</span>toevoegen</button>  
+    </form>	       		      
+</div>
 <?php
 include 'views/footer.php';
 ?>

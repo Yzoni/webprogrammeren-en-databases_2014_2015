@@ -5,19 +5,28 @@ if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $zip = $_POST['zip'];
-    $gender = $_POST['gender']=="true" ? true : false;
+    $gender = $_POST['gender'] == "true" ? true : false;
     $streetnumber = $_POST['streetnumber'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
-    $streetaddress = $_POST['streetaddress']; 
-    Customer::create($email, $password, $streetaddress, $streetnumber, $zip, $firstname, $lastname, $gender);
+    $streetaddress = $_POST['streetaddress'];
+    if (empty($email) || empty($password) || empty($zip) || empty($streetnumber) || empty($firstname) || empty($lastname) || empty($streetaddress)) {
+        $display->addMessage("error", "Niet alle velden ingevuld");
+    } else {
+        if (Customer::checkMailOccurrance($email)) {
+            $display->addMessage("error", "Email al geregistreerd");
+        } else {
+            Customer::create($email, $password, $streetaddress, $streetnumber, $zip, $firstname, $lastname, $gender);
+            $display->addMessage("success", "Account aangemaakt");
+        }
+    }
 }
 
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
-<div class="formwrapper">
+<div class="wrappercontent">
     <h2 class="contenttitle">Registreer als nieuwe klant: </h2>
     <form action="customer_register.php" method="POST">
         <input type="text" name="email" placeholder="emailadres" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br>
@@ -27,7 +36,7 @@ include 'views/navigation.php';
         <input type="password" name="password2" placeholder="wachtwoord (nogmaals)" id="pass2" onkeyup="checkPass();
                 return false;">
         <span id="confirmMessage"></span><br>
-        <select name="gender">
+        <select name="gender" class="select_gender">
             <option value="true">Dhr.</option>
             <option value="false">Mevr.</option>
         </select>

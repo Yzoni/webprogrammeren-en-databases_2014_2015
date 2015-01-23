@@ -66,6 +66,7 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
+
 <script>
 
 function validQuantity() {
@@ -83,13 +84,11 @@ function validQuantity() {
 }
 </script>
 
-<div class="description">
-    
 <div class="wrappercontent">
-    <div>
+    <div class="contenthead">
         <br>
         <a href="products.php?id=<?php echo $product->type->id ?>
-           "class="category"><?php echo $product->type->name; ?></a> / 
+           "class="category_product"><?php echo $product->type->name; ?></a> / 
            <?php echo $product->name; ?>
            <?php
            if (is_admin_logged_in()) {
@@ -100,10 +99,8 @@ function validQuantity() {
            }
            ?>
     </div>
-
     <br>
     <hr>
-
     <br>
     <img class="descrImg" height="114" width="320" src="data:image/png;base64,
          <?php echo base64_encode($product->image); ?>"/>
@@ -114,17 +111,17 @@ function validQuantity() {
     <br>
 
     <ul class="infoList">
-
+    <div class=addToCart>
     <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
-        <input type="text" class="inputBox" name="quantity" placeholder="aantal">            
+        <input type="text" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">            
         <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
         </button>
     </form>
-        
+    </div>    
     <li>
         <p class="ProdInfoTxt">
-            <span class="icon">
-            <?php echo ($product->stock > 0 ? "&#xf00c;" : "&#xf00d")
+            
+            <?php echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d")
             ?>
             </span>
             <?php echo $product->stock;
@@ -135,17 +132,17 @@ function validQuantity() {
     </li>
     
     <li>
-        <span class="prodInfoTxt"> 
-        <span class="icon">&#xf135; </span>
-            levertijd: 1 dag
+        <span class="ProdInfoTxt"><p> 
+        <span class="stockicon">&#xf135; </span>
+        levertijd: 1 dag </p>
         </span>
         <br>
     </li>
     <li>
-        <span class="prodInfoTxt">        
-        <span class="icon">&#xf153; </span> 
-            prijs per kg: 
-                <?php echo $product->price; ?> euro
+        <span class="ProdInfoTxt">  <p>      
+	<span class="stockicon">&#xf153; </span> 
+	prijs per kg: 
+	<?php echo $product->price; ?> euro</p>
         </span>
         <br>
 
@@ -168,11 +165,8 @@ function validQuantity() {
         ?>
 
     </div>
-    <br>
-    <br>
-
     <p>
-        <br>
+
         <a href="products.php?id=<?php echo $product->type->id ?>" 
            class="button"><span>&#xf137;</span>terug naar: 
             <?php echo $product->type->name; ?> </a>
