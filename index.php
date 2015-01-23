@@ -2,6 +2,12 @@
 require_once 'classes.php';
 include 'views/header.php';
 include 'views/navigation.php';
+if(extension_loaded('imagick')) {
+    echo 'Imagick Loaded';
+} else {
+    echo 'NO Loaded';
+}
+    
 ?>
 
 <div class = "wrappercontent">

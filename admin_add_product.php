@@ -9,16 +9,19 @@ if (isset($_POST['name'])) {
     $price = $_POST['price'];
     $stock = $_POST['stock'];
     (isset($_POST['special']) ? $special = 1 : $special = 0);
-    if ($_FILES["image"]["type"] == "image/jpeg" || $_FILES["image"]["type"] == "image/png") {
+    $allowedimagetypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
+    $detectedimagetype = exif_imagetype($_FILES['image']['tmp_name']);
+    if (in_array($detectedimagetype, $allowedimagetypes) || $_FILES['image']['size'] < 2000000) {
         $image = ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
     } else {
         $image = "noimage";
     }
     if (empty($name) || empty($price)) {
         $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
-    } elseif ($image = "noimage") {
+    } elseif (isset($image) == "noimage") {
         $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     } else {
+        $image = Product::resizeImage($image);
         $status = Product::create($typeid, $name, $description, $stock, $price, $special, $image);
         if ($status) {
             $display->addMessage("success", "Product toegevoegd");

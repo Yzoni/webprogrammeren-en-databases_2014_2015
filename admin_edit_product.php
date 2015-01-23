@@ -15,7 +15,9 @@ if (isset($_POST['name'])) {
     $product->stock = $_POST['stock'];
     (isset($_POST['special']) ? $special = 1 : $special = 0);
     $product->special = $special;
-    if ($_FILES["image"]["type"] == "image/jpeg" || $_FILES["image"]["type"] == "image/png" || $_FILES["fileToUpload"]["size"] < 2000000) {
+    $allowedimagetypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
+    $detectedimagetype = exif_imagetype($_FILES['image']['tmp_name']);
+    if (in_array($detectedimagetype, $allowedimagetypes) || $_FILES["fileToUpload"]["size"] < 2000000) {
         if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
             $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
         } else {
@@ -24,10 +26,9 @@ if (isset($_POST['name'])) {
     } else {
         $image = "noimage";
     }
-
     if (empty($product->name) || empty($product->price)) {
         $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
-    } elseif ($image = "noimage") {
+    } elseif (isset($image) == "noimage") {
         $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     } else {
         if ($product->image == null) {

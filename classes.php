@@ -313,12 +313,15 @@ class Product {
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         return $query->execute();
     }
-
-    static function checkProperImage($image) {
-        $imgtype = $_FILES["uploadedimage"]["type"];
-        $imgsize = $_FILES["fileToUpload"]["size"];
-        if ($imgtype !== "image/jpeg" || $imgtype !== "image/jpng" || $imgsize < 2000000) {
-            return true;
+    
+    static function resizeImage($image) {
+        //Make ratio 16/5
+        $width = imagesx($image);
+        $height = round($width / (16/5));
+        $resizedimage = new Imagick($image);
+        $status = $resizedimage->scaleImage($height, $width);
+        if ($status) {
+            return $resizedimage;
         } else {
             return false;
         }
