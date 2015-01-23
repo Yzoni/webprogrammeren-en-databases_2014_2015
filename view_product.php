@@ -99,9 +99,8 @@ function validQuantity() {
            }
            ?>
     </div>
-
+    <br>
     <hr>
-
     <br>
     <img class="descrImg" height="114" width="320" src="data:image/png;base64,
          <?php echo base64_encode($product->image); ?>"/>
