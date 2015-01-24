@@ -261,6 +261,16 @@ class Product {
         return $result;
     }
 
+    static function search($word) {
+        global $db;
+        $query = $db->prepare("SELECT * FROM Products WHERE name LIKE :word ORDER BY name");
+        $str = '%' . $word . '%';
+        $query->bindParam(':word', $str);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+        return $result;
+    }
+
     static function getSortedProducts($sort) {
         switch ($sort) {
             case alphabetic :
@@ -313,10 +323,10 @@ class Product {
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         return $query->execute();
     }
-    
+
     static function resizeImage($image) {
         list($width) = getimagesize($image);
-        $height = round($width / (5/16));
+        $height = round($width / (5 / 16));
         $resizedimage = new Imagick($image);
         $status = $resizedimage->scaleImage($height, $width);
         if ($status) {
@@ -338,19 +348,6 @@ class Product {
         $query->bindParam(':id', $this->id, PDO::PARAM_STR);
         $query->execute();
     }
-
-    static function search($key) {
-        global $db;
-        $array = array();
-        $query = $db->prepare("SELECT * from Products WHERE :name LIKE :key");
-        $query->bindParam(':key', $key, PDO::PARAM_STR);
-        $query->execute();
-        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $array[] = $row['title'];
-        }
-        return json_encode($array);
-    }
-
 }
 
 /**

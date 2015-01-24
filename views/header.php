@@ -7,7 +7,6 @@
         <link rel="stylesheet" type="text/css" href="style_shopping_cart.css">
         <link rel="icon" type="image/png" href="images/fruyt_icon.png">
         <script src="js/search.js" type="text/javascript"></script>
-        <script src="functions.js" type="text/javascript"></script> 
     </head>
     <body>
         <header>
@@ -36,7 +35,11 @@
         <div class="wrapper">
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
-                    <input type="text" placeholder="Zoek producten" onkeyup="showResult(this.value)">
+                    <form> 
+                        <input type="text" placeholder="Zoek producten" onkeyup="showResult(this.value)"> 
+                        <div id="searchdropdown"></div>
+                    </form> 
+
                     <?php
                     if (!is_admin_logged_in()) {
                         echo "<a href=\"shopping_cart.php\" class=\"winkelwagen\">";
