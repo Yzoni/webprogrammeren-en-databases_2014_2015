@@ -7,7 +7,8 @@
         <link rel="stylesheet" type="text/css" href="style_shopping_cart.css">
         <link rel="icon" type="image/png" href="images/fruyt_icon.png">
         <script src="js/search.js" type="text/javascript"></script>
-        <script src="functions.js" type="text/javascript"></script> 
+        <script src="functions.js" type="text/javascript"></script>
+        <meta name="theme-color" content="#006666">
     </head>
     <body>
         <header>
