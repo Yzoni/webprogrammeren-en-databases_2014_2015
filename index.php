@@ -7,7 +7,7 @@ include 'views/navigation.php';
 <div class = "wrappercontent">
     <i><h2>Uitgelichte producten...</h2></i>
     <?php
-    $special = 1;
+    $special = 1; //voor hoofdpagina
     $products = Product::getAllProducts(null, 0, 5, $special);
     foreach ($products as $product) {
         $product->displayBox();

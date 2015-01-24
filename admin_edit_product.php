@@ -16,27 +16,24 @@ if (isset($_POST['name'])) {
     (isset($_POST['special']) ? $special = 1 : $special = 0);
     $product->special = $special;
     $allowedimagetypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
-    $detectedimagetype = exif_imagetype($_FILES['image']['tmp_name']);
-    if (in_array($detectedimagetype, $allowedimagetypes) || $_FILES["fileToUpload"]["size"] < 2000000) {
+    $detectedimagetype = ($_FILES['image']['tmp_name']!="" ? exif_imagetype($_FILES['image']['tmp_name']) : "");
+    if (in_array($detectedimagetype, $allowedimagetypes) && $_FILES["image"]["size"] < 2000000) {
         if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
             $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
+            // als er niet moeilijk gedaan gaat worden, comment dan de lijn hierboven en uncomment hieronder
+            // $product->image = Product::resizeImage($_FILES['image']['tmp_name']);
         } else {
-            $product->image = null;
+            $display->addMessage("error", "PHP Upload ERROR");
         }
+    } else if($detectedimagetype==""){
+        $display->addMessage("notice", "Ondanks dat u geen afbeelding heeft geupload is het toch... ");
     } else {
-        $image = "noimage";
+        $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     }
     if (empty($product->name) || empty($product->price)) {
         $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
-    } elseif (isset($image) == "noimage") {
-        $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     } else {
-        if ($product->image == null) {
-            $status = $product->edit(0);
-        } else {
-            $product->image = Product::resizeImage($_FILES['image']['tmp_name']);
-            $status = $product->edit(1);
-        }
+        $status = $product->edit();
         if ($status) {
             $display->addMessage("success", "Product aangepast");
         } else {

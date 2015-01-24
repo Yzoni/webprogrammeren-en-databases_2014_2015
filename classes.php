@@ -306,14 +306,10 @@ class Product {
         return $query->execute();
     }
 
-    function edit($imageenabled) {
+    function edit() {
         global $db;
-        if ($imageenabled == 1) {
-            $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
-            $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
-        } else {
-            $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special WHERE id = :id");
-        }
+        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
+        $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
         $query->bindParam(':typeid', $this->typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
         $query->bindParam(':description', $this->description, PDO::PARAM_STR);
@@ -712,7 +708,9 @@ class showMessage {
             if ($message[0] == "error") {
                 echo "<span class=\"message\"><span id=\"error\">ERROR: </span> " . $message[1] . "</span>";
             } elseif ($message[0] == "success") {
-                echo "<span class=\"message\"><span id=\"success\">SUCCESS: </span> " . $message[1] . "</span>";
+                echo "<span class=\"message\"><span id=\"success\">GELUKT: </span> " . $message[1] . "</span>";
+            } elseif ($message[0] == "notice") {
+                echo "<span class=\"message\"><span id=\"success\">NOTICE: </span> " . $message[1] . "</span>";
             }
         }
         return true;
@@ -745,7 +743,7 @@ class Order {
         $query->bindParam(':payment_method', $payment_method, PDO::PARAM_STR);
         $query->execute();
 
-        $result = $db->query("SELECT MAX(id) FROM Orders WHERE customerid=$userID"); 
+        $result = $db->query("SELECT MAX(id) FROM Orders WHERE customerid=$userID");
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $resultArray = $result->fetch();
         $inserted_id = end($resultArray);
