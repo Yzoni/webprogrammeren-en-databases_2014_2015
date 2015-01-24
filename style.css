@@ -596,7 +596,6 @@ input[type=password] {
     width: 100px;
     float: left;
     margin-right: 10px;
-    margin-top: 0px;
 }
 
 input[type="submit"] {

@@ -348,6 +348,7 @@ class Product {
         $query->bindParam(':id', $this->id, PDO::PARAM_STR);
         $query->execute();
     }
+
 }
 
 /**
@@ -734,5 +735,162 @@ class Order {
     public $customer;
     public $products;
     public $date;
+
+    // makes bill
+    static function makeOrder($userID, $productIDs, $quantities, $prices, $names, $payment_method) {
+        global $db;
+
+        $query = $db->prepare("INSERT INTO Orders (customerid, payment_method) VALUES (:userID, :payment_method)");
+        $query->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $query->bindParam(':payment_method', $payment_method, PDO::PARAM_STR);
+        $query->execute();
+
+        $result = $db->query("SELECT MAX(id) FROM Orders WHERE customerid=$userID"); 
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $resultArray = $result->fetch();
+        $inserted_id = end($resultArray);
+
+        foreach ($productIDs as $index => $order_product) {
+            $query = $db->prepare("INSERT INTO Orders_Products (OrderID, productID, quantity,product_name,price) VALUES (:OrderID, :productID,:quantity, :product_name,:price)");
+            $query->bindParam(":OrderID", $inserted_id, PDO::PARAM_INT);
+            $query->bindParam(":productID", $order_product, PDO::PARAM_INT);
+            $query->bindParam(":quantity", $quantities[$index], PDO::PARAM_STR);
+            $query->bindParam(":price", $prices[$index], PDO::PARAM_INT);
+            $query->bindParam(":product_name", $names[$index], PDO::PARAM_STR);
+            $query->execute();
+        }
+    }
+
+    static function getProductNames($IDarray) {
+        global $db;
+        $namesArray = Array();
+        foreach ($IDarray as $ProductID) {
+            $query = $db->query("SELECT name FROM Products WHERE id=$ProductID LIMIT 1");
+            $query->setFetchMode(PDO::FETCH_NUM);
+            $resultArray = $query->fetch();
+            $productName = end($resultArray);
+            array_push($namesArray, $productName);
+        }
+        return $namesArray;
+    }
+
+    static function getProductPrices($IDarray) {
+        global $db;
+        $pricesArray = Array();
+        foreach ($IDarray as $ProductID) {
+            $query = $db->query("SELECT price FROM Products WHERE id=$ProductID LIMIT 1");
+            $query->setFetchMode(PDO::FETCH_ASSOC);
+            $resultArray = $query->fetch();
+            $productPrice = end($resultArray);
+            array_push($pricesArray, $productPrice);
+        }
+        return $pricesArray;
+    }
+
+    static function show_list_orders() {
+        global $db;
+        global $customer;
+        $query = $db->prepare("SELECT id FROM Orders WHERE customerid=:id");
+        $query->bindParam(':id', $customer->id, PDO::PARAM_INT);
+        $query->execute();
+        $ordersArray = $query->fetchAll();
+        for ($i = 0; $i < sizeof($ordersArray); $i++) {
+            echo "<form method='post' action='customer_orders.php'>"
+            . "<input type='submit' name='order_number' value=" . $ordersArray[$i][0] . ">"
+            . "</form>";
+        }
+    }
+
+    static function show_order($orderID) {
+        global $db;
+        $date = Order::show_date($orderID);
+        echo "<table>";
+        echo "<tr>";
+        echo "<td> factuurnummer: $orderID <br> $date</td>";
+        echo "</tr>";
+        Order::show_company_Info();
+        Order::show_customer_info($orderID);
+        Order::show_order_table($orderID);
+        echo "</table>";
+    }
+
+    static function show_company_Info() {
+        echo "<td>";
+        echo "<h3>BedrijfsInformatie</h3> <br>";
+        echo "Adres: fruytlaan 904 1234AB <br>";
+        echo "Tel: 0201235813 <br>";
+        echo "KvK: <br>";
+        echo "</td>";
+    }
+
+    static function show_date($orderID) {
+        global $db;
+        $query = $db->query("SELECT date FROM Orders WHERE id=$orderID");
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $dateArray = $query->fetch();
+        echo "datum: " . end($dateArray);
+    }
+
+    static function show_customer_info($orderID) {
+        global $db;
+        global $customer;
+        echo "<td>";
+        echo "<h3>Klantgegevens:</h3> <br>";
+        echo "klantnummer: " . $customer->id . "<br>";
+        echo "voornaam: " . $customer->firstname . "<br>";
+        echo "achternaam: " . $customer->lastname . "<br>";
+        echo "adres: " . $customer->streetaddress . " ";
+        echo $customer->streetnumber . "<br>";
+        echo "postcode: " . $customer->zip . "<br>";
+        echo "email: " . $customer->email . "<br>";
+        echo "</td>";
+    }
+
+    static function show_order_table($orderID) {
+        global $db;
+        $query = $db->query("SELECT quantity, product_name, price FROM Orders_Products WHERE OrderID=$orderID");
+        $query->setfetchMode(PDO::FETCH_ASSOC);
+
+        echo "<tr>";
+        echo "<th>";
+        echo "Hoeveelheid:";
+        echo "</th>";
+        echo "<th>";
+        echo "Productnaam:";
+        echo "</th>";
+        echo "<th>";
+        echo "Prijs:";
+        echo "</th>";
+        echo "<th>";
+        echo "Subtotaal:";
+        echo "</th>";
+
+        $total = 0;
+        $subtotal = 0;
+        while ($row = $query->fetch()) {
+            echo "<tr>";
+            echo "<td>";
+            echo $row['quantity'];
+            echo "</td>";
+            echo "<td>";
+            echo $row['product_name'];
+            echo "</td>";
+            echo "<td>";
+            echo $row['price'];
+            echo "</td>";
+            echo "<td>";
+            $subtotal = $row['price'] * $row['quantity'];
+            echo $subtotal;
+            echo "</td>";
+            echo "<tr>";
+            $total += $subtotal;
+        }
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>";
+        echo "Totaal: $total";
+        echo "</td>";
+        echo "</tr>";
+    }
 
 }

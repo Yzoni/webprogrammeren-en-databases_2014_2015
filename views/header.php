@@ -7,6 +7,8 @@
         <link rel="stylesheet" type="text/css" href="style_shopping_cart.css">
         <link rel="icon" type="image/png" href="images/fruyt_icon.png">
         <script src="js/search.js" type="text/javascript"></script>
+        <!--  FANCY NICHE ANDROID 5.0 CHROME KLEUR S-->
+        <meta name="theme-color" content="#006666">
     </head>
     <body>
         <header>
