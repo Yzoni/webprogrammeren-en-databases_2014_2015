@@ -476,7 +476,7 @@ footer a:hover {
     margin-right: 13px;
 }
 
-.box a {
+.box {
     color: black;
     text-decoration: none;
     transition: all .3s ease;
@@ -501,7 +501,7 @@ footer a:hover {
     width: 100%;
     height: 1px;
     background-color: #919191;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .descriptionwrap {
@@ -752,24 +752,12 @@ input[name="lastname"] {
 /* Shopping cart */
 
 .shopping_cart_table {
-    width:95%;
+    width:100%;
 }
 
 td {
     width:10%;
-}
-
-.line {
-    background-color: #454545;
-    height: 1px;
-    width: 68%;    
-    margin-bottom: 15px;
-    margin-left: 30%;
-}
-
-.shopping_cart {
-    margin-left: 28.8%;
-    margin-top: 25px;
+    padding: 5px;
 }
 
 .product_basket {
@@ -778,37 +766,6 @@ td {
     width: 80%;
     width: 20%;
     margin-left: 2%;
-}
-
-.shopping_cart_delivery_time .shopping_cart_price_total {
-    padding-right: 30px;
-}
-
-#pay {
-    background-color: #006666;
-    height: 10%;    
-    width: 18%;
-    text-align: center;
-    font-weight: bold;
-    color: white;   
-    line-height: 220%;
-    float: right;	    	
-    margin-right: 20%;
-    margin-left: 20%;
-}
-
-
-
-.shopping_cart_icon {
-    width: 15px;
-    display: inline-block;
-    font-family: iconfont;
-}
-
-.shopping_cart_edit .shopping_cart_delete:link {
-    color: green;
-    font-family: iconfont;
-
 }
 
 .inputBox {
@@ -842,25 +799,31 @@ table {
     border-collapse: collapse;
     margin-right: 20px;
     margin-bottom: 40px;
+    border-bottom: 1px solid #696969;
 
 }
 
 th {
     text-align: left;
-    background-color: #696969;;
-    color: white;
-
-}
-
-table, td, th {
-    border: 1px solid #696969;;
-}
-
-td, th {
+    background-color: #E5E4E2;
+    color: #006666;
+    border-bottom: 1px solid #696969;
+    font-size: 13px;
     padding-right: 20px;
     padding-left: 5px;
     padding-top: 4px;
     padding-bottom: 4px;
+    height: 32px;
+
+}
+
+td {
+    font-size: 12px;
+    padding-right: 20px;
+    padding-left: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    height: 40px;
 }
 
 .detailslink {

@@ -34,8 +34,6 @@ if (isset($_GET['deleteItem'])) {
 
 <div class="wrappercontent">
     <h2 class="contenttitle">Winkelwagentje </h2>
-    <div class="line"> </div>
-
 <?php
 
 // if at least one product is stored in the products array, this if statement
@@ -47,6 +45,17 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
     // and subtotal, and prints everything to the screen.
 
     echo "<table class='shopping_cart_table'>";
+    echo "
+	<thead>
+            <tr>
+                <th>Categorie</th>
+                <th>Productnaam</th>
+                <th>Kwantiteit</th>
+                <th>Prijs</th>
+		<th></th>
+            </tr>
+        </thead>";
+	
     foreach ($_SESSION['products'] as $index => $productId) {
     	$productId;
     	$quantity = $_SESSION['quantities'][$index];
@@ -60,36 +69,33 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         $_SESSION['total'] += $subtotal;
         echo "
         <tr>
-        <td id ='cartImg'>
-        Image
+        <td>
+        category
         </td>
         <td>
-        $productName
+        <a href='view_product.php?id=$productId' class='productpagelink'>$productName</a>
         </td>
         <td>
         $quantity kg
         </td>
         <td>
-        <a href='shopping_cart.php?deleteItem=$productId' class='deleteItemLink' >
-        Verwijder <span id='deleteItem'>&#xf00d; </span>
-        </a>
-        </td> 
-        <td>
         &euro; $subtotal
         </td>
+        <td>
+        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'><span>&#xf00d;</span>verwijder</a>
+        </td> 
         </tr>";
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
-        echo "<table>";
-        echo '<div class="line"> </div>' . '<br>';
+        echo "</table>";
 
-        echo '<div class="shopping_cart_price_total">' .  "Totaal :" . 
+        echo "totaalprijs:" . 
                 "<span class='icon'> &euro;</span> " .
-                $_SESSION['total'] . " euro" . '</div>';
+                $_SESSION['total'];
         echo '<div class="shopping_cart_delivery_time"> ' . '<br>'
         . '<span class="icon">&#xf135;levertijd: 1 dag </span> </div>';
-        echo "<a href='checkout.php'> Afrekenen </a> ";
+        echo "<a href=\"checkout.php\" class=\"button\"><span class=\"icon\">&#xF0d1;</span>bestelling afronden</a>";
 } else{
     echo 'Uw winkelwagen is leeg'; 
 }
