@@ -135,6 +135,10 @@ p {
     background-color: #CCCCCC; 
 }
 
+.wrapperheadcontent .searchdropdown a .queryinword {
+    color: black;
+}
+
 .winkelwagen {
     background-color: #ffffff;
     color: #006666;
