@@ -261,6 +261,16 @@ class Product {
         return $result;
     }
 
+    static function search($word) {
+        global $db;
+        $query = $db->prepare("SELECT * FROM Products WHERE name LIKE :word ORDER BY name");
+        $str = '%' . $word . '%';
+        $query->bindParam(':word', $str);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+        return $result;
+    }
+
     static function getSortedProducts($sort) {
         switch ($sort) {
             case alphabetic :
@@ -296,14 +306,10 @@ class Product {
         return $query->execute();
     }
 
-    function edit($imageenabled) {
+    function edit() {
         global $db;
-        if ($imageenabled == 1) {
-            $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
-            $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
-        } else {
-            $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special WHERE id = :id");
-        }
+        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
+        $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
         $query->bindParam(':typeid', $this->typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
         $query->bindParam(':description', $this->description, PDO::PARAM_STR);
@@ -313,10 +319,10 @@ class Product {
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         return $query->execute();
     }
-    
+
     static function resizeImage($image) {
         list($width) = getimagesize($image);
-        $height = round($width / (5/16));
+        $height = round($width / (5 / 16));
         $resizedimage = new Imagick($image);
         $status = $resizedimage->scaleImage($height, $width);
         if ($status) {
@@ -337,18 +343,6 @@ class Product {
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->bindParam(':id', $this->id, PDO::PARAM_STR);
         $query->execute();
-    }
-
-    static function search($key) {
-        global $db;
-        $array = array();
-        $query = $db->prepare("SELECT * from Products WHERE :name LIKE :key");
-        $query->bindParam(':key', $key, PDO::PARAM_STR);
-        $query->execute();
-        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $array[] = $row['title'];
-        }
-        return json_encode($array);
     }
 
 }
@@ -714,7 +708,9 @@ class showMessage {
             if ($message[0] == "error") {
                 echo "<span class=\"message\"><span id=\"error\">ERROR: </span> " . $message[1] . "</span>";
             } elseif ($message[0] == "success") {
-                echo "<span class=\"message\"><span id=\"success\">SUCCESS: </span> " . $message[1] . "</span>";
+                echo "<span class=\"message\"><span id=\"success\">GELUKT: </span> " . $message[1] . "</span>";
+            } elseif ($message[0] == "notice") {
+                echo "<span class=\"message\"><span id=\"success\">NOTICE: </span> " . $message[1] . "</span>";
             }
         }
         return true;
@@ -764,7 +760,7 @@ class Order {
             }
         }
     }
-    // makes bill
+    // executes order
     static function executeOrder($userID,
                         $productIDs,
                         $quantities,
@@ -772,7 +768,6 @@ class Order {
                         $names,
                         $payment_method) {
         global $db;
-
         $query = $db->prepare("INSERT INTO Orders (customerid, payment_method) VALUES (:userID, :payment_method)");
         $query->bindParam(':userID', $userID, PDO::PARAM_INT);
         $query->bindParam(':payment_method', $payment_method, PDO::PARAM_STR);
@@ -782,22 +777,22 @@ class Order {
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $resultArray = $result->fetch();
         $inserted_id = end($resultArray);
-        
-        foreach($productIDs as $index => $order_product) {
+
+        foreach ($productIDs as $index => $order_product) {
             $query = $db->prepare("INSERT INTO Orders_Products (OrderID, productID, quantity,product_name,price) VALUES (:OrderID, :productID,:quantity, :product_name,:price)");
             $query->bindParam(":OrderID", $inserted_id, PDO::PARAM_INT);
             $query->bindParam(":productID", $order_product, PDO::PARAM_INT);
-            $query->bindParam(":quantity", $quantities[$index], PDO::PARAM_INT);
+            $query->bindParam(":quantity", $quantities[$index], PDO::PARAM_STR);
             $query->bindParam(":price", $prices[$index], PDO::PARAM_INT);
             $query->bindParam(":product_name", $names[$index], PDO::PARAM_STR);
             $query->execute();
         }
     }
-    
+
     static function getProductNames($IDarray) {
         global $db;
         $namesArray = Array();
-        foreach($IDarray as $ProductID) {
+        foreach ($IDarray as $ProductID) {
             $query = $db->query("SELECT name FROM Products WHERE id=$ProductID LIMIT 1");
             $query->setFetchMode(PDO::FETCH_NUM);
             $resultArray = $query->fetch();
@@ -806,11 +801,11 @@ class Order {
         }
         return $namesArray;
     }
-    
+
     static function getProductPrices($IDarray) {
         global $db;
         $pricesArray = Array();
-        foreach($IDarray as $ProductID){
+        foreach ($IDarray as $ProductID) {
             $query = $db->query("SELECT price FROM Products WHERE id=$ProductID LIMIT 1");
             $query->setFetchMode(PDO::FETCH_ASSOC);
             $resultArray = $query->fetch();
@@ -819,7 +814,7 @@ class Order {
         }
         return $pricesArray;
     }
-    
+
     static function show_list_orders() {
         global $db;
         global $customer;
@@ -827,13 +822,13 @@ class Order {
         $query->bindParam(':id', $customer->id, PDO::PARAM_INT);
         $query->execute();
         $ordersArray = $query->fetchAll();
-        for($i = 0; $i < sizeof($ordersArray); $i++) {
+        for ($i = 0; $i < sizeof($ordersArray); $i++) {
             echo "<form method='post' action='customer_orders.php'>"
-                . "<input type='submit' name='order_number' value=" . $ordersArray[$i][0]. ">"
-                . "</form>";
+            . "<input type='submit' name='order_number' value=" . $ordersArray[$i][0] . ">"
+            . "</form>";
         }
     }
-    
+
     static function show_order($orderID) {
         global $db;
         $date = Order::show_date($orderID);
@@ -846,7 +841,7 @@ class Order {
         Order::show_order_table($orderID);
         echo "</table>";
     }
-    
+
     static function show_company_Info() {
         echo "<td>";
         echo "<h3>BedrijfsInformatie</h3> <br>";
@@ -869,7 +864,7 @@ class Order {
         global $customer;
         echo "<td>";
         echo "<h3>Klantgegevens:</h3> <br>";
-        echo "klantnummer: ". $customer->id . "<br>";
+        echo "klantnummer: " . $customer->id . "<br>";
         echo "voornaam: " . $customer->firstname . "<br>";
         echo "achternaam: " . $customer->lastname . "<br>";
         echo "adres: " . $customer->streetaddress . " ";
@@ -878,6 +873,7 @@ class Order {
         echo "email: " . $customer->email . "<br>";
         echo "</td>";
     }
+
     static function show_order_table($orderID) {
         global $db;
         $query = $db->query("SELECT quantity, product_name, price FROM Orders_Products WHERE OrderID=$orderID");
@@ -899,7 +895,7 @@ class Order {
 
         $total = 0;
         $subtotal = 0;
-        while($row = $query->fetch()) {
+        while ($row = $query->fetch()) {
             echo "<tr>";
             echo "<td>";
             echo $row['quantity'];
@@ -924,6 +920,7 @@ class Order {
         echo "</td>";
         echo "</tr>";
     }
+<<<<<<< HEAD
     
     static function printError() {
         echo "Van de volgende producten zijn helaas niet de gewenste aantallen "
@@ -935,4 +932,7 @@ class Order {
         . "passen. of <a href='products.php'> hier </a> om verder te gaan met"
         . "winkelen";
     }
+=======
+
+>>>>>>> 6ab93e6cf409cd6001c987e9c806852862a43e63
 }

@@ -50,10 +50,9 @@ p {
 }
 
 .wrappercontent {
-    margin-left: 30%;
+    margin-left: 31%;
     border-color: black;
     border-radius: 5px;
-    border: 1px solid;
     margin-top: 28px;
     margin-right: 25px;
 }
@@ -91,9 +90,6 @@ p {
 }
 
 .wrapperheadcontent input[type=text] {
-    width: 21%;
-    margin-left: 25px;
-    margin-bottom: 15px;
     height: 30px;
     border: 1px solid;
     border-color: white;
@@ -103,6 +99,44 @@ p {
     background-color: white;
     border-radius: 5px;
     float: left;
+}
+
+.wrapperheadcontent .searchform{
+    position: relative;
+    width: 300px;
+    margin-left: 25px;
+}
+.wrapperheadcontent .searchdropdown{
+    position: absolute;
+    top: 32px;
+    left: 0px;
+    background: #fff;
+    border: 1px solid #757575;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    visibility: hidden;
+    color: #000;
+    box-shadow: 7px 7px 19px -6px rgba(0,0,0,0.75);
+}
+
+.wrapperheadcontent .searchdropdown a {
+    display: block;
+    color: #006666;
+    text-decoration: none;
+    height: 30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border-bottom: 1px solid #B8B8B8;
+}
+
+.wrapperheadcontent .searchdropdown a:hover {
+    background-color: #CCCCCC; 
+}
+
+.wrapperheadcontent .searchdropdown a .queryinword {
+    color: black;
 }
 
 .winkelwagen {
@@ -596,7 +630,6 @@ input[type=password] {
     width: 100px;
     float: left;
     margin-right: 10px;
-    margin-top: 0px;
 }
 
 input[type="submit"] {
@@ -744,7 +777,7 @@ td {
 .shopping_cart_edit .shopping_cart_delete:link {
     color: green;
     font-family: iconfont;
-    
+
 }
 
 .inputBox {
@@ -775,17 +808,17 @@ td {
 }
 
 table {
-  border-collapse: collapse;
-  margin-right: 20px;
-  margin-bottom: 40px;
-  
+    border-collapse: collapse;
+    margin-right: 20px;
+    margin-bottom: 40px;
+
 }
 
 th {
     text-align: left;
     background-color: #696969;;
     color: white;
-    
+
 }
 
 table, td, th {
