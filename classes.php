@@ -920,7 +920,6 @@ class Order {
         echo "</td>";
         echo "</tr>";
     }
-<<<<<<< HEAD
     
     static function printError() {
         echo "Van de volgende producten zijn helaas niet de gewenste aantallen "
@@ -932,7 +931,4 @@ class Order {
         . "passen. of <a href='products.php'> hier </a> om verder te gaan met"
         . "winkelen";
     }
-=======
-
->>>>>>> 6ab93e6cf409cd6001c987e9c806852862a43e63
 }
