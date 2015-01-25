@@ -501,11 +501,12 @@ footer a:hover {
     width: 100%;
     height: 1px;
     background-color: #919191;
-    margin-top: 45px;
+    margin-top: 40px;
 }
 
 .descriptionwrap {
     position: relative;
+    min-height: 100px;
 }
 
 .descrText {
