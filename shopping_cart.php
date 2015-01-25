@@ -47,6 +47,17 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
     // and subtotal, and prints everything to the screen.
 
     echo "<table class='shopping_cart_table'>";
+    echo "
+	<thead>
+            <tr>
+                <th>Categorie</th>
+                <th>Productnaam</th>
+                <th>Kwantiteit</th>
+                <th>Prijs</th>
+		<th></th>
+            </tr>
+        </thead>";
+	
     foreach ($_SESSION['products'] as $index => $productId) {
     	$productId;
     	$quantity = $_SESSION['quantities'][$index];
@@ -59,16 +70,6 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
     	$subtotal = ($productPrice * $quantity);
         $_SESSION['total'] += $subtotal;
         echo "
-        <thead>
-            <tr>
-                <th>Categorie</th>
-                <th>Productnaam</th>
-                <th>Kwantiteit</th>
-                <th>Prijs</th>
-		<th></th>
-            </tr>
-        </thead>
-	<p>
         <tr>
         <td>
         category
@@ -86,8 +87,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'>
         <span>&#xf00d;</span>verwijder</a>
         </td> 
-        </tr>
-	</p>";
+        </tr>";
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
