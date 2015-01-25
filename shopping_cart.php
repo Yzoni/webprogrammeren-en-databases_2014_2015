@@ -59,6 +59,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
     	$subtotal = ($productPrice * $quantity);
         $_SESSION['total'] += $subtotal;
         echo "
+	<p>
         <tr>
         <td id ='cartImg'>
         Image
@@ -70,14 +71,14 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         $quantity kg
         </td>
         <td>
-        <a href='shopping_cart.php?deleteItem=$productId' class='deleteItemLink' >
-        Verwijder <span id='deleteItem'>&#xf00d; </span>
-        </a>
+        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'>
+        <span>&#xf00d;</span>verwijder</a>
         </td> 
         <td>
         &euro; $subtotal
         </td>
-        </tr>";
+        </tr>
+	</p>";
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
