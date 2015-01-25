@@ -17,7 +17,21 @@ body {
     background-image: url("images/bg.jpg");
     background-repeat: repeat;
     font-family: arialroundedmtbold;
+    font-size: 12px;
 }
+
+a {
+    font-color: #006666;
+}
+
+a:hover {
+    font-color: #006666;
+}
+
+a:visited {
+    font-color: #006666;
+}
+
 
 p {
     font-family: arialroundedmtbold;
