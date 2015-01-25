@@ -54,7 +54,6 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
     	$result = $db->query($sqlQuery);
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $resultArray = $result->fetch();
-	$category = $resultArray["category"];
         $productName = $resultArray["name"];
         $productPrice = $resultArray["price"];
     	$subtotal = ($productPrice * $quantity);
@@ -72,7 +71,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
 	<p>
         <tr>
         <td>
-        $category
+        category
         </td>
         <td>
         $productName
