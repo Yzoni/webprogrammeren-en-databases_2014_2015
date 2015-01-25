@@ -59,6 +59,15 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
     	$subtotal = ($productPrice * $quantity);
         $_SESSION['total'] += $subtotal;
         echo "
+        <thead>
+            <tr>
+                <th>Categorie</th>
+                <th>Productnaam</th>
+                <th>Kwantiteit</th>
+                <th>Prijs</th>
+		<th>Verwijderen</th>
+            </tr>
+        </thead>
 	<p>
         <tr>
         <td>
