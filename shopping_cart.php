@@ -82,7 +82,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
             
         // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
         }
-        echo "<table>";
+        echo "</table>";
         echo '<div class="hrline"></div>' . '<br>';
 
         echo '<div class="shopping_cart_price_total">' .  "Totaal :" . 
