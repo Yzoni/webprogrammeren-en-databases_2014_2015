@@ -73,7 +73,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         category
         </td>
         <td>
-        <a href='view_product.php?id=$productId'>$productName</a>
+        <a href='view_product.php?id=$productId' class='productpagelink'>$productName</a>
         </td>
         <td>
         $quantity kg
@@ -82,8 +82,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         &euro; $subtotal
         </td>
         <td>
-        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'>
-        <span>&#xf00d;</span>verwijder</a>
+        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'><span>&#xf00d;</span>verwijder</a>
         </td> 
         </tr>";
             
