@@ -752,7 +752,7 @@ input[name="lastname"] {
 /* Shopping cart */
 
 .shopping_cart_table {
-    width:95%;
+    width:100%;
 }
 
 td {
@@ -765,11 +765,6 @@ td {
     width: 68%;    
     margin-bottom: 15px;
     margin-left: 30%;
-}
-
-.shopping_cart {
-    margin-left: 28.8%;
-    margin-top: 25px;
 }
 
 .product_basket {
@@ -796,8 +791,6 @@ td {
     margin-right: 20%;
     margin-left: 20%;
 }
-
-
 
 .shopping_cart_icon {
     width: 15px;
