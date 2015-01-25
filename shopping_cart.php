@@ -71,7 +71,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
 	<p>
         <tr>
         <td>
-        category
+        $category
         </td>
         <td>
         $productName
