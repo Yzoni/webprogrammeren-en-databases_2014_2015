@@ -74,7 +74,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         category
         </td>
         <td>
-        $productName
+        <a href='view_product.php?id=$productId'>$productName</a>
         </td>
         <td>
         $quantity kg
