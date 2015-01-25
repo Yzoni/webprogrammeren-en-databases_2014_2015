@@ -17,21 +17,7 @@ body {
     background-image: url("images/bg.jpg");
     background-repeat: repeat;
     font-family: arialroundedmtbold;
-    font-size: 12px;
 }
-
-a {
-    font-color: #006666;
-}
-
-a:hover {
-    font-color: #006666;
-}
-
-a:visited {
-    font-color: #006666;
-}
-
 
 p {
     font-family: arialroundedmtbold;
@@ -813,6 +799,7 @@ table {
     border-collapse: collapse;
     margin-right: 20px;
     margin-bottom: 40px;
+    border-bottom: 1px solid #696969;
 
 }
 
@@ -820,11 +807,14 @@ th {
     text-align: left;
     background-color: #E5E4E2;
     color: #006666;
-
-}
-
-table, td, th {
     border-bottom: 1px solid #696969;
+    font-size: 13px;
+    padding-right: 20px;
+    padding-left: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    height: 32px;
+
 }
 
 td {
@@ -834,15 +824,6 @@ td {
     padding-top: 4px;
     padding-bottom: 4px;
     height: 40px;
-}
-
-th {
-    font-size: 13px;
-    padding-right: 20px;
-    padding-left: 5px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    height: 32px;
 }
 
 .detailslink {
