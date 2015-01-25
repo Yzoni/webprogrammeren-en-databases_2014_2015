@@ -34,8 +34,6 @@ if (isset($_GET['deleteItem'])) {
 
 <div class="wrappercontent">
     <h2 class="contenttitle">Winkelwagentje </h2>
-    <div class="hrline"></div>
-
 <?php
 
 // if at least one product is stored in the products array, this if statement
