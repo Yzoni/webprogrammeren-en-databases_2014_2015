@@ -19,7 +19,11 @@ if ($hint == "") {
 echo $response;
 
 function replaceWithBold($product, $search) {
-    $startpossearch = strpos($product, $search);
+    // strpos is case sensitive
+    $productwithoutcase = strtolower($product);
+    $searchwithoutcase = strtolower($search);
+    
+    $startpossearch = strpos($productwithoutcase, $searchwithoutcase);
     $endpossearch = strlen($search) + $startpossearch;
     
     $beforesearch = substr($product, 0, $startpossearch);
