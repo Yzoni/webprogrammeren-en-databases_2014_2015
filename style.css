@@ -768,35 +768,6 @@ td {
     margin-left: 2%;
 }
 
-.shopping_cart_delivery_time .shopping_cart_price_total {
-    padding-right: 30px;
-}
-
-#pay {
-    background-color: #006666;
-    height: 10%;    
-    width: 18%;
-    text-align: center;
-    font-weight: bold;
-    color: white;   
-    line-height: 220%;
-    float: right;	    	
-    margin-right: 20%;
-    margin-left: 20%;
-}
-
-.shopping_cart_icon {
-    width: 15px;
-    display: inline-block;
-    font-family: iconfont;
-}
-
-.shopping_cart_edit .shopping_cart_delete:link {
-    color: green;
-    font-family: iconfont;
-
-}
-
 .inputBox {
     -webkit-appearance: none;
     -moz-appearance: none;
