@@ -18,5 +18,9 @@
     }
     ?>
     <p class="stock"><?php echo ($this->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d") ?></span><?php echo $this->stock; ?> op voorraad</p>
+<<<<<<< HEAD
     <p class="stock"><span class="stockicon">&#xf153;</span><?php echo $this->price; ?>/kg</p>
+=======
+    <?php echo "<p class=\"price\">prijs: &#8364;" . $this->price . "/kg</p>"; ?>
+>>>>>>> 9fcf8ac7266c48c279faa1b8b7a9e333ae6a7193
 </div>
