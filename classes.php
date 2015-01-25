@@ -738,8 +738,34 @@ class Order {
     public $products;
     public $date;
 
+    // tryOrder tries to remove the the items of the order from the database.
+    // If tryOrder fails the user will be informed.
+    static function tryOrder($products, $quantities, $names) {
+        global $db;
+        $updateQuery = "UPDATE Products SET stock=:value WHERE id=:id";
+        $_SESSION['errorProducts'] = Array();
+        for ($i = 0; $i < sizeof($products); $i++) {
+            $query = $db->query("SELECT stock FROM Products WHERE id=$products[$i]");
+            $query->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $query->fetch();
+            $stock = $row['stock'];
+            $prodID = $products[$i];
+            $ProdQuantity = $stock - $quantities[$i];
+
+            $query =  $db->prepare($updateQuery);
+            $query->bindParam(':value', $ProdQuantity);
+            $query->bindParam(':id', $prodID);
+            if(!(($stock - $quantities[$i]) >= 0) || !$query->execute()) {
+                    array_push($_SESSION['errorProducts'], $names[$i]);
+                    $_SESSION['dbPullSuccess'] = false;
+            }
+            if($i == (sizeof($products) - 1) && !isset($_SESSION['dbPullSuccess'])) {
+                $_SESSION['dbPullSuccess'] = true;
+            }
+        }
+    }
     // makes bill
-    static function makeOrder($userID,
+    static function executeOrder($userID,
                         $productIDs,
                         $quantities,
                         $prices,
@@ -897,5 +923,16 @@ class Order {
         echo "Totaal: $total";
         echo "</td>";
         echo "</tr>";
+    }
+    
+    static function printError() {
+        echo "Van de volgende producten zijn helaas niet de gewenste aantallen "
+        . "beschikbaar <br>";
+        foreach($_SESSION['errorProducts'] as $errorProduct) {
+            echo "- $errorProduct <br>";
+        }
+        echo "klik <a href='shopping_cart.php'> hier </a> om uw bestelling aan te "
+        . "passen. of <a href='products.php'> hier </a> om verder te gaan met"
+        . "winkelen";
     }
 }

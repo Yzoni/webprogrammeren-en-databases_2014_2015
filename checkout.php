@@ -3,12 +3,28 @@ require_once 'classes.php';
 include 'views/header.php';
 include 'views/navigation.php';
 
+if(!is_customer_logged_in()) {
+    echo "U moet <a href='customer_login.php'>ingelogd </a> "
+    . "zijn om deze pagina te bekijken.";
+    include 'views/footer.php';
+    exit();
+}
+
 if (isset($_POST['checkout_complete'])) {
-    Order::makeOrder($_SESSION['customer_id'],
+    Order::tryOrder($_SESSION['products'], 
+                    $_SESSION['quantities'],
+                    Order::getProductNames($_SESSION['products']));
+    if(!$_SESSION['dbPullSuccess']) {
+        Order::printError();
+        include 'views/footer.php';
+        exit();
+    }
+
+    Order::executeOrder($_SESSION['customer_id'],
                     $_SESSION['products'],
                     $_SESSION['quantities'],
                     Order::getProductPrices($_SESSION['products']),
-                    Order::getProductNames($_SESSION['quantities']),
+                    Order::getProductNames($_SESSION['products']),
                     $_SESSION['payment']);
     unset($_SESSION['products']);
     unset($_SESSION['quantities']);

@@ -15,6 +15,7 @@ if (isset($_GET['deleteItem'])) {
         array_shift($_SESSION['quantities']);
         array_shift($_SESSION['subtotal']);
         unset($_GET['deleteItem']);
+        unset($_SESSION['dbPullSuccess']);
         echo '<meta http-equiv="refresh" content="0.1">';
     } else if ($i > 0) {
         $subtotal = $_SESSION['subtotal'][$i];
