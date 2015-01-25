@@ -7,7 +7,12 @@
         <link rel="stylesheet" type="text/css" href="style_shopping_cart.css">
         <link rel="icon" type="image/png" href="images/fruyt_icon.png">
         <script src="js/search.js" type="text/javascript"></script>
-        <script src="functions.js" type="text/javascript"></script> 
+        <script src="js/noentertextbox.js" type="text/javascript"></script>
+        <!--  FANCY NICHE ANDROID 5.0 CHROME KLEUR S-->
+        <meta name="theme-color" content="#006666">
+        <script>
+            document.onkeypress = stopRKey;
+        </script>
     </head>
     <body>
         <header>
@@ -36,7 +41,12 @@
         <div class="wrapper">
             <div class="wrapperhead">
                 <div class="wrapperheadcontent">
-                    <input type="text" placeholder="Zoek producten" onkeyup="showResult(this.value)">
+                    <form> 
+                        <div class="searchform">
+                            <input id="searchbox" type="text" placeholder="Zoek producten" onkeyup="showResult(this.value)" autocomplete="off"> 
+                            <div id="searchdropdown" class="searchdropdown"></div></div>
+                    </form> 
+
                     <?php
                     if (!is_admin_logged_in()) {
                         echo "<a href=\"shopping_cart.php\" class=\"winkelwagen\">";

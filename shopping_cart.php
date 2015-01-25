@@ -15,6 +15,7 @@ if (isset($_GET['deleteItem'])) {
         array_shift($_SESSION['quantities']);
         array_shift($_SESSION['subtotal']);
         unset($_GET['deleteItem']);
+        unset($_SESSION['dbPullSuccess']);
         echo '<meta http-equiv="refresh" content="0.1">';
     } else if ($i > 0) {
         $subtotal = $_SESSION['subtotal'][$i];
@@ -88,6 +89,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
                 $_SESSION['total'] . " euro" . '</div>';
         echo '<div class="shopping_cart_delivery_time"> ' . '<br>'
         . '<span class="icon">&#xf135;levertijd: 1 dag </span> </div>';
+        echo "<a href='checkout.php'> Afrekenen </a> ";
 } else{
     echo 'Uw winkelwagen is leeg'; 
 }

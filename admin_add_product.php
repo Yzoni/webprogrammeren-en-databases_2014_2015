@@ -10,18 +10,18 @@ if (isset($_POST['name'])) {
     $stock = $_POST['stock'];
     (isset($_POST['special']) ? $special = 1 : $special = 0);
     $allowedimagetypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
-    $detectedimagetype = exif_imagetype($_FILES['image']['tmp_name']);
-    if (in_array($detectedimagetype, $allowedimagetypes) || $_FILES['image']['size'] < 2000000) {
+    $detectedimagetype = ($_FILES['image']['tmp_name']!="" ? exif_imagetype($_FILES['image']['tmp_name']) : "");
+    if (in_array($detectedimagetype, $allowedimagetypes) && $_FILES["image"]["size"] < 2000000) {
         $image = ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
+    } else if($detectedimagetype==""){
+        $display->addMessage("notice", "Ondanks dat u geen afbeelding heeft geupload is het toch... ");
+        $image = null;
     } else {
-        $image = "noimage";
+        $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     }
     if (empty($name) || empty($price)) {
         $display->addMessage("error", "Productnaam of prijs zijn niet ingevuld");
-    } elseif (isset($image) == "noimage") {
-        $display->addMessage("error", "Afbeelding te groot of bestand is geen jpg of png");
     } else {
-        $image = Product::resizeImage($image);
         $status = Product::create($typeid, $name, $description, $stock, $price, $special, $image);
         if ($status) {
             $display->addMessage("success", "Product toegevoegd");

@@ -261,6 +261,16 @@ class Product {
         return $result;
     }
 
+    static function search($word) {
+        global $db;
+        $query = $db->prepare("SELECT * FROM Products WHERE name LIKE :word ORDER BY name");
+        $str = '%' . $word . '%';
+        $query->bindParam(':word', $str);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+        return $result;
+    }
+
     static function getSortedProducts($sort) {
         switch ($sort) {
             case alphabetic :
@@ -296,14 +306,10 @@ class Product {
         return $query->execute();
     }
 
-    function edit($imageenabled) {
+    function edit() {
         global $db;
-        if ($imageenabled == 1) {
-            $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
-            $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
-        } else {
-            $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special WHERE id = :id");
-        }
+        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
+        $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
         $query->bindParam(':typeid', $this->typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
         $query->bindParam(':description', $this->description, PDO::PARAM_STR);
@@ -313,11 +319,10 @@ class Product {
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         return $query->execute();
     }
-    
+
     static function resizeImage($image) {
-        //Make ratio 16/5
-        $width = imagesx($image);
-        $height = round($width / (16/5));
+        list($width) = getimagesize($image);
+        $height = round($width / (5 / 16));
         $resizedimage = new Imagick($image);
         $status = $resizedimage->scaleImage($height, $width);
         if ($status) {
@@ -338,18 +343,6 @@ class Product {
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->bindParam(':id', $this->id, PDO::PARAM_STR);
         $query->execute();
-    }
-
-    static function search($key) {
-        global $db;
-        $array = array();
-        $query = $db->prepare("SELECT * from Products WHERE :name LIKE :key");
-        $query->bindParam(':key', $key, PDO::PARAM_STR);
-        $query->execute();
-        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $array[] = $row['title'];
-        }
-        return json_encode($array);
     }
 
 }
@@ -715,7 +708,9 @@ class showMessage {
             if ($message[0] == "error") {
                 echo "<span class=\"message\"><span id=\"error\">ERROR: </span> " . $message[1] . "</span>";
             } elseif ($message[0] == "success") {
-                echo "<span class=\"message\"><span id=\"success\">SUCCESS: </span> " . $message[1] . "</span>";
+                echo "<span class=\"message\"><span id=\"success\">GELUKT: </span> " . $message[1] . "</span>";
+            } elseif ($message[0] == "notice") {
+                echo "<span class=\"message\"><span id=\"success\">NOTICE: </span> " . $message[1] . "</span>";
             }
         }
         return true;
@@ -739,4 +734,201 @@ class Order {
     public $products;
     public $date;
 
+    // tryOrder tries to remove the the items of the order from the database.
+    // If tryOrder fails the user will be informed.
+    static function tryOrder($products, $quantities, $names) {
+        global $db;
+        $updateQuery = "UPDATE Products SET stock=:value WHERE id=:id";
+        $_SESSION['errorProducts'] = Array();
+        for ($i = 0; $i < sizeof($products); $i++) {
+            $query = $db->query("SELECT stock FROM Products WHERE id=$products[$i]");
+            $query->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $query->fetch();
+            $stock = $row['stock'];
+            $prodID = $products[$i];
+            $ProdQuantity = $stock - $quantities[$i];
+
+            $query =  $db->prepare($updateQuery);
+            $query->bindParam(':value', $ProdQuantity);
+            $query->bindParam(':id', $prodID);
+            if(!(($stock - $quantities[$i]) >= 0) || !$query->execute()) {
+                    array_push($_SESSION['errorProducts'], $names[$i]);
+                    $_SESSION['dbPullSuccess'] = false;
+            }
+            if($i == (sizeof($products) - 1) && !isset($_SESSION['dbPullSuccess'])) {
+                $_SESSION['dbPullSuccess'] = true;
+            }
+        }
+    }
+    // executes order
+    static function executeOrder($userID,
+                        $productIDs,
+                        $quantities,
+                        $prices,
+                        $names,
+                        $payment_method) {
+        global $db;
+        $query = $db->prepare("INSERT INTO Orders (customerid, payment_method) VALUES (:userID, :payment_method)");
+        $query->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $query->bindParam(':payment_method', $payment_method, PDO::PARAM_STR);
+        $query->execute();
+
+        $result = $db->query("SELECT MAX(id) FROM Orders WHERE customerid=$userID");
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $resultArray = $result->fetch();
+        $inserted_id = end($resultArray);
+
+        foreach ($productIDs as $index => $order_product) {
+            $query = $db->prepare("INSERT INTO Orders_Products (OrderID, productID, quantity,product_name,price) VALUES (:OrderID, :productID,:quantity, :product_name,:price)");
+            $query->bindParam(":OrderID", $inserted_id, PDO::PARAM_INT);
+            $query->bindParam(":productID", $order_product, PDO::PARAM_INT);
+            $query->bindParam(":quantity", $quantities[$index], PDO::PARAM_STR);
+            $query->bindParam(":price", $prices[$index], PDO::PARAM_INT);
+            $query->bindParam(":product_name", $names[$index], PDO::PARAM_STR);
+            $query->execute();
+        }
+    }
+
+    static function getProductNames($IDarray) {
+        global $db;
+        $namesArray = Array();
+        foreach ($IDarray as $ProductID) {
+            $query = $db->query("SELECT name FROM Products WHERE id=$ProductID LIMIT 1");
+            $query->setFetchMode(PDO::FETCH_NUM);
+            $resultArray = $query->fetch();
+            $productName = end($resultArray);
+            array_push($namesArray, $productName);
+        }
+        return $namesArray;
+    }
+
+    static function getProductPrices($IDarray) {
+        global $db;
+        $pricesArray = Array();
+        foreach ($IDarray as $ProductID) {
+            $query = $db->query("SELECT price FROM Products WHERE id=$ProductID LIMIT 1");
+            $query->setFetchMode(PDO::FETCH_ASSOC);
+            $resultArray = $query->fetch();
+            $productPrice = end($resultArray);
+            array_push($pricesArray, $productPrice);
+        }
+        return $pricesArray;
+    }
+
+    static function show_list_orders() {
+        global $db;
+        global $customer;
+        $query = $db->prepare("SELECT id FROM Orders WHERE customerid=:id");
+        $query->bindParam(':id', $customer->id, PDO::PARAM_INT);
+        $query->execute();
+        $ordersArray = $query->fetchAll();
+        for ($i = 0; $i < sizeof($ordersArray); $i++) {
+            echo "<form method='post' action='customer_orders.php'>"
+            . "<input type='submit' name='order_number' value=" . $ordersArray[$i][0] . ">"
+            . "</form>";
+        }
+    }
+
+    static function show_order($orderID) {
+        global $db;
+        $date = Order::show_date($orderID);
+        echo "<table>";
+        echo "<tr>";
+        echo "<td> factuurnummer: $orderID <br> $date</td>";
+        echo "</tr>";
+        Order::show_company_Info();
+        Order::show_customer_info($orderID);
+        Order::show_order_table($orderID);
+        echo "</table>";
+    }
+
+    static function show_company_Info() {
+        echo "<td>";
+        echo "<h3>BedrijfsInformatie</h3> <br>";
+        echo "Adres: fruytlaan 904 1234AB <br>";
+        echo "Tel: 0201235813 <br>";
+        echo "KvK: <br>";
+        echo "</td>";
+    }
+
+    static function show_date($orderID) {
+        global $db;
+        $query = $db->query("SELECT date FROM Orders WHERE id=$orderID");
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $dateArray = $query->fetch();
+        echo "datum: " . end($dateArray);
+    }
+
+    static function show_customer_info($orderID) {
+        global $db;
+        global $customer;
+        echo "<td>";
+        echo "<h3>Klantgegevens:</h3> <br>";
+        echo "klantnummer: " . $customer->id . "<br>";
+        echo "voornaam: " . $customer->firstname . "<br>";
+        echo "achternaam: " . $customer->lastname . "<br>";
+        echo "adres: " . $customer->streetaddress . " ";
+        echo $customer->streetnumber . "<br>";
+        echo "postcode: " . $customer->zip . "<br>";
+        echo "email: " . $customer->email . "<br>";
+        echo "</td>";
+    }
+
+    static function show_order_table($orderID) {
+        global $db;
+        $query = $db->query("SELECT quantity, product_name, price FROM Orders_Products WHERE OrderID=$orderID");
+        $query->setfetchMode(PDO::FETCH_ASSOC);
+
+        echo "<tr>";
+        echo "<th>";
+        echo "Hoeveelheid:";
+        echo "</th>";
+        echo "<th>";
+        echo "Productnaam:";
+        echo "</th>";
+        echo "<th>";
+        echo "Prijs:";
+        echo "</th>";
+        echo "<th>";
+        echo "Subtotaal:";
+        echo "</th>";
+
+        $total = 0;
+        $subtotal = 0;
+        while ($row = $query->fetch()) {
+            echo "<tr>";
+            echo "<td>";
+            echo $row['quantity'];
+            echo "</td>";
+            echo "<td>";
+            echo $row['product_name'];
+            echo "</td>";
+            echo "<td>";
+            echo $row['price'];
+            echo "</td>";
+            echo "<td>";
+            $subtotal = $row['price'] * $row['quantity'];
+            echo $subtotal;
+            echo "</td>";
+            echo "<tr>";
+            $total += $subtotal;
+        }
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>";
+        echo "Totaal: $total";
+        echo "</td>";
+        echo "</tr>";
+    }
+    
+    static function printError() {
+        echo "Van de volgende producten zijn helaas niet de gewenste aantallen "
+        . "beschikbaar <br>";
+        foreach($_SESSION['errorProducts'] as $errorProduct) {
+            echo "- $errorProduct <br>";
+        }
+        echo "klik <a href='shopping_cart.php'> hier </a> om uw bestelling aan te "
+        . "passen. of <a href='products.php'> hier </a> om verder te gaan met"
+        . "winkelen";
+    }
 }
