@@ -65,7 +65,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
                 <th>Productnaam</th>
                 <th>Kwantiteit</th>
                 <th>Prijs</th>
-		<th>Verwijderen</th>
+		<th></th>
             </tr>
         </thead>
 	<p>
