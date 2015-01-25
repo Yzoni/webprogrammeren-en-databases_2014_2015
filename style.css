@@ -757,14 +757,7 @@ input[name="lastname"] {
 
 td {
     width:10%;
-}
-
-.line {
-    background-color: #454545;
-    height: 1px;
-    width: 68%;    
-    margin-bottom: 15px;
-    margin-left: 30%;
+    padding: 5px;
 }
 
 .product_basket {
