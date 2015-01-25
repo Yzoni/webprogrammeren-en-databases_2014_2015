@@ -833,13 +833,13 @@ table {
 
 th {
     text-align: left;
-    background-color: #696969;;
+    background-color: #696969;
     color: white;
 
 }
 
 table, td, th {
-    border: 1px solid #696969;;
+    border-bottom: 1px solid #696969;
 }
 
 td, th {
