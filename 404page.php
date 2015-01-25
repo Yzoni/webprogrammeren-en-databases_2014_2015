@@ -6,7 +6,7 @@ include 'views/navigation.php';
 ?>
 
 <div class = "wrappercontent">
-    <H1>404 PAGE NOT FOUND</H1>
+    <H1>404 - Pagina niet gevonden</H1>
 </div>
 
 <?php
