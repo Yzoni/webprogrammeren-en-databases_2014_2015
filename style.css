@@ -324,15 +324,21 @@ input[name="firstname"] {
     margin-right: 12px;
 }
 
+.adminbuttonwrap {
+    position: relative;
+    margin-top: -25px;
+}
+
 .button_delete{
     margin-top: 0px;
     background-color: #d40000;
-    float: right;
+    position: absolute;
+    right: 0px;
 }
 
 .button_right{
-    float: right;
-    margin-right: 12px;
+    position: absolute;
+    right: 160px;
 }
 
 .button span, .button_right span, .button_delete span, .winkelwagen span {
@@ -492,17 +498,42 @@ footer a:hover {
 
 /* Product page */
 
-.contenthead {
-    border: 1px solid red;
+.hrline {
+    width: 100%;
+    height: 1px;
+    background-color: #919191;
+    margin-top: 45px;
+}
+
+.descriptionwrap {
+    position: relative;
 }
 
 .descrText {
-    text-align: right;
+    margin-top: 20px;
+    width: 50%;
     display: inline-block;
 }
 .descrImg {
-    display: inline-block;
+    margin-top: 20px;
     margin-right: 12px;
+    position: absolute;
+    left: 51%;
+}
+
+.underdescription {
+    margin-top: 20px;
+    position: relative;
+}
+
+.addToCart {
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+}
+
+#backtocategory {
+    margin-top: 20px;
 }
 
 .icon-ok {
@@ -589,7 +620,7 @@ input[type=text] {
 }
 
 .addToCart input[type=text] {
-    width: 105px;
+    width: 130px;
     background: url('images/kwantiteit_bg.jpg') no-repeat;
 }
 
