@@ -242,14 +242,14 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = NULL) {
+    static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = null) {
         global $db;  
-        if ($sorting_order){
+        if ($sorting_order != null){
             $partQuery = Product::getOrderProducts($sorting_order);  
         } else {
             $partQuery = " ORDER BY RAND() ";
         }        
-        if ($type){
+        if ($type != null){
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . $partQuery.  ":startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
