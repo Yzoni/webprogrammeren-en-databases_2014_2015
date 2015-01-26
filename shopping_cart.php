@@ -82,7 +82,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         &euro; $subtotal
         </td>
         <td>
-        <a href='shopping_cart.php?deleteItem=$productId' class='button'>verwijder</a>
+        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'>verwijder</a>
         </td> 
         </tr>";
             
@@ -92,9 +92,9 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
 
         echo "totaalprijs:" . 
                 "<span class='icon'> &euro;</span> " .
-                $_SESSION['total'] . "<br/>";
-        echo "<span class=\"icon\">&#xf135;levertijd: 1 dag </span><br/>";
-        echo "<a href=\"checkout.php\" class=\"button\"><span class=\"icon\">&#xf0d1;</span>bestelling afronden</a>";
+                $_SESSION['total'] . "<br>";
+        echo "<span class=\"icon\">&#xf135;<span>levertijd: 1 dag<br>";
+        echo "<a href='checkout.php' class='button'><span class='icon'>&#xf0d1;</span>bestelling afronden</a>";
 } else{
     echo 'Uw winkelwagen is leeg'; 
 }
