@@ -763,10 +763,6 @@ input[name="lastname"] {
 
 /* SHOPPING CART */
 
-.shopping_cart_table {
-    width:100%;
-}
-
 .inputBox {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -800,7 +796,7 @@ table {
     margin-right: 12px;
     margin-bottom: 20px;
     border-bottom: 1px solid #696969;
-
+    width: 100%;
 }
 
 th {
