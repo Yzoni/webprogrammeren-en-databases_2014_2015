@@ -85,7 +85,7 @@ if (isset($_POST['checkout_complete'])) {
             <input type="radio" name="payment" value="paypal"><span class="stockicon">&#xf1ed;</span>Paypal <br>
             <input type="radio" name="payment" value="rembours"><span class="stockicon">&#xf0d6;</span>Rembours<br>
             <br>
-            <button type="submit" class="button"><span>&#xf0d1;</span>bestelling afronden</button>
+            <button type="submit" class="button"><span>&#xf155;</span>betaalwijze bevestigen</button>
             </form>';
     }
 ?>
