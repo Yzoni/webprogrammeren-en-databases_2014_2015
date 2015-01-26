@@ -33,6 +33,10 @@ p {
     margin-bottom: 15px;
 }
 
+.totalprice {
+    ling-height: 24px;
+}
+
 .wrapper {
     min-height: 500px;
     min-width: 820px;
@@ -56,6 +60,19 @@ p {
     margin-top: 28px;
     margin-right: 25px;
 }
+
+.wrappercontent:a {
+    color: #006666;
+    text-decoration: none;
+}
+
+.wrappercontent:hover {
+    color: #006666;
+    padding-left: 4px;
+}
+
+.wrappercontent:visited {
+    color: #006666;
 
 .wrapperhead {
     background-color: #006666;
@@ -340,8 +357,7 @@ input[name="firstname"] {
 }
 
 .button_right{
-    position: absolute;
-    right: 160px;
+    float:right;
 }
 
 .button span, .button_right span, .button_delete span, .winkelwagen span {
@@ -519,12 +535,14 @@ footer a:hover {
 
 .descrText {
     margin-top: 20px;
-    width: 50%;
+    width: 45%;
     display: inline-block;
+    font-size: 12px;
 }
 .descrImg {
     margin-top: 20px;
-    margin-right: 12px;
+    margin-bottom: 20px;
+    margin-right: 0px;
     position: absolute;
     left: 51%;
 }
@@ -757,23 +775,10 @@ input[name="lastname"] {
     margin-bottom: 15px;
 }
 
-/* Shopping cart */
+/* SHOPPING CART */
 
 .shopping_cart_table {
     width:100%;
-}
-
-td {
-    width:10%;
-    padding: 5px;
-}
-
-.product_basket {
-    font-size: 10px;
-    font-color: #454545;
-    width: 80%;
-    width: 20%;
-    margin-left: 2%;
 }
 
 .inputBox {
