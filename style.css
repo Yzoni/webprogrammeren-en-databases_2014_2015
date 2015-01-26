@@ -340,8 +340,7 @@ input[name="firstname"] {
 }
 
 .button_right{
-    position: absolute;
-    right: 160px;
+    float:right;
 }
 
 .button span, .button_right span, .button_delete span, .winkelwagen span {
@@ -757,23 +756,10 @@ input[name="lastname"] {
     margin-bottom: 15px;
 }
 
-/* Shopping cart */
+/* SHOPPING CART */
 
 .shopping_cart_table {
     width:100%;
-}
-
-td {
-    width:10%;
-    padding: 5px;
-}
-
-.product_basket {
-    font-size: 10px;
-    font-color: #454545;
-    width: 80%;
-    width: 20%;
-    margin-left: 2%;
 }
 
 .inputBox {
