@@ -80,7 +80,7 @@ if (isset($_POST['checkout_complete'])) {
             </div>
             <br>
             <form method="post" action="checkout.php">
-            <input type="radio" name="payment" value="acceptgiro"><span>&#xf199;</span>Acceptgiro<br>
+            <input type="radio" name="payment" value="acceptgiro"><span class="icon">&#xf199;</span>Acceptgiro<br>
             <input type="radio" name="payment" value="bitcoin"><span>&#xf15a;</span>Bitcoin <br>
             <input type="radio" name="payment" value="ideal"><span>&#xf05a;</span>Ideal <br>
             <input type="radio" name="payment" value="paypal"><span>&#xf1ed;</span>Paypal <br>
