@@ -522,12 +522,12 @@ footer a:hover {
 
 .descrText {
     margin-top: 20px;
-    width: 50%;
+    width: 45%;
     display: inline-block;
 }
 .descrImg {
     margin-top: 20px;
-    margin-right: 12px;
+    margin-right: 0px;
     position: absolute;
     left: 51%;
 }
