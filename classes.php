@@ -242,48 +242,43 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getAllProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = NULL) {
+    static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = NULL) {
         global $db;
-        if ($sorting_order != NULL) {
-            $queryPart = getSortedProducts($order);
-            $query = $db->prepare($queryPart + "LIMIT :startamount, :endamount");
-            $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
-            $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
-            $query->bindParam(':typeid', $type, PDO::PARAM_INT);
-            $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
-            return $result;
-        } else if ($type) {
-            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY name LIMIT :startamount, :endamount");
+        if ($sorting_order) {
+            partQuery = getOrderProducts($sorting_order);
+        }
+        if ($type){
+            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . partQuery.  ":startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
         } else if ($special == 1) {
-            $query = $db->prepare("SELECT * FROM Products WHERE special = 1 ORDER BY name");
+            $query = $db->prepare("SELECT * FROM Products WHERE special = 1" . $partQuery );
         } else {
-            $query = $db->prepare("SELECT * FROM Products ORDER BY name ASC LIMIT :startamount, :endamount");
+            $query = $db->prepare("SELECT * FROM Products" . $partQuery . "DESC LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
         }
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
-        return $result;
+        return $result;    
     }
 
-    static function getSortedProducts($sort) {
+    static function getOrderProducts($sort) {
+        global $db;
         switch ($sort) {
             case "alphabetic" :
-                $query = "SELECT * FROM Products ORDER BY name ASC";
+                $query = " ORDER BY name ASC";
                 break;
             case "price-desc" :
-                $query = "SELECT * FROM Products ORDER BY price DESC";
+                $query = " ORDER BY price DESC";
                 break;
             case "price-asc" :
-                $query = "SELECT * FROM Products ORDER BY price ASC";
+                $query = " ORDER BY price ASC";
             default : 
-                $query = "SELECT * FROM Products ORDER BY name RAND()";
-            } 
-        echo $query;    
+                $query = " ORDER BY name RAND()";
+            }        
+        
         return $query;
     }
     
