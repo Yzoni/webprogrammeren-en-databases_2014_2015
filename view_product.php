@@ -42,7 +42,9 @@ if (isset($_POST['quantity'])) {
 
 
 
-// BUG ADDING TOO MUCH STOCK TO CART IF DONE IN MULTIPLE TIMES !!!
+// !!!BUG ADDING TOO MUCH STOCK TO CART IF DONE IN MULTIPLE TIMES !!!
+
+    
     // array_search and the if statement below will check if there has
     // already been added a quantity of the same type of product in the shopping
     // cart. If there has not, then a new array item will be added, if there has
@@ -80,7 +82,7 @@ include 'views/navigation.php';
             return false;
         }        
         if (quantity > stock || quantity <= 0) {
-            alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
+            alert(quantity + "Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
             meer hebben wij op dit moment niet op voorraad.");
             return false;
         }
