@@ -33,6 +33,10 @@ p {
     margin-bottom: 15px;
 }
 
+.totalprice {
+    ling-height: 24px;
+}
+
 .wrapper {
     min-height: 500px;
     min-width: 820px;
