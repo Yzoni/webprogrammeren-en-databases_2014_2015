@@ -43,7 +43,7 @@ if (isset($_POST['checkout_complete'])) {
     . "Klik op de button om uw bestelling te voltooien.<br/>"
     . "<form method='post' action='checkout.php'>"
     . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
-    . "</form>"
+    . "</form>";
     $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "bitcoin") {
     echo "<h2 class='contenttitle'>Betalen via BitCoin</h2>"
