@@ -34,7 +34,7 @@ if (isset($_POST['checkout_complete'])) {
     unset($_SESSION['subtotal']);
     unset($_SESSION['payment']);
     unset($_SESSION['total']);
-    echo '<h2 class="contenttitle">Betaling voldaan.</h2>';
+    echo '<h2 class="contenttitle">Betaling voldaan</h2>';
     echo 'klik <a href="customer_orders.php"> hier </a>';
     echo 'voor een overzicht van al uw facturen';
     // meest recente factuur opvragen en uitprinten
@@ -46,28 +46,27 @@ if (isset($_POST['checkout_complete'])) {
     . "om een acceptgiro te versturen naar uw postadres.";
     $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "bitcoin") {
-    echo "klik "
+    echo "<h2 class='contenttitle'>Betalen via BitCoin</h2>"
+    . "Klik op de button om uw betaling te voltooien."
     . "<form method='post' action='checkout.php'>"
-    . "<input type='submit' name='checkout_complete' value='hier'>"
-    . "</form>"
-    . "om te betalen met bitcoins.";
+    . "<button type='submit' name='checkout_complete'><span>&#xf155;</span>betaling voltooien</button>"
+    . "</form>";
     $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "ideal") {
-    echo "klik "
+    echo "<h2 class='contenttitle'>Betalen via iDeal</h2>"
+    . "Klik op de button om uw betaling te voltooien."
     . "<form method='post' action='checkout.php'>"
     . "<input type='submit' name='checkout_complete' value='hier'>"
-    . "</form>"
-    . "om te betalen met ideal.";
-    $_SESSION['payment'] = $_POST['payment'];
+    . "</form>";    $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "paypal") {
-    echo "klik "
+    echo "<h2 class='contenttitle'>Betalen via Paypal</h2>"
     . "<form method='post' action='checkout.php'>"
     . "<input type='submit' name='checkout_complete' value='hier'>"
     . "</form>"
     . "om te betalen met paypal.";
     $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "rembours") {
-    echo "klik "
+    echo "<h2 class='contenttitle'>Betalen onder rembours</h2>"
     . "<form method='post' action='checkout.php'>"
     . "<input type='submit' name='checkout_complete' value='hier'>"
     . "</form>"
