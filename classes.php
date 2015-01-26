@@ -267,19 +267,17 @@ class Product {
     }
 
     static function getOrderProducts($sorting_order) {
-        global $db;
         switch ($sorting_order) {
             case "alphabetic" :
                 $query = " ORDER BY name ASC";
-                break;
+                return $query;
             case "price-desc" :
                 $query = " ORDER BY price DESC";
-                break;
+                return $query;
             case "price-asc" :
                 $query = " ORDER BY price ASC";
+                return $query;
             }        
-        
-        return $query;
     }
     
     static function search($word) {
