@@ -234,6 +234,24 @@ class Product {
         return $result;
     }
 
+    static function getOrderProducts($sorting_order) {
+        global $db;
+        switch ($sorting_order) {
+            case "alphabetic" :
+                $query = " ORDER BY name ASC";
+                break;
+            case "price-desc" :
+                $query = " ORDER BY price DESC";
+                break;
+            case "price-asc" :
+                $query = " ORDER BY price ASC";
+            default : 
+                $query = " ORDER BY name RAND()";
+            }        
+        
+        return $query;
+    }    
+    
     /**
      * Function getAllProducts
      *
@@ -264,23 +282,7 @@ class Product {
         return $result;    
     }
 
-    static function getOrderProducts($sorting_order) {
-        global $db;
-        switch ($sorting_order) {
-            case "alphabetic" :
-                $query = " ORDER BY name ASC";
-                break;
-            case "price-desc" :
-                $query = " ORDER BY price DESC";
-                break;
-            case "price-asc" :
-                $query = " ORDER BY price ASC";
-            default : 
-                $query = " ORDER BY name RAND()";
-            }        
-        
-        return $query;
-    }
+    
     
     static function search($word) {
         global $db;
