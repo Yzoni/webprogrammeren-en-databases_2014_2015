@@ -4,6 +4,7 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 <div id="wrappercontent">
+shalalalala
 <?php
 
 if(!is_customer_logged_in()) {
