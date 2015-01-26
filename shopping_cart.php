@@ -70,10 +70,10 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         echo "
         <tr>
         <td>
-        category
+        category (variabele?!)
         </td>
         <td>
-        <a href='view_product.php?id=$productId'>$productName</a>
+        <a href='view_product.php?id=$productId' class='productpagelink'>$productName</a>
         </td>
         <td>
         $quantity kg
@@ -81,9 +81,8 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         <td>
         &euro; $subtotal
         </td>
-        <td>
-        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'>
-        <span>&#xf00d;</span>verwijder</a>
+        <td width='32'>
+        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'>verwijder</a>
         </td> 
         </tr>";
             
@@ -91,12 +90,10 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         }
         echo "</table>";
 
-        echo "totaalprijs:" . 
-                "<span class='icon'> &euro;</span> " .
-                $_SESSION['total'];
-        echo '<div class="shopping_cart_delivery_time"> ' . '<br>'
-        . '<span class="icon">&#xf135;levertijd: 1 dag </span> </div>';
-        echo "<a href=\"checkout.php\" class=\"button\"><span class=\"icon\">&#xF0d1;</span>bestelling afronden</a>";
+        echo "<h2 class='totalprice'>totaalprijs: &euro;".
+                $_SESSION['total'] . ",-<br>";
+        echo "levertijd: 1 dag</h2>";
+        echo "<a href='checkout.php' class='button'><span class='icon'>&#xf0d1;</span>bestelling afronden</a>";
 } else{
     echo 'Uw winkelwagen is leeg'; 
 }

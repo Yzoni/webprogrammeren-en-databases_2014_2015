@@ -8,9 +8,9 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-$endamount = 5;
+$endamount = 10;
 $startamount = ($page - 1) * $endamount;
-$products = Product::getAllProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $startamount);
+$products = Product::getProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $startamount, $endamount);
 $totalamount = Product::countProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null));
 $totalpages = ceil($totalamount / $endamount);
 ?>
@@ -78,12 +78,29 @@ $totalpages = ceil($totalamount / $endamount);
             echo "<a href=\"products.php?page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         }
         ?>
-
-        <select class="select_order" onchange=getSortedProducts(value)>
+        
+        <form method="GET" action="products.php">
+            <select class="select_order" name="select_order" onchange="form.submit()">
+            <option> Kies de volgorde </option>    
             <option value="alphabetic"> A - Z </option>
             <option value="price-desc"> Prijs hoog - laag </option>
             <option value="price-asc"> Prijs laag - hoog </option>            
         </select>
+        </form>
+        
+        
+        <?php 
+        if (isset($_GET['select_order'])){
+            $sorting_order = $_GET['select_order'];
+            echo 'whooeoeoeo';            
+            Product::getProducts($sorting_order);
+        } else {
+            echo 'meh';
+        }  
+       
+        ?> 
+        
+ 
 
 
     </div>
