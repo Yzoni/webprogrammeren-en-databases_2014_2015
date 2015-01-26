@@ -35,7 +35,7 @@ if (isset($_POST['checkout_complete'])) {
     unset($_SESSION['payment']);
     unset($_SESSION['total']);
     echo '<h2 class="contenttitle">Betaling voldaan</h2>';
-    echo '<a href="customer_orders.php" class="button"><span>&#xf115;</span>factuuroverzicht</a><br>';
+    echo '<a href="customer_orders.php" class="button"><span>&#xf115;</span>factuuroverzicht</a><br><br>';
     echo '<a href="products.php" class="button"><span>&#xf14d;</span>verder winkelen</a>';
 
 
