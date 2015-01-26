@@ -71,12 +71,16 @@ include 'views/navigation.php';
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
         var stock = "<?php echo $product->stock ?>";
+        if (stock == 0){
+            alert("Dit product hebben wij momenteel niet op voorraad");
+            return false;
+        }    
         if (isNaN(quantity)) {
             alert("U dient cijfers in te vullen");
             return false;
-        }
+        }        
         if (quantity > stock || quantity <= 0) {
-            alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\n\
+            alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
             meer hebben wij op dit moment niet op voorraad.");
             return false;
         }
