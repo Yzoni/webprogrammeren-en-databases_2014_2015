@@ -82,7 +82,7 @@ include 'views/navigation.php';
             return false;
         }        
         if (quantity > stock || quantity <= 0) {
-            alert(quantity + "Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
+            alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
             meer hebben wij op dit moment niet op voorraad.");
             return false;
         }

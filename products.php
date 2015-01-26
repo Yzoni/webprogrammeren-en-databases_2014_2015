@@ -10,7 +10,7 @@ if (isset($_GET["page"])) {
 }
 $endamount = 5;
 $startamount = ($page - 1) * $endamount;
-$products = Product::getAllProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $startamount);
+$products = Product::getSortedProducts(null);
 $totalamount = Product::countProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null));
 $totalpages = ceil($totalamount / $endamount);
 ?>
