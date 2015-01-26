@@ -55,10 +55,24 @@ p {
 
 .wrappercontent {
     margin-left: 31%;
-    border-color: black;
-    border-radius: 5px;
     margin-top: 28px;
     margin-right: 25px;
+}
+
+.wrappercontent a:link {
+    color: #006666;
+    text-decoration: none;
+}
+
+.wrappercontent a:hover {
+    color: #006666;
+    padding-left: 4px;
+    text-decoration: none;
+}
+
+.wrappercontent a:visited {
+    color: #006666;
+    text-decoration: none;
 }
 
 .wrapperhead {
