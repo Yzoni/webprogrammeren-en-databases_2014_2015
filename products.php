@@ -8,7 +8,7 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-$endamount = 8;
+$endamount = 10;
 $startamount = ($page - 1) * $endamount;
 $products = Product::getAllProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $startamount, $endamount);
 $totalamount = Product::countProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null));
