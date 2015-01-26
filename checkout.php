@@ -77,7 +77,6 @@ if (isset($_POST['checkout_complete'])) {
 } else {
     echo '<div id="wrappercontent">
             <h2 class="contenttitle">Selecteer betaalwijze:</h2>
-            </div>
             <br>
             <form method="post" action="checkout.php">
             <input type="radio" name="payment" value="acceptgiro"><span class="stockicon">&#xf199;</span>Acceptgiro<br>
@@ -88,7 +87,7 @@ if (isset($_POST['checkout_complete'])) {
             <br>
             <button type="submit" class="button"><span>&#xf0d1;</span>bestelling afronden</button>
             </form>
-	    </div>'
+	    </div>';
     }
 ?>
 
