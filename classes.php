@@ -274,17 +274,25 @@ class Product {
     static function getSortedProducts($sort) {
         global $db;
         switch ($sort) {
-            case alphabetic :
-                $sortingQuery = "SELECT * FROM Products ORDER BY name ASC";
+            case "alphabetic" :
+                $order = "ASC";
+                $type = "name";
                 break;
-            case price-desc :
-                $sortingQuery = "SELECT * FROM Products ORDER BY price DESC"; 
+            case "price-desc" :
+                $order = "DESC";
+                $type = "price";
                 break;
-            case price-asc :
-                $sortingQuery = "SELECT * FROM Products ORDER BY price ASC";
+            case "price-asc" :
+                $order = "ASC";
+                $type = "price";
                 break;
-        }        
-        $query = $db->prepare($sortingQuery);
+            default : 
+                $order = "RANDOM";
+                $type = "name";
+                
+        }
+        
+        $query = $db->prepare("SELECT * FROM Products ORDER BY $type $order");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         return $result;
