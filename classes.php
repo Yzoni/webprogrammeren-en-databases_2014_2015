@@ -264,9 +264,9 @@ class Product {
         return $result;    
     }
 
-    static function getOrderProducts($sort) {
+    static function getOrderProducts($sorting_order) {
         global $db;
-        switch ($sort) {
+        switch ($sorting_order) {
             case "alphabetic" :
                 $query = " ORDER BY name ASC";
                 break;
