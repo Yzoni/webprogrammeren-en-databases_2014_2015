@@ -70,7 +70,7 @@ include 'views/navigation.php';
 
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
-        var stock = "<?php echo json_encode($product->stock); ?>";
+        var stock = "<?php echo $product->stock ?>";
         if (isNaN(quantity)) {
             alert("U dient cijfers in te vullen");
             return false;

@@ -272,6 +272,7 @@ class Product {
     }
 
     static function getSortedProducts($sort) {
+        global $db;
         switch ($sort) {
             case alphabetic :
                 $order = ASC;
