@@ -70,7 +70,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         echo "
         <tr>
         <td>
-        category
+        category (variabele?!)
         </td>
         <td>
         <a href='view_product.php?id=$productId' class='productpagelink'>$productName</a>
@@ -91,9 +91,9 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         echo "</table>";
 
         echo "<h2 class='totalprice'>totaalprijs: &euro;".
-                $_SESSION['total'] . "<br>";
+                $_SESSION['total'] . ",-<br>";
         echo "levertijd: 1 dag</h2>";
-        echo "<a href='checkout.php' class='button_right'><span class='icon'>&#xf0d1;</span>bestelling afronden</a>";
+        echo "<a href='checkout.php' class='button'><span class='icon'>&#xf0d1;</span>bestelling afronden</a>";
 } else{
     echo 'Uw winkelwagen is leeg'; 
 }
