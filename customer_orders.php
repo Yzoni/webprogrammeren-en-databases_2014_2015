@@ -20,7 +20,7 @@ if(!isset($_POST['order_number'])) {
     Order::show_order($_POST['order_number']);
 }
 ?>
-
+<a href="costumer_orders.php" class="button"><span>&#xf137;</span>uw orders</a>
 </div>
 <?php
 include 'views/footer.php';
