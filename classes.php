@@ -248,7 +248,7 @@ class Product {
             $partQuery = getOrderProducts($sorting_order);
         }
         if ($type){
-            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . partQuery.  ":startamount, :endamount");
+            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . $partQuery.  ":startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
