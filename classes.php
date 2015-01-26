@@ -242,9 +242,9 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getAllProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $order = NULL) {
+    static function getAllProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = NULL) {
         global $db;
-        if ($order != NULL) {
+        if ($sorting_order != NULL) {
             $queryPart = getSortedProducts($order);
             $query = $db->prepare($queryPart + "LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
