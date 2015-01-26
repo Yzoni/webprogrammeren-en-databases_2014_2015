@@ -18,9 +18,9 @@ if(!isset($_POST['order_number'])) {
     Order::show_list_orders();
 } else {
     Order::show_order($_POST['order_number']);
+    echo "<a href='customer_orders.php' class='button'><span>&#xf137;</span>uw orders</a>";
 }
 ?>
-
 </div>
 <?php
 include 'views/footer.php';

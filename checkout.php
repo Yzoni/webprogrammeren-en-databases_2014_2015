@@ -43,7 +43,7 @@ if (isset($_POST['checkout_complete'])) {
     . "Klik op de button om uw bestelling te voltooien.<br/>"
     . "<form method='post' action='checkout.php'>"
     . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
-    . "</form>"
+    . "</form>";
     $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "bitcoin") {
     echo "<h2 class='contenttitle'>Betalen via BitCoin</h2>"
@@ -70,7 +70,7 @@ if (isset($_POST['checkout_complete'])) {
     . "Klik op de button om uw bestelling te voltooien.<br/>"
     . "<form method='post' action='checkout.php'>"
     . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
-    . "</form>"
+    . "</form>";
     $_SESSION['payment'] = $_POST['payment'];   
 } else if (!is_customer_logged_in()) {
     echo "U dient eerst <a href='customer_login.php'> In te loggen </a>"
@@ -79,13 +79,13 @@ if (isset($_POST['checkout_complete'])) {
 } else {
     echo '  <h2 class="contenttitle">Selecteer betaalwijze:</h2>
             <form method="post" action="checkout.php">
-            <input type="radio" name="payment" value="acceptgiro"><span class="stockicon">&#xf199;</span>Acceptgiro<br>
+            <span class="stockicon">&#xf199;</span><input type="radio" name="payment" value="acceptgiro">Acceptgiro<br>
             <input type="radio" name="payment" value="bitcoin"><span class="stockicon">&#xf15a;</span>Bitcoin <br>
             <input type="radio" name="payment" value="ideal"><span class="stockicon">&#xf05a;</span>Ideal <br>
             <input type="radio" name="payment" value="paypal"><span class="stockicon">&#xf1ed;</span>Paypal <br>
             <input type="radio" name="payment" value="rembours"><span class="stockicon">&#xf0d6;</span>Rembours<br>
             <br>
-            <button type="submit" class="button"><span>&#xf0d1;</span>bestelling afronden</button>
+            <button type="submit" class="button"><span>&#xf155;</span>betaalwijze bevestigen</button>
             </form>';
     }
 ?>
