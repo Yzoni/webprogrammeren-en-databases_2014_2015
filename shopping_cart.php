@@ -82,7 +82,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         &euro; $subtotal
         </td>
         <td>
-        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'><span>&#xf00d;</span>verwijder</a>
+        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'>verwijder</a>
         </td> 
         </tr>";
             
