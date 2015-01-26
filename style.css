@@ -21,6 +21,7 @@ body {
 
 p {
     font-family: arialroundedmtbold;
+    font-size: 12px;
 }
 
 .iconfont {
@@ -792,6 +793,7 @@ td {
     padding-left: 36px;
     width: 80px;
     float: right;
+    margin-top: 0px;
 }
 
 table {
