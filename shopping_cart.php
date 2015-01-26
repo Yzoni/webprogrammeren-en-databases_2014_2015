@@ -102,6 +102,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         echo "<a href='checkout.php' class='button'><span class='icon'>&#xf0d1;</span>bestelling afronden</a>";
 } else{
     echo 'Uw winkelwagen is leeg'; 
+    echo '<a href="products.php" class="button"><span>&#xf14d;</span>producten bekijken</a>';
 }
 
 echo '</div>';
