@@ -336,6 +336,7 @@ input[name="firstname"] {
 
 .button_delete{
     background-color: #d40000;
+    float: right;
 }
 
 .button_right{
