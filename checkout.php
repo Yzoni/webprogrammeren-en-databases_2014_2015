@@ -40,34 +40,34 @@ if (isset($_POST['checkout_complete'])) {
     // meest recente factuur opvragen en uitprinten
 } else if(isset($_POST['payment']) && $_POST['payment'] == "acceptgiro") {
     echo "<h2 class='contenttitle'>Betalen via acceptgiro</h2>"
-    . "Klik op de button om uw bestelling te voltooien.<br/>"
+    . "Klik op de button om uw bestelling te voltooien.<br>"
     . "<form method='post' action='checkout.php'>"
     . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
     . "</form>";
     $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "bitcoin") {
     echo "<h2 class='contenttitle'>Betalen via BitCoin</h2>"
-    . "Klik op de button om uw betaling te voltooien.<br/>"
+    . "Klik op de button om uw betaling te voltooien.<br>"
     . "<form method='post' action='checkout.php'>"
     . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
     . "</form>";
     $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "ideal") {
     echo "<h2 class='contenttitle'>Betalen via iDeal</h2>"
-    . "Klik op de button om uw betaling te voltooien.<br/>"
+    . "Klik op de button om uw betaling te voltooien.<br>"
     . "<form method='post' action='checkout.php'>"
     . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
     . "</form>";    $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "paypal") {
     echo "<h2 class='contenttitle'>Betalen via Paypal</h2>"
-    . "Klik op de button om uw betaling te voltooien.<br/>"
+    . "Klik op de button om uw betaling te voltooien.<br>"
     . "<form method='post' action='checkout.php'>"
     . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
     . "</form>";
     $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "rembours") {
     echo "<h2 class='contenttitle'>Betalen onder rembours</h2>"
-    . "Klik op de button om uw bestelling te voltooien.<br/>"
+    . "Klik op de button om uw bestelling te voltooien.<br>"
     . "<form method='post' action='checkout.php'>"
     . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
     . "</form>";
@@ -79,11 +79,11 @@ if (isset($_POST['checkout_complete'])) {
 } else {
     echo '  <h2 class="contenttitle">Selecteer betaalwijze:</h2>
             <form method="post" action="checkout.php">
-            <span class="stockicon">&#xf199;</span><input type="radio" name="payment" value="acceptgiro">Acceptgiro<br>
+            <input type="radio" name="payment" value="acceptgiro"><span class="stockicon">&#xf199;</span>Acceptgiro<br>
             <input type="radio" name="payment" value="bitcoin"><span class="stockicon">&#xf15a;</span>Bitcoin <br>
             <input type="radio" name="payment" value="ideal"><span class="stockicon">&#xf05a;</span>Ideal <br>
             <input type="radio" name="payment" value="paypal"><span class="stockicon">&#xf1ed;</span>Paypal <br>
-            <input type="radio" name="payment" value="rembours"><span class="stockicon">&#xf0d6;</span>Rembours<br>
+            <input type="radio" name="payment" value="rembours"> <span class="stockicon">&#xf0d6;</span>Rembours<br>
             <br>
             <button type="submit" class="button"><span>&#xf155;</span>betaalwijze bevestigen</button>
             </form>';
