@@ -92,7 +92,7 @@ $totalpages = ceil($totalamount / $endamount);
         if (isset($_GET['select_order'])){
             $sorting_order = $_GET['select_order'];
             echo ' yay';
-            getSortedProducts($sorting_order);           
+            Product::getSortedProducts($sorting_order);           
         } else {
             echo 'meh';
         }  
