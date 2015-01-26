@@ -31,12 +31,12 @@ if (isset($_POST['checkout_complete'])) {
     unset($_SESSION['subtotal']);
     unset($_SESSION['payment']);
     unset($_SESSION['total']);
-    echo 'Betaling voldaan. <br>';
+    echo '<h2 class="contenttitle">Betaling voldaan.</h2>';
     echo 'klik <a href="customer_orders.php"> hier </a>';
     echo 'voor een overzicht van al uw facturen';
     // meest recente factuur opvragen en uitprinten
 } else if(isset($_POST['payment']) && $_POST['payment'] == "acceptgiro") {
-    echo "klik "
+    echo "<h2 class='contenttitle'>Betalen via acceptgiro</h2>"
     . "<form method='post' action='checkout.php'>"
     . "<input type='submit' name='checkout_complete' value='hier'>"
     . "</form>"
