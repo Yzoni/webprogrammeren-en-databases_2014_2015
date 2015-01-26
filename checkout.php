@@ -76,7 +76,7 @@ if (isset($_POST['checkout_complete'])) {
     . "afrekenen.";
 } else {
     echo '<div id="payment_method">
-            <h1>Selecteer betaalwijze:</h1>
+            <h2 class="contenttitle">Selecteer betaalwijze:</h2>
             </div>
             <br>
             <form method="post" action="checkout.php">
@@ -86,7 +86,7 @@ if (isset($_POST['checkout_complete'])) {
             <input type="radio" name="payment" value="paypal"><span>&#xf1ed;</span>Paypal <br>
             <input type="radio" name="payment" value="rembours"><span>&#xf0d6;</span>Rembours<br>
             <br>
-            <button type="submit"><span>&#xf0d1;</span>bestelling afronden</button>
+            <button type="submit" class="button"><span>&#xf0d1;</span>bestelling afronden</button>
             </form>';
     }
 ?>
