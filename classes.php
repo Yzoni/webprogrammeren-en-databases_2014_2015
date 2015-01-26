@@ -242,9 +242,18 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getAllProducts($type = null, $startamount = 0, $endamount = 8, $special = 0) {
+    static function getAllProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $order = "ASC") {
         global $db;
-        if ($type) {
+        if ($order != "ASC") {
+            $queryPart = getSortedProducts($order);
+            $query = $db->prepare($queryPart + "LIMIT :startamount, :endamount");
+            $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
+            $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
+            $query->bindParam(':typeid', $type, PDO::PARAM_INT);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+            return $result;
+        } else if ($type) {
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY name LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
@@ -262,28 +271,20 @@ class Product {
     }
 
     static function getSortedProducts($sort) {
-        global $db;
         switch ($sort) {
             case "alphabetic" :
-                $order = "ASC";
-                $type = "name";
+                $query = "SELECT * FROM Products ORDER BY name ASC";
                 break;
             case "price-desc" :
-                $order = "DESC";
-                $type = "price";
+                $query = "SELECT * FROM Products ORDER BY price DESC";
                 break;
             case "price-asc" :
-                $order = "ASC";
-                $type = "price";
-                break;
+                $query = "SELECT * FROM Products ORDER BY price ASC";
             default : 
-                $order = "RAND()";
-                $type = "name"; 
-            }        
-        $query = $db->prepare("SELECT * FROM Products ORDER BY $type $order");
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
-        return $result;
+                $query = "SELECT * FROM Products ORDER BY name RAND()";
+            } 
+        echo $query;    
+        return $query;
     }
     
     static function search($word) {
