@@ -89,8 +89,8 @@ $totalpages = ceil($totalamount / $endamount);
         
         
         <?php 
-        if (isset($this->request->GET['select_order'])){
-            $sorting_order = $this->request->GET['select_order'];
+        if (isset($_GET['select_order'])){
+            $sorting_order = $_GET['select_order'];
             echo ' yay';
             getSortedProducts($sorting_order);           
         }   
