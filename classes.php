@@ -247,7 +247,7 @@ class Product {
         if ($sorting_order){
             $partQuery = Product::getOrderProducts($sorting_order);  
         } else {
-            $partQuery = "ORDER BY name ASC";
+            $partQuery = " ORDER BY RAND() ";
         }        
         if ($type){
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . $partQuery.  ":startamount, :endamount");
@@ -257,7 +257,7 @@ class Product {
         } else if ($special == 1) {
             $query = $db->prepare("SELECT * FROM Products WHERE special = 1" . $partQuery );
         } else {
-            $query = $db->prepare("SELECT * FROM Products ORDER BY RAND() LIMIT :startamount, :endamount");
+            $query = $db->prepare("SELECT * FROM Products" . $partQuery . "LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
         }
@@ -277,8 +277,6 @@ class Product {
                 break;
             case "price-asc" :
                 $query = " ORDER BY price ASC";
-            default : 
-                $query = " ORDER BY name RAND()";
             }        
         
         return $query;
