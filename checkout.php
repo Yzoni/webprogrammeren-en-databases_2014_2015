@@ -49,7 +49,7 @@ if (isset($_POST['checkout_complete'])) {
     echo "<h2 class='contenttitle'>Betalen via BitCoin</h2>"
     . "Klik op de button om uw betaling te voltooien."
     . "<form method='post' action='checkout.php'>"
-    . "<button type='submit' name='checkout_complete'><span>&#xf155;</span>betaling voltooien</button>"
+    . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
     . "</form>";
     $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "ideal") {
