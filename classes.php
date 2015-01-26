@@ -243,10 +243,12 @@ class Product {
      * @return object with subobjects as products
      */
     static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = NULL) {
-        global $db;
-        
-        $partQuery = Product::getOrderProducts($sorting_order);
-        
+        global $db;  
+        if ($sorting_order){
+            $partQuery = Product::getOrderProducts($sorting_order);  
+        } else {
+            $partQuery = "ORDER BY name ASC";
+        }        
         if ($type){
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . $partQuery.  ":startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
