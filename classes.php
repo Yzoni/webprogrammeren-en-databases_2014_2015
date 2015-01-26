@@ -242,7 +242,7 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getProducts($type = null, $startamount, $endamount, $special, $sorting_order) {
+    static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = "ASC") {
         global $db;  
         if ($sorting_order != null){
             $partQuery = Product::getOrderProducts($sorting_order);  
