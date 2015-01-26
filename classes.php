@@ -242,30 +242,20 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getAllProducts($type = null, $startamount = 0, $endamount = 6, $special = 0) {
+    static function getAllProducts($type = null, $startamount = 0, $endamount = 8, $special = 0) {
         global $db;
         if ($type) {
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY name LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
-        } elseif ($special == 1) {
+        } else if ($special == 1) {
             $query = $db->prepare("SELECT * FROM Products WHERE special = 1 ORDER BY name");
         } else {
-            $query = $db->prepare("SELECT * FROM Products ORDER BY name LIMIT :startamount, :endamount");
+            $query = $db->prepare("SELECT * FROM Products ORDER BY name DESC LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
         }
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
-        return $result;
-    }
-
-    static function search($word) {
-        global $db;
-        $query = $db->prepare("SELECT * FROM Products WHERE name LIKE :word ORDER BY name");
-        $str = '%' . $word . '%';
-        $query->bindParam(':word', $str);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         return $result;
@@ -287,12 +277,21 @@ class Product {
                 $type = "price";
                 break;
             default : 
-                $order = "RANDOM";
+                $order = "RAND()";
                 $type = "name";
                 
-        }
-        
+        }        
         $query = $db->prepare("SELECT * FROM Products ORDER BY $type $order");
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
+        return $result;
+    }
+    
+    static function search($word) {
+        global $db;
+        $query = $db->prepare("SELECT * FROM Products WHERE name LIKE :word ORDER BY name");
+        $str = '%' . $word . '%';
+        $query->bindParam(':word', $str);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         return $result;
