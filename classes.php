@@ -272,16 +272,17 @@ class Product {
     }
 
     static function getSortedProducts($sort) {
+        global $db;
         switch ($sort) {
             case alphabetic :
                 $order = ASC;
                 $type = name;
                 break;
-            case price - desc :
+            case price-desc :
                 $order = DESC;
                 $type = price;
                 break;
-            case price - asc :
+            case price-asc :
                 $order = ASC;
                 $type = price;
                 break;

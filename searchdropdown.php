@@ -27,9 +27,10 @@ function replaceWithBold($product, $search) {
     $endpossearch = strlen($search) + $startpossearch;
     
     $beforesearch = substr($product, 0, $startpossearch);
+    $mid = substr($product, $startpossearch , strlen($search));
     $aftersearch = substr($product, $endpossearch);
     
-    $boldsearch = "<span class=\"queryinword\">" . $search . "</span>"; 
+    $boldsearch = "<span class=\"queryinword\">" . $mid . "</span>"; 
     
     return $beforesearch . $boldsearch . $aftersearch;  
 }
