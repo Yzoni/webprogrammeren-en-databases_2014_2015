@@ -5,7 +5,7 @@ include 'views/navigation.php';
 ?>
 
 <div class="wrappercontent">
-
+<h2 class="contenttitle">Uw orders</h2>
 <?php
 if(!is_customer_logged_in()) {
     echo "U moet <a href='customer_login.php'>ingelogd </a> "
@@ -20,7 +20,6 @@ if(!isset($_POST['order_number'])) {
     Order::show_order($_POST['order_number']);
 }
 ?>
-<h2 class="contenttitle">Uw orders</h2>
 
 </div>
 <?php
