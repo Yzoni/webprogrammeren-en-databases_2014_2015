@@ -692,7 +692,78 @@ class Admin {
         $_SESSION['admin_logged_in'] = 0;
         session_destroy();
     }
+    
+    static function show_order_list() {
+        global $db;
+        $i = 0;
+        $_SESSION['orders'] = Array();
+        $query = $db->query("SELECT id, customerid, date FROM Orders");
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        while(true) {
+            if($row = $query->fetch()) {
+                $_SESSION['orders'][$i]['orderNumber'] = $row['id'];
+                $_SESSION['orders'][$i]['customerID'] = $row['customerid'];
+                $_SESSION['orders'][$i]['date'] = $row['date'];
+            } else {
+                break;
+            }
+            $i += 1;
+        }
+        echo "<table>";
+        echo "<th> order nummer</th>";
+        echo "<th>Klantnummer</th>";
+        echo "<th>Datum</th>";
+        foreach($_SESSION['orders'] as $order) {
+            echo "<tr>";
+            echo "<td>";
+            echo "<form method='post' action='admin_orders.php'>"
+            . "<input type='submit' name='order_number' value="
+            . $order['orderNumber'] . ">"
+            . "</form>"; 
+            echo "</td>";
+            echo "<td>" . $order['customerID'] . "</td>";
+            echo "<td>" . $order['date'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+    
+    static function show_order($orderID) {
+        global $db;
+        $date = Order::show_date($orderID);
+        echo "<table>";
+        echo "<tr>";
+        echo "<td> factuurnummer: $orderID <br> $date</td>";
+        echo "</tr>";
+        Order::show_company_Info();
+        Admin::show_customer_info($orderID);
+        Order::show_order_table($orderID);
+        echo "</table>";
+    }
+    
+    static function show_customer_info($orderID) {
+        global $db;
+        $sqlQuery = "SELECT customerid FROM Orders WHERE id=$orderID";
+        $query = $db->query($sqlQuery);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $query->fetch();
 
+        $customerID = $row['customerid'];
+        $sqlQuery = "SELECT * FROM Customers WHERE id=$customerID";
+        $query = $db->query($sqlQuery);
+        $row = $query->fetch();
+
+        echo "<td>";
+        echo "<h3>Klantgegevens:</h3> <br>";
+        echo "klantnummer: " . $customerID . "<br>";
+        echo "voornaam: " . $row[6]. "<br>";
+        echo "achternaam: " . $row[7] . "<br>";
+        echo "adres: " . $row[8] . " ";
+        echo $row[5] . "<br>";
+        echo "postcode: " . $row[3] . "<br>";
+        echo "email: " . $row[1] . "<br>";
+        echo "</td>";
+    }
 }
 
 class showMessage {
@@ -920,15 +991,15 @@ class Order {
         echo "</td>";
         echo "</tr>";
     }
-    
+
     static function printError() {
         echo "Van de volgende producten zijn helaas niet de gewenste aantallen "
-        . "beschikbaar <br>";
+        . "beschikbaar: <br>";
         foreach($_SESSION['errorProducts'] as $errorProduct) {
             echo "- $errorProduct <br>";
         }
         echo "klik <a href='shopping_cart.php'> hier </a> om uw bestelling aan te "
-        . "passen. of <a href='products.php'> hier </a> om verder te gaan met"
-        . "winkelen";
+        . "passen of <a href='products.php'> hier </a> om verder te gaan met "
+        . "winkelen.";
     }
 }

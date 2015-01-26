@@ -3,17 +3,17 @@ require_once 'classes.php';
 include 'views/header.php';
 include 'views/navigation.php';
 
-if(!is_customer_logged_in()) {
-    echo "U moet <a href='customer_login.php'>ingelogd </a> "
-    . "zijn om deze pagina te bekijken.";
+if(!is_admin_logged_in()) {
+    echo "U dient ingelogd te zijn als <a href='admin_login.php'> beheerder </a>" .
+    "om deze pagina te bekijken.";
     include 'views/footer.php';
     exit();
 }
 
 if(!isset($_POST['order_number'])) {
-    Order::show_list_orders();
+    Admin::show_order_list();
 } else {
-    Order::showOrders($_POST['order_number']);
+    Admin::show_order($_POST['order_number']);
 }
 ?>
 
