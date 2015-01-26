@@ -93,8 +93,7 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         echo "totaalprijs:" . 
                 "<span class='icon'> &euro;</span> " .
                 $_SESSION['total'];
-        echo '<div class="shopping_cart_delivery_time"> ' . '<br>'
-        . '<span class="icon">&#xf135;levertijd: 1 dag </span> </div>';
+        echo "<span class=\"icon\">&#xf135;levertijd: 1 dag </span>";
         echo "<a href=\"checkout.php\" class=\"button\"><span class=\"icon\">&#xF0d1;</span>bestelling afronden</a>";
 } else{
     echo 'Uw winkelwagen is leeg'; 
