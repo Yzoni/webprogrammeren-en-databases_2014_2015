@@ -87,7 +87,8 @@ if (isset($_POST['checkout_complete'])) {
             <input type="radio" name="payment" value="rembours"><span class="stockicon">&#xf0d6;</span>Rembours<br>
             <br>
             <button type="submit" class="button"><span>&#xf0d1;</span>bestelling afronden</button>
-            </form>';
+            </form>
+	    </div>'
     }
 ?>
 
