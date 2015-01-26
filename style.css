@@ -34,6 +34,7 @@ p {
 }
 
 .totalprice {
+    font-size: 16px;
     ling-height: 24px;
 }
 
@@ -55,24 +56,9 @@ p {
 
 .wrappercontent {
     margin-left: 31%;
-    border-color: black;
-    border-radius: 5px;
     margin-top: 28px;
     margin-right: 25px;
 }
-
-.wrappercontent:a {
-    color: #006666;
-    text-decoration: none;
-}
-
-.wrappercontent:hover {
-    color: #006666;
-    padding-left: 4px;
-}
-
-.wrappercontent:visited {
-    color: #006666;
 
 .wrapperhead {
     background-color: #006666;
@@ -811,8 +797,8 @@ input[name="lastname"] {
 
 table {
     border-collapse: collapse;
-    margin-right: 20px;
-    margin-bottom: 40px;
+    margin-right: 12px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #696969;
 
 }
