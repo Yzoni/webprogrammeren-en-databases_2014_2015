@@ -61,6 +61,19 @@ p {
     margin-right: 25px;
 }
 
+.wrappercontent:a {
+    color: #006666;
+    text-decoration: none;
+}
+
+.wrappercontent:hover {
+    color: #006666;
+    padding-left: 4px;
+}
+
+.wrappercontent:visited {
+    color: #006666;
+
 .wrapperhead {
     background-color: #006666;
     background: -webkit-linear-gradient(top, #007575, #006666);
