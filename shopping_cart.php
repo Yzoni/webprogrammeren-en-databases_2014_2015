@@ -59,18 +59,24 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
     foreach ($_SESSION['products'] as $index => $productId) {
     	$productId;
     	$quantity = $_SESSION['quantities'][$index];
-        $sqlQuery = "SELECT name, price FROM Products WHERE id=$productId";
+        $sqlQuery = "SELECT name, price, typeid "
+        . "FROM Products WHERE id=$productId";
     	$result = $db->query($sqlQuery);
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $resultArray = $result->fetch();
         $productName = $resultArray["name"];
         $productPrice = $resultArray["price"];
+        $typeID = $resultArray["typeid"];
+        $sqlQuery = "SELECT name FROM ProductTypes WHERE id=$typeID";
+    	$result = $db->query($sqlQuery);
+        $resultArray = $result->fetch();
+        $category = $resultArray['name'];
     	$subtotal = ($productPrice * $quantity);
         $_SESSION['total'] += $subtotal;
         echo "
         <tr>
         <td>
-        category (variabele?!)
+        $category
         </td>
         <td>
         <a href='view_product.php?id=$productId' class='productpagelink'>$productName</a>
