@@ -77,7 +77,7 @@ include 'views/navigation.php';
         }
         if (quantity > stock || quantity <= 0) {
             alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\n\
-                meer hebben wij op dit moment niet op voorraad.");
+            meer hebben wij op dit moment niet op voorraad.");
             return false;
         }
     }
