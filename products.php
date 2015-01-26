@@ -79,9 +79,8 @@ $totalpages = ceil($totalamount / $endamount);
         }
         ?>
         
-        <form method="POST" action="products.php">
+        <form method="GET" action="products.php">
             <select class="select_order" name="select_order" <script> onchange="this.form.submit()"; </script> >
-            <option> Kies de volgorde </option>
             <option value="alphabetic"> A - Z </option>
             <option value="price-desc"> Prijs hoog - laag </option>
             <option value="price-asc"> Prijs laag - hoog </option>            
@@ -90,14 +89,15 @@ $totalpages = ceil($totalamount / $endamount);
         
         
         <?php 
-        $sortType = $_POST['select_order'];        
-        if (empty($sortType)){
-            echo 'selecteer een optie';
-        } else {            
-            getSortedProducts($sortType);
-        }      
+        if (isset($this->request->GET['select_order'])){
+            $sorting_order = $this->request->GET['select_order'];
+            echo ' yay';
+            getSortedProducts($sorting_order);           
+        }   
        
         ?> 
+        
+ 
 
 
     </div>
