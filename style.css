@@ -537,10 +537,11 @@ footer a:hover {
     margin-top: 20px;
     width: 45%;
     display: inline-block;
-    font-size: 11px;
+    font-size: 12px;
 }
 .descrImg {
     margin-top: 20px;
+    margin-bottom: 20px;
     margin-right: 0px;
     position: absolute;
     left: 51%;
