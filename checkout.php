@@ -70,7 +70,7 @@ if (isset($_POST['checkout_complete'])) {
     . "Klik op de button om uw bestelling te voltooien.<br/>"
     . "<form method='post' action='checkout.php'>"
     . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
-    . "</form>"
+    . "</form>";
     $_SESSION['payment'] = $_POST['payment'];   
 } else if (!is_customer_logged_in()) {
     echo "U dient eerst <a href='customer_login.php'> In te loggen </a>"
