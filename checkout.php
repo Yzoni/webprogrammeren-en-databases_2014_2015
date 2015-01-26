@@ -35,9 +35,11 @@ if (isset($_POST['checkout_complete'])) {
     unset($_SESSION['payment']);
     unset($_SESSION['total']);
     echo '<h2 class="contenttitle">Betaling voldaan</h2>';
-    echo 'klik <a href="customer_orders.php"> hier </a>';
-    echo 'voor een overzicht van al uw facturen';
-    // meest recente factuur opvragen en uitprinten
+    echo '<a href="customer_orders.php" class="button"><span>&#xf115;</span>factuuroverzicht</a><br>';
+    echo '<a href="products.php" class="button"><span>&#xf14d;</span>verder winkelen</a>';
+
+
+ // meest recente factuur opvragen en uitprinten
 } else if(isset($_POST['payment']) && $_POST['payment'] == "acceptgiro") {
     echo "<h2 class='contenttitle'>Betalen via acceptgiro</h2>"
     . "Klik op de button om uw bestelling te voltooien.<br>"
@@ -56,7 +58,7 @@ if (isset($_POST['checkout_complete'])) {
     echo "<h2 class='contenttitle'>Betalen via iDeal</h2>"
     . "Klik op de button om uw betaling te voltooien.<br>"
     . "<form method='post' action='checkout.php'>"
-    . "<button type='submit' name='checkout_complete' class='button'><span>&#xf155;</span>betaling voltooien</button>"
+    . "<button type='submit' name='checkout_complete' class='button'><span>&#xf09d;</span>betaling voltooien</button>"
     . "</form>";    $_SESSION['payment'] = $_POST['payment'];
 } else if (isset($_POST['payment']) && $_POST['payment'] == "paypal") {
     echo "<h2 class='contenttitle'>Betalen via Paypal</h2>"
