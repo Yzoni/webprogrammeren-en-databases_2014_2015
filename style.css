@@ -59,22 +59,6 @@ p {
     margin-right: 25px;
 }
 
-.wrappercontent a:link {
-    color: #006666;
-    text-decoration: none;
-}
-
-.wrappercontent a:hover {
-    color: #006666;
-    padding-left: 4px;
-    text-decoration: none;
-}
-
-.wrappercontent a:visited {
-    color: #006666;
-    text-decoration: none;
-}
-
 .wrapperhead {
     background-color: #006666;
     background: -webkit-linear-gradient(top, #007575, #006666);
