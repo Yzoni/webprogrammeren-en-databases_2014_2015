@@ -738,7 +738,7 @@ class Admin {
         Admin::show_customer_info($orderID);
         Order::show_order_table($orderID);
         echo "</table>";
-        echo "<a href='admin_order.php' class='button'><span>&#xf137;</span>terug naar orders</a>";
+        echo "<a href='admin_orders.php' class='button'><span>&#xf137;</span>terug naar orders</a>";
     }
     
     static function show_customer_info($orderID) {
