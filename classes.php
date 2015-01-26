@@ -275,16 +275,16 @@ class Product {
         global $db;
         switch ($sort) {
             case alphabetic :
-                $order = ASC;
-                $type = name;
+                $order = "ASC";
+                $type = "name";
                 break;
             case price-desc :
-                $order = DESC;
-                $type = price;
+                $order = "DESC";
+                $type = "price";
                 break;
             case price-asc :
-                $order = ASC;
-                $type = price;
+                $order = "ASC";
+                $type = "price";
                 break;
         }
 
