@@ -244,9 +244,9 @@ class Product {
      */
     static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = NULL) {
         global $db;
-        if ($sorting_order) {
-            $partQuery = getOrderProducts($sorting_order);
-        }
+        
+        $partQuery = getOrderProducts($sorting_order);
+        
         if ($type){
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . $partQuery.  ":startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
