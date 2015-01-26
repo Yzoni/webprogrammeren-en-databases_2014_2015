@@ -278,9 +278,8 @@ class Product {
                 break;
             default : 
                 $order = "RAND()";
-                $type = "name";
-                
-        }        
+                $type = "name"; 
+            }        
         $query = $db->prepare("SELECT * FROM Products ORDER BY $type $order");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
