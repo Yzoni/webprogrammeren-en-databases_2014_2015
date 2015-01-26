@@ -3,8 +3,7 @@ require_once 'classes.php';
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
-<div id="wrappercontent">
-shalalalala
+<div class="wrappercontent">
 <?php
 
 if(!is_customer_logged_in()) {
