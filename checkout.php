@@ -76,22 +76,17 @@ if (isset($_POST['checkout_complete'])) {
     . "afrekenen.";
 } else {
     echo '<div id="payment_method">
-            Selecteer betaalwijze:
+            <h1>Selecteer betaalwijze:</h1>
             </div>
             <br>
             <form method="post" action="checkout.php">
-            Acceptgiro <input type="radio" name="payment" value="acceptgiro">
+            <input type="radio" name="payment" value="acceptgiro">Acceptgiro<br>
+            <input type="radio" name="payment" value="bitcoin">Bitcoin <br>
+            <input type="radio" name="payment" value="ideal">Ideal <br>
+            <input type="radio" name="payment" value="paypal">Paypal <br>
+            <input type="radio" name="payment" value="rembours">Rembours<br>
             <br>
-            Bitcoin <input type="radio" name="payment" value="bitcoin">
-            <br>
-            Ideal <input type="radio" name="payment" value="ideal">
-            <br>
-            Paypal <input type="radio" name="payment" value="paypal">
-            <br>
-            Rembours <input type="radio" name="payment" value="rembours">
-            <br>
-            <br>
-            <input type="submit" value="Bestelling afronden">
+            <button type="submit"><span>&#xf0d1;</span>bestelling afronden</button>
             </form>';
     }
 ?>
