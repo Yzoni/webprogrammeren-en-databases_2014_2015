@@ -2,6 +2,9 @@
 require_once 'classes.php';
 include 'views/header.php';
 include 'views/navigation.php';
+?>
+<div id="wrappercontent">
+<?php
 
 if(!is_customer_logged_in()) {
     echo "U moet <a href='customer_login.php'>ingelogd </a> "
@@ -75,8 +78,7 @@ if (isset($_POST['checkout_complete'])) {
     . "of te <a href='customer_register.php'> registreren</a> om te kunnen "
     . "afrekenen.";
 } else {
-    echo '<div id="wrappercontent">
-            <h2 class="contenttitle">Selecteer betaalwijze:</h2>
+    echo '  <h2 class="contenttitle">Selecteer betaalwijze:</h2>
             <br>
             <form method="post" action="checkout.php">
             <input type="radio" name="payment" value="acceptgiro"><span class="stockicon">&#xf199;</span>Acceptgiro<br>
@@ -90,7 +92,7 @@ if (isset($_POST['checkout_complete'])) {
 	    </div>';
     }
 ?>
-
+</div>
 <?php
 include 'views/footer.php';
 ?>
