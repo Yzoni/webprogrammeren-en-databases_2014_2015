@@ -234,24 +234,6 @@ class Product {
         return $result;
     }
 
-    static function getOrderProducts($sorting_order) {
-        global $db;
-        switch ($sorting_order) {
-            case "alphabetic" :
-                $query = " ORDER BY name ASC";
-                break;
-            case "price-desc" :
-                $query = " ORDER BY price DESC";
-                break;
-            case "price-asc" :
-                $query = " ORDER BY price ASC";
-            default : 
-                $query = " ORDER BY name RAND()";
-            }        
-        
-        return $query;
-    }    
-    
     /**
      * Function getAllProducts
      *
@@ -263,7 +245,7 @@ class Product {
     static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = NULL) {
         global $db;
         
-        $partQuery = getOrderProducts($sorting_order);
+        $partQuery = Product::getOrderProducts($sorting_order);
         
         if ($type){
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . $partQuery.  ":startamount, :endamount");
@@ -282,7 +264,23 @@ class Product {
         return $result;    
     }
 
-    
+    static function getOrderProducts($sorting_order) {
+        global $db;
+        switch ($sorting_order) {
+            case "alphabetic" :
+                $query = " ORDER BY name ASC";
+                break;
+            case "price-desc" :
+                $query = " ORDER BY price DESC";
+                break;
+            case "price-asc" :
+                $query = " ORDER BY price ASC";
+            default : 
+                $query = " ORDER BY name RAND()";
+            }        
+        
+        return $query;
+    }
     
     static function search($word) {
         global $db;
