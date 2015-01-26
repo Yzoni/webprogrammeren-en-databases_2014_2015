@@ -275,20 +275,16 @@ class Product {
         global $db;
         switch ($sort) {
             case alphabetic :
-                $order = "ASC";
-                $type = "name";
+                $sortingQuery = "SELECT * FROM Products ORDER BY name ASC";
                 break;
             case price-desc :
-                $order = "DESC";
-                $type = "price";
+                $sortingQuery = "SELECT * FROM Products ORDER BY price DESC"; 
                 break;
             case price-asc :
-                $order = "ASC";
-                $type = "price";
+                $sortingQuery = "SELECT * FROM Products ORDER BY price ASC";
                 break;
-        }
-
-        $query = $db->prepare("SELECT * FROM Products ORDER BY $type $order");
+        }        
+        $query = $db->prepare($sortingQuery);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         return $result;
