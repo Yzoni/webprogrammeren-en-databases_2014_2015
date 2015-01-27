@@ -152,12 +152,11 @@ if (!empty($_SESSION['products'])) {
 	</table>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
-                <input type="number" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
+                <input type="number" min="0" max="<?php $stock ?>" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
                 <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
                 </button>
             </form>
         </div>
-
         <div id="addedProduct">
             <?php
 // if a product has been added to the shopping cart this 
