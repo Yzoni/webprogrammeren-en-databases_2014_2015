@@ -560,12 +560,13 @@ footer a:hover {
 }
 
 .product_info {
-
+    width: 180px;
+    border: none;
 }
 
 .addToCart {
-    position: absolute;
-    right: 0;
+    float: right;
+    display: inline-block;
     margin-top: 20px;
 }
 

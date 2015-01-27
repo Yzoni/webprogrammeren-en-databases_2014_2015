@@ -67,12 +67,12 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
-
+<!--
 <script>
 
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
-        var stock = "<?php echo $product->stock ?>";
+        var stock = "<?php //echo $product->stock ?>";
         if (stock == 0){
             alert("Dit product hebben wij momenteel niet op voorraad");
             return false;
@@ -88,7 +88,7 @@ include 'views/navigation.php';
         }
     }
 </script>
-
+-->
 <div class="wrappercontent">
     <div class="contenthead">
         <a href="products.php?id=<?php echo $product->type->id ?>
@@ -113,33 +113,7 @@ include 'views/navigation.php';
     </div>
     <div class="hrline"></div>
     <div class="underdescription">
-        <ul class="infoList">  
-            <li>
-                <p class="ProdInfoTxt">
-                    <?php
-                    echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
-                    echo $product->stock;
-                    ?> 
-                    op voorraad
-                </p>
-            </li>
-
-            <li>
-                <span class="ProdInfoTxt"><p> 
-                        <span class="stockicon">&#xf135; </span>
-                        levertijd: 1 dag </p>
-                </span>
-            </li>
-            <li>
-                <span class="ProdInfoTxt">  <p>      
-                        <span class="stockicon">&#xf153; </span> 
-                        prijs per kg: 
-                        <?php echo $product->price; ?> euro</p>
-                </span>
-            </li>
-        </ul>
-
-	<table>
+	<table class="product_info">
 	  <tr>
 	    <td>
                     <?php
