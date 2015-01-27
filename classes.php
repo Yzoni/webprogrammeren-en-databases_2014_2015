@@ -251,7 +251,7 @@ class Product {
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
         } else if ($special == 1) {
-            $query = $db->prepare("SELECT * FROM Products WHERE special = 1" . $partQuery );
+            $query = $db->prepare("SELECT * FROM Products WHERE special = 1");
         } else {
             $query = $db->prepare("SELECT * FROM Products ORDER BY $sortorder LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
@@ -957,11 +957,11 @@ class Order {
             echo $row['product_name'];
             echo "</td>";
             echo "<td>";
-            echo $row['price'];
+            echo "<span class='iconfont'>&#xf153; </span>" . $row['price'];
             echo "</td>";
             echo "<td>";
             $subtotal = $row['price'] * $row['quantity'];
-            echo $subtotal;
+            echo "<span class='iconfont'>&#xf153; </span>" . $subtotal;
             echo "</td>";
             echo "<tr>";
             $total += $subtotal;
@@ -969,7 +969,7 @@ class Order {
         echo "</tr>";
         echo "<tr>";
         echo "<td>";
-        echo "Totaal: $total";
+        echo "Totaal: <span class='iconfont'>&#xf153; </span>" . $total;
         echo "</td>";
         echo "</tr>";
     }

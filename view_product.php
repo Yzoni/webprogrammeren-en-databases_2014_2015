@@ -63,6 +63,7 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
+<<<<<<< HEAD
 //NEGEER DIT EVEN OKE JA HET IS ZO WEG
 <?php
 
@@ -78,12 +79,13 @@ echo $inCartProduct
 
 ?>
 
+
 <script>
 
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
         var stock = "<?php echo $product->stock ?>";
-        var cartQuantity = "<php echo ;
+        // var cartQuantity = "<php echo ;
         if (stock == 0){
             alert("Dit product hebben wij momenteel niet op voorraad");
             return false;
@@ -99,6 +101,7 @@ echo $inCartProduct
         }
     }
 </script>
+
 
 <div class="wrappercontent">
     <div class="contenthead">
@@ -124,32 +127,25 @@ echo $inCartProduct
     </div>
     <div class="hrline"></div>
     <div class="underdescription">
-        <ul class="infoList">  
-            <li>
-                <p class="ProdInfoTxt">
+	<table class="product_info">
+	  <tr>
+	    <td width="20">
                     <?php
                     echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
-                    echo $product->stock;
                     ?> 
-                    op voorraad
-                </p>
-            </li>
-
-            <li>
-                <span class="ProdInfoTxt"><p> 
-                        <span class="stockicon">&#xf135; </span>
-                        levertijd: 1 dag </p>
-                </span>
-            </li>
-            <li>
-                <span class="ProdInfoTxt">  <p>      
-                        <span class="stockicon">&#xf153; </span> 
-                        prijs per kg: 
-                        <?php echo $product->price; ?> euro</p>
-                </span>
-            </li>
-        </ul>
-
+	    </td>
+	    <td><?php echo $product->stock;?>op voorraad</td>		
+	  </tr>
+	  <tr>
+	    <td width="20"><span class="stockicon">&#xf135; </span></td>
+	    <td>levertijd: 1 dag</td>		
+	  </tr>
+	  <tr>
+	    <td width="20"><span class="stockicon">&#xf153; </span></td>
+	    <td>Prijs per kg:
+	        <?php echo $product->price; ?> euro</td>		
+	  </tr>
+	</table>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
                 <input type="text" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">            

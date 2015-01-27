@@ -84,15 +84,16 @@ $totalpages = ceil($totalamount / $endamount);
             echo "<a href=\"products.php?page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         }
         ?>
-
+        <div class="dropdownwrapper">
         <form method="GET" action="products.php">
             <select class="select_order" name="sortorder" onchange="form.submit()">
-                <option> Kies de volgorde </option>    
+                <option> Sorteer producten </option>    
                 <option value="name"> A - Z </option>
                 <option value="price"> Prijs hoog - laag </option>
                 <option value="price"> Prijs laag - hoog </option>            
             </select>
         </form>
+	</div>
     </div>
     
     <?php

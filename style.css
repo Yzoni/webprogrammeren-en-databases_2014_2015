@@ -39,7 +39,7 @@ p {
 }
 
 .wrapper {
-    min-height: 500px;
+    min-height: 600px;
     min-width: 820px;
     position: relative;
     margin: auto;
@@ -140,6 +140,10 @@ p {
 
 .wrapperheadcontent .searchdropdown a .queryinword {
     color: black;
+}
+
+.contenthead {
+    line-height: 32px;
 }
 
 .winkelwagen {
@@ -333,16 +337,18 @@ input[name="firstname"] {
 }
 
 .adminbuttonwrap {
+    display: inline-block;
+    float: right;
     position: relative;
-    margin-top: -25px;
+    margin-top: 0px;
 }
 
-.button_delete{
+.button_delete {
     background-color: #d40000;
     float: right;
 }
 
-.button_right{
+.button_right {
     float:right;
 }
 
@@ -486,16 +492,13 @@ footer a:hover {
     margin-right: 13px;
 }
 
-.textlink, .textlink:visited {
+.textlink, .textlink:visited, .textlink:hover {
     color: #006666;
     text-decoration: none;
     transition: all .3s ease;
 }
 
 .tekstlink:hover {
-    color: #006666;
-    text-decoration: none;
-    transition: all .3s ease;
     padding-left: 4px;
 }
 
@@ -529,12 +532,12 @@ footer a:hover {
     width: 100%;
     height: 1px;
     background-color: #919191;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .descriptionwrap {
     position: relative;
-    min-height: 122px;
+    min-height: 160px;
 }
 
 .descrText {
@@ -556,9 +559,14 @@ footer a:hover {
     position: relative;
 }
 
+.product_info, .product_info th, .product_info td {
+    width: 180px;
+    border: 1px solid red;
+}
+
 .addToCart {
-    position: absolute;
-    right: 0;
+    float: right;
+    display: inline-block;
     margin-top: 20px;
 }
 
@@ -650,7 +658,7 @@ input[type=text] {
 }
 
 .addToCart input[type=text] {
-    width: 130px;
+    width: 120px;
     background: url('images/kwantiteit_bg.jpg') no-repeat;
 }
 
@@ -669,7 +677,7 @@ input[type=password] {
     width: 250px;
     border-radius: 5px;
     margin-bottom: 15px;
-    height: 32px;
+    height: 30px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
@@ -797,16 +805,22 @@ input[name="lastname"] {
 
 /* Select Order */
 
+.dropdownwrapper {
+    float: right;
+    display: inline-block;
+}
+
 .select_order {
     border-radius: 5px;
     height: 32px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 36px;
-    width: 80px;
+    padding-left: 0px;
+    width: 140px;
     float: right;
     margin-top: 0px;
+    display: inline-block;
 }
 
 table {
