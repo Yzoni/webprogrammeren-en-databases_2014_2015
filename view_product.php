@@ -148,8 +148,7 @@ if (!empty($_SESSION['products'])) {
 	  </tr>
 	  <tr>
 	    <td><span class="stockicon">&#xf153; </span></td>
-	    <td>Prijs per kg:
-	        <?php echo $product->price; ?> euro</td>		
+	    <td>Prijs per kg: <?php echo $product->price; ?> euro</td>		
 	  </tr>
 	</table>
         <div class=addToCart>
