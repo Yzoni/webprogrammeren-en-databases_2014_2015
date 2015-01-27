@@ -181,7 +181,6 @@ if (!empty($_SESSION['products'])) {
         </div>
 <div id='recentView'>
     Recent bekeken:
-</div>
 <?php
     if(array_search($_GET['id'], $_SESSION['viewed']) == false) {
         array_push($_SESSION['viewed'], $_GET['id']);
