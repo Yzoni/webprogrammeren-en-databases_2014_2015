@@ -554,6 +554,11 @@ footer a:hover {
     left: 51%;
 }
 
+.backtocategory {
+    clear: both;
+    display: block;
+}
+
 .underdescription {
     margin-top: 20px;
 }
