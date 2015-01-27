@@ -66,6 +66,7 @@ include 'views/navigation.php';
 <?php
 
 $index = 0;
+<<<<<<< HEAD
 while($_SESSION['products'][$index] != $product->id && $product->id && $index < count($_SESSION['products']) ){
     $index ++;
 } 
@@ -74,6 +75,18 @@ $quantityInCart = $_SESSION['quantities'][$index];
 echo $quantityInCart;
 $inCartProduct = $product->price * $quantityInCart;
 echo $inCartProduct;
+=======
+if (isset($_SESSION['products'])) {
+    while($_SESSION['products'][$index] != $product->id && $product->id && $index < count($_SESSION['products']) ){
+        $index ++;
+    } 
+    echo $index;
+    $quantityInCart = $_SESSION['quantities'][$index];
+    echo $quantityInCart;
+    $inCartProduct = $product->price * $quantityInCart;
+    echo $inCartProduct
+}
+>>>>>>> bc5365253272049a0bd20c34f8e75c3ec835938b
 
 ?>
 
