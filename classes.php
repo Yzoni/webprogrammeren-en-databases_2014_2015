@@ -242,24 +242,57 @@ class Product {
      *
      * @return object with subobjects as products
      */
+<<<<<<< HEAD
     static function getAllProducts($type = null, $sortorder = "name ASC", $startamount = 0, $endamount = 8, $special = 0) {
         global $db;
         if ($type) {
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY $sortorder LIMIT :startamount, :endamount");
+=======
+    static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = "ASC") {
+        global $db;  
+        if ($sorting_order != null){
+            $partQuery = Product::getOrderProducts($sorting_order);  
+        } else {
+            $partQuery = " ORDER BY RAND() ";
+        }        
+        if ($type != null){
+            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . $partQuery.  ":startamount, :endamount");
+>>>>>>> 8184faf7027736524c6e78a88bc84f9d6832ecda
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
         } else if ($special == 1) {
-            $query = $db->prepare("SELECT * FROM Products WHERE special = 1 ORDER BY name");
+            $query = $db->prepare("SELECT * FROM Products WHERE special = 1" . $partQuery );
         } else {
+<<<<<<< HEAD
             $query = $db->prepare("SELECT * FROM Products ORDER BY $sortorder LIMIT :startamount, :endamount");
+=======
+            $query = $db->prepare("SELECT * FROM Products" . $partQuery . "LIMIT :startamount, :endamount");
+>>>>>>> 8184faf7027736524c6e78a88bc84f9d6832ecda
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
         }
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
-        return $result;
+        return $result;    
     }
+<<<<<<< HEAD
+=======
+
+    static function getOrderProducts($sorting_order) {
+        switch ($sorting_order) {
+            case "alphabetic" :
+                $query = " ORDER BY name ASC";
+                return $query;
+            case "price-desc" :
+                $query = " ORDER BY price DESC";
+                return $query;
+            case "price-asc" :
+                $query = " ORDER BY price ASC";
+                return $query;
+            }        
+    }
+>>>>>>> 8184faf7027736524c6e78a88bc84f9d6832ecda
     
     static function search($word) {
         global $db;
@@ -300,7 +333,7 @@ class Product {
 
     static function resizeImage($image) {
         list($width) = getimagesize($image);
-        $height = round($width / (5 / 16));
+        $height = round($width / (7 / 16));
         $resizedimage = new Imagick($image);
         $status = $resizedimage->scaleImage($height, $width);
         if ($status) {
@@ -670,7 +703,78 @@ class Admin {
         $_SESSION['admin_logged_in'] = 0;
         session_destroy();
     }
+    
+    static function show_order_list() {
+        global $db;
+        $i = 0;
+        $_SESSION['orders'] = Array();
+        $query = $db->query("SELECT id, customerid, date FROM Orders");
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        while(true) {
+            if($row = $query->fetch()) {
+                $_SESSION['orders'][$i]['orderNumber'] = $row['id'];
+                $_SESSION['orders'][$i]['customerID'] = $row['customerid'];
+                $_SESSION['orders'][$i]['date'] = $row['date'];
+            } else {
+                break;
+            }
+            $i += 1;
+        }
+        echo "<table>";
+        echo "<th> order nummer</th>";
+        echo "<th>Klantnummer</th>";
+        echo "<th>Datum</th>";
+        foreach($_SESSION['orders'] as $order) {
+            echo "<tr>";
+            echo "<td>";
+            echo "<form method='post' action='admin_orders.php'>"
+            . "<input type='submit' name='order_number' value="
+            . $order['orderNumber'] . ">"
+            . "</form>"; 
+            echo "</td>";
+            echo "<td>" . $order['customerID'] . "</td>";
+            echo "<td>" . $order['date'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+    
+    static function show_order($orderID) {
+        global $db;
+        $date = Order::show_date($orderID);
+        echo "<table>";
+        echo "<tr>";
+        echo "<td> factuurnummer: $orderID <br> $date</td>";
+        echo "</tr>";
+        Order::show_company_Info();
+        Admin::show_customer_info($orderID);
+        Order::show_order_table($orderID);
+        echo "</table>";
+        echo "<a href='admin_orders.php' class='button'><span>&#xf137;</span>terug naar orders</a>";
+    }
+    
+    static function show_customer_info($orderID) {
+        global $db;
+        $sqlQuery = "SELECT customerid FROM Orders WHERE id=$orderID";
+        $query = $db->query($sqlQuery);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $query->fetch();
 
+        $customerID = $row['customerid'];
+        $sqlQuery = "SELECT * FROM Customers WHERE id=$customerID";
+        $query = $db->query($sqlQuery);
+        $row = $query->fetch();
+        echo "<td>";
+        echo "<h3>Klantgegevens:</h3> <br>";
+        echo "klantnummer: " . $customerID . "<br>";
+        echo "voornaam: " . $row[6]. "<br>";
+        echo "achternaam: " . $row[7] . "<br>";
+        echo "adres: " . $row[8] . " ";
+        echo $row[5] . "<br>";
+        echo "postcode: " . $row[3] . "<br>";
+        echo "email: " . $row[1] . "<br>";
+        echo "</td>";
+    }
 }
 
 class showMessage {
@@ -840,6 +944,9 @@ class Order {
     static function show_customer_info($orderID) {
         global $db;
         global $customer;
+        if(!isset($customer)) {
+            $customer = $_SESSION['customer'];
+        }
         echo "<td>";
         echo "<h3>Klantgegevens:</h3> <br>";
         echo "klantnummer: " . $customer->id . "<br>";
@@ -898,15 +1005,15 @@ class Order {
         echo "</td>";
         echo "</tr>";
     }
-    
+
     static function printError() {
         echo "Van de volgende producten zijn helaas niet de gewenste aantallen "
-        . "beschikbaar <br>";
+        . "beschikbaar: <br>";
         foreach($_SESSION['errorProducts'] as $errorProduct) {
             echo "- $errorProduct <br>";
         }
         echo "klik <a href='shopping_cart.php'> hier </a> om uw bestelling aan te "
-        . "passen. of <a href='products.php'> hier </a> om verder te gaan met"
-        . "winkelen";
+        . "passen of <a href='products.php'> hier </a> om verder te gaan met "
+        . "winkelen.";
     }
 }

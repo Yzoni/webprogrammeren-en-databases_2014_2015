@@ -346,13 +346,18 @@ input[name="firstname"] {
     float:right;
 }
 
+.button_delete:hover {
+    background-color: #FF1C1C;
+    cursor: pointer;
+}
+
 .button span, .button_right span, .button_delete span, .winkelwagen span {
     font-family: iconfont;
     font-size: 12px;
     padding-right: 10px;
 }
 
-.button:hover {
+.button:hover, .button_right:hover {
     background-color:#008b8b;
     cursor: pointer;
 }
@@ -481,6 +486,19 @@ footer a:hover {
     margin-right: 13px;
 }
 
+.textlink, .textlink:visited {
+    color: #006666;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+.tekstlink:hover {
+    color: #006666;
+    text-decoration: none;
+    transition: all .3s ease;
+    padding-left: 4px;
+}
+
 .box, .productpagelink {
     color: black;
     text-decoration: none;
@@ -516,7 +534,7 @@ footer a:hover {
 
 .descriptionwrap {
     position: relative;
-    min-height: 100px;
+    min-height: 122px;
 }
 
 .descrText {
@@ -763,10 +781,6 @@ input[name="lastname"] {
 
 /* SHOPPING CART */
 
-.shopping_cart_table {
-    width:100%;
-}
-
 .inputBox {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -797,10 +811,10 @@ input[name="lastname"] {
 
 table {
     border-collapse: collapse;
-    margin-right: 20px;
-    margin-bottom: 40px;
+    margin-right: 12px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #696969;
-
+    width: 100%;
 }
 
 th {
@@ -823,6 +837,7 @@ td {
     padding-left: 5px;
     padding-top: 4px;
     padding-bottom: 4px;
+    border-bottom: 1px solid #696969;
     height: 40px;
 }
 

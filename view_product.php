@@ -82,7 +82,7 @@ include 'views/navigation.php';
             return false;
         }        
         if (quantity > stock || quantity <= 0) {
-            alert(quantity + "Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
+            alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
             meer hebben wij op dit moment niet op voorraad.");
             return false;
         }
@@ -92,7 +92,7 @@ include 'views/navigation.php';
 <div class="wrappercontent">
     <div class="contenthead">
         <a href="products.php?id=<?php echo $product->type->id ?>
-           " class="productpagelink"><?php echo $product->type->name; ?></a> / 
+           " class="textlink"><?php echo $product->type->name; ?></a> / 
            <?php echo $product->name; ?>
            <?php
            if (is_admin_logged_in()) {
@@ -108,7 +108,7 @@ include 'views/navigation.php';
     <div class="hrline"></div>
     <div class="descriptionwrap">
         <div class="descrText"> <?php echo $product->description; ?></div>
-        <img class="descrImg" height="114" width="320" src="data:image/png;base64,
+        <img class="descrImg" height="140" width="320" src="data:image/png;base64,
              <?php echo base64_encode($product->image); ?>"/>
     </div>
     <div class="hrline"></div>

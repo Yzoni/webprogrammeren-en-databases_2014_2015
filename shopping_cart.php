@@ -59,21 +59,27 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
     foreach ($_SESSION['products'] as $index => $productId) {
     	$productId;
     	$quantity = $_SESSION['quantities'][$index];
-        $sqlQuery = "SELECT name, price FROM Products WHERE id=$productId";
+        $sqlQuery = "SELECT name, price, typeid "
+        . "FROM Products WHERE id=$productId";
     	$result = $db->query($sqlQuery);
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $resultArray = $result->fetch();
         $productName = $resultArray["name"];
         $productPrice = $resultArray["price"];
+        $typeID = $resultArray["typeid"];
+        $sqlQuery = "SELECT name FROM ProductTypes WHERE id=$typeID";
+    	$result = $db->query($sqlQuery);
+        $resultArray = $result->fetch();
+        $category = $resultArray['name'];
     	$subtotal = ($productPrice * $quantity);
         $_SESSION['total'] += $subtotal;
         echo "
         <tr>
         <td>
-        category
+        <a href='products.php?id=$typeID' class='textlink'>$category</a>
         </td>
         <td>
-        <a href='view_product.php?id=$productId' class='productpagelink'>$productName</a>
+        <a href='view_product.php?id=$productId' class='textlink'>$productName</a>
         </td>
         <td>
         $quantity kg
@@ -91,11 +97,12 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         echo "</table>";
 
         echo "<h2 class='totalprice'>totaalprijs: &euro;".
-                $_SESSION['total'] . "<br>";
+                $_SESSION['total'] . ",-<br>";
         echo "levertijd: 1 dag</h2>";
-        echo "<a href='checkout.php' class='button_right'><span class='icon'>&#xf0d1;</span>bestelling afronden</a>";
+        echo "<a href='checkout.php' class='button'><span class='icon'>&#xf0d1;</span>bestelling afronden</a>";
 } else{
-    echo 'Uw winkelwagen is leeg'; 
+    echo 'Uw winkelwagen is leeg.<br>'; 
+    echo '<a href="products.php" class="button"><span>&#xf14d;</span>producten bekijken</a>';
 }
 
 echo '</div>';
