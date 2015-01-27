@@ -563,10 +563,6 @@ footer a:hover {
     display: inline-block;
 }
 
-#backtocategory {
-    margin-top: 20px; 
-}
-
 .icon-ok {
     color: green;
     font-family: iconfont;
@@ -651,7 +647,7 @@ input[type=text] {
 }
 
 .addToCart input[type=text] {
-    width: 120px;
+    width: 135px;
     background: url('images/kwantiteit_bg.jpg') no-repeat;
 }
 
@@ -703,7 +699,7 @@ input[name="firstname"] {
 }
 
 input[name="lastname"] {
-    clear: both;
+    display: block;
 }
 
 
