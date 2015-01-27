@@ -134,7 +134,7 @@ if (!empty($_SESSION['products'])) {
     <div class="underdescription">
 	<table class="product_info">
 	  <tr>
-	    <td width="20">
+	    <td width="10">
                     <?php
                     echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
                     ?> 
@@ -171,11 +171,11 @@ if (!empty($_SESSION['products'])) {
                 $GLOBALS['printAddedProd'] = 0;
             }
             ?>
+        </div>
+	</div>
 	  <a id="backtocategory" href="products.php?id=<?php echo $product->type->id ?>" 
                class="button"><span>&#xf137;</span>terug naar: 
-                <?php echo $product->type->name; ?> </a>
-        </div>
-	</div>          
+                <?php echo $product->type->name; ?> </a>          
 </div>
 
 <?php
