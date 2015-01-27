@@ -179,10 +179,12 @@ if (!empty($_SESSION['products'])) {
         <div class="backtocategory">
 	  <a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>          
         </div>
+<<<<<<< HEAD
     <br>
+=======
+>>>>>>> 3adb0459083e6b8980b760ceda956ab0bc2328b7
 <div id='recentView'>
     Recent bekeken:
-</div>
 <?php
     if(array_search($_GET['id'], $_SESSION['viewed']) === false &&
             sizeof($_SESSION['viewed']) < 4) {
@@ -200,7 +202,11 @@ if (!empty($_SESSION['products'])) {
     }
 ?>
 </div>
+<<<<<<< HEAD
 
+=======
+<div>
+>>>>>>> 3adb0459083e6b8980b760ceda956ab0bc2328b7
 <?php
 include 'views/footer.php';
 ?>
