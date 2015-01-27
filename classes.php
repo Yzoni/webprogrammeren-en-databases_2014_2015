@@ -251,7 +251,7 @@ class Product {
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
         } else if ($special == 1) {
-            $query = $db->prepare("SELECT * FROM Products WHERE special = 1" . $partQuery );
+            $query = $db->prepare("SELECT * FROM Products WHERE special = 1");
         } else {
             $query = $db->prepare("SELECT * FROM Products ORDER BY $sortorder LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
