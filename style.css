@@ -559,9 +559,8 @@ footer a:hover {
     position: relative;
 }
 
-.product_info, .product_info th, .product_info td {
-    width: 180px;
-    border: 1px solid red;
+.product_info {
+    border: none;
 }
 
 .addToCart {
