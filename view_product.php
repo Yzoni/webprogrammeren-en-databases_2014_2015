@@ -115,7 +115,7 @@ include 'views/navigation.php';
     <div class="underdescription">
 	<table class="product_info">
 	  <tr>
-	    <td>
+	    <td width="20">
                     <?php
                     echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
                     ?> 
@@ -123,11 +123,11 @@ include 'views/navigation.php';
 	    <td><?php echo $product->stock;?>op voorraad</td>		
 	  </tr>
 	  <tr>
-	    <td><span class="stockicon">&#xf135; </span></td>
+	    <td width="20"><span class="stockicon">&#xf135; </span></td>
 	    <td>levertijd: 1 dag</td>		
 	  </tr>
 	  <tr>
-	    <td><span class="stockicon">&#xf153; </span></td>
+	    <td width="20"><span class="stockicon">&#xf153; </span></td>
 	    <td>Prijs per kg:
 	        <?php echo $product->price; ?> euro</td>		
 	  </tr>
