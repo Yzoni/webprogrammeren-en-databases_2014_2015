@@ -334,7 +334,7 @@ input[name="firstname"] {
 
 .adminbuttonwrap {
     position: relative;
-    margin-top: -25px;
+    margin-top: 0px;
 }
 
 .button_delete{
