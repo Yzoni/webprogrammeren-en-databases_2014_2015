@@ -63,8 +63,6 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
-<<<<<<< HEAD
-//NEGEER DIT EVEN OKE JA HET IS ZO WEG
 <?php
 
 $index = 0;
