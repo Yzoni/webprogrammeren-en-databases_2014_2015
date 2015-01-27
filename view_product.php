@@ -139,6 +139,25 @@ include 'views/navigation.php';
             </li>
         </ul>
 
+	<table>
+	  <tr>
+	    <td>
+                    <?php
+                    echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
+                    ?> 
+	    </td>
+	    <td><?php echo $product->stock;?>op voorraad</td>		
+	  </tr>
+	  <tr>
+	    <td><span class="stockicon">&#xf135; </span></td>
+	    <td>levertijd: 1 dag</td>		
+	  </tr>
+	  <tr>
+	    <td><span class="stockicon">&#xf153; </span></td>
+	    <td>Prijs per kg:
+	        <?php echo $product->price; ?> euro</td>		
+	  </tr>
+	</table>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
                 <input type="text" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">            
