@@ -797,6 +797,12 @@ input[name="lastname"] {
 
 /* Select Order */
 
+.dropdownwrapper {
+    float: right;
+    display: inline-block;
+    border: 1px solid red;
+}
+
 .select_order {
     border-radius: 5px;
     height: 32px;
