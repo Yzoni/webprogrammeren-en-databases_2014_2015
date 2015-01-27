@@ -560,7 +560,8 @@ footer a:hover {
 }
 
 .product_info {
-    width: 150px;
+    width: 180px;
+    border: none;
 }
 
 .addToCart {
