@@ -39,16 +39,10 @@ include 'views/navigation.php';
     
     <?php
     global $db;
-    // global $customer;
-    $query = $db->prepare("SELECT id FROM Orders WHERE customerid = :id");
+    $query = $db->prepare("SELECT * FROM Orders WHERE customerid = :id");
     $query->bindParam(':id', $customer->id, PDO::PARAM_INT);
     $query->execute();
     $ordersArray = $query->fetchAll();
-
-
-    for ($i = 0; $i < sizeof($ordersArray); $i++) {
-
-    }
     ?>
 
     <table>
@@ -62,7 +56,7 @@ include 'views/navigation.php';
             <?php
             for ($i = 0; $i < sizeof($ordersArray); $i++) {
                 echo "<tr>";
-                echo "<td>" . $ordersArray[$i][1] . "</td>";
+                echo "<td>" . $ordersArray[$i][2] . "</td>";
                 echo "<td>" . "<form method=\"post\" action=\"customer_orders.php\"><input type=\"submit\" name=\"order_number\" value=\"" . $ordersArray[$i][0] . "\"></form></td>";
                 echo "</tr>";
             }
