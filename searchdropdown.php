@@ -11,7 +11,7 @@ if (strlen($q) > 1) {
 }
 
 if ($hint == "") {
-    $response = "no suggestion";
+    $response = "geen suggesties";
 } else {
     $response = $hint;
 }
