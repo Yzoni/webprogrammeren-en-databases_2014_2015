@@ -534,7 +534,8 @@ footer a:hover {
 
 .descriptionwrap {
     position: relative;
-    min-height: 122px;
+    min-height: 140px;
+    border: 1px red solid;
 }
 
 .descrText {
@@ -669,7 +670,7 @@ input[type=password] {
     width: 250px;
     border-radius: 5px;
     margin-bottom: 15px;
-    height: 32px;
+    height: 30px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
@@ -797,16 +798,22 @@ input[name="lastname"] {
 
 /* Select Order */
 
+.dropdownwrapper {
+    float: right;
+    display: inline-block;
+}
+
 .select_order {
     border-radius: 5px;
     height: 32px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 36px;
-    width: 80px;
+    padding-left: 0px;
+    width: 140px;
     float: right;
     margin-top: 0px;
+    display: inline-block;
 }
 
 table {

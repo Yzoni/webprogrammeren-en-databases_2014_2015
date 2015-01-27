@@ -2,7 +2,7 @@
     <p class="title">
         <?php
         if (is_admin_logged_in()) {
-            echo "<a href=\"admin_edit_product.php?id=$this->id\"><span class=\"icon\">&#xF040; </span></a>";
+            echo "<a href=\"admin_edit_product.php?id=$this->id\" class=\"textlink\"><span class=\"icon\">&#xF040; </span></a>";
         }
         ?>
         <span><?php echo $this->type->name; ?> / </span> 
