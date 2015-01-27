@@ -142,6 +142,10 @@ p {
     color: black;
 }
 
+.contenthead {
+    line-height: 32px;
+}
+
 .winkelwagen {
     background-color: #ffffff;
     color: #006666;
@@ -339,12 +343,12 @@ input[name="firstname"] {
     margin-top: 0px;
 }
 
-.button_delete{
+.button_delete {
     background-color: #d40000;
     float: right;
 }
 
-.button_right{
+.button_right {
     float:right;
 }
 
@@ -556,6 +560,10 @@ footer a:hover {
 .underdescription {
     margin-top: 20px;
     position: relative;
+}
+
+.product_info {
+
 }
 
 .addToCart {
