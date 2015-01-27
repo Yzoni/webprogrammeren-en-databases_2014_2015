@@ -138,7 +138,7 @@ if (!empty($_SESSION['products'])) {
                     echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
                     ?> 
 	    </td width="120">
-	    <td><?php echo $product->stock;?>op voorraad</td>		
+	    <td><?php echo $product->stock;?> op voorraad</td>		
 	  </tr>
 	  <tr>
 	    <td><span class="stockicon">&#xf135; </span></td>
@@ -149,10 +149,11 @@ if (!empty($_SESSION['products'])) {
 	    <td>Prijs per kg:
 	        <?php echo $product->price; ?> euro</td>		
 	  </tr>
-            <a id="backtocategory" href="products.php?id=<?php echo $product->type->id ?>" 
+	  <tr>          
+	  <a id="backtocategory" href="products.php?id=<?php echo $product->type->id ?>" 
                class="button"><span>&#xf137;</span>terug naar: 
                 <?php echo $product->type->name; ?> </a>
-	  <tr>
+	  </tr>
 
 	</table>
         <div class=addToCart>
