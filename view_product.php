@@ -32,19 +32,15 @@ if (!isset($_SESSION['products']) &&
     $_SESSION['subtotal'] = array();
 }
 
-// If the user has entered a quantity which is greater than zero and less than the stocklevel, 
+// If the user has entered a quantity which is greater than zero and less than the stocklevel combined with
+// what is already in the cart, 
 // this if statement will add the product and given quantity to the arrays "products"
 // and "quantities". Both arrays are stored in the $_SESSION array.
 if (isset($_POST['quantity'])) {
     $GLOBALS['printAddedProd'] = 1;
     $quantity = floatval($_POST['quantity']);
     $productId = $product->id;
-
-
-
-// !!!BUG ADDING TOO MUCH STOCK TO CART IF DONE IN MULTIPLE TIMES !!!
-
-    
+   
     // array_search and the if statement below will check if there has
     // already been added a quantity of the same type of product in the shopping
     // cart. If there has not, then a new array item will be added, if there has
@@ -67,12 +63,27 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
-<!--
+<?php
+
+$index = 0;
+while($_SESSION['products'][$index] != $product->id){
+    $index ++;
+} 
+echo $index;
+$quantityInCart = $_SESSION['quantities'][$index];
+echo $quantityInCart;
+$inCartProduct = $product->price * $quantityInCart;
+echo $inCartProduct
+
+?>
+
+
 <script>
 
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
-        var stock = "<?php //echo $product->stock ?>";
+        var stock = "<?php echo $product->stock ?>";
+        // var cartQuantity = "<php echo ;
         if (stock == 0){
             alert("Dit product hebben wij momenteel niet op voorraad");
             return false;
@@ -81,14 +92,15 @@ include 'views/navigation.php';
             alert("U dient cijfers in te vullen");
             return false;
         }        
-        if (quantity > stock || quantity <= 0) {
+        if (quantity + cartQuantity > stock || quantity <= 0) {
             alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
             meer hebben wij op dit moment niet op voorraad.");
             return false;
         }
     }
 </script>
--->
+
+
 <div class="wrappercontent">
     <div class="contenthead">
         <a href="products.php?id=<?php echo $product->type->id ?>
