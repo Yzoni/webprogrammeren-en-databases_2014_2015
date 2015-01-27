@@ -559,7 +559,8 @@ footer a:hover {
     position: relative;
 }
 
-.product_info {
+table.product_info {
+    width: 180px;
     border: none;
 }
 
