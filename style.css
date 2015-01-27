@@ -800,7 +800,6 @@ input[name="lastname"] {
 .dropdownwrapper {
     float: right;
     display: inline-block;
-    border: 1px solid red;
 }
 
 .select_order {
@@ -810,7 +809,7 @@ input[name="lastname"] {
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
     padding-left: 0px;
-    width: 80px;
+    width: 140px;
     float: right;
     margin-top: 0px;
     display: inline-block;
