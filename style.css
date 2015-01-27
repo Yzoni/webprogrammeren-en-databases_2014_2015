@@ -486,6 +486,19 @@ footer a:hover {
     margin-right: 13px;
 }
 
+.textlink, .textlink:visited {
+    color: #006666;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+.tekstlink:hover {
+    color: #006666;
+    text-decoration: none;
+    transition: all .3s ease;
+    padding-left: 4px;
+}
+
 .box, .productpagelink {
     color: black;
     text-decoration: none;

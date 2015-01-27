@@ -92,7 +92,7 @@ include 'views/navigation.php';
 <div class="wrappercontent">
     <div class="contenthead">
         <a href="products.php?id=<?php echo $product->type->id ?>
-           " class="productpagelink"><?php echo $product->type->name; ?></a> / 
+           " class="textlink"><?php echo $product->type->name; ?></a> / 
            <?php echo $product->name; ?>
            <?php
            if (is_admin_logged_in()) {
