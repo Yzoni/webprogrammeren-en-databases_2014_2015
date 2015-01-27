@@ -7,7 +7,7 @@ include 'views/navigation.php';
 <div class="wrappercontent">
 <h2 class="contenttitle">Uw orders</h2>
 <?php
-if(!is_customer_logged_in()) {
+if(!is_customer_logged_in() && !$_SESSION['admin_logged_in'] == 1) {
     echo "U moet <a href='customer_login.php'>ingelogd </a> "
     . "zijn om deze pagina te bekijken.";
     include 'views/footer.php';

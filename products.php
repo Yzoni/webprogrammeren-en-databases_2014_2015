@@ -8,9 +8,15 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-$endamount = 10;
+
+$sortorder = "name";
+if (isset($_GET["sortorder"])) {
+    $sortorder = $_GET["sortorder"];
+} 
+
+$endamount = 5;
 $startamount = ($page - 1) * $endamount;
-$products = Product::getProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $startamount, $endamount);
+$products = Product::getAllProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $sortorder, $startamount);
 $totalamount = Product::countProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null));
 $totalpages = ceil($totalamount / $endamount);
 ?>
@@ -78,15 +84,17 @@ $totalpages = ceil($totalamount / $endamount);
             echo "<a href=\"products.php?page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         }
         ?>
-        
+
         <form method="GET" action="products.php">
-            <select class="select_order" name="select_order" onchange="form.submit()">
-            <option> Kies de volgorde </option>    
-            <option value="alphabetic"> A - Z </option>
-            <option value="price-desc"> Prijs hoog - laag </option>
-            <option value="price-asc"> Prijs laag - hoog </option>            
-        </select>
+            <select class="select_order" name="sortorder" onchange="form.submit()">
+                <option> Kies de volgorde </option>    
+                <option value="name"> A - Z </option>
+                <option value="price"> Prijs hoog - laag </option>
+                <option value="price"> Prijs laag - hoog </option>            
+            </select>
         </form>
+<<<<<<< HEAD
+=======
         
         
         <?php 
@@ -102,12 +110,15 @@ $totalpages = ceil($totalamount / $endamount);
  
 
 
+>>>>>>> 8184faf7027736524c6e78a88bc84f9d6832ecda
     </div>
+    
     <?php
     foreach ($products as $product) {
         $product->displayBox();
     }
     ?>
+    
 </div>
 <?php
 include 'views/footer.php';

@@ -242,42 +242,24 @@ class Product {
      *
      * @return object with subobjects as products
      */
-    static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = null) {
-        global $db;  
-        if ($sorting_order != null){
-            $partQuery = Product::getOrderProducts($sorting_order);  
-        } else {
-            $partQuery = " ORDER BY RAND() ";
-        }        
-        if ($type != null){
-            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . $partQuery.  ":startamount, :endamount");
+
+    static function getAllProducts($type = null, $sortorder = "name ASC", $startamount = 0, $endamount = 8, $special = 0) {
+        global $db;
+        if ($type) {
+            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY $sortorder LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
         } else if ($special == 1) {
             $query = $db->prepare("SELECT * FROM Products WHERE special = 1" . $partQuery );
         } else {
-            $query = $db->prepare("SELECT * FROM Products" . $partQuery . "LIMIT :startamount, :endamount");
+            $query = $db->prepare("SELECT * FROM Products ORDER BY $sortorder LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
         }
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         return $result;    
-    }
-
-    static function getOrderProducts($sorting_order) {
-        switch ($sorting_order) {
-            case "alphabetic" :
-                $query = " ORDER BY name ASC";
-                return $query;
-            case "price-desc" :
-                $query = " ORDER BY price DESC";
-                return $query;
-            case "price-asc" :
-                $query = " ORDER BY price ASC";
-                return $query;
-            }        
     }
     
     static function search($word) {
@@ -319,7 +301,7 @@ class Product {
 
     static function resizeImage($image) {
         list($width) = getimagesize($image);
-        $height = round($width / (5 / 16));
+        $height = round($width / (7 / 16));
         $resizedimage = new Imagick($image);
         $status = $resizedimage->scaleImage($height, $width);
         if ($status) {
@@ -750,7 +732,6 @@ class Admin {
         $sqlQuery = "SELECT * FROM Customers WHERE id=$customerID";
         $query = $db->query($sqlQuery);
         $row = $query->fetch();
-
         echo "<td>";
         echo "<h3>Klantgegevens:</h3> <br>";
         echo "klantnummer: " . $customerID . "<br>";
@@ -931,6 +912,9 @@ class Order {
     static function show_customer_info($orderID) {
         global $db;
         global $customer;
+        if(!isset($customer)) {
+            $customer = $_SESSION['customer'];
+        }
         echo "<td>";
         echo "<h3>Klantgegevens:</h3> <br>";
         echo "klantnummer: " . $customer->id . "<br>";
