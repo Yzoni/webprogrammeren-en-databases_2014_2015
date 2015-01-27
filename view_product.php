@@ -67,12 +67,12 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 
-
+<!--
 <script>
 
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
-        var stock = "<?php echo $product->stock ?>";
+        var stock = "<?php //echo $product->stock ?>";
         if (stock == 0){
             alert("Dit product hebben wij momenteel niet op voorraad");
             return false;
@@ -88,7 +88,7 @@ include 'views/navigation.php';
         }
     }
 </script>
-
+-->
 <div class="wrappercontent">
     <div class="contenthead">
         <a href="products.php?id=<?php echo $product->type->id ?>
