@@ -556,13 +556,11 @@ footer a:hover {
 
 .underdescription {
     margin-top: 20px;
-    position: relative;
 }
 
 .addToCart {
     float: right;
     display: inline-block;
-    margin-top: 20px;
 }
 
 #backtocategory {
