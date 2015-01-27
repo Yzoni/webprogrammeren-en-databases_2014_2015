@@ -72,7 +72,7 @@ if (isset($_POST['checkout_complete'])) {
     . "</form>";
     $_SESSION['payment'] = $_POST['payment'];   
 } else if (!is_customer_logged_in()) {
-    echo "U dient eerst <a href='customer_login.php'> In te loggen </a>"
+    echo "U dient eerst <a href='customer_login.php' class='textlink'> In te loggen </a>"
     . "of te <a href='customer_register.php'> registreren</a> om te kunnen "
     . "afrekenen.";
 } else {
