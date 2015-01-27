@@ -242,33 +242,18 @@ class Product {
      *
      * @return object with subobjects as products
      */
-<<<<<<< HEAD
+
     static function getAllProducts($type = null, $sortorder = "name ASC", $startamount = 0, $endamount = 8, $special = 0) {
         global $db;
         if ($type) {
             $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY $sortorder LIMIT :startamount, :endamount");
-=======
-    static function getProducts($type = null, $startamount = 0, $endamount = 8, $special = 0, $sorting_order = "ASC") {
-        global $db;  
-        if ($sorting_order != null){
-            $partQuery = Product::getOrderProducts($sorting_order);  
-        } else {
-            $partQuery = " ORDER BY RAND() ";
-        }        
-        if ($type != null){
-            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid" . $partQuery.  ":startamount, :endamount");
->>>>>>> 8184faf7027736524c6e78a88bc84f9d6832ecda
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
         } else if ($special == 1) {
             $query = $db->prepare("SELECT * FROM Products WHERE special = 1" . $partQuery );
         } else {
-<<<<<<< HEAD
             $query = $db->prepare("SELECT * FROM Products ORDER BY $sortorder LIMIT :startamount, :endamount");
-=======
-            $query = $db->prepare("SELECT * FROM Products" . $partQuery . "LIMIT :startamount, :endamount");
->>>>>>> 8184faf7027736524c6e78a88bc84f9d6832ecda
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
         }
@@ -276,23 +261,6 @@ class Product {
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
         return $result;    
     }
-<<<<<<< HEAD
-=======
-
-    static function getOrderProducts($sorting_order) {
-        switch ($sorting_order) {
-            case "alphabetic" :
-                $query = " ORDER BY name ASC";
-                return $query;
-            case "price-desc" :
-                $query = " ORDER BY price DESC";
-                return $query;
-            case "price-asc" :
-                $query = " ORDER BY price ASC";
-                return $query;
-            }        
-    }
->>>>>>> 8184faf7027736524c6e78a88bc84f9d6832ecda
     
     static function search($word) {
         global $db;

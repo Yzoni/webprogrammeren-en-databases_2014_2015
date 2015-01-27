@@ -8,7 +8,7 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-<<<<<<< HEAD
+
 $sortorder = "name";
 if (isset($_GET["sortorder"])) {
     $sortorder = $_GET["sortorder"];
@@ -17,11 +17,6 @@ if (isset($_GET["sortorder"])) {
 $endamount = 5;
 $startamount = ($page - 1) * $endamount;
 $products = Product::getAllProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $sortorder, $startamount);
-=======
-$endamount = 10;
-$startamount = ($page - 1) * $endamount;
-$products = Product::getProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $startamount, $endamount);
->>>>>>> 8184faf7027736524c6e78a88bc84f9d6832ecda
 $totalamount = Product::countProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null));
 $totalpages = ceil($totalamount / $endamount);
 ?>
