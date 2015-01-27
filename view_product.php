@@ -179,25 +179,28 @@ if (!empty($_SESSION['products'])) {
         <div class="backtocategory">
 	  <a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>          
         </div>
-</div>
+    <br>
 <div id='recentView'>
     Recent bekeken:
 </div>
 <?php
-    if(array_search($_GET['id'], $_SESSION['viewed']) == false) {
+    if(array_search($_GET['id'], $_SESSION['viewed']) === false &&
+            sizeof($_SESSION['viewed']) < 4) {
+        array_push($_SESSION['viewed'], $_GET['id']);
+    } else if (array_search($_GET['id'], $_SESSION['viewed']) === false) {
+        array_shift($_SESSION['viewed']);
         array_push($_SESSION['viewed'], $_GET['id']);
     }
-            
     foreach($_SESSION['viewed'] as $viewedProductID) {
         $viewedProduct = new Product($viewedProductID);
-        echo $viewedProduct->name;
         echo "<a href = http://fruyt.nl/view_product.php?id="
         . $viewedProductID . ">"
-        . '<img class="descrImg" height="140" width="320" src="data:image/png;base64,'
-        . base64_encode($viewedProduct->image) . "/>";
+        . $viewedProduct->name . "<br>";
         echo "</a>";
     }
 ?>
+</div>
+
 <?php
 include 'views/footer.php';
 ?>
