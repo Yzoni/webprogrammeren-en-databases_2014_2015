@@ -93,24 +93,6 @@ $totalpages = ceil($totalamount / $endamount);
                 <option value="price"> Prijs laag - hoog </option>            
             </select>
         </form>
-<<<<<<< HEAD
-=======
-        
-        
-        <?php 
-        if (isset($_GET['select_order'])){
-            $sorting_order = $_GET['select_order'];
-            Product::getProducts($sorting_order);
-        } else {
-            echo ' huilen dit';
-        } 
-       
-        ?> 
-        
- 
-
-
->>>>>>> 8184faf7027736524c6e78a88bc84f9d6832ecda
     </div>
     
     <?php
