@@ -3,6 +3,14 @@ require_once 'classes.php';
 security_check_admin();
 
 $customer = new Customer($_GET['id']);
+$_SESSION['customer'] = $customer;
+
+if(isset($_POST['order_number'])) {
+    $orderID = $_POST['show_order'];
+    show_order($orderID);
+    include 'views/footer.php';
+    exit();
+}
 
 if (isset($_GET['fn']) && $_GET['fn'] == "deletecustomer" && is_admin_logged_in()) {
     $status = $customer->delete();
@@ -28,7 +36,19 @@ include 'views/navigation.php';
     . "&#xf00d;</span> verwijder klant</a>";
     ?>
     <h2 class="contenttitle">Bestellingen door deze klant:</h2>
-    <p>>view van lijst met bestellingen<</p>
+   <?php 
+        global $db;
+        // global $customer;
+        $query = $db->prepare("SELECT id FROM Orders WHERE customerid=:id");
+        $query->bindParam(':id', $customer->id, PDO::PARAM_INT);
+        $query->execute();
+        $ordersArray = $query->fetchAll();
+        for ($i = 0; $i < sizeof($ordersArray); $i++) {
+            echo "<form method='post' action='customer_orders.php'>"
+            . "<input type='submit' name='order_number' value=" . $ordersArray[$i][0] . ">"
+            . "</form>";
+        }
+   ?>
 </div>
 
 <?php
