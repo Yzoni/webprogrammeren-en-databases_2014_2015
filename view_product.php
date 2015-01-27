@@ -113,33 +113,7 @@ include 'views/navigation.php';
     </div>
     <div class="hrline"></div>
     <div class="underdescription">
-        <ul class="infoList">  
-            <li>
-                <p class="ProdInfoTxt">
-                    <?php
-                    echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
-                    echo $product->stock;
-                    ?> 
-                    op voorraad
-                </p>
-            </li>
-
-            <li>
-                <span class="ProdInfoTxt"><p> 
-                        <span class="stockicon">&#xf135; </span>
-                        levertijd: 1 dag </p>
-                </span>
-            </li>
-            <li>
-                <span class="ProdInfoTxt">  <p>      
-                        <span class="stockicon">&#xf153; </span> 
-                        prijs per kg: 
-                        <?php echo $product->price; ?> euro</p>
-                </span>
-            </li>
-        </ul>
-
-	<table>
+	<table class="product_info">
 	  <tr>
 	    <td>
                     <?php
