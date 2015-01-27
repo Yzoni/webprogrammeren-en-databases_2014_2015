@@ -76,10 +76,10 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         echo "
         <tr>
         <td>
-        $category
+        <a href='products.php?id=$typeID' class='textlink'>$category</a>
         </td>
         <td>
-        <a href='view_product.php?id=$productId' class='productpagelink'>$productName</a>
+        <a href='view_product.php?id=$productId' class='textlink'>$productName</a>
         </td>
         <td>
         $quantity kg
