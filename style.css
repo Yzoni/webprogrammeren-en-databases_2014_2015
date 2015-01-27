@@ -565,8 +565,8 @@ footer a:hover {
 }
 
 .addToCart {
-    position: absolute;
-    right: 0;
+    float: right;
+    display: inline-block;
     margin-top: 20px;
 }
 
