@@ -559,12 +559,6 @@ footer a:hover {
     position: relative;
 }
 
-table.product_info {
-    float: left;
-    width: 180px;
-    border: none;
-}
-
 .addToCart {
     float: right;
     display: inline-block;
@@ -874,3 +868,14 @@ table thead {
 table tbody {
     border-top: 2px solid black;
 }
+
+table.product_info {
+    float: left;
+    width: 180px;
+    border: none;
+}
+
+table.product_info tr, table.product_info td {
+    height: 20px;
+    border: none;
+} 
