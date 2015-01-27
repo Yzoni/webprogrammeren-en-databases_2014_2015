@@ -197,6 +197,7 @@ if (!empty($_SESSION['products'])) {
     }
 ?>
 </div>
+<div>
 <?php
 include 'views/footer.php';
 ?>
