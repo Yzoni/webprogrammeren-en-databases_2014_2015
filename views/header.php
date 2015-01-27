@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>Fruyt.nl</title>
         <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="style_shopping_cart.css">
         <link rel="icon" type="image/png" href="images/fruyt_icon.png">
         <script src="js/search.js" type="text/javascript"></script>
         <script src="js/noentertextbox.js" type="text/javascript"></script>
@@ -17,7 +16,7 @@
     <body>
         <header>
             <div>
-                <a href="index.php" class="logo">fruyt .nl</a>
+                <a href="index.php" class="logo">fruyt.nl</a>
                 <?php
                 if (is_admin_logged_in()) {
                     echo "<h2 class=\"welcome-header\">Ingelogd als beheerder</h2>";
