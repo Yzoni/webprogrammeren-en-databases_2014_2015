@@ -9,6 +9,10 @@ if (!isset($_SESSION['total'])) {
     $_SESSION['total'] = 0;
 }
 
+if(!isset($_SESSION['viewed'])) {
+    $_SESSION['viewed'] = Array();
+}
+
 $product = new Product($_GET["id"]);
 if (isset($_GET['fn']) && $_GET['fn'] == "deleteproduct" && is_admin_logged_in()) {
     $previousproducttype = $product->type->id;
@@ -177,7 +181,24 @@ if (!empty($_SESSION['products'])) {
         </div>
 	</div>          
 </div>
-
+<div id='recentView'>
+    Recent bekeken:
+</div>
+<?php
+    if(array_search($_GET['id'], $_SESSION['viewed']) == false) {
+        array_push($_SESSION['viewed'], $_GET['id']);
+    }
+            
+    foreach($_SESSION['viewed'] as $viewedProductID) {
+        $viewedProduct = new Product($viewedProductID);
+        echo $viewedProduct->name;
+        echo "<a href = http://fruyt.nl/view_product.php?id="
+        . $viewedProductID . ">"
+        . '<img class="descrImg" height="140" width="320" src="data:image/png;base64,'
+        . base64_encode($viewedProduct->image) . "/>";
+        echo "</a>";
+    }
+?>
 <?php
 include 'views/footer.php';
 ?>
