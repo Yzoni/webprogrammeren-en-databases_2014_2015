@@ -534,7 +534,7 @@ footer a:hover {
 
 .descriptionwrap {
     position: relative;
-    min-height: 160px;
+    min-height: 140px;
     border: 1px red solid;
 }
 
