@@ -71,7 +71,7 @@ include 'views/navigation.php';
 
 $index = 0;
 if (!empty($_SESSION['products'])) {
-    while($_SESSION['products'][$index] != $product->id && $product->id && $index < count($_SESSION['products']) ){
+    while($_SESSION['products'][$index] != $product->id && $index < count($_SESSION['products']) ){
         $index ++;
     } 
     echo "index : " . $index;
@@ -138,7 +138,7 @@ if (!empty($_SESSION['products'])) {
     <div class="underdescription">
 	<table class="product_info">
 	  <tr>
-	    <td width="20">
+	    <td width="10">
                     <?php
                     echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
                     ?> 
@@ -156,12 +156,11 @@ if (!empty($_SESSION['products'])) {
 	</table>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
-                <input type="text" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">            
+                <input type="number" min="0" max="<?php $stock ?>" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
                 <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
                 </button>
             </form>
         </div>
-
         <div id="addedProduct">
             <?php
 // if a product has been added to the shopping cart this 
@@ -175,11 +174,11 @@ if (!empty($_SESSION['products'])) {
                 $GLOBALS['printAddedProd'] = 0;
             }
             ?>
-	  <a id="backtocategory" href="products.php?id=<?php echo $product->type->id ?>" 
-               class="button"><span>&#xf137;</span>terug naar: 
-                <?php echo $product->type->name; ?> </a>
         </div>
-	</div>          
+	</div>
+        <div class="backtocategory">
+	  <a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>          
+        </div>
 </div>
 <div id='recentView'>
     Recent bekeken:
