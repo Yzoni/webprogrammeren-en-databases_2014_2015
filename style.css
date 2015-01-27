@@ -334,7 +334,7 @@ input[name="firstname"] {
 
 .adminbuttonwrap {
     position: relative;
-    margin-top: -25px;
+    margin-top: 0px;
 }
 
 .button_delete{
@@ -529,13 +529,12 @@ footer a:hover {
     width: 100%;
     height: 1px;
     background-color: #919191;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .descriptionwrap {
     position: relative;
-    min-height: 140px;
-    border: 1px red solid;
+    min-height: 160px;
 }
 
 .descrText {
