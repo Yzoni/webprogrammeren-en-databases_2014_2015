@@ -3,7 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/home/yorick/Documents/Kunstmatige%20Intelligentie/Webprogrammeren/git/priv-fruyt/admin_list_customers.php</file>
+            <file>file:/home/yorick/Documents/Kunstmatige%20Intelligentie/Webprogrammeren/git/priv-fruyt/admin_view_customer.php</file>
+            <file>file:/home/yorick/Documents/Kunstmatige%20Intelligentie/Webprogrammeren/git/priv-fruyt/style.css</file>
+            <file>file:/home/yorick/Documents/Kunstmatige%20Intelligentie/Webprogrammeren/git/priv-fruyt/index.php</file>
+            <file>file:/home/yorick/Documents/Kunstmatige%20Intelligentie/Webprogrammeren/git/priv-fruyt/classes.php</file>
+            <file>file:/home/yorick/Documents/Kunstmatige%20Intelligentie/Webprogrammeren/git/priv-fruyt/products.php</file>
+=======
             <file>file:/Applications/MAMP/htdocs/fruyt-webshop/view_product.php</file>
+>>>>>>> bd693565228fa032abfa29c1f75335b6c4871cc5
         </group>
     </open-files>
 </project-private>

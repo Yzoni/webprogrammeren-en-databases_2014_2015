@@ -9,12 +9,31 @@ if (isset($_GET["page"])) {
     $page = 1;
 }
 
-$sortorder = "name";
-if (isset($_GET["sortorder"])) {
-    $sortorder = $_GET["sortorder"];
-} 
+if (isset($_GET["sort"])) {
+    $sort = $_GET["sort"];
+} else {
+    $sort = "named";
+}
 
-$endamount = 5;
+function checkSort($sort) {
+    if ($sort == "named") {
+       return "name DESC";
+    } elseif ($sort == "namea") {
+        return "name ASC";
+    } elseif ($sort == "priced") {
+        return "CAST(price as decimal) DESC";
+    } elseif ($sort == "pricea") {
+        return "CAST(price as decimal) ASC";
+    } else {
+        return "name ASC";
+    }
+}
+
+$sortorder = checkSort($sort);
+
+//$sortorder = "CAST(price as decimal)";
+
+$endamount = 8;
 $startamount = ($page - 1) * $endamount;
 $products = Product::getAllProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $sortorder, $startamount);
 $totalamount = Product::countProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null));
@@ -59,9 +78,9 @@ $totalpages = ceil($totalamount / $endamount);
                 if (isset($_GET["page"])) {
                     // Give current page id "currentpage"
                     if ($_GET["page"] == $i) {
-                        echo "<a id=\"currentpage\" href='products.php?page=" . $i . "'>" . $i . "</a> ";
+                        echo "<a id=\"currentpage\" href='products.php?page=" . $i . "&sort=". $_GET["sort"] ."'>" . $i . "</a> ";
                     } else {
-                        echo "<a href='products.php?page=" . $i . "'>" . $i . "</a> ";
+                        echo "<a href='products.php?page=" . $i . "&sort=". $_GET["sort"] ."'>" . $i . "</a> ";
                     }
                 } else {
                     //In case of no page in get
@@ -86,11 +105,11 @@ $totalpages = ceil($totalamount / $endamount);
         ?>
         <div class="dropdownwrapper">
         <form method="GET" action="products.php">
-            <select class="select_order" name="sortorder" onchange="form.submit()">
+            <select class="select_order" name="sort" onchange="form.submit()">
                 <option> Sorteer producten </option>    
-                <option value="name"> A - Z </option>
-                <option value="price"> Prijs hoog - laag </option>
-                <option value="price"> Prijs laag - hoog </option>            
+                <option value="namea"> A - Z </option>
+                <option value="pricea"> Prijs hoog - laag </option>
+                <option value="priced"> Prijs laag - hoog </option>            
             </select>
         </form>
 	</div>
