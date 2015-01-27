@@ -66,7 +66,7 @@ include 'views/navigation.php';
 <?php
 
 $index = 0;
-while($_SESSION['products'][$index] != $product->id && $product->id && $index <= count($_SESSION['products'])){
+while($_SESSION['products'][$index] != $product->id && $product->id && $index < count($_SESSION['products']) ){
     $index ++;
 } 
 echo $index;
