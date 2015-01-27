@@ -8,11 +8,14 @@
                     <?php
                     $producttypes_nav = ProductType::getAllProductTypes();
                     foreach ($producttypes_nav as $producttype_nav) {
-                        echo "<li>";
-                        if (is_admin_logged_in()) {
-                            echo "<a href=\"admin_edit_producttype.php?id=$producttype_nav->id\"><span class=\"icon\">&#xF040; </span></a>";
+                        $productsincat = Product::countProducts($producttype_nav->id);
+                        if ($productsincat != 0) {
+                            echo "<li>";
+                            if (is_admin_logged_in()) {
+                                echo "<a href=\"admin_edit_producttype.php?id=$producttype_nav->id\"><span class=\"icon\">&#xF040; </span></a>";
+                            }
+                            echo "<a href=\"products.php?id=$producttype_nav->id\">$producttype_nav->name <span class=\"arrow\">&#xf101;</span></a></li>";
                         }
-                        echo "<a href=\"products.php?id=$producttype_nav->id\">$producttype_nav->name <span class=\"arrow\">&#xf101;</span></a></li>";
                     }
                     if (is_admin_logged_in()) {
                         echo "<li><a href=\"admin_add_producttype.php\"><span class=\"icon\">&#xf055;</span> categorie</a></li>";

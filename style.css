@@ -554,19 +554,18 @@ footer a:hover {
     left: 51%;
 }
 
+.backtocategory {
+    clear: both;
+    display: block;
+}
+
 .underdescription {
     margin-top: 20px;
-    position: relative;
 }
 
 .addToCart {
     float: right;
     display: inline-block;
-    margin-top: 20px;
-}
-
-#backtocategory {
-    margin-top: 20px;
 }
 
 .icon-ok {
@@ -653,7 +652,7 @@ input[type=text] {
 }
 
 .addToCart input[type=text] {
-    width: 120px;
+    width: 135px;
     background: url('images/kwantiteit_bg.jpg') no-repeat;
 }
 
@@ -706,6 +705,7 @@ input[name="firstname"] {
 
 input[name="lastname"] {
     clear: both;
+    display: block;
 }
 
 
@@ -871,7 +871,7 @@ table tbody {
 
 table.product_info {
     float: left;
-    width: 180px;
+    width: 200px;
     border: none;
 }
 

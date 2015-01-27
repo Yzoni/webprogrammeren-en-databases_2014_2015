@@ -9,6 +9,10 @@ if (!isset($_SESSION['total'])) {
     $_SESSION['total'] = 0;
 }
 
+if(!isset($_SESSION['viewed'])) {
+    $_SESSION['viewed'] = Array();
+}
+
 $product = new Product($_GET["id"]);
 if (isset($_GET['fn']) && $_GET['fn'] == "deleteproduct" && is_admin_logged_in()) {
     $previousproducttype = $product->type->id;
@@ -67,12 +71,12 @@ include 'views/navigation.php';
 
 $index = 0;
 if (!empty($_SESSION['products'])) {
-    while($_SESSION['products'][$index] != $product->id && $product->id && $index < count($_SESSION['products']) ){
+    while($_SESSION['products'][$index] != $product->id && $index < count($_SESSION['products']) ){
         $index ++;
     } 
     echo "index : " . $index;
     $quantityInCart = $_SESSION['quantities'][$index];
-    echo "quantitty cart " . $quantityInCart;
+    echo "quantity cart: " . $quantityInCart;
 } else {
     $quantityInCart = 0;
     echo "in cart : " . $quantityInCart;
@@ -81,11 +85,10 @@ if (!empty($_SESSION['products'])) {
 ?>
 
 <script>
-
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
         var stock = "<?php echo $product->stock ?>";
-        var productsInCart = "<?php echo $iquantityInCart ?>";
+        var productsInCart = "<?php echo $quantityInCart ?>";
         if (stock == 0){
             alert("Dit product hebben wij momenteel niet op voorraad");
             return false;
@@ -103,6 +106,7 @@ if (!empty($_SESSION['products'])) {
             var remaining = quantity - productsInCart
             alert("U heeft al " + productsInCart + " van dit product in uw winkelwagen,\
             vul een getal tussen 0 en " + remaining + " in. ");
+            return false;
         }
     }
 </script>
@@ -134,7 +138,7 @@ if (!empty($_SESSION['products'])) {
     <div class="underdescription">
 	<table class="product_info">
 	  <tr>
-	    <td width="20">
+	    <td width="10">
                     <?php
                     echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
                     ?> 
@@ -147,24 +151,16 @@ if (!empty($_SESSION['products'])) {
 	  </tr>
 	  <tr>
 	    <td><span class="stockicon">&#xf153; </span></td>
-	    <td>Prijs per kg:
-	        <?php echo $product->price; ?> euro</td>		
+	    <td>Prijs per kg: <?php echo $product->price; ?> euro</td>		
 	  </tr>
-	  <tr>          
-	  <a id="backtocategory" href="products.php?id=<?php echo $product->type->id ?>" 
-               class="button"><span>&#xf137;</span>terug naar: 
-                <?php echo $product->type->name; ?> </a>
-	  </tr>
-
 	</table>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
-                <input type="text" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">            
+                <input type="number" min="0" max="<?php $stock ?>" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
                 <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
                 </button>
             </form>
         </div>
-
         <div id="addedProduct">
             <?php
 // if a product has been added to the shopping cart this 
@@ -178,11 +174,30 @@ if (!empty($_SESSION['products'])) {
                 $GLOBALS['printAddedProd'] = 0;
             }
             ?>
-
         </div>
 	</div>
+        <div class="backtocategory">
+	  <a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>          
+        </div>
 </div>
-
+<div id='recentView'>
+    Recent bekeken:
+</div>
+<?php
+    if(array_search($_GET['id'], $_SESSION['viewed']) == false) {
+        array_push($_SESSION['viewed'], $_GET['id']);
+    }
+            
+    foreach($_SESSION['viewed'] as $viewedProductID) {
+        $viewedProduct = new Product($viewedProductID);
+        echo $viewedProduct->name;
+        echo "<a href = http://fruyt.nl/view_product.php?id="
+        . $viewedProductID . ">"
+        . '<img class="descrImg" height="140" width="320" src="data:image/png;base64,'
+        . base64_encode($viewedProduct->image) . "/>";
+        echo "</a>";
+    }
+?>
 <?php
 include 'views/footer.php';
 ?>
