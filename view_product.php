@@ -74,7 +74,7 @@ if (isset($_SESSION['products'])) {
     $quantityInCart = $_SESSION['quantities'][$index];
     echo $quantityInCart;
     $inCartProduct = $product->price * $quantityInCart;
-    echo $inCartProduct
+    echo $inCartProduct;
 }
 
 ?>
