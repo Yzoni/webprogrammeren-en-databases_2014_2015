@@ -119,15 +119,15 @@ include 'views/navigation.php';
                     <?php
                     echo ($product->stock > 0 ? "<span class=\"stockicongreen\">&#xf00c;" : "<span class=\"stockiconred\">&#xf00d</span>");
                     ?> 
-	    </td>
+	    </td width="120">
 	    <td><?php echo $product->stock;?>op voorraad</td>		
 	  </tr>
 	  <tr>
-	    <td width="20"><span class="stockicon">&#xf135; </span></td>
+	    <td><span class="stockicon">&#xf135; </span></td>
 	    <td>levertijd: 1 dag</td>		
 	  </tr>
 	  <tr>
-	    <td width="20"><span class="stockicon">&#xf153; </span></td>
+	    <td><span class="stockicon">&#xf153; </span></td>
 	    <td>Prijs per kg:
 	        <?php echo $product->price; ?> euro</td>		
 	  </tr>
