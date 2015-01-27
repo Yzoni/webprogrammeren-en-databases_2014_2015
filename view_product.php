@@ -202,11 +202,6 @@ if (!empty($_SESSION['products'])) {
     }
 ?>
 </div>
-<<<<<<< HEAD
-
-=======
-<div>
->>>>>>> 3adb0459083e6b8980b760ceda956ab0bc2328b7
 <?php
 include 'views/footer.php';
 ?>
