@@ -346,13 +346,18 @@ input[name="firstname"] {
     float:right;
 }
 
+.button_delete:hover {
+    background-color: #FF1C1C;
+    cursor: pointer;
+}
+
 .button span, .button_right span, .button_delete span, .winkelwagen span {
     font-family: iconfont;
     font-size: 12px;
     padding-right: 10px;
 }
 
-.button:hover {
+.button:hover, .button_right:hover {
     background-color:#008b8b;
     cursor: pointer;
 }
