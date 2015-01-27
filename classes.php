@@ -750,7 +750,6 @@ class Admin {
         $sqlQuery = "SELECT * FROM Customers WHERE id=$customerID";
         $query = $db->query($sqlQuery);
         $row = $query->fetch();
-
         echo "<td>";
         echo "<h3>Klantgegevens:</h3> <br>";
         echo "klantnummer: " . $customerID . "<br>";
@@ -931,6 +930,9 @@ class Order {
     static function show_customer_info($orderID) {
         global $db;
         global $customer;
+        if(!isset($customer)) {
+            $customer = $_SESSION['customer'];
+        }
         echo "<td>";
         echo "<h3>Klantgegevens:</h3> <br>";
         echo "klantnummer: " . $customer->id . "<br>";
