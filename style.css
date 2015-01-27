@@ -669,7 +669,7 @@ input[type=password] {
     width: 250px;
     border-radius: 5px;
     margin-bottom: 15px;
-    height: 32px;
+    height: 30px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
@@ -803,10 +803,11 @@ input[name="lastname"] {
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 36px;
+    padding-left: 0px;
     width: 80px;
     float: right;
     margin-top: 0px;
+    display: inline-block;
 }
 
 table {
