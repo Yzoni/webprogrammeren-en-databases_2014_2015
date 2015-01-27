@@ -37,9 +37,6 @@ if (isset($_POST['checkout_complete'])) {
     echo '<h2 class="contenttitle">Betaling voldaan</h2>';
     echo '<a href="customer_orders.php" class="button"><span>&#xf115;</span>factuuroverzicht</a><br><br>';
     echo '<a href="products.php" class="button"><span>&#xf14d;</span>verder winkelen</a>';
-
-
- // meest recente factuur opvragen en uitprinten
 } else if(isset($_POST['payment']) && $_POST['payment'] == "acceptgiro") {
     echo "<h2 class='contenttitle'>Betalen via acceptgiro</h2>"
     . "Klik op de button om uw bestelling te voltooien.<br>"
