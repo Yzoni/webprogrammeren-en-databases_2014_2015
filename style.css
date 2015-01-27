@@ -559,9 +559,9 @@ footer a:hover {
     position: relative;
 }
 
-.product_info {
+.product_info, .product_info th, .product_info td {
     width: 180px;
-    border: none;
+    border: 1px solid red;
 }
 
 .addToCart {
@@ -658,7 +658,7 @@ input[type=text] {
 }
 
 .addToCart input[type=text] {
-    width: 130px;
+    width: 120px;
     background: url('images/kwantiteit_bg.jpg') no-repeat;
 }
 
