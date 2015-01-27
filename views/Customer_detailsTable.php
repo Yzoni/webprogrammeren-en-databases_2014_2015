@@ -1,4 +1,4 @@
-<table>
+<table class="adminview">
     <tr>
         <th>Voornaam</th>
         <td ><?php echo $this->firstname ?></td>
