@@ -72,7 +72,7 @@ if (!empty($_SESSION['products'])) {
     } 
     echo "index : " . $index;
     $quantityInCart = $_SESSION['quantities'][$index];
-    echo "quantitty cart: " . $quantityInCart;
+    echo "quantity cart: " . $quantityInCart;
 } else {
     $quantityInCart = 0;
     echo "in cart : " . $quantityInCart;
@@ -81,7 +81,6 @@ if (!empty($_SESSION['products'])) {
 ?>
 
 <script>
-
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
         var stock = "<?php echo $product->stock ?>";
