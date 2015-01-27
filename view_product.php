@@ -66,24 +66,18 @@ include 'views/navigation.php';
 <?php
 
 $index = 0;
-while($_SESSION['products'][$index] != $product->id && $product->id && $index < count($_SESSION['products']) ){
-    $index ++;
-} 
-echo $index;
-$quantityInCart = $_SESSION['quantities'][$index];
-echo $quantityInCart;
-$inCartProduct = $product->price * $quantityInCart;
-echo $inCartProduct;
-
-if (isset($_SESSION['products'])) {
+if (!empty($_SESSION['products'])) {
     while($_SESSION['products'][$index] != $product->id && $product->id && $index < count($_SESSION['products']) ){
         $index ++;
     } 
-    echo $index;
+    echo "index : " . $index;
     $quantityInCart = $_SESSION['quantities'][$index];
-    echo $quantityInCart;
+    echo "quantitty cart " . $quantityInCart;
     $inCartProduct = $product->price * $quantityInCart;
     echo $inCartProduct;
+} else {
+    $inCartProduct = 0;
+    echo "in cart : " . $inCartProduct;
 }
 
 
