@@ -73,7 +73,7 @@ echo $index;
 $quantityInCart = $_SESSION['quantities'][$index];
 echo $quantityInCart;
 $inCartProduct = $product->price * $quantityInCart;
-echo $inCartProduct
+echo $inCartProduct;
 
 ?>
 
