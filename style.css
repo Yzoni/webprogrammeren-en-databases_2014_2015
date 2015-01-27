@@ -875,6 +875,10 @@ table.product_info {
     border: none;
 }
 
+table.product_info tbody {
+    border: none;
+}
+
 table.product_info tr, table.product_info td {
     height: 20px;
     border: none;
