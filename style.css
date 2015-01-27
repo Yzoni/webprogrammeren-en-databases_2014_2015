@@ -333,6 +333,8 @@ input[name="firstname"] {
 }
 
 .adminbuttonwrap {
+    display: inline-block;
+    float: right;
     position: relative;
     margin-top: 0px;
 }
