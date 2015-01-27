@@ -150,12 +150,6 @@ if (!empty($_SESSION['products'])) {
 	    <td>Prijs per kg:
 	        <?php echo $product->price; ?> euro</td>		
 	  </tr>
-	  <tr>          
-	  <a id="backtocategory" href="products.php?id=<?php echo $product->type->id ?>" 
-               class="button"><span>&#xf137;</span>terug naar: 
-                <?php echo $product->type->name; ?> </a>
-	  </tr>
-
 	</table>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
@@ -180,7 +174,10 @@ if (!empty($_SESSION['products'])) {
             ?>
 
         </div>
-	</div>
+	</div>          
+	  <a class="backtocategory" href="products.php?id=<?php echo $product->type->id ?>" 
+               class="button"><span>&#xf137;</span>terug naar: 
+                <?php echo $product->type->name; ?> </a>
 </div>
 
 <?php
