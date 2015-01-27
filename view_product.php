@@ -108,7 +108,7 @@ include 'views/navigation.php';
     <div class="hrline"></div>
     <div class="descriptionwrap">
         <div class="descrText"> <?php echo $product->description; ?></div>
-        <img class="descrImg" height="144" width="320" src="data:image/png;base64,
+        <img class="descrImg" height="140" width="320" src="data:image/png;base64,
              <?php echo base64_encode($product->image); ?>"/>
     </div>
     <div class="hrline"></div>
