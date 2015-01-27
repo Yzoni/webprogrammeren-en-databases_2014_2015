@@ -179,12 +179,12 @@ if (isset($_SESSION['products'])) {
             ?>
 
         </div>
+	</div>
         <p>
             <a id="backtocategory" href="products.php?id=<?php echo $product->type->id ?>" 
                class="button"><span>&#xf137;</span>terug naar: 
                 <?php echo $product->type->name; ?> </a>
         </p>
-    </div>
 </div>
 
 <?php
