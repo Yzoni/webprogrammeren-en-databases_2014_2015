@@ -72,7 +72,7 @@ if (!empty($_SESSION['products'])) {
     } 
     echo "index : " . $index;
     $quantityInCart = $_SESSION['quantities'][$index];
-    echo "quantitty cart " . $quantityInCart;
+    echo "quantitty cart: " . $quantityInCart;
 } else {
     $quantityInCart = 0;
     echo "in cart : " . $quantityInCart;
@@ -85,7 +85,7 @@ if (!empty($_SESSION['products'])) {
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
         var stock = "<?php echo $product->stock ?>";
-        var productsInCart = "<?php echo $iquantityInCart ?>";
+        var productsInCart = "<?php echo $quantityInCart ?>";
         if (stock == 0){
             alert("Dit product hebben wij momenteel niet op voorraad");
             return false;
@@ -103,6 +103,7 @@ if (!empty($_SESSION['products'])) {
             var remaining = quantity - productsInCart
             alert("U heeft al " + productsInCart + " van dit product in uw winkelwagen,\
             vul een getal tussen 0 en " + remaining + " in. ");
+            return false;
         }
     }
 </script>
