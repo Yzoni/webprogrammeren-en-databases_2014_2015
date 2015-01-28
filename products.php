@@ -87,7 +87,6 @@ $totalpages = ceil($totalamount / $endamount);
             }
         }
 
-
         // Get next page
         if ($page < $totalpages) {
             $nextpage = $page + 1;
@@ -102,7 +101,7 @@ $totalpages = ceil($totalamount / $endamount);
         }
         ?>
         <div class="dropdownwrapper">
-        <form method="GET" action="products.php">
+        <form method="GET" action="<?php echo (isset($_GET['id']) ? "products.php?id=" . $_GET['id'] : "products.php"); ?>">
             <select class="select_order" name="sort" onchange="form.submit()">
                 <option> Sorteer producten </option>    
                 <option value="namea"> A - Z </option>

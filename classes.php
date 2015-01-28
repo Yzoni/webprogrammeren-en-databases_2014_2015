@@ -275,6 +275,14 @@ class Product {
         return $result;
     }
 
+    /**
+     * Function search
+     *
+     * Searches the product table for the input query with on two sides of the query a  wildcard
+     * 
+     * @param int the query word
+     * @return bool
+     */
     static function search($word) {
         global $db;
         $query = $db->prepare("SELECT * FROM Products WHERE name LIKE :word ORDER BY name");
@@ -285,6 +293,13 @@ class Product {
         return $result;
     }
 
+    /**
+     * Function create
+     *
+     * Creates the product details
+     * 
+     * @return bool
+     */
     static function create($typeid, $name, $description, $stock, $price, $special, $image = null) {
         global $db;
         $query = $db->prepare("INSERT INTO Products (typeid, name, description, stock, price, special, image) VALUES (:typeid, :name, :description, :stock, :price, :special, :image)");
@@ -298,6 +313,13 @@ class Product {
         return $query->execute();
     }
 
+    /**
+     * Function edit
+     *
+     * Updates the product details
+     * 
+     * @return bool
+     */
     function edit() {
         global $db;
         $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
@@ -312,9 +334,23 @@ class Product {
         return $query->execute();
     }
 
-    static function resizeImage($image) {
+    /**
+     * Function resizeImage
+     *
+     * Resizes an image to specific aspect ratio. It does not crop so the image will
+     * be stretched. *Uses imagick module.*
+     *
+     * NOTE: This function is not used by default. It needs to be uncomemnted in admin_edit_product and 
+     * admin_add_product to enable it.
+     * 
+     * @param image file
+     * @param int width of new image
+     * @param int height of new image
+     * @return image or false
+     */
+    static function resizeImage($image, $height, $width) {
         list($width) = getimagesize($image);
-        $height = round($width / (7 / 16));
+        $height = round($width / ($height / $width));
         $resizedimage = new Imagick($image);
         $status = $resizedimage->scaleImage($height, $width);
         if ($status) {
@@ -329,12 +365,20 @@ class Product {
         return $output;
     }
 
+    /**
+     * Function delete
+     *
+     * Delete a whole product row
+     * 
+     * @return bool
+     */
     function delete() {
         global $db;
         $query = $db->prepare("DELETE FROM Products WHERE id = :id");
         $query->bindParam(':id', $id, PDO::PARAM_STR);
         $query->bindParam(':id', $this->id, PDO::PARAM_STR);
-        $query->execute();
+        $status = $query->execute();
+        return $status;
     }
 
 }
@@ -405,11 +449,11 @@ class Customer {
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Customer");
         if ($result) {
             if (session_status() == PHP_SESSION_NONE) {
-                 session_start();
+                session_start();
             }
             $_SESSION['customer_logged_in'] = 1;
             $_SESSION['customer_id'] = $result[0]->id;
-            if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] == 1) {
+            if (isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] == 1) {
                 $_SESSION['loginFalse'] == 0;
                 header('Location: checkout.php');
             } else {
@@ -422,6 +466,22 @@ class Customer {
         }
     }
 
+    /**
+     * Function create
+     *
+     * Create a new customer. Before inserting the variable in the database the 
+     * password + salt is hashed with sha256.
+     *
+     * @param string $email Email of the user
+     * @param string $password Plain password of the user
+     * @param string $streetaddress Streetname
+     * @param string $streetnumber Integer in street + optional letter(s)
+     * @param string $zip Zip code
+     * @param string $firstname First name of user
+     * @param string $lastname Last name of user
+     * @param bool $gender 1 for male and 0 for female
+     * 
+     */
     static function create($email, $password, $streetaddress, $streetnumber, $zip, $firstname, $lastname, $gender) {
         global $db;
         global $passwordsalt;
@@ -504,24 +564,6 @@ class Customer {
         }
     }
 
-    function changePasswordAdmin($newpassword, $newpassword2) {
-        global $db;
-        global $passwordsalt;
-        if ($newpassword != "" && $newpassword == $newpassword2) {
-            $newpassword = hash("sha256", $newpassword . $passwordsalt);
-
-            try {
-                $query = $db->prepare("UPDATE Customers SET password=:newpassword WHERE id = :id");
-                $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-                $query->bindParam(':id', $this->id, PDO::PARAM_INT);
-                $query->execute();
-                return true;
-            } catch (PDOException $e) {
-                return false;
-            }
-        }
-    }
-
     static function getAllCustomers() {
         global $db;
         $query = $db->prepare("SELECT * FROM Customers");
@@ -542,61 +584,6 @@ class Customer {
         $_SESSION['customer_logged_in'] = 0;
         session_destroy();
     }
-
-    static function passwordRecovery($email) {
-        global $db;
-        $headers = array();
-        $headers[] = "MIME-Version: 1.0";
-        $headers[] = "Content-type: text/plain; charset=iso-8859-1";
-        $headers[] = "From: Sender Name <noreply@fruyt.nl>";
-        $headers[] = "Reply-To: Recipient Name {$email}";
-        $headers[] = "Subject: Wachtwoordherstel fruyt.nl";
-        $headers[] = "X-Mailer: PHP/" . phpversion();
-
-        $customer = new Customer($email);
-        $newpassword = hash("sha256", time());
-        $customer->changePasswordAdmin($newpassword, $newpassword);
-        $deliverd = mail($customer->email, "Wachtwoordherstel fruyt.nl", "Nieuwe wachtwoord is: " . $newpassword, implode("\r\n", $headers));
-        if ($deliverd) {
-            echo "true";
-        } else {
-            echo "not deliverd";
-        }
-    }
-
-    /*
-      http://stackoverflow.com/questions/712392/send-email-using-the-gmail-smtp-server-from-a-php-page
-      static function sendMail() {
-      require_once "Mail.php";
-
-      $from = '';
-      $to = '';
-      $subject = 'Hi!';
-      $body = "Hi,\n\nHow are you?";
-
-      $headers = array(
-      'From' => $from,
-      'To' => $to,
-      'Subject' => $subject
-      );
-
-      $smtp = Mail::factory('smtp', array(
-      'host' => 'ssl://smtp.gmail.com',
-      'port' => '465',
-      'auth' => true,
-      'username' => '',
-      'password' => ''
-      ));
-
-      $mail = $smtp->send($to, $headers, $body);
-
-      if (PEAR::isError($mail)) {
-      echo('<p>' . $mail->getMessage() . '</p>');
-      } else {
-      echo('<p>Message successfully sent!</p>');
-      }
-      }
-     */
 }
 
 /**

@@ -21,7 +21,7 @@ if (isset($_POST['name'])) {
         if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
             $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
             // als er niet moeilijk gedaan gaat worden, comment dan de lijn hierboven en uncomment hieronder
-            // $product->image = Product::resizeImage($_FILES['image']['tmp_name']);
+            // $product->image = Product::resizeImage($_FILES['image']['tmp_name'], 7, 16);
         } else {
             $display->addMessage("error", "PHP Upload ERROR");
         }
