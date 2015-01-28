@@ -89,6 +89,7 @@ if (!empty($_SESSION['products'])) {
         var quantity = document.forms["addToCart"]["quantity"].value;
         var stock = "<?php echo $product->stock ?>";
         var productsInCart = "<?php echo $quantityInCart ?>";
+        alert(stock);        
         if (stock == 0){
             alert("Dit product hebben wij momenteel niet op voorraad");
             return false;
@@ -103,7 +104,7 @@ if (!empty($_SESSION['products'])) {
             return false;
         }
         if (quantity + productsInCart > stock) {
-            var remaining = quantity - productsInCart
+            var remaining = quantity - productsInCart;
             alert("U heeft al " + productsInCart + " van dit product in uw winkelwagen,\
             vul een getal tussen 0 en " + remaining + " in. ");
             return false;
