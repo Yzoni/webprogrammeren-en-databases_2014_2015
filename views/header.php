@@ -11,7 +11,37 @@
         <meta name="theme-color" content="#006666">
         <script>
             document.onkeypress = stopRKey;
-        </script>
+
+        function validQuantity() {
+            var quantity = document.forms["addToCart"]["quantity"].value;
+            var stock = "<?php echo $product->stock; ?>";
+            var productsInCart = "<?php echo $quantityInCart; ?>";
+            alert(stock);        
+            if (stock == 0){
+                alert("Dit product hebben wij momenteel niet op voorraad");
+                return false;
+            }    
+            if (quantity !=== Number(quantity)) {
+                alert("U dient cijfers in te vullen");
+                return false;
+            }        
+            if (quantity > stock || quantity <= 0) {
+                alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
+                meer hebben wij op dit moment niet op voorraad.");
+                return false;
+            }
+            if (quantity + productsInCart > stock) {
+                var remaining = quantity - productsInCart;
+                alert("U heeft al " + productsInCart + " van dit product in uw winkelwagen,\
+                vul een getal tussen 0 en " + remaining + " in. ");
+                return false;
+            } else {
+                return true;
+            }
+
+        }
+    </script>
+
     </head>
     <body>
         <header>
