@@ -31,8 +31,6 @@ function checkSort($sort) {
 
 $sortorder = checkSort($sort);
 
-//$sortorder = "CAST(price as decimal)";
-
 $endamount = 8;
 $startamount = ($page - 1) * $endamount;
 $products = Product::getAllProducts((array_key_exists("id", $_GET) ? $_GET["id"] : null), $sortorder, $startamount);
@@ -52,9 +50,9 @@ $totalpages = ceil($totalamount / $endamount);
 
         // Set previous button
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
+            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $previouspage . "&sort=" . $sort . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
         } else {
-            echo "<a href=\"products.php?page=" . $previouspage . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
+            echo "<a href=\"products.php?page=" . $previouspage . "&sort=" . $sort . "\" class=\"button\"><span>&#xf137;</span>vorige</a>";
         }
 
         // Print numbers in case of producttypeid
@@ -63,13 +61,13 @@ $totalpages = ceil($totalamount / $endamount);
                 // Give current page id "currentpage"
                 if (isset($_GET["page"])) {
                     if ($_GET["page"] == $i) {
-                        echo "<a id=\"currentpage\" href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ";
+                        echo "<a id=\"currentpage\" href='products.php?id=" . $_GET["id"] . "&page=" . $i . "&sort=" . $sort . "'>" . $i . "</a> ";
                     } else {
-                        echo "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ";
+                        echo "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "&sort=" . $sort . "'>" . $i . "</a> ";
                     }
                 } else {
                     // In case of no page in get
-                    echo ($i == 1 ? "<a id=\"currentpage\" href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> " : "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ");
+                    echo ($i == 1 ? "<a id=\"currentpage\" href='products.php?id=" . $_GET["id"] . "&page=" . $i . "&sort=" . $sort . "'>" . $i . "</a> " : "<a href='products.php?id=" . $_GET["id"] . "&page=" . $i . "'>" . $i . "</a> ");
                 }
             }
             // Print numbers no productypetid
@@ -78,13 +76,13 @@ $totalpages = ceil($totalamount / $endamount);
                 if (isset($_GET["page"])) {
                     // Give current page id "currentpage"
                     if ($_GET["page"] == $i) {
-                        echo "<a id=\"currentpage\" href='products.php?page=" . $i . "&sort=". $_GET["sort"] ."'>" . $i . "</a> ";
+                        echo "<a id=\"currentpage\" href='products.php?page=" . $i . "&sort=" . $sort . "'>" . $i . "</a> ";
                     } else {
-                        echo "<a href='products.php?page=" . $i . "&sort=". $_GET["sort"] ."'>" . $i . "</a> ";
+                        echo "<a href='products.php?page=" . $i . "&sort=" . $sort . "'>" . $i . "</a> ";
                     }
                 } else {
                     //In case of no page in get
-                    echo ($i == 1 ? "<a id=\"currentpage\" href='products.php?page=" . $i . "'>" . $i . "</a> " : "<a href='products.php?page=" . $i . "'>" . $i . "</a> ");
+                    echo ($i == 1 ? "<a id=\"currentpage\" href='products.php?page=" . $i . "&sort=" . $sort . "'>" . $i . "</a> " : "<a href='products.php?page=" . $i . "&sort=" . $sort . "'>" . $i . "</a> ");
                 }
             }
         }
@@ -98,9 +96,9 @@ $totalpages = ceil($totalamount / $endamount);
         }
         // Set next button
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
+            echo "<a href=\"products.php?id=" . $_GET["id"] . "&page=" . $nextpage . "&sort=" . $sort . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         } else {
-            echo "<a href=\"products.php?page=" . $nextpage . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
+            echo "<a href=\"products.php?page=" . $nextpage . "&sort=" . $sort . "\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         }
         ?>
         <div class="dropdownwrapper">
