@@ -155,7 +155,7 @@ if (!empty($_SESSION['products'])) {
 	  <a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>          
         </div>
     <br>
-<div id='recentView'>
+    <div id='recentView'>
     Recent bekeken:
     <br>
 <?php
@@ -174,6 +174,8 @@ if (!empty($_SESSION['products'])) {
         echo "</a>";
     }
 ?>
+</div>
+
 </div>
 <?php
 include 'views/footer.php';

@@ -1,17 +1,15 @@
 <?php
 require_once 'classes.php';
+
+if(!is_customer_logged_in()) {
+    $_SESSION['loginFalse'] = 1;
+    header('Location: customer_login.php');
+}
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
 <div class="wrappercontent">
 <?php
-
-if(!is_customer_logged_in()) {
-    echo "U moet <a href='customer_login.php'>ingelogd </a> "
-    . "zijn om deze pagina te bekijken.";
-    include 'views/footer.php';
-    exit();
-}
 
 if (isset($_POST['checkout_complete'])) {
     Order::tryOrder($_SESSION['products'], 

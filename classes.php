@@ -404,10 +404,17 @@ class Customer {
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Customer");
         if ($result) {
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                 session_start();
+            }
             $_SESSION['customer_logged_in'] = 1;
             $_SESSION['customer_id'] = $result[0]->id;
-            header('Location: index.php');
+            if($_SESSION['loginFalse'] == 1) {
+                $_SESSION['loginFalse'] == 0;
+                header('Location: checkout.php');
+            } else {
+                header('Location: index.php');
+            }
             exit();
         } else {
             header('Location: customer_login.php?fn=credentialsfalse');
@@ -689,7 +696,7 @@ class Admin {
         global $db;
         $i = 0;
         $_SESSION['orders'] = Array();
-        $query = $db->query("SELECT id, customerid, date FROM Orders");
+        $query = $db->query("SELECT id, customerid, date FROM Orders ORDER BY id DESC");
         $query->setFetchMode(PDO::FETCH_ASSOC);
         while (true) {
             if ($row = $query->fetch()) {

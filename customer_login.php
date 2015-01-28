@@ -28,6 +28,12 @@ include 'views/navigation.php';
         </div>
 
 <?php
+
+if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] = 1) {
+    echo "U moet ingelogd zijn om af te rekenen. ";
+}
+?>
+<?php
 include 'views/footer.php';
 ?>
 
