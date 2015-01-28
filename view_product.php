@@ -103,7 +103,7 @@ if (!empty($_SESSION['products'])) {
             return false;
         }
         if (quantity + productsInCart > stock) {
-            var remaining = quantity - productsInCart
+            var remaining = quantity - productsInCart;
             alert("U heeft al " + productsInCart + " van dit product in uw winkelwagen,\
             vul een getal tussen 0 en " + remaining + " in. ");
             return false;
