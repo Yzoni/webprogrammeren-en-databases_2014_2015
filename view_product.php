@@ -9,6 +9,10 @@ if (!isset($_SESSION['total'])) {
     $_SESSION['total'] = 0;
 }
 
+if(!isset($_SESSION['viewed'])) {
+    $_SESSION['viewed'] = Array();
+}
+
 $product = new Product($_GET["id"]);
 if (isset($_GET['fn']) && $_GET['fn'] == "deleteproduct" && is_admin_logged_in()) {
     $previousproducttype = $product->type->id;
@@ -172,11 +176,30 @@ if (!empty($_SESSION['products'])) {
             ?>
         </div>
 	</div>
-	  <a id="backtocategory" href="products.php?id=<?php echo $product->type->id ?>" 
-               class="button"><span>&#xf137;</span>terug naar: 
-                <?php echo $product->type->name; ?> </a>          
+        <div class="backtocategory">
+	  <a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>          
+        </div>
+    <br>
+<div id='recentView'>
+    Recent bekeken:
+    <br>
+<?php
+    if(array_search($_GET['id'], $_SESSION['viewed']) === false &&
+            sizeof($_SESSION['viewed']) < 4) {
+        array_push($_SESSION['viewed'], $_GET['id']);
+    } else if (array_search($_GET['id'], $_SESSION['viewed']) === false) {
+        array_shift($_SESSION['viewed']);
+        array_push($_SESSION['viewed'], $_GET['id']);
+    }
+    foreach($_SESSION['viewed'] as $viewedProductID) {
+        $viewedProduct = new Product($viewedProductID);
+        echo "<a href = http://fruyt.nl/view_product.php?id="
+        . $viewedProductID . ">"
+        . $viewedProduct->name . "<br>";
+        echo "</a>";
+    }
+?>
 </div>
-
 <?php
 include 'views/footer.php';
 ?>

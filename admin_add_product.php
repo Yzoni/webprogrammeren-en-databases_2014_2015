@@ -10,10 +10,15 @@ if (isset($_POST['name'])) {
     $stock = $_POST['stock'];
     (isset($_POST['special']) ? $special = 1 : $special = 0);
     $allowedimagetypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
-    $detectedimagetype = ($_FILES['image']['tmp_name']!="" ? exif_imagetype($_FILES['image']['tmp_name']) : "");
+    $detectedimagetype = ($_FILES['image']['tmp_name'] != "" ? exif_imagetype($_FILES['image']['tmp_name']) : "");
     if (in_array($detectedimagetype, $allowedimagetypes) && $_FILES["image"]["size"] < 2000000) {
-        $image = ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE ? fopen($_FILES['image']['tmp_name'], 'rb') : null);
-    } else if($detectedimagetype==""){
+        if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
+            $image = fopen($_FILES['image']['tmp_name'], 'rb');
+            //$image = Product::resizeImage($_FILES['image']['tmp_name']);
+        } else {
+            $image = null;
+        }
+    } else if ($detectedimagetype == "") {
         $display->addMessage("notice", "Ondanks dat u geen afbeelding heeft geupload is het toch... ");
         $image = null;
     } else {

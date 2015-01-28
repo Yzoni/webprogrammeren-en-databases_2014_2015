@@ -13,26 +13,16 @@ if (isset($_POST['name'])) {
     $display->addMessage("succes", "Categorie veranderd!");
 }
 
-if (isset($_GET['fn']) && $_GET['fn'] == "deleteproducttype" && is_admin_logged_in()) {
-    $status = $producttype->delete();
-    header("Location: products.php");
-    if ($status) {
-        $display->addMessage("success", "Product verwijderd");
-    } else {
-        $display->addMessage("error", "Fout bij het verwijderen van het product");
-    }
-}
-
 include 'views/header.php';
 include 'views/navigation.php';
 ?>
 <div class="wrappercontent">
-<h2 class="contenttitle">Categorie wijzigen / verwijderen: </h2>
-<?php
-$producttype->displayEditForm();
-echo "<a href=\"admin_edit_producttype.php?id=$producttype->id&fn=deleteproducttype\" class=button_delete>"
- . "<span class=\"icon\">&#xf00d;</span> verwijder productcategorie</a>";
-?>
+    <h2 class="contenttitle">Categorie wijzigen / verwijderen: </h2>
+    <?php
+    $producttype->displayEditForm();
+    echo "<a href=\"admin_confirm_delete_type.php?id=$producttype->id\" class=button_delete>"
+    . "<span class=\"icon\">&#xf00d;</span> verwijder productcategorie</a>";
+    ?>
 </div>
 <?php
 include 'views/footer.php';

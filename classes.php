@@ -221,6 +221,14 @@ class Product {
         return $output;
     }
 
+    /**
+     * Function countProducts
+     *
+     * Counts rows of products
+     *
+     * @param int $type specifies if only a specific type should be counted
+     * @return file 
+     */
     static function countProducts($type = null) {
         global $db;
         if ($type) {
@@ -240,9 +248,14 @@ class Product {
      * Gets all products from the database and fetches it all into 1 big 
      * object with subobject of the class "products"
      *
+     * @param int $type producttype (categorie)
+     * @param string $sortorder specifies sorting method
+     * @param int $sortorder specifies sorting method
+     * @param int $startamount specifies lowerlimit
+     * @param int $endamount amount of products per page upperlimit
+     * @param int(bool) $special sets if products should marked as special (frontpage)
      * @return object with subobjects as products
      */
-
     static function getAllProducts($type = null, $sortorder = "name ASC", $startamount = 0, $endamount = 8, $special = 0) {
         global $db;
         if ($type) {
@@ -259,9 +272,9 @@ class Product {
         }
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Product");
-        return $result;    
+        return $result;
     }
-    
+
     static function search($word) {
         global $db;
         $query = $db->prepare("SELECT * FROM Products WHERE name LIKE :word ORDER BY name");
@@ -671,15 +684,15 @@ class Admin {
         $_SESSION['admin_logged_in'] = 0;
         session_destroy();
     }
-    
+
     static function show_order_list() {
         global $db;
         $i = 0;
         $_SESSION['orders'] = Array();
         $query = $db->query("SELECT id, customerid, date FROM Orders");
         $query->setFetchMode(PDO::FETCH_ASSOC);
-        while(true) {
-            if($row = $query->fetch()) {
+        while (true) {
+            if ($row = $query->fetch()) {
                 $_SESSION['orders'][$i]['orderNumber'] = $row['id'];
                 $_SESSION['orders'][$i]['customerID'] = $row['customerid'];
                 $_SESSION['orders'][$i]['date'] = $row['date'];
@@ -692,13 +705,13 @@ class Admin {
         echo "<th> order nummer</th>";
         echo "<th>Klantnummer</th>";
         echo "<th>Datum</th>";
-        foreach($_SESSION['orders'] as $order) {
+        foreach ($_SESSION['orders'] as $order) {
             echo "<tr>";
             echo "<td>";
             echo "<form method='post' action='admin_orders.php'>"
             . "<input type='submit' name='order_number' value="
             . $order['orderNumber'] . ">"
-            . "</form>"; 
+            . "</form>";
             echo "</td>";
             echo "<td>" . $order['customerID'] . "</td>";
             echo "<td>" . $order['date'] . "</td>";
@@ -706,7 +719,7 @@ class Admin {
         }
         echo "</table>";
     }
-    
+
     static function show_order($orderID) {
         global $db;
         $date = Order::show_date($orderID);
@@ -720,7 +733,7 @@ class Admin {
         echo "</table>";
         echo "<a href='admin_orders.php' class='button'><span>&#xf137;</span>terug naar orders</a>";
     }
-    
+
     static function show_customer_info($orderID) {
         global $db;
         $sqlQuery = "SELECT customerid FROM Orders WHERE id=$orderID";
@@ -735,7 +748,7 @@ class Admin {
         echo "<td>";
         echo "<h3>Klantgegevens:</h3> <br>";
         echo "klantnummer: " . $customerID . "<br>";
-        echo "voornaam: " . $row[6]. "<br>";
+        echo "voornaam: " . $row[6] . "<br>";
         echo "achternaam: " . $row[7] . "<br>";
         echo "adres: " . $row[8] . " ";
         echo $row[5] . "<br>";
@@ -743,6 +756,7 @@ class Admin {
         echo "email: " . $row[1] . "<br>";
         echo "</td>";
     }
+
 }
 
 class showMessage {
@@ -798,25 +812,21 @@ class Order {
             $prodID = $products[$i];
             $ProdQuantity = $stock - $quantities[$i];
 
-            $query =  $db->prepare($updateQuery);
+            $query = $db->prepare($updateQuery);
             $query->bindParam(':value', $ProdQuantity);
             $query->bindParam(':id', $prodID);
-            if(!(($stock - $quantities[$i]) >= 0) || !$query->execute()) {
-                    array_push($_SESSION['errorProducts'], $names[$i]);
-                    $_SESSION['dbPullSuccess'] = false;
+            if (!(($stock - $quantities[$i]) >= 0) || !$query->execute()) {
+                array_push($_SESSION['errorProducts'], $names[$i]);
+                $_SESSION['dbPullSuccess'] = false;
             }
-            if($i == (sizeof($products) - 1) && !isset($_SESSION['dbPullSuccess'])) {
+            if ($i == (sizeof($products) - 1) && !isset($_SESSION['dbPullSuccess'])) {
                 $_SESSION['dbPullSuccess'] = true;
             }
         }
     }
+
     // executes order
-    static function executeOrder($userID,
-                        $productIDs,
-                        $quantities,
-                        $prices,
-                        $names,
-                        $payment_method) {
+    static function executeOrder($userID, $productIDs, $quantities, $prices, $names, $payment_method) {
         global $db;
         $query = $db->prepare("INSERT INTO Orders (customerid, payment_method) VALUES (:userID, :payment_method)");
         $query->bindParam(':userID', $userID, PDO::PARAM_INT);
@@ -912,7 +922,7 @@ class Order {
     static function show_customer_info($orderID) {
         global $db;
         global $customer;
-        if(!isset($customer)) {
+        if (!isset($customer)) {
             $customer = $_SESSION['customer'];
         }
         echo "<td>";
@@ -977,11 +987,12 @@ class Order {
     static function printError() {
         echo "Van de volgende producten zijn helaas niet de gewenste aantallen "
         . "beschikbaar: <br>";
-        foreach($_SESSION['errorProducts'] as $errorProduct) {
+        foreach ($_SESSION['errorProducts'] as $errorProduct) {
             echo "- $errorProduct <br>";
         }
         echo "klik <a href='shopping_cart.php'> hier </a> om uw bestelling aan te "
         . "passen of <a href='products.php'> hier </a> om verder te gaan met "
         . "winkelen.";
     }
+
 }
