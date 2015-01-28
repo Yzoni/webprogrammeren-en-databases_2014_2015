@@ -38,7 +38,7 @@ function security_check_admin() {
         return true;
     } else {
         // Not logged in        
-        header("location: index.php");
+        header("location: products.php");
         exit();
     }
 }
@@ -409,11 +409,11 @@ class Customer {
             }
             $_SESSION['customer_logged_in'] = 1;
             $_SESSION['customer_id'] = $result[0]->id;
-            if($_SESSION['loginFalse'] == 1) {
+            if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] == 1) {
                 $_SESSION['loginFalse'] == 0;
                 header('Location: checkout.php');
             } else {
-                header('Location: index.php');
+                header('Location: products.php');
             }
             exit();
         } else {
@@ -885,7 +885,7 @@ class Order {
     static function show_list_orders() {
         global $db;
         global $customer;
-        $query = $db->prepare("SELECT id FROM Orders WHERE customerid=:id");
+        $query = $db->prepare("SELECT id FROM Orders WHERE customerid=:id ORDER BY id DESC");
         $query->bindParam(':id', $customer->id, PDO::PARAM_INT);
         $query->execute();
         $ordersArray = $query->fetchAll();
