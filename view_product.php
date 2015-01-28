@@ -87,8 +87,8 @@ if (!empty($_SESSION['products'])) {
 <script>
     function validQuantity() {
         var quantity = document.forms["addToCart"]["quantity"].value;
-        var stock = "<?php echo $product->stock ?>";
-        var productsInCart = "<?php echo $quantityInCart ?>";
+        var stock = "<?php echo $product->stock; ?>";
+        var productsInCart = "<?php echo $quantityInCart; ?>";
         alert(stock);        
         if (stock == 0){
             alert("Dit product hebben wij momenteel niet op voorraad");
@@ -157,7 +157,7 @@ if (!empty($_SESSION['products'])) {
 	</table>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
-                <input type="number" min="0" max="<?php $stock ?>" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
+                <input type="number" min="0" max="<?php $stock ;?>" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
                 <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
                 </button>
             </form>
