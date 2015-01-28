@@ -12,16 +12,15 @@
         <script>
             document.onkeypress = stopRKey;
 
-        function validQuantity() {
-            var quantity = document.forms["addToCart"]["quantity"].value;
-            var stock = "<?php echo $product->stock; ?>";
-            var productsInCart = "<?php echo $quantityInCart; ?>";
-            alert(stock);        
+        function validQuantity(quantity, stock, productsInCart) {
+            if (quantity = ""){
+                alert("Vul een getal in a.u.b.")
+            }            
             if (stock == 0){
                 alert("Dit product hebben wij momenteel niet op voorraad");
                 return false;
             }    
-            if (quantity !=== Number(quantity)) {
+            if (NaN(quantity)) {
                 alert("U dient cijfers in te vullen");
                 return false;
             }        
@@ -36,7 +35,7 @@
                 vul een getal tussen 0 en " + remaining + " in. ");
                 return false;
             } else {
-                return true;
+                document.addToCart.submit();
             }
 
         }
