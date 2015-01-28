@@ -28,6 +28,13 @@ include 'views/navigation.php';
         </div>
 
 <?php
+
+if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] = 1) {
+    echo "U moet ingelogd zijn om af te rekenen. Indien u geen account heeft"
+    . "klikt u dan <a href='customer_register'> hier </a> om te registreren.";
+}
+?>
+<?php
 include 'views/footer.php';
 ?>
 

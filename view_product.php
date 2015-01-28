@@ -84,32 +84,6 @@ if (!empty($_SESSION['products'])) {
 
 ?>
 
-<script>
-    function validQuantity() {
-        var quantity = document.forms["addToCart"]["quantity"].value;
-        var stock = "<?php echo $product->stock ?>";
-        var productsInCart = "<?php echo $quantityInCart ?>";
-        if (stock == 0){
-            alert("Dit product hebben wij momenteel niet op voorraad");
-            return false;
-        }    
-        if (isNaN(quantity)) {
-            alert("U dient cijfers in te vullen");
-            return false;
-        }        
-        if (quantity > stock || quantity <= 0) {
-            alert("Vul alstublieft een getal in tussen de 0 en " + stock + " a.u.b. ,\
-            meer hebben wij op dit moment niet op voorraad.");
-            return false;
-        }
-        if (quantity + productsInCart > stock) {
-            var remaining = quantity - productsInCart
-            alert("U heeft al " + productsInCart + " van dit product in uw winkelwagen,\
-            vul een getal tussen 0 en " + remaining + " in. ");
-            return false;
-        }
-    }
-</script>
 
 
 <div class="wrappercontent">
@@ -155,9 +129,10 @@ if (!empty($_SESSION['products'])) {
 	  </tr>
 	</table>
         <div class=addToCart>
-            <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
-                <input type="number" min="0" max="<?php $stock ?>" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
-                <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
+            <form name="addToCart" class="inputForm" action="" method="POST">
+                <input type="number" min="0" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
+                <button onclick="validQuantity(quantity, <?php echo $product->stock;?>, <?php echo $quantityInCart; ?>)" type="submit" class="button"> 
+                <span>&#xf0fe;</span>voeg toe 
                 </button>
             </form>
         </div>
@@ -180,7 +155,7 @@ if (!empty($_SESSION['products'])) {
 	  <a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>          
         </div>
     <br>
-<div id='recentView'>
+    <div id='recentView'>
     Recent bekeken:
     <br>
 <?php
@@ -199,6 +174,8 @@ if (!empty($_SESSION['products'])) {
         echo "</a>";
     }
 ?>
+</div>
+
 </div>
 <?php
 include 'views/footer.php';

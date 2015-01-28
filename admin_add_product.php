@@ -55,7 +55,7 @@ include 'views/navigation.php';
         <div class="beschrijving_product">
             <textarea name="description" id="description_fruit" placeholder=" beschrijving" cols="50" rows="10"></textarea>    
         </div>
-        <input type="text" name="price" placeholder="prijs per stuk" id="price"> <br>
+        <input type="text" name="price" placeholder="prijs per kilogram" id="price"> <br>
         <input type="text" name="stock" placeholder="voorraad" id="stock"><br>
         Toon op homepage: <input value="1" type="checkbox" name="special"><br>
         <input type="file" name="image" class="upload_image"><br>

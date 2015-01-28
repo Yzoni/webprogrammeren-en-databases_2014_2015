@@ -38,7 +38,7 @@ function security_check_admin() {
         return true;
     } else {
         // Not logged in        
-        header("location: index.php");
+        header("location: products.php");
         exit();
     }
 }
@@ -404,10 +404,17 @@ class Customer {
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_CLASS, "Customer");
         if ($result) {
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                 session_start();
+            }
             $_SESSION['customer_logged_in'] = 1;
             $_SESSION['customer_id'] = $result[0]->id;
-            header('Location: index.php');
+            if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] == 1) {
+                $_SESSION['loginFalse'] == 0;
+                header('Location: checkout.php');
+            } else {
+                header('Location: products.php');
+            }
             exit();
         } else {
             header('Location: customer_login.php?fn=credentialsfalse');
@@ -689,7 +696,7 @@ class Admin {
         global $db;
         $i = 0;
         $_SESSION['orders'] = Array();
-        $query = $db->query("SELECT id, customerid, date FROM Orders");
+        $query = $db->query("SELECT id, customerid, date FROM Orders ORDER BY id DESC");
         $query->setFetchMode(PDO::FETCH_ASSOC);
         while (true) {
             if ($row = $query->fetch()) {
@@ -878,7 +885,7 @@ class Order {
     static function show_list_orders() {
         global $db;
         global $customer;
-        $query = $db->prepare("SELECT id FROM Orders WHERE customerid=:id");
+        $query = $db->prepare("SELECT id FROM Orders WHERE customerid=:id ORDER BY id DESC");
         $query->bindParam(':id', $customer->id, PDO::PARAM_INT);
         $query->execute();
         $ordersArray = $query->fetchAll();
