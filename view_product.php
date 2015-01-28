@@ -89,6 +89,7 @@ if (!empty($_SESSION['products'])) {
         var quantity = document.forms["addToCart"]["quantity"].value;
         var stock = "<?php echo $product->stock ?>";
         var productsInCart = "<?php echo $quantityInCart ?>";
+        alert(stock);        
         if (stock == 0){
             alert("Dit product hebben wij momenteel niet op voorraad");
             return false;
