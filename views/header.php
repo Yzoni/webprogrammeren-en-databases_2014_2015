@@ -13,7 +13,9 @@
             document.onkeypress = stopRKey;
 
         function validQuantity(quantity, stock, productsInCart) {
-            
+            if (quantity = ""){
+                alert("Vul een getal in a.u.b.")
+            }            
             if (stock == 0){
                 alert("Dit product hebben wij momenteel niet op voorraad");
                 return false;
@@ -33,7 +35,7 @@
                 vul een getal tussen 0 en " + remaining + " in. ");
                 return false;
             } else {
-                return true;
+                document.addToCart.submit();
             }
 
         }
