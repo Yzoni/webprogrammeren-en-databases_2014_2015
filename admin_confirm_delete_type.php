@@ -3,12 +3,16 @@ require_once 'classes.php';
 
 if (isset($_GET['id']) && is_admin_logged_in()) {
     $producttype = new ProductType($_GET["id"]);
+    $products = Product::getAllProducts($producttype->id);
 } else {
     header("Location: 404page.php");
 }
 
 if (isset($_GET['confirm']) && $_GET['confirm'] == "y" && is_admin_logged_in()) {
     $status = $producttype->delete();
+    foreach ($products as $product) {
+        $product->delete();
+    }
     header('Location: products.php');
 }
 
@@ -16,11 +20,10 @@ include 'views/header.php';
 include 'views/navigation.php';
 ?>
 <div class="wrappercontent">
-    <h2 class="contenttitle">Weet u zeker dat u de categorie <?php echo $producttype->name ?> samen met de volgende producten wilt verwijderen?</h2>
+    <h2 class="contenttitle">Weet u zeker dat u de categorie <?php echo $producttype->name ?> EN de volgende producten wilt verwijderen?</h2>
     <?php
     $productscount = Product::countProducts($producttype->id);
     if ($productscount > 0) {
-        $products = Product::getAllProducts($producttype->id);
         echo "<table>";
         echo "<thead>";
         echo "<tr>";
@@ -44,7 +47,7 @@ include 'views/navigation.php';
 
     <form action="admin_confirm_delete_type.php" method="get">
         <?php
-        echo "<a class = \"button_delete\" href=\"admin_confirm_delete_type.php?id=" . $producttype->id . "&confirm=y\">Delete</a>";
+        echo "<a class = \"button_delete\" href=\"admin_confirm_delete_type.php?id=" . $producttype->id . "&confirm=y\">Verwijderen</a>";
         echo "<a class = \"button\" href = \"admin_edit_producttype.php?id=" . $producttype->id . "\">Annuleer</a>";
         ?>
     </form>

@@ -93,7 +93,7 @@ if (!empty($_SESSION['products'])) {
             alert("Dit product hebben wij momenteel niet op voorraad");
             return false;
         }    
-        if (isNaN(quantity)) {
+        if (quantity !=== Number(quantity)) {
             alert("U dient cijfers in te vullen");
             return false;
         }        
