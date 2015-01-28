@@ -129,8 +129,8 @@ if (!empty($_SESSION['products'])) {
 	  </tr>
 	</table>
         <div class=addToCart>
-            <form name="addToCart" class="inputForm" action="" onsubmit="validQuantity();" method="POST">
-                <input type="number" min="0" max="<?php $stock ;?>" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
+            <form name="addToCart" class="inputForm" action="" onsubmit="validQuantity(quantity, <?php echo $product->stock;?>, <?php echo $quantityInCart; ?>)" method="POST">
+                <input type="number" min="0" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
                 <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
                 </button>
             </form>

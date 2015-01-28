@@ -12,11 +12,8 @@
         <script>
             document.onkeypress = stopRKey;
 
-        function validQuantity() {
-            var quantity = document.forms["addToCart"]["quantity"].value;
-            var stock = "<?php echo $product->stock; ?>";
-            var productsInCart = "<?php echo $quantityInCart; ?>";
-            alert(stock);        
+        function validQuantity(quantity, stock, productsInCart) {
+            
             if (stock == 0){
                 alert("Dit product hebben wij momenteel niet op voorraad");
                 return false;
