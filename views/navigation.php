@@ -9,7 +9,7 @@
                     $producttypes_nav = ProductType::getAllProductTypes();
                     foreach ($producttypes_nav as $producttype_nav) {
                         $productsincat = Product::countProducts($producttype_nav->id);
-                        if ($productsincat != 0) {
+                        if ($productsincat != 0 || is_admin_logged_in()) {
                             echo "<li>";
                             if (is_admin_logged_in()) {
                                 echo "<a href=\"admin_edit_producttype.php?id=$producttype_nav->id\"><span class=\"icon\">&#xF040; </span></a>";
