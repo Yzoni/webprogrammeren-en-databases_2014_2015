@@ -108,7 +108,10 @@ if (!empty($_SESSION['products'])) {
             alert("U heeft al " + productsInCart + " van dit product in uw winkelwagen,\
             vul een getal tussen 0 en " + remaining + " in. ");
             return false;
+        } else {
+            return true;
         }
+
     }
 </script>
 
@@ -156,7 +159,7 @@ if (!empty($_SESSION['products'])) {
 	  </tr>
 	</table>
         <div class=addToCart>
-            <form name="addToCart" class="inputForm" action="" onsubmit="return validQuantity();" method="POST">
+            <form name="addToCart" class="inputForm" action="" onsubmit="validQuantity();" method="POST">
                 <input type="number" min="0" max="<?php $stock ;?>" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
                 <button type="submit" class="button"> <span>&#xf0fe;</span>voeg toe 
                 </button>
