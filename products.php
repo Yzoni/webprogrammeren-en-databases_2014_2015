@@ -105,21 +105,20 @@ $totalpages = ceil($totalamount / $endamount);
             echo "<a href=\"products.php?page=" . $nextpage . "&sort=" . $sort . "&amount=" . $endamount ."\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         }
         ?>
-        <div class="dropdownproducts">
-            <form method="GET" action="<?php echo (isset($_GET['id']) ? "products.php?id=" . $_GET['id'] : "products.php"); ?>">
+        <div class="dropdowproducts">
+            <form method="GET" action="">
+                <input type="hidden" name="id" value="<?php echo (isset($_GET['id']) ? $_GET['id'] : ""); ?>" />
                 <select id="select_amount" class="selecter" name="amount" onchange="form.submit()">
-                    <option> Items per pagina </option>    
-                    <option value="4"> 4 producten </option>
-                    <option value="6"> 6 producten </option>
-                    <option value="8"> 8 producten </option>            
+                    <option value="6"> Items per pagina </option>    
+                    <option value="4" <?php echo ((isset($_GET['amount'])&&$_GET['amount']=="4") ? "selected" : ""); ?>> 4 producten </option>
+                    <option value="6"> 6 producten </option> 
+                    <option value="8" <?php echo ((isset($_GET['amount'])&&$_GET['amount']=="8") ? "selected" : ""); ?>> 8 producten </option>            
                 </select>
-            </form>
-            <form method="GET" action="<?php echo (isset($_GET['id']) ? "products.php?id=" . $_GET['id'] : "products.php"); ?>">
                 <select id="select_order" class="selecter" name="sort" onchange="form.submit()">
-                    <option> Sorteer op</option>    
+                    <option value="namea"> Sorteer op</option>    
                     <option value="namea"> A - Z </option>
-                    <option value="priced"> Prijs hoog - laag </option>
-                    <option value="pricea"> Prijs laag - hoog </option>            
+                    <option value="priced" <?php echo ((isset($_GET['sort'])&&$_GET['sort']=="priced") ? "selected" : ""); ?>> Prijs hoog - laag </option>
+                    <option value="pricea" <?php echo ((isset($_GET['sort'])&&$_GET['sort']=="pricea") ? "selected" : ""); ?>> Prijs laag - hoog </option>            
                 </select>
             </form>
         </div>
