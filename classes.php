@@ -947,10 +947,10 @@ class Order {
 
         echo "<tr>";
         echo "<th>";
-        echo "Hoeveelheid:";
+        echo "Productnaam:";
         echo "</th>";
         echo "<th>";
-        echo "Productnaam:";
+        echo "Hoeveelheid:";
         echo "</th>";
         echo "<th>";
         echo "Prijs:";
@@ -964,10 +964,10 @@ class Order {
         while ($row = $query->fetch()) {
             echo "<tr>";
             echo "<td>";
-            echo $row['quantity'];
+            echo $row['product_name'];
             echo "</td>";
             echo "<td>";
-            echo $row['product_name'];
+            echo $row['quantity'];
             echo "</td>";
             echo "<td>";
             echo "<span class='iconfont'>&#xf153; </span>" . $row['price'];
