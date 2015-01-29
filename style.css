@@ -499,7 +499,7 @@ footer a:hover {
 }
 
 .textlink:hover {
-    padding-left: 4px;
+    text-decoration: underline;
 }
 
 .box, .productpagelink {
