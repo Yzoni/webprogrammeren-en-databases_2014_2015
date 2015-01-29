@@ -758,7 +758,7 @@ class Admin {
             }
             $i += 1;
         }
-        echo "<table class='order'>";
+        echo "<table>";
         echo "<th>Ordernummer</th>";
         echo "<th>Klantnummer</th>";
         echo "<th>Datum</th>";
@@ -788,6 +788,8 @@ class Admin {
         echo "</tr>";
         Order::show_company_Info();
         Admin::show_customer_info($orderID);
+	echo "</table>";
+	echo "<table>";
         Order::show_order_table($orderID);
         echo "</table>";
         echo "<a href='admin_orders.php' class='button'>"
