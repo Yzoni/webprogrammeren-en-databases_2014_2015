@@ -134,6 +134,27 @@ if (!empty($_SESSION['products'])) {
 	    <td>Prijs per kg: <?php echo $product->price; ?> euro</td>		
 	  </tr>
 	</table>
+
+	<div id='recentView'>
+	    Recent bekeken:
+	    <br>
+		<?php
+		    if(array_search($_GET['id'], $_SESSION['viewed']) === false &&
+			    sizeof($_SESSION['viewed']) < 4) {
+			array_push($_SESSION['viewed'], $_GET['id']);
+		    } else if (array_search($_GET['id'], $_SESSION['viewed']) === false) {
+			array_shift($_SESSION['viewed']);
+			array_push($_SESSION['viewed'], $_GET['id']);
+		    }
+		    foreach($_SESSION['viewed'] as $viewedProductID) {
+			$viewedProduct = new Product($viewedProductID);
+			echo "<a class='textlink' href= http://fruyt.nl/view_product.php?id="
+			. $viewedProductID . ">"
+			. $viewedProduct->name . "<br>";
+			echo "</a>";
+		    }
+		?>
+	</div>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" method="POST">
                 <input type="number" min="0" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
@@ -160,26 +181,6 @@ if (!empty($_SESSION['products'])) {
     <div class='backtocategory'>
 	<a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>  
 <br>
-    <div id='recentView'>
-    Recent bekeken:
-    <br>
-<?php
-    if(array_search($_GET['id'], $_SESSION['viewed']) === false &&
-            sizeof($_SESSION['viewed']) < 4) {
-        array_push($_SESSION['viewed'], $_GET['id']);
-    } else if (array_search($_GET['id'], $_SESSION['viewed']) === false) {
-        array_shift($_SESSION['viewed']);
-        array_push($_SESSION['viewed'], $_GET['id']);
-    }
-    foreach($_SESSION['viewed'] as $viewedProductID) {
-        $viewedProduct = new Product($viewedProductID);
-        echo "<a class='textlink' href= http://fruyt.nl/view_product.php?id="
-        . $viewedProductID . ">"
-        . $viewedProduct->name . "<br>";
-        echo "</a>";
-    }
-?>
-</div>
 </div>
 </div>
 <?php
