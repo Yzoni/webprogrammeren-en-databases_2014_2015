@@ -13,7 +13,8 @@ function is_admin_logged_in() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] == 1) {
+    if (isset($_SESSION['admin_logged_in']) && 
+            $_SESSION['admin_logged_in'] == 1) {
         // Logged in
         return true;
     } else {
@@ -33,7 +34,8 @@ function security_check_admin() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] == 1) {
+    if (isset($_SESSION['admin_logged_in']) && 
+            $_SESSION['admin_logged_in'] == 1) {
         // Logged in
         return true;
     } else {
@@ -54,7 +56,8 @@ function is_customer_logged_in() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    if (isset($_SESSION['customer_logged_in']) && $_SESSION['customer_logged_in'] == 1) {
+    if (isset($_SESSION['customer_logged_in']) && 
+            $_SESSION['customer_logged_in'] == 1) {
         // Logged in
         return true;
     } else {
@@ -74,7 +77,8 @@ function security_check_customer() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    if (isset($_SESSION['customer_logged_in']) && $_SESSION['customer_logged_in'] == 1) {
+    if (isset($_SESSION['customer_logged_in']) && 
+            $_SESSION['customer_logged_in'] == 1) {
         // Logged in
         return true;
     } else {
@@ -155,7 +159,8 @@ class ProductType {
      */
     function edit() {
         global $db;
-        $query = $db->prepare("UPDATE ProductTypes SET name = :name WHERE id = :id");
+        $query = $db->prepare("UPDATE ProductTypes SET name = :name "
+                . "WHERE id = :id");
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
         $query->bindParam(':id', $this->id, PDO::PARAM_INT);
         $status = $query->execute();
@@ -235,7 +240,8 @@ class Product {
     static function countProducts($type = null) {
         global $db;
         if ($type) {
-            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid");
+            $query = $db->prepare("SELECT * FROM Products "
+                    . "WHERE typeid = :typeid");
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
         } else {
             $query = $db->prepare("SELECT * FROM Products");
@@ -256,20 +262,28 @@ class Product {
      * @param int $sortorder specifies sorting method
      * @param int $startamount specifies lowerlimit
      * @param int $endamount amount of products per page upperlimit
-     * @param int(bool) $special sets if products should marked as special (frontpage)
+     * @param int(bool) $special sets if products should marked as special 
+     * (frontpage)
      * @return object with subobjects as products
      */
-    static function getAllProducts($type = null, $sortorder = "name ASC", $startamount = 0, $endamount = 8, $special = 0) {
+    static function getAllProducts($type = null, 
+            $sortorder = "name ASC", 
+            $startamount = 0, 
+            $endamount = 8, 
+            $special = 0) {
         global $db;
         if ($type) {
-            $query = $db->prepare("SELECT * FROM Products WHERE typeid = :typeid ORDER BY $sortorder LIMIT :startamount, :endamount");
+            $query = $db->prepare("SELECT * FROM Products "
+                    . "WHERE typeid = :typeid ORDER BY $sortorder "
+                    . "LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
             $query->bindParam(':typeid', $type, PDO::PARAM_INT);
         } else if ($special == 1) {
             $query = $db->prepare("SELECT * FROM Products WHERE special = 1");
         } else {
-            $query = $db->prepare("SELECT * FROM Products ORDER BY $sortorder LIMIT :startamount, :endamount");
+            $query = $db->prepare("SELECT * FROM Products "
+                    . "ORDER BY $sortorder LIMIT :startamount, :endamount");
             $query->bindParam(':startamount', $startamount, PDO::PARAM_INT);
             $query->bindParam(':endamount', $endamount, PDO::PARAM_INT);
         }
@@ -288,7 +302,8 @@ class Product {
      */
     static function search($word) {
         global $db;
-        $query = $db->prepare("SELECT * FROM Products WHERE name LIKE :word ORDER BY name");
+        $query = $db->prepare("SELECT * FROM Products WHERE name "
+                . "LIKE :word ORDER BY name");
         $str = '%' . $word . '%';
         $query->bindParam(':word', $str);
         $query->execute();
@@ -303,9 +318,18 @@ class Product {
      * 
      * @return bool
      */
-    static function create($typeid, $name, $description, $stock, $price, $special, $image = null) {
+    static function create($typeid, 
+            $name, 
+            $description, 
+            $stock, 
+            $price, 
+            $special, 
+            $image = null) {
         global $db;
-        $query = $db->prepare("INSERT INTO Products (typeid, name, description, stock, price, special, image) VALUES (:typeid, :name, :description, :stock, :price, :special, :image)");
+        $query = $db->prepare("INSERT INTO Products (typeid, name, description, "
+                . "stock, price, special, image) "
+                . "VALUES (:typeid, :name, :description, :stock, :price, "
+                . ":special, :image)");
         $query->bindParam(':typeid', $typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->bindParam(':description', $description, PDO::PARAM_STR);
@@ -325,7 +349,10 @@ class Product {
      */
     function edit() {
         global $db;
-        $query = $db->prepare("UPDATE Products SET typeid = :typeid, name = :name, description = :description, stock = :stock, price = :price, special = :special, image = :image WHERE id = :id");
+        $query = $db->prepare("UPDATE Products SET typeid = :typeid, "
+                . "name = :name, description = :description, stock = :stock, "
+                . "price = :price, special = :special, image = :image "
+                . "WHERE id = :id");
         $query->bindParam(':image', $this->image, PDO::PARAM_LOB);
         $query->bindParam(':typeid', $this->typeid, PDO::PARAM_INT);
         $query->bindParam(':name', $this->name, PDO::PARAM_STR);
@@ -340,10 +367,11 @@ class Product {
     /**
      * Function resizeImage
      *
-     * Resizes an image to specific aspect ratio. It does not crop so the image will
-     * be stretched. *Uses imagick module.*
+     * Resizes an image to specific aspect ratio. It does not crop so the image 
+     * will be stretched. *Uses imagick module.*
      *
-     * NOTE: This function is not used by default. It needs to be uncomemnted in admin_edit_product and 
+     * NOTE: This function is not used by default. It needs to be uncomemnted in
+     * admin_edit_product and 
      * admin_add_product to enable it.
      * 
      * @param image file
@@ -431,9 +459,10 @@ class Customer {
     /**
      * Function login
      *
-     * Checks if the username and hashed password can be be found in the database
-     * If it can be found set session customer logged in and set a session 
-     * customer id. If it can not be found point head to function credentialsfalse
+     * Checks if the username and hashed password can be be found in 
+     * the database. If it can be found set session customer logged in and set a 
+     * session customer id. If it can not be found point head to function 
+     * credentialsfalse
      *
      * @param string $email Email of the user
      * @param string $password Plain password of the user
@@ -445,7 +474,8 @@ class Customer {
 
         $password = hash("sha256", $password . $passwordsalt);
 
-        $query = $db->prepare("SELECT * FROM Customers WHERE email = :email AND password = :password");
+        $query = $db->prepare("SELECT * FROM Customers "
+                . "WHERE email = :email AND password = :password");
         $query->bindParam(':email', $email, PDO::PARAM_STR);
         $query->bindParam(':password', $password, PDO::PARAM_STR);
         $query->execute();
@@ -456,7 +486,8 @@ class Customer {
             }
             $_SESSION['customer_logged_in'] = 1;
             $_SESSION['customer_id'] = $result[0]->id;
-            if (isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] == 1) {
+            if (isset($_SESSION['loginFalse']) && 
+                    $_SESSION['loginFalse'] == 1) {
                 $_SESSION['loginFalse'] == 0;
                 header('Location: checkout.php');
             } else {
@@ -485,14 +516,24 @@ class Customer {
      * @param bool $gender 1 for male and 0 for female
      * 
      */
-    static function create($email, $password, $streetaddress, $streetnumber, $zip, $firstname, $lastname, $gender) {
+    static function create($email, 
+            $password, 
+            $streetaddress, 
+            $streetnumber, 
+            $zip, 
+            $firstname, 
+            $lastname, 
+            $gender) {
         global $db;
         global $passwordsalt;
 
         $password = hash("sha256", $password . $passwordsalt);
 
         try {
-            $query = $db->prepare("INSERT INTO Customers (email, password, streetaddress, streetnumber, zip, firstname, lastname, gender) VALUES (:email, :password, :streetaddress, :streetnumber, :zip, :firstname, :lastname, :gender)");
+            $query = $db->prepare("INSERT INTO Customers (email, password, "
+                    . "streetaddress, streetnumber, zip, firstname, lastname, "
+                    . "gender) VALUES (:email, :password, :streetaddress, "
+                    . ":streetnumber, :zip, :firstname, :lastname, :gender)");
             $query->bindParam(':email', $email, PDO::PARAM_STR);
             $query->bindParam(':password', $password, PDO::PARAM_STR);
             $query->bindParam(':streetaddress', $streetaddress, PDO::PARAM_STR);
@@ -525,9 +566,15 @@ class Customer {
 
     function edit() {
         global $db;
-        $query = $db->prepare("UPDATE Customers SET email = :email, zip = :zip, gender = :gender, streetaddress = :streetaddress, streetnumber = :streetnumber, firstname = :firstname, lastname = :lastname  WHERE id = :id");
+        $query = $db->prepare("UPDATE Customers SET email = :email, "
+                . "zip = :zip, gender = :gender, "
+                . "streetaddress = :streetaddress, "
+                . "streetnumber = :streetnumber, "
+                . "firstname = :firstname, "
+                . "lastname = :lastname  WHERE id = :id");
         $query->bindParam(':email', $this->email, PDO::PARAM_STR);
-        $query->bindParam(':streetaddress', $this->streetaddress, PDO::PARAM_STR);
+        $query->bindParam(':streetaddress', $this->streetaddress, 
+                PDO::PARAM_STR);
         $query->bindParam(':streetnumber', $this->streetnumber, PDO::PARAM_STR);
         $query->bindParam(':zip', $this->zip, PDO::PARAM_STR);
         $query->bindParam(':firstname', $this->firstname, PDO::PARAM_STR);
@@ -558,7 +605,9 @@ class Customer {
             $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
             try {
-                $query = $db->prepare("UPDATE Customers SET password=:newpassword WHERE id = :id AND password = :oldpassword");
+                $query = $db->prepare("UPDATE Customers "
+                        . "SET password=:newpassword "
+                        . "WHERE id = :id AND password = :oldpassword");
                 $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
                 $query->bindParam(':oldpassword', $oldpassword, PDO::PARAM_STR);
                 $query->bindParam(':id', $this->id, PDO::PARAM_INT);
@@ -628,7 +677,8 @@ class Admin {
         $newpassword = hash("sha256", $newpassword . $passwordsalt);
 
         try {
-            $query = $db->prepare("UPDATE Admins SET password=:newpassword WHERE id = :id AND password=:oldpassword");
+            $query = $db->prepare("UPDATE Admins SET password=:newpassword "
+            . "WHERE id = :id AND password=:oldpassword");
             $query->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
             $query->bindParam(':id', $this->id, PDO::PARAM_INT);
             $query->bindParam(':oldpassword', $oldpassword, PDO::PARAM_STR);
@@ -646,7 +696,8 @@ class Admin {
         $password = hash("sha256", $password . $passwordsalt);
 
         try {
-            $query = $db->prepare("INSERT INTO Admins (username, password) VALUES (:username, :password)");
+            $query = $db->prepare("INSERT INTO Admins (username, password) "
+            . "VALUES (:username, :password)");
             $query->bindParam(':username', $username, PDO::PARAM_STR);
             $query->bindParam(':password', $password, PDO::PARAM_STR);
             $query->execute();
@@ -662,7 +713,8 @@ class Admin {
 
         $password = hash("sha256", $password . $passwordsalt);
 
-        $query = $db->prepare("SELECT * FROM Admins WHERE username = :username AND password = :password");
+        $query = $db->prepare("SELECT * FROM Admins "
+                . "WHERE username = :username AND password = :password");
         $query->bindParam(':username', $username, PDO::PARAM_STR);
         $query->bindParam(':password', $password, PDO::PARAM_STR);
         $query->execute();
@@ -693,7 +745,8 @@ class Admin {
         global $db;
         $i = 0;
         $_SESSION['orders'] = Array();
-        $query = $db->query("SELECT id, customerid, date FROM Orders ORDER BY id DESC");
+        $query = $db->query("SELECT id, customerid, date "
+                . "FROM Orders ORDER BY id DESC");
         $query->setFetchMode(PDO::FETCH_ASSOC);
         while (true) {
             if ($row = $query->fetch()) {
@@ -737,7 +790,8 @@ class Admin {
         Admin::show_customer_info($orderID);
         Order::show_order_table($orderID);
         echo "</table>";
-        echo "<a href='admin_orders.php' class='button'><span>&#xf137;</span>terug naar orders</a>";
+        echo "<a href='admin_orders.php' class='button'>"
+        . "<span>&#xf137;</span>terug naar orders</a>";
     }
 
 // when given the orderID, show_customer_info prints all the information about
@@ -778,11 +832,17 @@ class showMessage {
     public function showMessages() {
         foreach ($this->messages as $message) {
             if ($message[0] == "error") {
-                echo "<span class=\"message\"><span id=\"error\">ERROR: </span> " . $message[1] . "</span>";
+                echo "<span class=\"message\">"
+                . "<span id=\"error\">ERROR: </span> " 
+                . $message[1] . "</span>";
             } elseif ($message[0] == "success") {
-                echo "<span class=\"message\"><span id=\"success\">GELUKT: </span> " . $message[1] . "</span>";
+                echo "<span class=\"message\">"
+                . "<span id=\"success\">GELUKT: </span> " 
+                . $message[1] . "</span>";
             } elseif ($message[0] == "notice") {
-                echo "<span class=\"message\"><span id=\"success\">NOTICE: </span> " . $message[1] . "</span>";
+                echo "<span class=\"message\">"
+                . "<span id=\"success\">NOTICE: </span> " 
+                . $message[1] . "</span>";
             }
         }
         return true;
@@ -813,7 +873,8 @@ class Order {
         $updateQuery = "UPDATE Products SET stock=:value WHERE id=:id";
         $_SESSION['errorProducts'] = Array();
         for ($i = 0; $i < sizeof($products); $i++) {
-            $query = $db->query("SELECT stock FROM Products WHERE id=$products[$i]");
+            $query = $db->query("SELECT stock FROM Products "
+            . "WHERE id=$products[$i]");
             $query->setFetchMode(PDO::FETCH_ASSOC);
             $row = $query->fetch();
             $stock = $row['stock'];
@@ -827,27 +888,38 @@ class Order {
                 array_push($_SESSION['errorProducts'], $names[$i]);
                 $_SESSION['dbPullSuccess'] = false;
             }
-            if ($i == (sizeof($products) - 1) && !isset($_SESSION['dbPullSuccess'])) {
+            if ($i == (sizeof($products) - 1) && 
+                    !isset($_SESSION['dbPullSuccess'])) {
                 $_SESSION['dbPullSuccess'] = true;
             }
         }
     }
 
 // executeOrder inserts the order into the database
-    static function executeOrder($userID, $productIDs, $quantities, $prices, $names, $payment_method) {
+    static function executeOrder($userID, 
+            $productIDs, 
+            $quantities, 
+            $prices, 
+            $names, 
+            $payment_method) {
         global $db;
-        $query = $db->prepare("INSERT INTO Orders (customerid, payment_method) VALUES (:userID, :payment_method)");
+        $query = $db->prepare("INSERT INTO Orders (customerid, payment_method) "
+                . "VALUES (:userID, :payment_method)");
         $query->bindParam(':userID', $userID, PDO::PARAM_INT);
         $query->bindParam(':payment_method', $payment_method, PDO::PARAM_STR);
         $query->execute();
 
-        $result = $db->query("SELECT MAX(id) FROM Orders WHERE customerid=$userID");
+        $result = $db->query("SELECT MAX(id) FROM Orders WHERE "
+                . "customerid=$userID");
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $resultArray = $result->fetch();
         $inserted_id = end($resultArray);
 
         foreach ($productIDs as $index => $order_product) {
-            $query = $db->prepare("INSERT INTO Orders_Products (OrderID, productID, quantity,product_name,price) VALUES (:OrderID, :productID,:quantity, :product_name,:price)");
+            $query = $db->prepare("INSERT INTO Orders_Products "
+                    . "(OrderID, productID, quantity,product_name,price) "
+                    . "VALUES (:OrderID, :productID,:quantity, "
+                    . ":product_name,:price)");
             $query->bindParam(":OrderID", $inserted_id, PDO::PARAM_INT);
             $query->bindParam(":productID", $order_product, PDO::PARAM_INT);
             $query->bindParam(":quantity", $quantities[$index], PDO::PARAM_STR);
@@ -863,7 +935,8 @@ class Order {
         global $db;
         $namesArray = Array();
         foreach ($IDarray as $ProductID) {
-            $query = $db->query("SELECT name FROM Products WHERE id=$ProductID LIMIT 1");
+            $query = $db->query("SELECT name FROM Products "
+            . "WHERE id=$ProductID LIMIT 1");
             $query->setFetchMode(PDO::FETCH_NUM);
             $resultArray = $query->fetch();
             $productName = end($resultArray);
@@ -877,7 +950,8 @@ class Order {
         global $db;
         $pricesArray = Array();
         foreach ($IDarray as $ProductID) {
-            $query = $db->query("SELECT price FROM Products WHERE id=$ProductID LIMIT 1");
+            $query = $db->query("SELECT price FROM Products "
+            . "WHERE id=$ProductID LIMIT 1");
             $query->setFetchMode(PDO::FETCH_ASSOC);
             $resultArray = $query->fetch();
             $productPrice = end($resultArray);
@@ -889,13 +963,15 @@ class Order {
     static function show_list_orders() {
         global $db;
         global $customer;
-        $query = $db->prepare("SELECT id FROM Orders WHERE customerid=:id ORDER BY id DESC");
+        $query = $db->prepare("SELECT id FROM Orders WHERE "
+                . "customerid=:id ORDER BY id DESC");
         $query->bindParam(':id', $customer->id, PDO::PARAM_INT);
         $query->execute();
         $ordersArray = $query->fetchAll();
         for ($i = 0; $i < sizeof($ordersArray); $i++) {
             echo "<form method='post' action='customer_orders.php'>"
-            . "<input type='submit' name='order_number' value=" . $ordersArray[$i][0] . ">"
+            . "<input type='submit' "
+            . "name='order_number' value=" . $ordersArray[$i][0] . ">"
             . "</form>";
         }
     }
@@ -1010,7 +1086,8 @@ class Order {
         foreach ($_SESSION['errorProducts'] as $errorProduct) {
             echo "- $errorProduct <br>";
         }
-        echo "klik <a href='shopping_cart.php'> hier </a> om uw bestelling aan te "
+        echo "klik <a href='shopping_cart.php'> hier "
+        . "</a> om uw bestelling aan te "
         . "passen of <a href='products.php'> hier </a> om verder te gaan met "
         . "winkelen.";
     }
