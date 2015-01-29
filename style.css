@@ -425,6 +425,7 @@ footer a:hover {
     height: 32px;
     line-height: 32px;
     margin-bottom: 10px;
+    border: 1px red solid;
 }
 .pageswitchwrapper .button {
     color: white;
@@ -548,7 +549,6 @@ footer a:hover {
 
 .dropdownproducts {
     display: inline-block;
-    right: 5%;
     width: 250px;
     border: 1px red solid;
     height: 32px;
