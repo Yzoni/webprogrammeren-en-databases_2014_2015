@@ -395,13 +395,13 @@ footer {
 
 footer p {
     float: left;
-    line-height: 25px;
+    line-height: 50px;
     margin-left: 25px;
 }
 
 footer a {
     float: right;
-    line-height: 25px;
+    line-height: 50px;
     margin-right: 25px;
     text-decoration: none;
     color: #3D9191;
