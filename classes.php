@@ -1006,8 +1006,7 @@ class Order {
 // made.
     static function show_date($orderID) {
         global $db;
-        $query = $db->query("SELECT date FROM Orders WHERE id= :orderID");
-        $query->bindParam("orderID", $orderID, PDO::PARAM_INT);
+        $query = $db->query("SELECT date FROM Orders WHERE id= $orderID");
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $dateArray = $query->fetch();
         echo "datum: " . end($dateArray);
