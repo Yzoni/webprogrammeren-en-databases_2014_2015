@@ -30,23 +30,19 @@ include 'views/navigation.php';
     <h2 class="contenttitle">Registreer als nieuwe klant: </h2>
     <div class="wrapperregister">
     <form action="customer_register.php" method="POST">
-        <input type="text" name="email" placeholder="emailadres" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br>
-        <input type="password" name="password" placeholder="wachtwoord" id="pass1" onkeyup="checkPass();
-                return false;">
-        <span id="confirmMessage"></span><br>
-        <input type="password" name="password2" placeholder="wachtwoord (nogmaals)" id="pass2" onkeyup="checkPass();
-                return false;">
-        <span id="confirmMessage"></span><br>
+        <input id="email" type="text" name="email" placeholder="emailadres" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  onkeyup="checkForm()"><br>
+        <input type="password" name="password" placeholder="wachtwoord" id="password1" onkeyup="checkForm()">
+        <input type="password" name="password2" placeholder="wachtwoord (nogmaals)" id="password2" onkeyup="checkForm()">
         <select name="gender" class="select_gender">
             <option value="true">Dhr.</option>
             <option value="false">Mevr.</option>
         </select>
-        <input type="text" name="firstname" placeholder="voornaam" id="person"><br>
-        <input type="text" name="lastname" placeholder="achternaam" id="person"><br>
-        <input type="text" name="zip" placeholder="postcode" pattern="[0-9]{4}[a-zA-Z]{2}$" id="info"><br>
-        <input type="text" name="streetaddress" placeholder="straatnaam" id="info"><br>
-        <input type="text" name="streetnumber" placeholder="huisnummer" id="info"><br>
-        <button class="button" type="submit"><span>&#xf14a;</span>registreer</button>
+        <input id="firstname" type="text" name="firstname" placeholder="voornaam" onkeyup="checkForm()"><br>
+        <input id="lastname" type="text" name="lastname" placeholder="achternaam" onkeyup="checkForm()"><br>
+        <input id="zip" type="text" name="zip" placeholder="postcode" pattern="[0-9]{4}[a-zA-Z]{2}$" onkeyup="checkForm()"><br>
+        <input id="streetname" type="text" name="streetaddress" placeholder="straatnaam" onkeyup="checkForm()"><br>
+        <input id="streetnumber" type="text" name="streetnumber" placeholder="huisnummer" onkeyup="checkForm()"><br>
+        <button id="submitbutton" class="button" type="submit"><span>&#xf14a;</span>registreer</button>
     </form>
     </div>
 </div>

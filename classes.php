@@ -990,7 +990,7 @@ class Order {
             . "</form>";
         }
     }
-// shows a single order
+// shows a single orderk
     static function show_order($orderID) {
         global $db;
         global $customer;
@@ -1033,7 +1033,8 @@ class Order {
 // made.
     static function show_date($orderID) {
         global $db;
-        $query = $db->query("SELECT date FROM Orders WHERE id=$orderID");
+        $query = $db->query("SELECT date FROM Orders WHERE id= :orderID");
+        $query->bindParam("orderID", $orderID, PDO::PARAM_INT);
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $dateArray = $query->fetch();
         echo "datum: " . end($dateArray);
