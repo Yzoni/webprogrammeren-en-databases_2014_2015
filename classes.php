@@ -898,9 +898,11 @@ class Order {
         echo "<tr>";
         echo "<td> Factuurnummer: $orderID </td>";
 	echo "<td>$date</td>";
-        echo "</tr>";
         Order::show_company_Info();
         Order::show_customer_info($orderID);
+        echo "</tr>";
+	echo "</table>";
+	echo "<table>";
         Order::show_order_table($orderID);
         echo "</table>";
     }
