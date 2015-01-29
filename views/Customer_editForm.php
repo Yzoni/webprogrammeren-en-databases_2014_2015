@@ -10,7 +10,7 @@
     <input type="password" name="password2" placeholder="Nieuw wachtwoord (nogmaals)" id="pass2" onkeyup="checkPass();
             return false;">
     <span id="confirmMessage"></span><br>
-    <select name="gender" >
+    <select name="gender" class="select_gender">
         <option value="true" <?php echo ($this->gender == 1 ? "selected" : ""); ?>>Dhr.</option>
         <option value="false" <?php echo ($this->gender == 0 ? "selected" : ""); ?>>Mevr.</option>
     </select>
@@ -19,6 +19,6 @@
     <input type="text" name="zip" placeholder="postcode" pattern="[0-9]{4}[a-zA-Z]{2}$" id="info" value="<?php echo $this->zip; ?>"><br>
     <input type="text" name="streetaddress" placeholder="straatnaam" id="info" value="<?php echo $this->streetaddress; ?>"><br>
     <input type="text" name="streetnumber" placeholder="huisnummer" id="info" value="<?php echo $this->streetnumber; ?>"><br>
-    <button type="submit" class="button"><span>&#xf040;</span>wijzigen</button>
+    <button type="submit" class="button"><span>&#xf0c7;</span>opslaan</button>
 
 </form>

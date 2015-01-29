@@ -174,7 +174,7 @@ if (!empty($_SESSION['products'])) {
     }
     foreach($_SESSION['viewed'] as $viewedProductID) {
         $viewedProduct = new Product($viewedProductID);
-        echo "<a href = http://fruyt.nl/view_product.php?id="
+        echo "<a class='textlink' href= http://fruyt.nl/view_product.php?id="
         . $viewedProductID . ">"
         . $viewedProduct->name . "<br>";
         echo "</a>";

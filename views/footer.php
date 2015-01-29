@@ -1,4 +1,4 @@
-<footer>Copyright Fruyt.nl &#169;
+<footer><p>Copyright Fruyt.nl &#169;</p>
 
     <?php
     if (is_customer_logged_in() == FALSE) {

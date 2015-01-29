@@ -395,13 +395,13 @@ footer {
 
 footer p {
     float: left;
-    margin-top: 15px;
+    line-height: 50px;
     margin-left: 25px;
 }
 
 footer a {
     float: right;
-    margin-top: 15px;
+    line-height: 50px;
     margin-right: 25px;
     text-decoration: none;
     color: #3D9191;
@@ -498,8 +498,8 @@ footer a:hover {
     transition: all .3s ease;
 }
 
-.tekstlink:hover {
-    padding-left: 4px;
+.textlink:hover {
+    text-decoration: underline;
 }
 
 .box, .productpagelink {
@@ -695,17 +695,16 @@ input[type=password] {
     margin-right: 10px;
 }
 
+.wrapperregister {
+    width: 300px;
+}
+
 input[type="submit"] {
     border: none;
 }
 
 input[name="firstname"] {
     width: 140px;
-}
-
-input[name="lastname"] {
-    clear: both;
-    display: block;
 }
 
 
