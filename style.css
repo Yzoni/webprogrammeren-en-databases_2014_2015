@@ -530,6 +530,35 @@ footer a:hover {
     background-color:#008b8b;
 }
 
+/* ProductS page */
+
+.selecter {
+    border-radius: 5px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #006666;
+    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
+   
+}
+
+.dropdowproducts {
+    position: absolute;
+    right: 5%;
+    top: 79px;
+    width: auto;
+    width: 230px;
+}
+
+#select_order {
+    width: 95px;
+}
+
+#select_amount {
+    width: 132px;
+    float: right;
+}
+
+
 /* Product page */
 
 .hrline {
@@ -805,19 +834,6 @@ input[name="firstname"] {
 
 .dropdownwrapper {
     float: right;
-    display: inline-block;
-}
-
-.select_order {
-    border-radius: 5px;
-    height: 32px;
-    border: 1px solid;
-    border-color: #006666;
-    font-family: arialroundedmtbold, sans-serif, "Times New Roman";
-    padding-left: 0px;
-    width: 140px;
-    float: right;
-    margin-top: 0px;
     display: inline-block;
 }
 
