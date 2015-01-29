@@ -550,7 +550,6 @@ footer a:hover {
 .dropdownproducts {
     display: inline-block;
     width: 250px;
-    border: 1px red solid;
     height: 32px;
 }
 
