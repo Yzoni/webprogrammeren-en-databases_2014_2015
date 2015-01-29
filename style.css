@@ -548,18 +548,18 @@ footer a:hover {
 .dropdownproducts {
     display: inline-block;
     margin-top: -1px;
-    width: 240px;
+    width: 270px;
     height: 32px;
     float: right;
 }
 
 #select_order {
-    width: 95px;
+    width: 110px;
     margin-right: 5px;
 }
 
 #select_amount {
-    width: 132px;
+    width: 148px;
 }
 
 

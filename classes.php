@@ -797,7 +797,7 @@ class Admin {
         $date = Order::show_date($orderID);
         echo "<table class='order'>";
         echo "<tr>";
-        echo "<td> factuurnummer: $orderID</td><td>$date</td>";
+        echo "<td> factuurnummer: $orderID<br>datum: $date</td>";
         echo "</tr>";
         Order::show_company_Info();
         Admin::show_customer_info($orderID);
