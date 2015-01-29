@@ -134,7 +134,7 @@ if (!empty($_SESSION['products'])) {
 	    <td>Prijs per kg: <?php echo $product->price; ?> euro</td>		
 	  </tr>
 	  <tr>
-		<a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>       
+		<td><a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>     </td>  
 	</tr>
 	</table>
         <div class=addToCart>
