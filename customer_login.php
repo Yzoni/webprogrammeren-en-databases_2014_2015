@@ -28,7 +28,8 @@ include 'views/navigation.php';
 <?php
 
 if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] = 1) {
-    echo "U moet ingelogd zijn om af te rekenen. Indien u geen account heeft, "
+    echo "<h2 class='contenttitle'>Registreren</h2>U moet ingelogd zijn om "
+    . "af te rekenen. Indien u geen account heeft, "
     . "klik dan op de button om te registreren. <br>"
     . "<a href='customer_register.php' class='button'>"
     . "<span>&#xf14a;</span>registreren</a>";
