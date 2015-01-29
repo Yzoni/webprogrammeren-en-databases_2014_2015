@@ -1020,15 +1020,21 @@ class Order {
         if (!isset($customer)) {
             $customer = $_SESSION['customer'];
         }
+        $query = $db->query("SELECT customerid FROM ORDERS");
+        $resultArray = $query->fetch();
+        $customerID = $resultArray['customerid'];
+        $query = $db->query("SELECT * FROM Customers "
+        . "WHERE id=$customerID");
+        $resultArray = $query->fetch();
         echo "<td class='customer_info'>";
         echo "<h3>Klantgegevens:</h3> <br>";
-        echo "klantnummer: " . $customer->id . "<br>";
-        echo "voornaam: " . $customer->firstname . "<br>";
-        echo "achternaam: " . $customer->lastname . "<br>";
-        echo "adres: " . $customer->streetaddress . " ";
-        echo $customer->streetnumber . "<br>";
-        echo "postcode: " . $customer->zip . "<br>";
-        echo "email: " . $customer->email . "<br>";
+        echo "klantnummer: " . $resultArray['id'] . "<br>";
+        echo "voornaam: " . $resultArray['firstname'] . "<br>";
+        echo "achternaam: " . $resultArray['lastname'] . "<br>";
+        echo "adres: " . $resultArray['streetaddress'] . " ";
+        echo $resultArray['streetnumber'] . "<br>";
+        echo "postcode: " . $resultArray['zip'] . "<br>";
+        echo "email: " . $resultArray['email'] . "<br>";
         echo "</td>";
     }
 // when given the orderID show_order_table prints a table of the order to the
