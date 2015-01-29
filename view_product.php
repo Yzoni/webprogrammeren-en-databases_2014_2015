@@ -104,7 +104,6 @@ if (!empty($_SESSION['products'])) {
                . "<span class=\"icon\">&#xf00d;</span>verwijder product</a>";
                echo "<a href=\"admin_edit_product.php?id=$product->id\" class=\"button_right\">"
                . "<span class=\"icon\">&#xF040;</span>wijzig product</a>";
-               echo "</div>";
            }
            ?>
     </div>
