@@ -134,6 +134,7 @@ if (!empty($_SESSION['products'])) {
 	    <td>Prijs per kg: <?php echo $product->price; ?> euro</td>		
 	  </tr>
 	</table>
+	</div>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" method="POST">
                 <input type="number" min="0" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
