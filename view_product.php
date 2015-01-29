@@ -134,7 +134,7 @@ if (!empty($_SESSION['products'])) {
 	    <td>Prijs per kg: <?php echo $product->price; ?> euro</td>		
 	  </tr>
 	</table>
-
+	<a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>
 	<div id='recentView'>
 	    Recent bekeken:
 	    <br>
@@ -178,10 +178,6 @@ if (!empty($_SESSION['products'])) {
             ?>
         </div>
 	</div>
-    <div class='backtocategory'>
-	<a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>  
-<br>
-</div>
 </div>
 <?php
 include 'views/footer.php';
