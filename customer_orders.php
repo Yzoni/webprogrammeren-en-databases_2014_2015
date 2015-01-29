@@ -43,7 +43,20 @@ include 'views/navigation.php';
         <?php
     } else {
         Order::show_order($_POST['order_number']);
-        echo "<a href='customer_orders.php' class='button'><span>&#xf137;</span>uw orders</a>";
+        if(isset($_SESSION['admin_logged_in']) && 
+                $_SESSION['admin_logged_in'] == 1) {
+            global $db;
+            $query = $db->query("SELECT customerid FROM Orders WHERE "
+                    . "id=" . $_POST['order_number']);
+            $row = $query->fetch();
+            $customerID = $row['customerid'];
+            echo "<a href='admin_view_customer.php?id=$customerID' "
+                    . "class='button'>"
+            . "<span>&#xf137;</span>terug naar klant</a>";            
+        } else {
+            echo "<a href='customer_orders.php' class='button'>"
+            . "<span>&#xf137;</span>uw orders</a>";
+        }
     }
     ?>
 </div>

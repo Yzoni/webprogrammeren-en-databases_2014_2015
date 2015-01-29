@@ -804,9 +804,9 @@ class Admin {
 	echo "</table>";
 	echo "<table>";
         Order::show_order_table($orderID);
-        echo "</table>";
-        echo "<a href='admin_orders.php' class='button'>"
-        . "<span>&#xf137;</span>terug naar orders</a>";
+        echo "</table>"; 
+        echo "<a href='admin_view_customer.php?$customerID class='button'>"
+        . "<span>&#xf137;</span>terug naar klant</a>";
     }
 
 // when given the orderID, show_customer_info prints all the information about
