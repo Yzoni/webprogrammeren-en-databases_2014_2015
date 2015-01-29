@@ -598,7 +598,8 @@ footer a:hover {
 }
 
 .backtocategory {
-    display: block;
+    float: left;
+    clear: left;
 }
 
 .underdescription {
