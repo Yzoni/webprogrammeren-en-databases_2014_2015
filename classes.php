@@ -375,13 +375,13 @@ class Product {
      * admin_add_product to enable it.
      * 
      * @param image file
-     * @param int width of new image
-     * @param int height of new image
+     * @param int dowidth width of new image
+     * @param int doheight heightof new image
      * @return image or false
      */
-    static function resizeImage($image, $height, $width) {
+    static function resizeImage($image, $doheight, $dowidth) {
         list($width) = getimagesize($image);
-        $height = round($width / ($height / $width));
+        $height = round($width / ($doheight / $dowidth));
         $resizedimage = new Imagick($image);
         $status = $resizedimage->scaleImage($height, $width);
         if ($status) {
