@@ -854,6 +854,10 @@ td {
     text-decoration: none;
 }
 
+.company_info {
+    vertical-align: top;
+}
+
 /* admin panel customer overview */
 
 .adminview th, .adminview td {
