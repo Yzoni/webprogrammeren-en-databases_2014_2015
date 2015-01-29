@@ -781,6 +781,19 @@ class Admin {
 // about that order to the screen.
     static function show_order($orderID) {
         global $db;
+        global $customer;
+        $query = $db->query("SELECT customerid FROM Orders WHERE id=$orderID");
+        $row = $query->fetch();
+        $customerID = $row['customerid'];
+        if((isset($_SESSION['admin_logged_in']) && 
+            $_SESSION['admin_logged_in'] !== 1) || is_customer_logged_in()) {
+            $loggedInCustomer = $customer->id;
+            if($customerID !== $loggedInCustomer) {
+                echo "ERROR";
+                include 'views/footer.php';
+                exit();
+            }
+        }
         $date = Order::show_date($orderID);
         echo "<table class='order'>";
         echo "<tr>";
@@ -980,6 +993,20 @@ class Order {
 // shows a single orderk
     static function show_order($orderID) {
         global $db;
+        global $customer;
+        $query = $db->query("SELECT customerid FROM Orders WHERE id=$orderID");
+        $row = $query->fetch();
+        $customerID = $row['customerid'];
+
+        if((isset($_SESSION['admin_logged_in']) && 
+            $_SESSION['admin_logged_in'] !== 1) || is_customer_logged_in()) {
+            $loggedInCustomer = $customer->id;
+            if($customerID !== $loggedInCustomer) {
+                echo "ERROR";
+                include 'views/footer.php';
+                exit();
+            }
+        }
         $date = Order::show_date($orderID);
         echo "<table class='order'>";
         echo "<tr>";
