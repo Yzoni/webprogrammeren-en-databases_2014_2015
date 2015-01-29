@@ -18,11 +18,11 @@ if (isset($_POST['name'])) {
     $product->special = $special;
     $allowedimagetypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG);
     $detectedimagetype = ($_FILES['image']['tmp_name']!="" ? exif_imagetype($_FILES['image']['tmp_name']) : "");
-    if (in_array($detectedimagetype, $allowedimagetypes) && $_FILES["image"]["size"] < 2000000) {
+    if (in_array($detectedimagetype, $allowedimagetypes) && $_FILES["image"]["size"] < 3000000) {
         if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
             // $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
             // als er niet moeilijk gedaan gaat worden, comment dan de lijn hierboven en uncomment hieronder
-            $product->image = Product::resizeImage($_FILES['image']['tmp_name'], 168, 598);
+            $product->image = Product::resizeImage($_FILES['image']['tmp_name'], 186, 598);
         } else {
             $display->addMessage("error", "PHP Upload ERROR");
         }
