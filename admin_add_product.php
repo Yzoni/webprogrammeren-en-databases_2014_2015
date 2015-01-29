@@ -14,7 +14,7 @@ if (isset($_POST['name'])) {
     if (in_array($detectedimagetype, $allowedimagetypes) && $_FILES["image"]["size"] < 2000000) {
         if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
             //$image = fopen($_FILES['image']['tmp_name'], 'rb');
-            $image = Product::resizeImage($_FILES['image']['tmp_name'], 168, 598);
+            $image = Product::resizeImage($_FILES['image']['tmp_name'], 186, 598);
         } else {
             $image = null;
         }

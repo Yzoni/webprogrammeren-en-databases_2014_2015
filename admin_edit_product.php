@@ -22,7 +22,7 @@ if (isset($_POST['name'])) {
         if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
             // $product->image = fopen($_FILES['image']['tmp_name'], 'rb');
             // als er niet moeilijk gedaan gaat worden, comment dan de lijn hierboven en uncomment hieronder
-            $product->image = Product::resizeImage($_FILES['image']['tmp_name'], 168, 598);
+            $product->image = Product::resizeImage($_FILES['image']['tmp_name'], 186, 598);
         } else {
             $display->addMessage("error", "PHP Upload ERROR");
         }
