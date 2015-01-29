@@ -110,9 +110,9 @@ $totalpages = ceil($totalamount / $endamount);
                 <input type="hidden" name="id" value="<?php echo (isset($_GET['id']) ? $_GET['id'] : ""); ?>" />
                 <select id="select_amount" class="selecter" name="amount" onchange="form.submit()">
                     <option value="6"> Items per pagina </option>    
-                    <option value="4" <?php echo ((isset($_GET['amount'])&&$_GET['amount']=="4") ? "selected" : ""); ?>> 4 producten </option>
                     <option value="6"> 6 producten </option> 
-                    <option value="8" <?php echo ((isset($_GET['amount'])&&$_GET['amount']=="8") ? "selected" : ""); ?>> 8 producten </option>            
+                    <option value="8" <?php echo ((isset($_GET['amount'])&&$_GET['amount']=="8") ? "selected" : ""); ?>> 8 producten </option>
+                    <option value="10" <?php echo ((isset($_GET['amount'])&&$_GET['amount']=="10") ? "selected" : ""); ?>> 10 producten </option>            
                 </select>
                 <select id="select_order" class="selecter" name="sort" onchange="form.submit()">
                     <option value="namea"> Sorteer op</option>    
