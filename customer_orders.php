@@ -26,7 +26,7 @@ include 'views/navigation.php';
             <thead>
                 <tr>
                     <th>Datum</th>
-                    <th>Order</th>
+                    <th>Order nummer</th>
                 </tr>
             </thead>
             <tbody>
