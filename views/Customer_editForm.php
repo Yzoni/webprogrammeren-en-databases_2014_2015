@@ -1,4 +1,4 @@
-
+<div class="wrapperregister">
 <form action="" method="POST">
     <input type="text" name="email" placeholder="emailadres" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<?php echo $this->email; ?>"><br>
     <?php if(is_admin_logged_in()!=true){// dont display current password when we are admin?>
@@ -22,3 +22,4 @@
     <button type="submit" class="button"><span>&#xf0c7;</span>opslaan</button>
 
 </form>
+</div>
