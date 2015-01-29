@@ -705,7 +705,7 @@ class Admin {
             $i += 1;
         }
         echo "<table>";
-        echo "<th> order nummer</th>";
+        echo "<th>Ordernummer</th>";
         echo "<th>Klantnummer</th>";
         echo "<th>Datum</th>";
         foreach ($_SESSION['orders'] as $order) {
@@ -726,7 +726,7 @@ class Admin {
     static function show_order($orderID) {
         global $db;
         $date = Order::show_date($orderID);
-        echo "<table>";
+        echo "<table class='order'>";
         echo "<tr>";
         echo "<td> factuurnummer: $orderID <br> $date</td>";
         echo "</tr>";
@@ -897,18 +897,20 @@ class Order {
         $date = Order::show_date($orderID);
         echo "<table class='order'>";
         echo "<tr>";
-        echo "<td> factuurnummer: $orderID </td>";
+        echo "<td> Factuurnummer: $orderID </td>";
 	echo "<td>$date</td>";
-        echo "</tr>";
         Order::show_company_Info();
         Order::show_customer_info($orderID);
+        echo "</tr>";
+	echo "</table>";
+	echo "<table>";
         Order::show_order_table($orderID);
         echo "</table>";
     }
 
     static function show_company_Info() {
         echo "<td class='company_info'>";
-        echo "<h3>BedrijfsInformatie</h3> <br>";
+        echo "<h3>Bedrijfsinformatie</h3> <br>";
         echo "Adres: Fruytlaan 904 1234AB <br>";
         echo "Tel: 0201235813 <br>";
         echo "KvK: 12345678<br>";

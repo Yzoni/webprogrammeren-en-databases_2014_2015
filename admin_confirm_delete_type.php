@@ -47,8 +47,8 @@ include 'views/navigation.php';
 
     <form action="admin_confirm_delete_type.php" method="get">
         <?php
-        echo "<a class = \"button_delete\" href=\"admin_confirm_delete_type.php?id=" . $producttype->id . "&confirm=y\">Verwijderen</a>";
-        echo "<a class = \"button\" href = \"admin_edit_producttype.php?id=" . $producttype->id . "\">Annuleer</a>";
+        echo "<a class = \"button_delete\" href=\"admin_confirm_delete_type.php?id=" . $producttype->id . "&confirm=y\"><span>&#xf1f8;</span>verwijderen</a>";
+        echo "<a class = \"button\" href = \"admin_edit_producttype.php?id=" . $producttype->id . "\"><span>&#xf0e2;</span>annuleer</a>";
         ?>
     </form>
 </div>

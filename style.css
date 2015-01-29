@@ -790,7 +790,7 @@ input[name="firstname"] {
 .inputBox {
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 90px;
+    width: 105px;
     height: 32px;
     border: 1px solid;
     border-color: #006666;
