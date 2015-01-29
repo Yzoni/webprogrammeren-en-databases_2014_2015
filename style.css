@@ -575,9 +575,10 @@ footer a:hover {
 
 .descrText {
     margin-top: 20px;
-    width: 45%;
+    width: 48%;
     display: inline-block;
     font-size: 12px;
+    text-align: justify;
 }
 .descrImg {
     margin-top: 20px;
@@ -585,6 +586,11 @@ footer a:hover {
     margin-right: 0px;
     position: absolute;
     left: 51%;
+}
+
+.image:hover {
+    opacity: 0.7; 
+    filter: alpha(opacity=70);
 }
 
 .backtocategory {
@@ -819,7 +825,7 @@ input[name="firstname"] {
 .inputBox {
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 90px;
+    width: 105px;
     height: 32px;
     border: 1px solid;
     border-color: #006666;
@@ -878,7 +884,7 @@ td {
     vertical-align: top;
 }
 
-table.order {
+table.order th, table.order td, table.order tr {
     border: none;
 }
 

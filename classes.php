@@ -502,9 +502,8 @@ class Customer {
             $query->bindParam(':lastname', $lastname, PDO::PARAM_STR);
             $query->bindParam(':gender', $gender, PDO::PARAM_BOOL);
             $query->execute();
-            if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] = 1) {
-                $_SESSION['loginFalse'] = 0;
-                header('Location: checkout.php');
+            if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] == 1) {
+                Customer::login($email, $password);
             }
             return true;
         } catch (PDOException $e) {
@@ -704,7 +703,7 @@ class Admin {
             $i += 1;
         }
         echo "<table>";
-        echo "<th> order nummer</th>";
+        echo "<th>Ordernummer</th>";
         echo "<th>Klantnummer</th>";
         echo "<th>Datum</th>";
         foreach ($_SESSION['orders'] as $order) {
@@ -725,7 +724,7 @@ class Admin {
     static function show_order($orderID) {
         global $db;
         $date = Order::show_date($orderID);
-        echo "<table>";
+        echo "<table class='order'>";
         echo "<tr>";
         echo "<td> factuurnummer: $orderID <br> $date</td>";
         echo "</tr>";
@@ -896,18 +895,20 @@ class Order {
         $date = Order::show_date($orderID);
         echo "<table class='order'>";
         echo "<tr>";
-        echo "<td> factuurnummer: $orderID </td>";
+        echo "<td> Factuurnummer: $orderID </td>";
 	echo "<td>$date</td>";
-        echo "</tr>";
         Order::show_company_Info();
         Order::show_customer_info($orderID);
+        echo "</tr>";
+	echo "</table>";
+	echo "<table>";
         Order::show_order_table($orderID);
         echo "</table>";
     }
 
     static function show_company_Info() {
         echo "<td class='company_info'>";
-        echo "<h3>BedrijfsInformatie</h3> <br>";
+        echo "<h3>Bedrijfsinformatie</h3> <br>";
         echo "Adres: Fruytlaan 904 1234AB <br>";
         echo "Tel: 0201235813 <br>";
         echo "KvK: 12345678<br>";
@@ -947,10 +948,10 @@ class Order {
 
         echo "<tr>";
         echo "<th>";
-        echo "Hoeveelheid:";
+        echo "Productnaam:";
         echo "</th>";
         echo "<th>";
-        echo "Productnaam:";
+        echo "Hoeveelheid:";
         echo "</th>";
         echo "<th>";
         echo "Prijs:";
@@ -964,10 +965,10 @@ class Order {
         while ($row = $query->fetch()) {
             echo "<tr>";
             echo "<td>";
-            echo $row['quantity'];
+            echo $row['product_name'];
             echo "</td>";
             echo "<td>";
-            echo $row['product_name'];
+            echo $row['quantity'];
             echo "</td>";
             echo "<td>";
             echo "<span class='iconfont'>&#xf153; </span>" . $row['price'];
