@@ -204,7 +204,10 @@ class Product {
             $query->bindParam(':id', $id, PDO::PARAM_STR);
             $query->setFetchMode(PDO::FETCH_INTO, $this);
             $query->execute();
-            $query->fetch();
+            $status = $query->fetch();
+            if ($status == false) {
+                header('Location: 404page.php');
+            }
         }
         $this->type = new ProductType($this->typeid);
     }
@@ -584,6 +587,7 @@ class Customer {
         $_SESSION['customer_logged_in'] = 0;
         session_destroy();
     }
+
 }
 
 /**

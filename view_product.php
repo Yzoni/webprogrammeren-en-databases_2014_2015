@@ -1,6 +1,12 @@
 <?php
 session_start();
 require_once 'classes.php';
+
+if (!isset($_GET['id']) || $_GET['id'] <= 0) {
+    header('Location: products.php');
+    exit();
+}
+
 if (!isset($GLOBALS['printAddedProd'])) {
     global $printAddedProd;
     $GLOBALS['printAddedProd'] = 0;
@@ -14,6 +20,7 @@ if(!isset($_SESSION['viewed'])) {
 }
 
 $product = new Product($_GET["id"]);
+
 if (isset($_GET['fn']) && $_GET['fn'] == "deleteproduct" && is_admin_logged_in()) {
     $previousproducttype = $product->type->id;
     $status = $product->delete();
@@ -25,7 +32,6 @@ if (isset($_GET['fn']) && $_GET['fn'] == "deleteproduct" && is_admin_logged_in()
     }
 }
 
-$product = new Product($_GET["id"]);
 // If the arrays which will store the products and quantities are not set, then
 // create those arrays. A for loop can be used to loop through both arrays.
 if (!isset($_SESSION['products']) &&

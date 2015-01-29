@@ -6,6 +6,7 @@ if (!isset($_GET['id']) || $_GET['id'] <= 0) {
     echo "No ID given";
     exit();
 }
+
 $product = new Product($_GET['id']);
 if (isset($_POST['name'])) {
     $product->name = $_POST['name'];
