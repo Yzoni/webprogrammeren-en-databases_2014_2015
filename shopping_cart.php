@@ -40,9 +40,9 @@ if (isset($_GET['deleteItem'])) {
 // will be executed to print all the products which have been added to the array
 if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){   
     $_SESSION['total'] = 0;
-    // This foreach loop goes through all the items stored in the products array,
-    // their associated quantities, names, and prices; calculates the total
-    // and subtotal, and prints everything to the screen.
+// This foreach loop goes through all the items stored in the products array,
+// their associated quantities, names, and prices; calculates the total
+// and subtotal, and prints everything to the screen.
 
     echo "<table class='shopping_cart_table'>";
     echo "
@@ -79,7 +79,8 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         <a href='products.php?id=$typeID' class='textlink'>$category</a>
         </td>
         <td>
-        <a href='view_product.php?id=$productId' class='textlink'>$productName</a>
+        <a href='view_product.php?id=$productId' "
+                . "class='textlink'>$productName</a>
         </td>
         <td>
         $quantity kg
@@ -88,21 +89,26 @@ if(isset($_SESSION["products"]) && sizeof($_SESSION["products"]) > 0){
         &euro; $subtotal
         </td>
         <td width='32'>
-        <a href='shopping_cart.php?deleteItem=$productId' class='button_delete'>verwijder</a>
+        <a href='shopping_cart.php?deleteItem=$productId' 
+            class='button_delete'>verwijder</a>
         </td> 
         </tr>";
             
-        // echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';      
+        // echo '<span class="remove-itm">
+        // <a href="cart_update.php?removep='.$cart_itm["code"].
+        // '&return_url='.$current_url.'">&times;</a></span>';      
         }
         echo "</table>";
 
         echo "<h2 class='totalprice'>totaalprijs: &euro;".
                 $_SESSION['total'] . ",-<br>";
         echo "levertijd: 1 dag</h2>";
-        echo "<a href='checkout.php' class='button'><span class='icon'>&#xf0d1;</span>bestelling afronden</a>";
+        echo "<a href='checkout.php' class='button'>"
+        . "<span class='icon'>&#xf0d1;</span>bestelling afronden</a>";
 } else{
     echo 'Uw winkelwagen is leeg.<br>'; 
-    echo '<a href="products.php" class="button"><span>&#xf14d;</span>producten bekijken</a>';
+    echo '<a href="products.php" class="button">'
+    . '<span>&#xf14d;</span>producten bekijken</a>';
 }
 
 echo '</div>';

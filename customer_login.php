@@ -25,15 +25,17 @@ include 'views/navigation.php';
                 <input type="password" name="password" placeholder="wachtwoord"><br>
                 <button type="submit" class="button"><span>&#xf084;</span>login</button>
             </form>
-        </div>
-
 <?php
 
 if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] = 1) {
-    echo "U moet ingelogd zijn om af te rekenen. Indien u geen account heeft "
-    . "klikt u dan <a href='customer_register.php'> hier </a> om te registreren.";
+    echo "<h2 class='contenttitle'>Registreren</h2>U moet ingelogd zijn om "
+    . "af te rekenen. Indien u geen account heeft, "
+    . "klik dan op de button om te registreren. <br>"
+    . "<a href='customer_register.php' class='button'>"
+    . "<span>&#xf14a;</span>registreren</a>";
 }
 ?>
+        </div>
 <?php
 include 'views/footer.php';
 ?>
