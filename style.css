@@ -425,7 +425,6 @@ footer a:hover {
     height: 32px;
     line-height: 32px;
     margin-bottom: 10px;
-    border: 1px red solid;
 }
 .pageswitchwrapper .button {
     color: white;
@@ -540,7 +539,7 @@ footer a:hover {
 
 .selecter {
     border-radius: 5px;
-    height: 30px;
+    height: 32px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
