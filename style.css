@@ -558,7 +558,7 @@ footer a:hover {
     left: 51%;
 }
 
-.descrImg:hover {
+.image:hover {
     opacity: 0.8; 
     filter: alpha(opacity=80);
 }
