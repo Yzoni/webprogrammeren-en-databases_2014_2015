@@ -549,6 +549,7 @@ footer a:hover {
     width: 45%;
     display: inline-block;
     font-size: 12px;
+    text-align: justify;
 }
 .descrImg {
     margin-top: 20px;
