@@ -28,6 +28,7 @@ include 'views/navigation.php';
 
 <div class="wrappercontent">
     <h2 class="contenttitle">Registreer als nieuwe klant: </h2>
+    <div class="wrapperregister">
     <form action="customer_register.php" method="POST">
         <input type="text" name="email" placeholder="emailadres" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br>
         <input type="password" name="password" placeholder="wachtwoord" id="pass1" onkeyup="checkPass();
@@ -47,6 +48,7 @@ include 'views/navigation.php';
         <input type="text" name="streetnumber" placeholder="huisnummer" id="info"><br>
         <button class="button" type="submit"><span>&#xf14a;</span>registreer</button>
     </form>
+    </div>
 </div>
 <script type="text/javascript" src="js/checkpassword.js"></script>
 

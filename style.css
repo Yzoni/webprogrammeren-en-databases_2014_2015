@@ -695,17 +695,17 @@ input[type=password] {
     margin-right: 10px;
 }
 
+.wrapperregister {
+    width: 300px;
+    border: 1px red solid;
+}
+
 input[type="submit"] {
     border: none;
 }
 
 input[name="firstname"] {
     width: 140px;
-}
-
-input[name="lastname"] {
-    clear: both;
-    display: block;
 }
 
 
