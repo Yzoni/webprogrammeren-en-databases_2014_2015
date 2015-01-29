@@ -551,17 +551,16 @@ footer a:hover {
     display: inline-block;
     width: 250px;
     height: 32px;
+    float: right;
 }
 
 #select_order {
     width: 95px;
     margin-right: 5px;
-    float: right;
 }
 
 #select_amount {
     width: 132px;
-    float: right;
 }
 
 
