@@ -1020,7 +1020,7 @@ class Order {
         if (!isset($customer)) {
             $customer = $_SESSION['customer'];
         }
-        $query = $db->query("SELECT customerid FROM ORDERS");
+        $query = $db->query("SELECT customerid FROM ORDERS WHERE id='$orderID");
         $resultArray = $query->fetch();
         $customerID = $resultArray['customerid'];
         $query = $db->query("SELECT * FROM Customers "
