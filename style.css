@@ -296,6 +296,10 @@ nav > ul > li > div > ul > li:hover {
     padding: 10px 0 10px 30px;
 }
 
+.toevoegtext {
+    margin-top: -3px;
+}
+
 
 nav .arrow {
     font-family: iconfont;
