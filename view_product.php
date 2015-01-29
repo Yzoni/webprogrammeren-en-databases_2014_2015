@@ -85,7 +85,7 @@ if (!empty($_SESSION['products'])) {
     echo "quantity cart: " . $quantityInCart;
 } else {
     $quantityInCart = 0;
-    echo "in cart : " . $quantityInCart;
+    echo "in winkelwagen : " . $quantityInCart;
 }
 
 ?>

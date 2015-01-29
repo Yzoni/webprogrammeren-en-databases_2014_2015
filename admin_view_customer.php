@@ -28,7 +28,8 @@ include 'views/navigation.php';
     
     <?php
     global $db;
-    $query = $db->prepare("SELECT * FROM Orders WHERE customerid = :id");
+    $query = $db->prepare("SELECT * FROM Orders "
+            . "WHERE customerid = :id ORDER BY id DESC");
     $query->bindParam(':id', $customer->id, PDO::PARAM_INT);
     $query->execute();
     $ordersArray = $query->fetchAll();

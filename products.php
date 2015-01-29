@@ -118,8 +118,8 @@ $totalpages = ceil($totalamount / $endamount);
                 <select id="select_order" class="selecter" name="sort" onchange="form.submit()">
                     <option> Sorteer op</option>    
                     <option value="namea"> A - Z </option>
-                    <option value="pricea"> Prijs hoog - laag </option>
-                    <option value="priced"> Prijs laag - hoog </option>            
+                    <option value="priced"> Prijs hoog - laag </option>
+                    <option value="pricea"> Prijs laag - hoog </option>            
                 </select>
             </form>
         </div>
