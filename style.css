@@ -862,7 +862,7 @@ td {
     vertical-align: top;
 }
 
-table.order {
+table.order th, table.order td, table.order tr {
     border: none;
 }
 
