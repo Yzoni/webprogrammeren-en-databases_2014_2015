@@ -549,7 +549,6 @@ footer a:hover {
 .dropdownproducts {
     position: absolute;
     right: 5%;
-    top: 79px;
     width: 250px;
     border: 1px red solid;
     height: 32px;
