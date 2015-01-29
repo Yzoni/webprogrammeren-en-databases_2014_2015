@@ -18,6 +18,8 @@ if(!isset($_POST['order_number'])) {
     Admin::show_order_list();
 } else {
     Admin::show_order($_POST['order_number']);
+    echo "<a href='admin_orders.php' class='button'>"
+    . "<span>&#xf137;</span>terug naar orders</a>";
 }
 ?>
 
