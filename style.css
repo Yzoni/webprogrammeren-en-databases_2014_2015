@@ -608,6 +608,7 @@ footer a:hover {
 }
 
 .addToCart {
+    clear: both;
     float: right;
     display: inline-block;
 }
