@@ -547,7 +547,7 @@ footer a:hover {
 }
 
 .dropdownproducts {
-    clear: both;
+    display: inline-block;
     right: 5%;
     width: 250px;
     border: 1px red solid;
