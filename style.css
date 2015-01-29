@@ -539,23 +539,26 @@ footer a:hover {
 
 .selecter {
     border-radius: 5px;
-    height: 32px;
+    height: 30px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
    
 }
 
-.dropdowproducts {
+.dropdownproducts {
     position: absolute;
     right: 5%;
     top: 79px;
     width: auto;
-    width: 230px;
+    width: 240px;
+    border: 1px red solid;
+    height: 32px;
 }
 
 #select_order {
     width: 95px;
+    margin-right: 5px;
 }
 
 #select_amount {
