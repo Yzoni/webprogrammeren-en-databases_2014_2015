@@ -539,7 +539,7 @@ footer a:hover {
 
 .selecter {
     border-radius: 5px;
-    height: 32px;
+    height: 30px;
     border: 1px solid;
     border-color: #006666;
     font-family: arialroundedmtbold, sans-serif, "Times New Roman";
@@ -556,6 +556,7 @@ footer a:hover {
 
 #select_order {
     width: 95px;
+    margin-right: 5px;
 }
 
 #select_amount {
