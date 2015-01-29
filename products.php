@@ -105,7 +105,7 @@ $totalpages = ceil($totalamount / $endamount);
             echo "<a href=\"products.php?page=" . $nextpage . "&sort=" . $sort . "&amount=" . $endamount ."\" class=\"button\"><span>&#xf138;</span>volgende</a>";
         }
         ?>
-        <div class="dropdowproducts">
+        <div class="dropdownproducts">
             <form method="GET" action="">
                 <input type="hidden" name="id" value="<?php echo (isset($_GET['id']) ? $_GET['id'] : ""); ?>" />
                 <select id="select_amount" class="selecter" name="amount" onchange="form.submit()">
