@@ -502,10 +502,8 @@ class Customer {
             $query->bindParam(':lastname', $lastname, PDO::PARAM_STR);
             $query->bindParam(':gender', $gender, PDO::PARAM_BOOL);
             $query->execute();
-            Customer::login($email, $password);
             if(isset($_SESSION['loginFalse']) && $_SESSION['loginFalse'] == 1) {
-                $_SESSION['loginFalse'] = 0;
-                header('Location: checkout.php');
+                Customer::login($email, $password);
             }
             return true;
         } catch (PDOException $e) {
