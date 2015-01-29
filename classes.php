@@ -380,8 +380,8 @@ class Product {
      * @return image or false
      */
     static function resizeImage($image, $doheight, $dowidth) {
-        list($width) = getimagesize($image);
-        $height = round($width / ($doheight / $dowidth));
+        list($dowidth) = getimagesize($image);
+        $height = round($width / ($doheight / $width));
         $resizedimage = new Imagick($image);
         $status = $resizedimage->scaleImage($height, $width);
         if ($status) {
