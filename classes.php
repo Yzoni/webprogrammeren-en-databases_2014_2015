@@ -1083,15 +1083,16 @@ class Order {
 // If pulling data from the database has failed, printError will print which
 // products have failed from being pulled from the database.
     static function printError() {
-        echo "Van de volgende producten zijn helaas niet de gewenste aantallen "
-        . "beschikbaar: <br>";
+        echo "<h2 class='contenttitle'>Onze excuses.</h2>";
+        . "Wij hebben de volgende producten (niet voldoende) in voorraad.";
         foreach ($_SESSION['errorProducts'] as $errorProduct) {
             echo "- $errorProduct <br>";
         }
-        echo "klik <a href='shopping_cart.php'> hier "
-        . "</a> om uw bestelling aan te "
-        . "passen of <a href='products.php'> hier </a> om verder te gaan met "
-        . "winkelen.";
+        echo "Maak een keuze:"
+        . "<a href='shopping_cart.php' class='button'>";
+	. "<span>&#xf013;</span>bestelling aanpassen</a>";
+        . "<a href='products.php' class='button'>";
+	. "<span>&#xf07a;</span>alternatief vinden</a>";
     }
 
 }
