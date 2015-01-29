@@ -155,6 +155,7 @@ if (!empty($_SESSION['products'])) {
 		    }
 		?>
 	</div>
+        </div>
         <div class=addToCart>
             <form name="addToCart" class="inputForm" action="" method="POST">
                 <input type="number" min="0" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
@@ -177,7 +178,6 @@ if (!empty($_SESSION['products'])) {
             }
             ?>
         </div>
-	</div>
 </div>
 <?php
 include 'views/footer.php';
