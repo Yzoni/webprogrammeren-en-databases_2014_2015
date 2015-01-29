@@ -858,8 +858,12 @@ td {
     text-decoration: none;
 }
 
-.company_info {
+.company_info, .costumer_info {
     vertical-align: top;
+}
+
+table.order {
+    border: none;
 }
 
 /* admin panel customer overview */

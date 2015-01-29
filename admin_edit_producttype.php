@@ -2,7 +2,7 @@
 require_once 'classes.php';
 security_check_admin();
 if (!isset($_GET['id']) || $_GET['id'] <= 0) {
-    echo "No ID given";
+    header("Location: 404page.php");
     exit();
 }
 

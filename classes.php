@@ -894,9 +894,10 @@ class Order {
     static function show_order($orderID) {
         global $db;
         $date = Order::show_date($orderID);
-        echo "<table>";
+        echo "<table class='order'>";
         echo "<tr>";
-        echo "<td> factuurnummer: $orderID <br> $date</td>";
+        echo "<td> factuurnummer: $orderID </td>";
+	echo "<td>$date</td>";
         echo "</tr>";
         Order::show_company_Info();
         Order::show_customer_info($orderID);
@@ -927,7 +928,7 @@ class Order {
         if (!isset($customer)) {
             $customer = $_SESSION['customer'];
         }
-        echo "<td>";
+        echo "<td class='customer_info'>";
         echo "<h3>Klantgegevens:</h3> <br>";
         echo "klantnummer: " . $customer->id . "<br>";
         echo "voornaam: " . $customer->firstname . "<br>";
