@@ -10,7 +10,7 @@
     <input type="password" name="password2" placeholder="Nieuw wachtwoord (nogmaals)" id="pass2" onkeyup="checkPass();
             return false;">
     <span id="confirmMessage"></span><br>
-    <select name="gender" >
+    <select name="gender" class="select_gender">
         <option value="true" <?php echo ($this->gender == 1 ? "selected" : ""); ?>>Dhr.</option>
         <option value="false" <?php echo ($this->gender == 0 ? "selected" : ""); ?>>Mevr.</option>
     </select>
