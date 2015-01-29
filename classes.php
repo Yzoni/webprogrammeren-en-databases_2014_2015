@@ -758,7 +758,7 @@ class Admin {
             }
             $i += 1;
         }
-        echo "<table>";
+        echo "<table class='order'>";
         echo "<th>Ordernummer</th>";
         echo "<th>Klantnummer</th>";
         echo "<th>Datum</th>";
