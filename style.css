@@ -883,6 +883,6 @@ table.product_info tbody {
 }
 
 table.product_info tr, table.product_info td {
-    height: 20px;
+    height: 16px;
     border: none;
 } 
