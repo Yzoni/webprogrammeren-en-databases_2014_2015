@@ -607,6 +607,10 @@ footer a:hover {
     width: 220px;
 }
 
+.recentView {
+    margin-top: 20px;
+}
+
 .addToCart {
     clear: both;
     float: right;
