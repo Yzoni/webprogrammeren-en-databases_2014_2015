@@ -156,7 +156,6 @@ if (!empty($_SESSION['products'])) {
             }
             ?>
         </div>
-	</div>
         <div class="backtocategory">
 	  <a href="products.php?id=<?php echo $product->type->id ?>" class="button"><span>&#xf137;</span>terug naar: <?php echo $product->type->name; ?> </a>          
         </div>
