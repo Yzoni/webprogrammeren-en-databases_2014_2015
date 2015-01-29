@@ -22,7 +22,7 @@ include 'views/navigation.php';
     <form action="admin_confirm_delete_type.php" method="get">
         <?php
         echo "<a class = \"button_delete\" href=\"admin_confirm_delete_customer.php?id=" . $customer->id . "&confirm=y\"><span>&#xf1f8;</span>verwijderen</a>";
-        echo "<a class = \"button\" href = \"admin_list_customer.php\"><span>&#xf0e2;</span>annuleer</a>";
+        echo "<a class = \"button\" href = \"admin_list_customers.php\"><span>&#xf0e2;</span>annuleer</a>";
         ?>
     </form>
 </div>
