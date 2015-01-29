@@ -296,6 +296,10 @@ nav > ul > li > div > ul > li:hover {
     padding: 10px 0 10px 30px;
 }
 
+.toevoegtext {
+    margin-top: -3px;
+}
+
 
 nav .arrow {
     font-family: iconfont;
@@ -854,6 +858,10 @@ td {
     text-decoration: none;
 }
 
+.company_info {
+    vertical-align: top;
+}
+
 /* admin panel customer overview */
 
 .adminview th, .adminview td {
@@ -879,6 +887,6 @@ table.product_info tbody {
 }
 
 table.product_info tr, table.product_info td {
-    height: 20px;
+    height: 16px;
     border: none;
 } 

@@ -905,11 +905,11 @@ class Order {
     }
 
     static function show_company_Info() {
-        echo "<td>";
+        echo "<td class='company_info'>";
         echo "<h3>BedrijfsInformatie</h3> <br>";
-        echo "Adres: fruytlaan 904 1234AB <br>";
+        echo "Adres: Fruytlaan 904 1234AB <br>";
         echo "Tel: 0201235813 <br>";
-        echo "KvK: <br>";
+        echo "KvK: 12345678<br>";
         echo "</td>";
     }
 

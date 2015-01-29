@@ -5,7 +5,7 @@ include 'views/navigation.php';
 ?>
 
 <div class="wrappercontent">
-<h2 class="contenttitle">Alle orders</h2>
+<h2 class="contenttitle">Alle bestellingen</h2>
 <?php
 if(!is_admin_logged_in()) {
     echo "U dient ingelogd te zijn als <a href='admin_login.php'> beheerder </a>" .
