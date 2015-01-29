@@ -598,7 +598,7 @@ footer a:hover {
 }
 
 .backtocategory {
-    display: inline;
+    display: initial;
 }
 
 .underdescription {
