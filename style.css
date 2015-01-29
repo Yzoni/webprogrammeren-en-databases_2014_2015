@@ -169,6 +169,11 @@ input[type="radio"] {
     padding-right: 30px;
 }
 
+/* cancels the auto styling for autocomplete */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
 header {
     min-width: 820px;
     color: white;
