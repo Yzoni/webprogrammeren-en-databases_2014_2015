@@ -686,6 +686,9 @@ class Admin {
         session_destroy();
     }
 
+// show_order_list() prints a table to the screen which will contain all the
+// orders which are stored in the database. It stores each order in a
+// multidimensional array called 'orders' which is stored in the session array.
     static function show_order_list() {
         global $db;
         $i = 0;
@@ -721,6 +724,8 @@ class Admin {
         echo "</table>";
     }
 
+// when given the orderID as parameter, show_order prints all the information
+// about that order to the screen.
     static function show_order($orderID) {
         global $db;
         $date = Order::show_date($orderID);
@@ -735,6 +740,8 @@ class Admin {
         echo "<a href='admin_orders.php' class='button'><span>&#xf137;</span>terug naar orders</a>";
     }
 
+// when given the orderID, show_customer_info prints all the information about
+// the customer who made that order to the screen.
     static function show_customer_info($orderID) {
         global $db;
         $sqlQuery = "SELECT customerid FROM Orders WHERE id=$orderID";
@@ -799,8 +806,8 @@ class Order {
     public $products;
     public $date;
 
-    // tryOrder tries to remove the the items of the order from the database.
-    // If tryOrder fails the user will be informed.
+// tryOrder tries to remove the the items of an order from the database.
+// If tryOrder fails the user will be informed.
     static function tryOrder($products, $quantities, $names) {
         global $db;
         $updateQuery = "UPDATE Products SET stock=:value WHERE id=:id";
@@ -826,7 +833,7 @@ class Order {
         }
     }
 
-    // executes order
+// executeOrder inserts the order into the database
     static function executeOrder($userID, $productIDs, $quantities, $prices, $names, $payment_method) {
         global $db;
         $query = $db->prepare("INSERT INTO Orders (customerid, payment_method) VALUES (:userID, :payment_method)");
@@ -850,6 +857,8 @@ class Order {
         }
     }
 
+// when given an array of productID's getProductNames returns an array
+// containing the product names of those id's
     static function getProductNames($IDarray) {
         global $db;
         $namesArray = Array();
@@ -862,7 +871,8 @@ class Order {
         }
         return $namesArray;
     }
-
+// when given an array of productID's getProductPrices returns an array
+// containing the product prices of those id's
     static function getProductPrices($IDarray) {
         global $db;
         $pricesArray = Array();
@@ -875,7 +885,7 @@ class Order {
         }
         return $pricesArray;
     }
-
+// shows a list of all the orders that a customer has made
     static function show_list_orders() {
         global $db;
         global $customer;
@@ -889,7 +899,7 @@ class Order {
             . "</form>";
         }
     }
-
+// shows a single order
     static function show_order($orderID) {
         global $db;
         $date = Order::show_date($orderID);
@@ -905,16 +915,17 @@ class Order {
         Order::show_order_table($orderID);
         echo "</table>";
     }
-
+// shows the information about the company
     static function show_company_Info() {
         echo "<td class='company_info'>";
         echo "<h3>Bedrijfsinformatie</h3> <br>";
         echo "Adres: Fruytlaan 904 1234AB <br>";
         echo "Tel: 0201235813 <br>";
-        echo "KvK: 12345678<br>";
+        echo "KvK: 21345589<br>";
         echo "</td>";
     }
-
+// when given the orderID show_date shows the date and time that order has been
+// made.
     static function show_date($orderID) {
         global $db;
         $query = $db->query("SELECT date FROM Orders WHERE id=$orderID");
@@ -923,6 +934,8 @@ class Order {
         echo "datum: " . end($dateArray);
     }
 
+// when given the orderID, show_customer_info shows the information about the
+// customer who has made that order.
     static function show_customer_info($orderID) {
         global $db;
         global $customer;
@@ -940,10 +953,12 @@ class Order {
         echo "email: " . $customer->email . "<br>";
         echo "</td>";
     }
-
+// when given the orderID show_order_table prints a table of the order to the
+// screen.
     static function show_order_table($orderID) {
         global $db;
-        $query = $db->query("SELECT quantity, product_name, price FROM Orders_Products WHERE OrderID=$orderID");
+        $query = $db->query("SELECT quantity, product_name, "
+                . "price FROM Orders_Products WHERE OrderID=$orderID");
         $query->setfetchMode(PDO::FETCH_ASSOC);
 
         echo "<tr>";
@@ -987,7 +1002,8 @@ class Order {
         echo "</td>";
         echo "</tr>";
     }
-
+// If pulling data from the database has failed, printError will print which
+// products have failed from being pulled from the database.
     static function printError() {
         echo "Van de volgende producten zijn helaas niet de gewenste aantallen "
         . "beschikbaar: <br>";
