@@ -498,8 +498,8 @@ footer a:hover {
     transition: all .3s ease;
 }
 
-.tekstlink:hover {
-    margin-left: 4px;
+.textlink:hover {
+    padding-left: 4px;
 }
 
 .box, .productpagelink {
