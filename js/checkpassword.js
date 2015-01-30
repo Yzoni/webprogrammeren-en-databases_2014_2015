@@ -32,6 +32,7 @@
  }
  
  */
+/*
 submitbutton = document.getElementById("submitbutton");
 submitbutton.disabled = true;
 
@@ -106,3 +107,5 @@ function checkStreetnumber() {
         return true;
     }
 }
+
+*/
