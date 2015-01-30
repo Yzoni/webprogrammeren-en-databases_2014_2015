@@ -74,7 +74,7 @@ include 'views/navigation.php';
 ?>
 
 <?php
-
+/*
 $index = 0;
 if (!empty($_SESSION['products'])) {
     while($_SESSION['products'][$index] != $product->id && $index < count($_SESSION['products']) ){
@@ -85,7 +85,7 @@ if (!empty($_SESSION['products'])) {
     $quantityInCart = 0;
     echo "in winkelwagen : " . $quantityInCart;
 }
-
+*/
 ?>
 
 
