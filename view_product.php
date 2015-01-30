@@ -112,6 +112,7 @@ if (!empty($_SESSION['products'])) {
         <img class="descrImg" height="100" width="320" src="data:image/png;base64,
              <?php echo base64_encode($product->image); ?>"/>
     </div>
+
     <div class="hrline"></div>
     <div class="underdescription">
 	<table class="product_info">
