@@ -13,8 +13,13 @@ if (isset($_POST['name'])) {
     $detectedimagetype = ($_FILES['image']['tmp_name'] != "" ? exif_imagetype($_FILES['image']['tmp_name']) : "");
     if (in_array($detectedimagetype, $allowedimagetypes) && $_FILES["image"]["size"] < 3000000) {
         if ($_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
-            //$image = fopen($_FILES['image']['tmp_name'], 'rb');
-            $image = Product::resizeImage($_FILES['image']['tmp_name'], 186, 598);
+            if (extension_loaded('imagick')) {
+                // Als imagemagick module niet is toegestaan gebruik de else statement!
+                $image = Product::resizeImage($_FILES['image']['tmp_name'], 186, 598);
+            } else {
+                $display->addMessage("notice", "Module imagick is niet geinstalleerd! Afbeeldings formaat wijzigen staat niet aan.");
+                $image = fopen($_FILES['image']['tmp_name'], 'rb');
+            }
         } else {
             $image = null;
         }
