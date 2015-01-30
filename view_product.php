@@ -80,9 +80,7 @@ if (!empty($_SESSION['products'])) {
     while($_SESSION['products'][$index] != $product->id && $index < count($_SESSION['products']) ){
         $index ++;
     } 
-    echo "index : " . $index;
     $quantityInCart = $_SESSION['quantities'][$index];
-    echo "quantity cart: " . $quantityInCart;
 } else {
     $quantityInCart = 0;
     echo "in winkelwagen : " . $quantityInCart;
