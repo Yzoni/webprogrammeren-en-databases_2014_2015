@@ -24,7 +24,7 @@ include 'views/navigation.php';
         <div class="wrappercontent">
             <h2 class="contenttitle">Inloggen Administrator: </h2>
             <form action="admin_login.php" method="post">
-                <input type="text" name="username" placeholder="voornaam"><br>
+                <input type="text" name="username" placeholder="gebruikersnaam"><br>
                 <input type="password" name="password" placeholder="wachtwoord"><br>
                 <button type="submit" class="button"><span>&#xf084;</span>login</button>
             </form>
