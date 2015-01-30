@@ -114,6 +114,14 @@ if (!empty($_SESSION['products'])) {
         <img class="descrImg" height="100" width="320" src="data:image/png;base64,
              <?php echo base64_encode($product->image); ?>"/>
     </div>
+            <div class=addToCart>
+            <form name="addToCart" class="inputForm" action="" method="POST">
+                <input type="number" min="0" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
+                <button onclick="validQuantity(quantity, <?php echo $product->stock;?>, <?php echo $quantityInCart; ?>)" type="submit" class="button"> 
+                <span>&#xf0fe;</span>voeg toe 
+                </button>
+            </form>
+        </div>
     <div class="hrline"></div>
     <div class="underdescription">
 	<table class="product_info">
@@ -155,14 +163,6 @@ if (!empty($_SESSION['products'])) {
 		    }
 		?>
 	</div>
-        </div>
-        <div class=addToCart>
-            <form name="addToCart" class="inputForm" action="" method="POST">
-                <input type="number" min="0" class="inputBox" name="quantity" placeholder="Hoeveelheid (kg)">   
-                <button onclick="validQuantity(quantity, <?php echo $product->stock;?>, <?php echo $quantityInCart; ?>)" type="submit" class="button"> 
-                <span>&#xf0fe;</span>voeg toe 
-                </button>
-            </form>
         </div>
         <div id="addedProduct">
             <?php
